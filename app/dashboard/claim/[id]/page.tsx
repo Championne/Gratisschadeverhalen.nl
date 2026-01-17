@@ -4,7 +4,8 @@ import { DashboardHeader } from "@/components/dashboard/header"
 import { ClaimDetail } from "@/components/dashboard/claim-detail"
 import { notFound } from "next/navigation"
 
-export default async function ClaimDetailPage({ params }: { params: { id: string } }) {
+export default async function ClaimDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const supabase = await createClient()
 
   const { data: { user }, error: userError } = await supabase.auth.getUser()
@@ -17,7 +18,7 @@ export default async function ClaimDetailPage({ params }: { params: { id: string
   const { data: claim, error } = await supabase
     .from('claims')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .eq('user_id', user.id)
     .single()
 
@@ -29,7 +30,7 @@ export default async function ClaimDetailPage({ params }: { params: { id: string
   const { data: statusUpdates } = await supabase
     .from('claim_status_updates')
     .select('*')
-    .eq('claim_id', params.id)
+    .eq('claim_id', id)
     .order('created_at', { ascending: false })
 
   return (
