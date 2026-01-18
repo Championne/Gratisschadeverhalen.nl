@@ -26,19 +26,12 @@ export default async function ClaimDetailPage({ params }: { params: Promise<{ id
     notFound()
   }
 
-  // Haal status updates op
-  const { data: statusUpdates } = await supabase
-    .from('claim_status_updates')
-    .select('*')
-    .eq('claim_id', id)
-    .order('created_at', { ascending: false })
-
   return (
     <div className="min-h-screen bg-gray-50">
       <DashboardHeader user={user} />
 
       <main className="container mx-auto px-4 py-8">
-        <ClaimDetail claim={claim} statusUpdates={statusUpdates || []} />
+        <ClaimDetail claim={claim} />
       </main>
     </div>
   )
