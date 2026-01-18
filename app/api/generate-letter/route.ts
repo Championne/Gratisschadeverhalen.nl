@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
     })
 
     // Return PDF as download
-    return new NextResponse(pdfBytes, {
+    return new NextResponse(Buffer.from(pdfBytes), {
       headers: {
         'Content-Type': 'application/pdf',
         'Content-Disposition': `attachment; filename="aansprakelijkheidsbrief-${claim.id.substring(0, 8)}.pdf"`,
