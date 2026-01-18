@@ -166,7 +166,7 @@ export function letselschadeDetectedEmail(data: ClaimData) {
 /**
  * Email naar admin: Nieuwe claim notificatie
  */
-export function adminNewClaimEmail(data: ClaimData & { beschrijving: string }) {
+export function adminNewClaimEmail(data: ClaimData & { beschrijving: string; email: string }) {
   const { naam, email, claimId, datum_ongeval, kenteken_tegenpartij, beschrijving, mogelijk_letselschade } = data as any
 
   return {
