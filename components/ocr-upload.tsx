@@ -1,245 +1,210 @@
 "use client"
 
 import { useState } from "react"
-import { useDropzone } from "react-dropzone"
-import { Upload, FileText, Loader2, CheckCircle, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import { Card, CardContent } from "@/components/ui/card"
+import { Upload, FileText, Loader2, CheckCircle, XCircle } from "lucide-react"
 import { toast } from "sonner"
-import Tesseract from "tesseract.js"
 
 interface OCRUploadProps {
-  onFileSelected: (file: File | null) => void
   onOCRComplete: (data: any) => void
 }
 
-export function OCRUpload({ onFileSelected, onOCRComplete }: OCRUploadProps) {
+export function OCRUpload({ onOCRComplete }: OCRUploadProps) {
   const [file, setFile] = useState<File | null>(null)
   const [isProcessing, setIsProcessing] = useState(false)
-  const [ocrProgress, setOcrProgress] = useState(0)
-  const [ocrResult, setOcrResult] = useState<any>(null)
+  const [isDragging, setIsDragging] = useState(false)
 
-  const processOCR = async (file: File) => {
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault()
+    setIsDragging(true)
+  }
+
+  const handleDragLeave = () => {
+    setIsDragging(false)
+  }
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault()
+    setIsDragging(false)
+    
+    const droppedFile = e.dataTransfer.files[0]
+    if (droppedFile) {
+      handleFileSelect(droppedFile)
+    }
+  }
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0]
+    if (selectedFile) {
+      handleFileSelect(selectedFile)
+    }
+  }
+
+  const handleFileSelect = async (selectedFile: File) => {
+    // Validate file type
+    const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'application/pdf']
+    if (!validTypes.includes(selectedFile.type)) {
+      toast.error("Ongeldig bestandstype", {
+        description: "Upload een JPG, PNG, WEBP of PDF bestand"
+      })
+      return
+    }
+
+    // Validate file size (max 10MB)
+    if (selectedFile.size > 10 * 1024 * 1024) {
+      toast.error("Bestand te groot", {
+        description: "Maximum bestandsgrootte is 10MB"
+      })
+      return
+    }
+
+    setFile(selectedFile)
+    await processOCR(selectedFile)
+  }
+
+  const processOCR = async (fileToProcess: File) => {
     setIsProcessing(true)
-    setOcrProgress(0)
 
     try {
-      const result = await Tesseract.recognize(
-        file,
-        'nld', // Nederlands
-        {
-          logger: (m) => {
-            if (m.status === 'recognizing text') {
-              setOcrProgress(Math.round(m.progress * 100))
-            }
-          },
-        }
-      )
-
-      const text = result.data.text
-      
-      // Parse relevante informatie uit de OCR tekst
-      const extractedData = extractDataFromOCR(text)
-      
-      setOcrResult(extractedData)
-      onOCRComplete(extractedData)
-
-      toast.success("OCR voltooid!", {
-        description: `${Object.keys(extractedData).length} velden gevonden`
+      toast.loading("🔍 OCR verwerking gestart...", {
+        id: "ocr-processing",
+        description: "Dit kan 5-10 seconden duren"
       })
 
-    } catch (error) {
-      console.error("OCR Error:", error)
-      toast.error("OCR mislukt", {
-        description: "Probeer een betere kwaliteit scan of foto"
+      const formData = new FormData()
+      formData.append('file', fileToProcess)
+
+      const response = await fetch('/api/ocr', {
+        method: 'POST',
+        body: formData,
+      })
+
+      const data = await response.json()
+
+      toast.dismiss("ocr-processing")
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'OCR verwerking mislukt')
+      }
+
+      toast.success("✅ OCR succesvol!", {
+        description: `Confidence: ${data.confidence}% - Gegevens zijn ingevuld`
+      })
+
+      // Pass extracted data to parent component
+      onOCRComplete({
+        ...data.extracted_data,
+        raw_text: data.raw_text,
+        confidence: data.confidence,
+        file_url: data.file_url,
+      })
+
+    } catch (error: any) {
+      console.error('OCR Error:', error)
+      toast.dismiss("ocr-processing")
+      toast.error("❌ OCR mislukt", {
+        description: error.message || "Probeer het opnieuw of vul handmatig in"
       })
     } finally {
       setIsProcessing(false)
-      setOcrProgress(0)
     }
   }
 
-  const extractDataFromOCR = (text: string): any => {
-    const data: any = {}
-    
-    // Datum extractie (verschillende formaten)
-    const datePatterns = [
-      /datum[:\s]+(\d{1,2}[-\/]\d{1,2}[-\/]\d{2,4})/i,
-      /(\d{1,2}[-\/]\d{1,2}[-\/]\d{2,4})/,
-    ]
-    
-    for (const pattern of datePatterns) {
-      const match = text.match(pattern)
-      if (match) {
-        data.datum = match[1]
-        break
-      }
-    }
-
-    // Kenteken extractie (Nederlands formaat)
-    const kentekenPattern = /([A-Z]{1,3}[-\s]?\d{1,3}[-\s]?[A-Z]{1,3})/gi
-    const kentekens = text.match(kentekenPattern)
-    if (kentekens && kentekens.length > 0) {
-      data.kenteken_tegenpartij = kentekens[0].replace(/\s/g, '-')
-    }
-
-    // Plaats extractie
-    const plaatsPattern = /plaats[:\s]+([a-zA-Z\s]+)/i
-    const plaatsMatch = text.match(plaatsPattern)
-    if (plaatsMatch) {
-      data.plaats = plaatsMatch[1].trim()
-    }
-
-    // Naam extractie (simpel, kan verbeterd worden)
-    const naamPattern = /naam[:\s]+([A-Z][a-z]+\s+[A-Z][a-z]+)/i
-    const naamMatch = text.match(naamPattern)
-    if (naamMatch) {
-      data.naam_tegenpartij = naamMatch[1].trim()
-    }
-
-    // Confidence score berekenen
-    const fieldsFound = Object.keys(data).length
-    data.confidence = Math.min(95, fieldsFound * 25)
-
-    // Volledige tekst ook toevoegen voor handmatige review
-    data.raw_text = text
-    data.beschrijving = `OCR geëxtraheerde tekst:\n${text.substring(0, 500)}`
-
-    return data
-  }
-
-  const onDrop = async (acceptedFiles: File[]) => {
-    if (acceptedFiles.length > 0) {
-      const selectedFile = acceptedFiles[0]
-      setFile(selectedFile)
-      onFileSelected(selectedFile)
-      
-      // Start OCR automatisch
-      await processOCR(selectedFile)
-    }
-  }
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: { 'image/*': [], 'application/pdf': [] },
-    multiple: false,
-    maxFiles: 1,
-  })
-
-  const removeFile = () => {
+  const resetUpload = () => {
     setFile(null)
-    setOcrResult(null)
-    onFileSelected(null)
+    setIsProcessing(false)
   }
 
   return (
-    <div className="space-y-4">
-      {!file ? (
-        <div
-          {...getRootProps()}
-          className={cn(
-            "border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors",
-            isDragActive ? "border-primary bg-primary/5" : "border-muted-foreground/25 hover:border-primary/50"
-          )}
-        >
-          <input {...getInputProps()} />
-          <FileText className="h-10 w-10 mx-auto mb-4 text-muted-foreground" />
-          {isDragActive ? (
-            <p className="text-lg font-medium">Drop het schadeformulier hier...</p>
-          ) : (
-            <div>
-              <p className="text-lg font-medium mb-2">
-                Upload Europees Schadeformulier
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Sleep het bestand hierheen of klik om te uploaden
-              </p>
-              <p className="text-xs text-muted-foreground mt-2">
-                OCR zal automatisch gegevens extraheren
-              </p>
-            </div>
-          )}
-        </div>
-      ) : (
-        <Card>
-          <CardHeader>
-            <div className="flex items-start justify-between">
-              <div className="flex items-center gap-2">
-                {isProcessing ? (
-                  <Loader2 className="h-5 w-5 animate-spin text-primary" />
-                ) : ocrResult ? (
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                ) : (
-                  <FileText className="h-5 w-5" />
-                )}
-                <div>
-                  <CardTitle className="text-base">{file.name}</CardTitle>
-                  <CardDescription className="text-xs">
-                    {(file.size / 1024).toFixed(2)} KB
-                  </CardDescription>
+    <Card className={`${isDragging ? 'border-blue-500 bg-blue-50' : 'border-gray-200'}`}>
+      <CardContent className="p-6">
+        {!file ? (
+          <div className="space-y-4">
+            {/* Grote klikbare upload area */}
+            <label 
+              htmlFor="file-upload" 
+              className="cursor-pointer block"
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+            >
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center hover:border-blue-400 hover:bg-blue-50 transition-colors">
+                <div className="flex flex-col items-center gap-4">
+                  <div className="rounded-full bg-blue-100 p-4">
+                    <Upload className="h-8 w-8 text-blue-600" />
+                  </div>
+                  
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">
+                      Upload Europees Schadeformulier
+                    </h3>
+                    <p className="text-sm text-gray-600 mb-2">
+                      Klik hier of sleep een bestand hiernaartoe
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Ondersteunde formaten: JPG, PNG, WEBP, PDF (max 10MB)
+                    </p>
+                  </div>
+                  
+                  <div className="flex items-center gap-2 text-blue-600">
+                    <FileText className="h-5 w-5" />
+                    <span className="text-sm font-medium">Selecteer bestand</span>
+                  </div>
                 </div>
               </div>
+              <input
+                id="file-upload"
+                type="file"
+                className="hidden"
+                accept="image/*,.pdf"
+                onChange={handleFileChange}
+              />
+            </label>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+              <FileText className="h-6 w-6 text-blue-600" />
+              <div className="flex-1">
+                <p className="font-medium text-sm">{file.name}</p>
+                <p className="text-xs text-gray-500">
+                  {(file.size / 1024).toFixed(2)} KB
+                </p>
+              </div>
+              {isProcessing ? (
+                <Loader2 className="h-5 w-5 text-blue-600 animate-spin" />
+              ) : (
+                <CheckCircle className="h-5 w-5 text-green-600" />
+              )}
+            </div>
+
+            {isProcessing && (
+              <div className="text-center">
+                <p className="text-sm text-gray-600">
+                  🔍 OCR verwerking bezig...
+                </p>
+                <p className="text-xs text-gray-500 mt-1">
+                  Dit kan 5-10 seconden duren
+                </p>
+              </div>
+            )}
+
+            {!isProcessing && (
               <Button
                 type="button"
-                variant="ghost"
-                size="icon"
-                onClick={removeFile}
-                disabled={isProcessing}
+                variant="outline"
+                size="sm"
+                onClick={resetUpload}
+                className="w-full"
               >
-                <X className="h-4 w-4" />
+                <XCircle className="mr-2 h-4 w-4" />
+                Ander Bestand Uploaden
               </Button>
-            </div>
-          </CardHeader>
-          
-          {isProcessing && (
-            <CardContent>
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">OCR verwerking...</span>
-                  <span className="font-medium">{ocrProgress}%</span>
-                </div>
-                <div className="w-full bg-muted rounded-full h-2">
-                  <div
-                    className="bg-primary h-2 rounded-full transition-all"
-                    style={{ width: `${ocrProgress}%` }}
-                  />
-                </div>
-              </div>
-            </CardContent>
-          )}
-
-          {ocrResult && (
-            <CardContent>
-              <div className="space-y-2">
-                <p className="text-sm font-medium text-green-600 flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4" />
-                  OCR Succesvol
-                </p>
-                <div className="bg-muted p-3 rounded text-sm space-y-1">
-                  <p><strong>Gevonden velden:</strong></p>
-                  {Object.entries(ocrResult).map(([key, value]) => {
-                    if (key === 'raw_text' || key === 'beschrijving') return null
-                    return (
-                      <p key={key} className="text-muted-foreground">
-                        • {key}: {String(value)}
-                      </p>
-                    )
-                  })}
-                  {ocrResult.confidence && (
-                    <p className="text-xs text-muted-foreground mt-2">
-                      Betrouwbaarheid: {ocrResult.confidence}%
-                    </p>
-                  )}
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Het formulier is automatisch vooringevuld. Controleer de gegevens.
-                </p>
-              </div>
-            </CardContent>
-          )}
-        </Card>
-      )}
-    </div>
+            )}
+          </div>
+        )}
+      </CardContent>
+    </Card>
   )
 }

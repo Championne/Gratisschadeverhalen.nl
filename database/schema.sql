@@ -1,20 +1,21 @@
--- Database Schema voor Gratisschadeverhalen.nl
--- Voer dit uit in je Supabase SQL Editor
+-- =============================================
+-- GRATIS SCHADEVERHALEN - DATABASE SCHEMA
+-- =============================================
+-- PostgreSQL Database Schema voor Supabase
+-- Versie: 2.0 (Cleanup - Correctie Flow Verwijderd)
+-- =============================================
 
--- Enable UUID extension
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-
--- Claims table (schade claims)
+-- Claims table (hoofdtabel)
 CREATE TABLE IF NOT EXISTS public.claims (
-    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    user_id UUID REFERENCES auth.users(id) ON DELETE SET NULL,
     
-    -- Contact informatie
+    -- Claimer gegevens
     naam VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     telefoon VARCHAR(50),
     
-    -- Ongeval gegevens
+    -- Ongeval details
     datum_ongeval DATE NOT NULL,
     plaats_ongeval VARCHAR(255),
     beschrijving TEXT NOT NULL,
@@ -50,6 +51,9 @@ CREATE TABLE IF NOT EXISTS public.claims (
     mogelijk_letselschade BOOLEAN DEFAULT FALSE,
     letselschade_keywords TEXT[],
     
+    -- AI Agent notes
+    ai_notes TEXT,
+    
     -- Timestamps
     created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
@@ -67,142 +71,116 @@ CREATE TABLE IF NOT EXISTS public.user_profiles (
     id UUID REFERENCES auth.users(id) ON DELETE CASCADE PRIMARY KEY,
     full_name VARCHAR(255),
     phone VARCHAR(50),
-    address TEXT,
-    email_notifications BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL
 );
 
--- Status updates log (voor tracking van status wijzigingen)
-CREATE TABLE IF NOT EXISTS public.claim_status_updates (
-    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    claim_id UUID REFERENCES public.claims(id) ON DELETE CASCADE NOT NULL,
-    oude_status VARCHAR(50),
-    nieuwe_status VARCHAR(50) NOT NULL,
-    notitie TEXT,
-    updated_by UUID REFERENCES auth.users(id),
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text, NOW()) NOT NULL
-);
-
-CREATE INDEX IF NOT EXISTS idx_status_updates_claim_id ON public.claim_status_updates(claim_id);
-CREATE INDEX IF NOT EXISTS idx_status_updates_created_at ON public.claim_status_updates(created_at DESC);
-
--- Function om updated_at automatisch bij te werken
-CREATE OR REPLACE FUNCTION update_updated_at_column()
-RETURNS TRIGGER AS $$
-BEGIN
-    NEW.updated_at = TIMEZONE('utc'::text, NOW());
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
--- Triggers voor auto-update van timestamps
-DROP TRIGGER IF EXISTS update_claims_updated_at ON public.claims;
-CREATE TRIGGER update_claims_updated_at
-    BEFORE UPDATE ON public.claims
-    FOR EACH ROW
-    EXECUTE FUNCTION update_updated_at_column();
-
-DROP TRIGGER IF EXISTS update_user_profiles_updated_at ON public.user_profiles;
-CREATE TRIGGER update_user_profiles_updated_at
-    BEFORE UPDATE ON public.user_profiles
-    FOR EACH ROW
-    EXECUTE FUNCTION update_updated_at_column();
-
--- Function om automatisch status updates te loggen
-CREATE OR REPLACE FUNCTION log_claim_status_update()
-RETURNS TRIGGER AS $$
-BEGIN
-    IF OLD.status IS DISTINCT FROM NEW.status THEN
-        INSERT INTO public.claim_status_updates (claim_id, oude_status, nieuwe_status, updated_by)
-        VALUES (NEW.id, OLD.status, NEW.status, NEW.user_id);
-    END IF;
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
-DROP TRIGGER IF EXISTS log_status_change ON public.claims;
-CREATE TRIGGER log_status_change
-    AFTER UPDATE ON public.claims
-    FOR EACH ROW
-    EXECUTE FUNCTION log_claim_status_update();
-
--- ===================================
+-- =============================================
 -- ROW LEVEL SECURITY (RLS) POLICIES
--- ===================================
+-- =============================================
 
--- Enable RLS op alle tables
+-- Enable RLS
 ALTER TABLE public.claims ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.user_profiles ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.claim_status_updates ENABLE ROW LEVEL SECURITY;
 
--- Claims policies
--- Users kunnen hun eigen claims zien
-CREATE POLICY "Users can view own claims"
-    ON public.claims FOR SELECT
-    USING (auth.uid() = user_id OR email = auth.jwt()->>'email');
+-- Claims Policies
+-- 1. Anyone can INSERT claims (voor guest submissions)
+CREATE POLICY "Anyone can insert claims" 
+    ON public.claims 
+    FOR INSERT 
+    WITH CHECK (true);
 
--- Users kunnen nieuwe claims aanmaken
-CREATE POLICY "Users can insert own claims"
-    ON public.claims FOR INSERT
-    WITH CHECK (auth.uid() = user_id OR user_id IS NULL);
+-- 2. Users can only SELECT their own claims
+CREATE POLICY "Users can view own claims" 
+    ON public.claims 
+    FOR SELECT 
+    USING (auth.uid() = user_id);
 
--- Users kunnen hun eigen claims updaten (alleen als status niet 'afgerond')
-CREATE POLICY "Users can update own claims"
-    ON public.claims FOR UPDATE
-    USING (auth.uid() = user_id AND status NOT IN ('afgerond', 'geweigerd'));
+-- 3. Users can UPDATE their own claims
+CREATE POLICY "Users can update own claims" 
+    ON public.claims 
+    FOR UPDATE 
+    USING (auth.uid() = user_id);
 
--- Anonymous claims (voor niet-ingelogde gebruikers)
-CREATE POLICY "Allow anonymous claim creation"
-    ON public.claims FOR INSERT
-    WITH CHECK (user_id IS NULL);
-
--- User profiles policies
-CREATE POLICY "Users can view own profile"
-    ON public.user_profiles FOR SELECT
+-- User Profiles Policies
+CREATE POLICY "Users can view own profile" 
+    ON public.user_profiles 
+    FOR SELECT 
     USING (auth.uid() = id);
 
-CREATE POLICY "Users can update own profile"
-    ON public.user_profiles FOR UPDATE
+CREATE POLICY "Users can update own profile" 
+    ON public.user_profiles 
+    FOR UPDATE 
     USING (auth.uid() = id);
 
-CREATE POLICY "Users can insert own profile"
-    ON public.user_profiles FOR INSERT
+CREATE POLICY "Users can insert own profile" 
+    ON public.user_profiles 
+    FOR INSERT 
     WITH CHECK (auth.uid() = id);
 
--- Claim status updates policies
-CREATE POLICY "Users can view status updates for own claims"
-    ON public.claim_status_updates FOR SELECT
-    USING (
-        EXISTS (
-            SELECT 1 FROM public.claims
-            WHERE claims.id = claim_status_updates.claim_id
-            AND claims.user_id = auth.uid()
-        )
-    );
+-- =============================================
+-- FUNCTIONS & TRIGGERS
+-- =============================================
 
--- Storage bucket voor schade foto's (run dit apart in Supabase dashboard > Storage)
--- INSERT INTO storage.buckets (id, name, public) 
--- VALUES ('claim-documents', 'claim-documents', false);
+-- Function to update updated_at timestamp
+CREATE OR REPLACE FUNCTION public.handle_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
--- Storage policies voor claim documents
--- CREATE POLICY "Users can upload their own claim documents"
---     ON storage.objects FOR INSERT
---     WITH CHECK (bucket_id = 'claim-documents' AND auth.uid()::text = (storage.foldername(name))[1]);
+-- Trigger for claims updated_at
+DROP TRIGGER IF EXISTS handle_claims_updated_at ON public.claims;
+CREATE TRIGGER handle_claims_updated_at
+    BEFORE UPDATE ON public.claims
+    FOR EACH ROW
+    EXECUTE FUNCTION public.handle_updated_at();
 
--- CREATE POLICY "Users can view their own claim documents"
---     ON storage.objects FOR SELECT
---     USING (bucket_id = 'claim-documents' AND auth.uid()::text = (storage.foldername(name))[1]);
+-- Trigger for user_profiles updated_at
+DROP TRIGGER IF EXISTS handle_profiles_updated_at ON public.user_profiles;
+CREATE TRIGGER handle_profiles_updated_at
+    BEFORE UPDATE ON public.user_profiles
+    FOR EACH ROW
+    EXECUTE FUNCTION public.handle_updated_at();
 
--- Seed data (optioneel, alleen voor development)
--- INSERT INTO public.claims (naam, email, telefoon, datum_ongeval, beschrijving, kenteken_tegenpartij, status)
--- VALUES 
---     ('Jan de Vries', 'jan@example.com', '0612345678', '2024-01-15', 'Aanrijding op kruising', 'AB-123-CD', 'nieuw'),
---     ('Marie Jansen', 'marie@example.com', '0687654321', '2024-01-20', 'Bumper schade parkeerplaats', 'XY-987-ZW', 'in_behandeling');
+-- =============================================
+-- RPC FUNCTION voor AI Notes Update
+-- =============================================
+-- Dit bypast Supabase schema cache issues
 
--- Comments voor documentatie
-COMMENT ON TABLE public.claims IS 'Hoofdtabel voor alle schade claims';
-COMMENT ON TABLE public.user_profiles IS 'Extra gebruikers informatie aanvullend op auth.users';
-COMMENT ON TABLE public.claim_status_updates IS 'Log van alle status wijzigingen per claim';
-COMMENT ON COLUMN public.claims.status IS 'Status: nieuw, in_behandeling, aansprakelijkheidsbrief_verzonden, in_onderhandeling, afgerond, geweigerd, geannuleerd';
-COMMENT ON COLUMN public.claims.mogelijk_letselschade IS 'Flag als AI letselschade keywords detecteert';
+CREATE OR REPLACE FUNCTION public.update_claim_with_ai_notes(
+    claim_id UUID,
+    notes TEXT,
+    new_status VARCHAR(50),
+    letsel_flag BOOLEAN,
+    letsel_keywords TEXT[]
+)
+RETURNS VOID AS $$
+BEGIN
+    UPDATE public.claims
+    SET 
+        ai_notes = notes,
+        status = new_status,
+        mogelijk_letselschade = letsel_flag,
+        letselschade_keywords = letsel_keywords,
+        updated_at = NOW()
+    WHERE id = claim_id;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- =============================================
+-- VERIFICATIE QUERIES
+-- =============================================
+
+-- Check of alles goed is aangemaakt:
+-- SELECT * FROM public.claims LIMIT 1;
+-- SELECT * FROM public.user_profiles LIMIT 1;
+
+-- Check RLS policies:
+-- SELECT * FROM pg_policies WHERE tablename IN ('claims', 'user_profiles');
+
+-- =============================================
+-- READY!
+-- =============================================

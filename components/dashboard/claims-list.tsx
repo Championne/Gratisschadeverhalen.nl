@@ -76,12 +76,13 @@ export function ClaimsList({ claims: initialClaims }: ClaimsListProps) {
   const getStatusLabel = (status: string) => {
     const labels: { [key: string]: string } = {
       nieuw: "Nieuw",
-      in_behandeling: "In behandeling",
-      aansprakelijkheidsbrief_verzonden: "Brief verzonden",
-      in_onderhandeling: "In onderhandeling",
-      afgerond: "Afgerond",
-      geweigerd: "Geweigerd",
-      geannuleerd: "Geannuleerd",
+      in_behandeling: "🤖 AI in behandeling",
+      wacht_op_info: "⏳ Wacht op info",
+      aansprakelijkheidsbrief_verzonden: "✉️ Brief verzonden",
+      in_onderhandeling: "💬 In onderhandeling",
+      afgerond: "✅ Afgerond",
+      geweigerd: "❌ Geweigerd",
+      geannuleerd: "🚫 Geannuleerd",
     }
     return labels[status] || status
   }
@@ -90,6 +91,7 @@ export function ClaimsList({ claims: initialClaims }: ClaimsListProps) {
     const variants: { [key: string]: any } = {
       nieuw: "default",
       in_behandeling: "secondary",
+      wacht_op_info: "warning",
       aansprakelijkheidsbrief_verzonden: "secondary",
       in_onderhandeling: "warning",
       afgerond: "success",

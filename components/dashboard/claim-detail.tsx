@@ -1,26 +1,38 @@
-"use client"
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft, Download, FileText, Calendar, User, Car, MapPin } from "lucide-react"
-import Link from "next/link"
 import { formatDate } from "@/lib/utils"
-import { generateAansprakelijkheidsbrief, downloadPDF } from "@/lib/pdf-generator"
-import { toast } from "sonner"
+import { Calendar, MapPin, Car, FileText, User, Shield } from "lucide-react"
 
-interface ClaimDetailProps {
-  claim: any
-  statusUpdates: any[]
+interface Claim {
+  id: string
+  naam: string
+  email: string
+  telefoon?: string
+  datum_ongeval: string
+  plaats_ongeval?: string
+  beschrijving: string
+  kenteken_tegenpartij: string
+  naam_tegenpartij?: string
+  verzekeraar_tegenpartij?: string
+  polisnummer_tegenpartij?: string
+  status: string
+  mogelijk_letselschade: boolean
+  ai_notes?: string
+  created_at: string
+  updated_at: string
 }
 
-export function ClaimDetail({ claim, statusUpdates }: ClaimDetailProps) {
+interface ClaimDetailProps {
+  claim: Claim
+}
+
+export function ClaimDetail({ claim }: ClaimDetailProps) {
   const getStatusLabel = (status: string) => {
     const labels: { [key: string]: string } = {
       nieuw: "Nieuw",
-      in_behandeling: "In behandeling",
-      aansprakelijkheidsbrief_verzonden: "Brief verzonden",
-      in_onderhandeling: "In onderhandeling",
+      in_behandeling: "In Behandeling",
+      aansprakelijkheidsbrief_verzonden: "Brief Verzonden",
+      in_onderhandeling: "In Onderhandeling",
       afgerond: "Afgerond",
       geweigerd: "Geweigerd",
       geannuleerd: "Geannuleerd",
@@ -41,209 +53,156 @@ export function ClaimDetail({ claim, statusUpdates }: ClaimDetailProps) {
     return variants[status] || "default"
   }
 
-  const handleDownloadPDF = () => {
-    try {
-      const pdf = generateAansprakelijkheidsbrief({
-        naam: claim.naam,
-        email: claim.email,
-        telefoon: claim.telefoon,
-        kenteken_tegenpartij: claim.kenteken_tegenpartij,
-        naam_tegenpartij: claim.naam_tegenpartij,
-        verzekeraar_tegenpartij: claim.verzekeraar_tegenpartij,
-        datum_ongeval: claim.datum_ongeval,
-        plaats_ongeval: claim.plaats_ongeval,
-        beschrijving: claim.beschrijving,
-      })
-
-      downloadPDF(pdf, `aansprakelijkheidsbrief-${claim.id.substring(0, 8)}.pdf`)
-      toast.success("PDF gedownload!", {
-        description: "De aansprakelijkheidsbrief is gedownload"
-      })
-    } catch (error) {
-      console.error("PDF generation error:", error)
-      toast.error("PDF download mislukt")
-    }
-  }
-
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <Link href="/dashboard">
-            <Button variant="ghost" size="sm" className="mb-2">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Terug naar overzicht
-            </Button>
-          </Link>
-          <h1 className="text-3xl font-bold">Claim Details</h1>
-          <p className="text-muted-foreground">
-            Claim #{claim.id.substring(0, 8)}
-          </p>
-        </div>
-        <Badge variant={getStatusBadgeVariant(claim.status)} className="text-lg px-4 py-2">
-          {getStatusLabel(claim.status)}
-        </Badge>
-      </div>
-
-      {/* Main Info */}
-      <div className="grid md:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <User className="h-5 w-5" />
-              Jouw Gegevens
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <div>
-              <p className="text-sm text-muted-foreground">Naam</p>
-              <p className="font-medium">{claim.naam}</p>
-            </div>
-            <div>
-              <p className="text-sm text-muted-foreground">Email</p>
-              <p className="font-medium">{claim.email}</p>
-            </div>
-            <div>
-              <p className="text-sm text-muted-foreground">Telefoon</p>
-              <p className="font-medium">{claim.telefoon}</p>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Car className="h-5 w-5" />
-              Tegenpartij Gegevens
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <div>
-              <p className="text-sm text-muted-foreground">Kenteken</p>
-              <p className="font-medium">{claim.kenteken_tegenpartij}</p>
-            </div>
-            {claim.naam_tegenpartij && (
-              <div>
-                <p className="text-sm text-muted-foreground">Naam</p>
-                <p className="font-medium">{claim.naam_tegenpartij}</p>
-              </div>
-            )}
-            {claim.verzekeraar_tegenpartij && (
-              <div>
-                <p className="text-sm text-muted-foreground">Verzekeraar</p>
-                <p className="font-medium">{claim.verzekeraar_tegenpartij}</p>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Ongeval Details */}
+      {/* Status Card */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Calendar className="h-5 w-5" />
-            Ongeval Informatie
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-muted-foreground">Datum Ongeval</p>
-              <p className="font-medium">{formatDate(claim.datum_ongeval)}</p>
+              <CardTitle>Claim #{claim.id.substring(0, 8)}</CardTitle>
+              <CardDescription>
+                Ingediend op {formatDate(claim.created_at)}
+              </CardDescription>
             </div>
-            {claim.plaats_ongeval && (
-              <div>
-                <p className="text-sm text-muted-foreground flex items-center gap-1">
-                  <MapPin className="h-4 w-4" />
-                  Plaats
-                </p>
-                <p className="font-medium">{claim.plaats_ongeval}</p>
-              </div>
-            )}
+            <Badge variant={getStatusBadgeVariant(claim.status)}>
+              {getStatusLabel(claim.status)}
+            </Badge>
           </div>
-          <div>
-            <p className="text-sm text-muted-foreground mb-2">Beschrijving</p>
-            <div className="bg-muted p-4 rounded-lg">
-              <p className="whitespace-pre-wrap">{claim.beschrijving}</p>
-            </div>
-          </div>
-        </CardContent>
+        </CardHeader>
       </Card>
 
-      {/* Timeline / Status Updates */}
-      {statusUpdates && statusUpdates.length > 0 && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Status Geschiedenis</CardTitle>
-            <CardDescription>Chronologisch overzicht van status wijzigingen</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {statusUpdates.map((update, index) => (
-                <div key={update.id} className="flex gap-4">
-                  <div className="flex flex-col items-center">
-                    <div className="w-3 h-3 rounded-full bg-primary" />
-                    {index !== statusUpdates.length - 1 && (
-                      <div className="w-0.5 h-full bg-border mt-2" />
-                    )}
-                  </div>
-                  <div className="flex-1 pb-4">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Badge variant={getStatusBadgeVariant(update.nieuwe_status)} className="text-xs">
-                        {getStatusLabel(update.nieuwe_status)}
-                      </Badge>
-                      <span className="text-sm text-muted-foreground">
-                        {formatDate(update.created_at)}
-                      </span>
-                    </div>
-                    {update.notitie && (
-                      <p className="text-sm text-muted-foreground">{update.notitie}</p>
-                    )}
-                  </div>
-                </div>
-              ))}
+      {/* Letselschade Warning */}
+      {claim.mogelijk_letselschade && (
+        <Card className="border-red-200 bg-red-50">
+          <CardContent className="pt-6">
+            <div className="flex items-start gap-3">
+              <Shield className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold text-red-900">Mogelijke Letselschade</p>
+                <p className="text-sm text-red-700 mt-1">
+                  We hebben indicaties van letselschade gevonden. Overweeg contact op te nemen met een letselschade specialist.
+                </p>
+              </div>
             </div>
           </CardContent>
         </Card>
       )}
 
-      {/* Actions */}
+      {/* Ongeval Details */}
       <Card>
         <CardHeader>
-          <CardTitle>Acties</CardTitle>
-          <CardDescription>Download documenten en bekijk details</CardDescription>
+          <CardTitle>Ongeval Details</CardTitle>
         </CardHeader>
-        <CardContent className="flex gap-3">
-          <Button onClick={handleDownloadPDF}>
-            <Download className="mr-2 h-4 w-4" />
-            Download Aansprakelijkheidsbrief
-          </Button>
-          {claim.schadeformulier_url && (
-            <Button variant="outline" asChild>
-              <a href={claim.schadeformulier_url} target="_blank" rel="noopener noreferrer">
-                <FileText className="mr-2 h-4 w-4" />
-                Bekijk Schadeformulier
-              </a>
-            </Button>
+        <CardContent className="space-y-4">
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="flex items-start gap-3">
+              <Calendar className="h-5 w-5 text-muted-foreground mt-0.5" />
+              <div>
+                <p className="text-sm text-muted-foreground">Datum Ongeval</p>
+                <p className="font-medium">{formatDate(claim.datum_ongeval)}</p>
+              </div>
+            </div>
+            {claim.plaats_ongeval && (
+              <div className="flex items-start gap-3">
+                <MapPin className="h-5 w-5 text-muted-foreground mt-0.5" />
+                <div>
+                  <p className="text-sm text-muted-foreground">Plaats</p>
+                  <p className="font-medium">{claim.plaats_ongeval}</p>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="flex items-start gap-3">
+            <FileText className="h-5 w-5 text-muted-foreground mt-0.5" />
+            <div className="flex-1">
+              <p className="text-sm text-muted-foreground mb-1">Beschrijving</p>
+              <p className="text-sm whitespace-pre-wrap bg-muted p-3 rounded-md">
+                {claim.beschrijving}
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Tegenpartij Details */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Tegenpartij Gegevens</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex items-start gap-3">
+            <Car className="h-5 w-5 text-muted-foreground mt-0.5" />
+            <div>
+              <p className="text-sm text-muted-foreground">Kenteken</p>
+              <p className="font-medium text-lg">{claim.kenteken_tegenpartij}</p>
+            </div>
+          </div>
+
+          {claim.naam_tegenpartij && (
+            <div className="flex items-start gap-3">
+              <User className="h-5 w-5 text-muted-foreground mt-0.5" />
+              <div>
+                <p className="text-sm text-muted-foreground">Naam Bestuurder</p>
+                <p className="font-medium">{claim.naam_tegenpartij}</p>
+              </div>
+            </div>
+          )}
+
+          {claim.verzekeraar_tegenpartij && (
+            <div className="flex items-start gap-3">
+              <Shield className="h-5 w-5 text-muted-foreground mt-0.5" />
+              <div>
+                <p className="text-sm text-muted-foreground">Verzekeraar</p>
+                <p className="font-medium">{claim.verzekeraar_tegenpartij}</p>
+                {claim.polisnummer_tegenpartij && (
+                  <p className="text-sm text-muted-foreground">
+                    Polis: {claim.polisnummer_tegenpartij}
+                  </p>
+                )}
+              </div>
+            </div>
           )}
         </CardContent>
       </Card>
 
-      {/* Metadata */}
+      {/* AI Analyse */}
+      {claim.ai_notes && (
+        <Card>
+          <CardHeader>
+            <CardTitle>🤖 AI Agent Analyse</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="prose prose-sm max-w-none">
+              <pre className="whitespace-pre-wrap bg-muted p-4 rounded-md text-sm">
+                {claim.ai_notes}
+              </pre>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Contact Gegevens */}
       <Card>
-        <CardContent className="pt-6">
-          <div className="grid grid-cols-2 gap-4 text-sm text-muted-foreground">
-            <div>
-              <p>Claim ingediend op:</p>
-              <p className="font-medium text-foreground">{formatDate(claim.created_at)}</p>
-            </div>
-            <div>
-              <p>Laatst bijgewerkt:</p>
-              <p className="font-medium text-foreground">{formatDate(claim.updated_at)}</p>
-            </div>
+        <CardHeader>
+          <CardTitle>Jouw Contactgegevens</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2">
+          <div>
+            <p className="text-sm text-muted-foreground">Naam</p>
+            <p className="font-medium">{claim.naam}</p>
           </div>
+          <div>
+            <p className="text-sm text-muted-foreground">Email</p>
+            <p className="font-medium">{claim.email}</p>
+          </div>
+          {claim.telefoon && (
+            <div>
+              <p className="text-sm text-muted-foreground">Telefoon</p>
+              <p className="font-medium">{claim.telefoon}</p>
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>
