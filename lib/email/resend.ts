@@ -1,6 +1,7 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Use a placeholder during build if no API key is available
+const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder_for_build')
 
 interface EmailOptions {
   to: string
