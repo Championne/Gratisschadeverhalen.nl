@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import vision from '@google-cloud/vision'
 import { put } from '@vercel/blob'
+import type { ImageAnnotatorClient } from '@google-cloud/vision/build/src/v1'
 
 // Initialize Google Cloud Vision client
-let visionClient: vision.ImageAnnotatorClient | null = null
+let visionClient: ImageAnnotatorClient | null = null
 
 function getVisionClient() {
   if (visionClient) return visionClient
