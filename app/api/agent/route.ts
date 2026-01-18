@@ -85,7 +85,6 @@ FORMAT ANTWOORD PRECIES ALS:
       model: anthropic('claude-sonnet-4-20250514'),
       prompt: context,
       temperature: 0.3,
-      maxTokens: 1500,
     })
 
     console.log('✅ AI Agent verwerking compleet')
