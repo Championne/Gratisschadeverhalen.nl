@@ -79,33 +79,43 @@ export default function AlgemeneVoorwaardenPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold mb-4">4. No Cure No Pay Regeling</h2>
-            <h3 className="text-xl font-semibold mb-3 mt-4">4.1 Voorwaarden</h3>
+            <h2 className="text-2xl font-bold mb-4">4. Kosten en Vergoeding</h2>
+            <h3 className="text-xl font-semibold mb-3 mt-4">4.1 Geen Kosten voor Opdrachtgever</h3>
             <p className="text-muted-foreground">
-              Opdrachtnemer werkt uitsluitend op <strong>no cure no pay</strong> basis. Dit betekent:
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-muted-foreground mt-4">
-              <li>Opdrachtgever betaalt <strong>geen voorschot</strong></li>
-              <li>Opdrachtgever betaalt <strong>niets bij mislukking</strong> van de claim</li>
-              <li>Opdrachtgever betaalt alleen bij <strong>succesvol verhaal</strong> van de schade</li>
-            </ul>
-
-            <h3 className="text-xl font-semibold mb-3 mt-4">4.2 Vergoeding bij succes</h3>
-            <p className="text-muted-foreground">
-              Bij succesvol verhaal van de schade is Opdrachtgever een vergoeding verschuldigd van <span className="bg-yellow-100 font-semibold">[INVULLEN: percentage, bijv. 15%]</span> van het uitgekeerde schadebedrag (exclusief BTW).
-            </p>
-            <p className="text-muted-foreground mt-2">
-              <strong>Minimum vergoeding:</strong> <span className="bg-yellow-100 font-semibold">[INVULLEN: bedrag, bijv. €150,-]</span> exclusief BTW.
+              <strong>Opdrachtgever betaalt NIETS</strong> voor onze dienstverlening. Geen voorschot, geen eigen bijdrage, geen kosten bij mislukking. U ontvangt 100% van uw schadevergoeding.
             </p>
 
-            <h3 className="text-xl font-semibold mb-3 mt-4">4.3 Betaling</h3>
-            <p className="text-muted-foreground">
-              De vergoeding wordt automatisch in mindering gebracht op het uit te betalen schadebedrag. Opdrachtgever ontvangt de netto uitkering (schadebedrag minus vergoeding Opdrachtnemer) op het opgegeven rekeningnummer.
+            <h3 className="text-xl font-semibold mb-3 mt-4">4.2 Buitengerechtelijke Incassokosten</h3>
+            <p className="text-muted-foreground mb-4">
+              De kosten voor onze dienstverlening worden verhaald op de aansprakelijke partij (WA-verzekeraar van de tegenpartij) als <strong>buitengerechtelijke incassokosten</strong> conform het <strong>Convenant Buitengerechtelijke Kosten – Materieel</strong> van het Verbond van Verzekeraars.
+            </p>
+            
+            <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-4">
+              <p className="font-semibold text-blue-900 mb-2">Standaard Lumpsum Bedragen (2026):</p>
+              <ul className="text-sm text-blue-800 space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="font-semibold min-w-[120px]">€44,50</span>
+                  <span>Eenvoudige zaken zonder discussie (aansprakelijkheid snel erkend, eenvoudige afhandeling)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-semibold min-w-[120px]">€408,20</span>
+                  <span>Zaken met discussie (aansprakelijkheid betwist, expertise nodig, langer traject)</span>
+                </li>
+              </ul>
+            </div>
+
+            <p className="text-muted-foreground text-sm">
+              Deze bedragen zijn vastgesteld door het Verbond van Verzekeraars en worden jaarlijks geïndexeerd. De verzekeraar is verplicht deze kosten te betalen bovenop de schadevergoeding aan Opdrachtgever.
             </p>
 
-            <h3 className="text-xl font-semibold mb-3 mt-4">4.4 Buitengerechtelijke incassokosten</h3>
+            <h3 className="text-xl font-semibold mb-3 mt-4">4.3 Uitbetaling aan Opdrachtgever</h3>
             <p className="text-muted-foreground">
-              Indien de tegenpartij niet tijdig betaalt, worden buitengerechtelijke incassokosten in rekening gebracht conform het Besluit vergoeding voor buitengerechtelijke incassokosten. Deze kosten worden verhaald op de aansprakelijke partij en komen <strong>niet</strong> ten laste van Opdrachtgever.
+              De volledige schadevergoeding wordt rechtstreeks aan Opdrachtgever uitbetaald. De buitengerechtelijke incassokosten worden separaat door de verzekeraar aan Opdrachtnemer voldaan. Opdrachtgever ontvangt dus 100% van zijn schade.
+            </p>
+
+            <h3 className="text-xl font-semibold mb-3 mt-4">4.4 No Cure No Pay</h3>
+            <p className="text-muted-foreground">
+              Opdrachtnemer werkt uitsluitend op <strong>no cure no pay</strong> basis. Als het verhaal van de schade niet slaagt (bijvoorbeeld bij gebrek aan aansprakelijkheid of bewijslast), betaalt Opdrachtgever niets en worden er geen kosten in rekening gebracht.
             </p>
           </section>
 
@@ -129,7 +139,7 @@ export default function AlgemeneVoorwaardenPage() {
 
             <h3 className="text-xl font-semibold mb-3 mt-4">5.3 Rechtmatigheid</h3>
             <p className="text-muted-foreground">
-              Opdrachtgever garandeert dat alle verstrekte informatie correct en waarheidsgetrouw is. Bij opzettelijk verstrekken van onjuiste informatie behoudt Opdrachtnemer zich het recht voor de overeenkomst te beëindigen en aanspraak te maken op volledige vergoeding voor reeds verrichte werkzaamheden.
+              Opdrachtgever garandeert dat alle verstrekte informatie correct en waarheidsgetrouw is. Bij opzettelijk verstrekken van onjuiste informatie behoudt Opdrachtnemer zich het recht voor de overeenkomst te beëindigen. Indien de claim reeds is ingediend bij de verzekeraar, kan Opdrachtnemer de buitengerechtelijke incassokosten voor de reeds verrichte werkzaamheden verhalen op de verzekeraar.
             </p>
           </section>
 
@@ -155,7 +165,7 @@ export default function AlgemeneVoorwaardenPage() {
 
             <h3 className="text-xl font-semibold mb-3 mt-4">6.3 Opzegging door Opdrachtgever</h3>
             <p className="text-muted-foreground">
-              Opdrachtgever kan de opdracht te allen tijde beëindigen. Indien beëindiging plaatsvindt <strong>nadat</strong> Opdrachtnemer een aansprakelijkheidsbrief heeft verstuurd en de schade alsnog wordt uitgekeerd, is de vergoeding zoals genoemd in artikel 4.2 verschuldigd.
+              Opdrachtgever kan de opdracht te allen tijde beëindigen. Indien beëindiging plaatsvindt <strong>nadat</strong> Opdrachtnemer een aansprakelijkheidsbrief heeft verstuurd en de schade alsnog wordt uitgekeerd, behoudt Opdrachtnemer het recht om de buitengerechtelijke incassokosten (zoals genoemd in artikel 4.2) te verhalen op de verzekeraar. Dit komt niet ten laste van Opdrachtgever.
             </p>
           </section>
 
