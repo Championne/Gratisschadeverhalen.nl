@@ -5,8 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { CheckCircle, Shield, Clock, Euro, FileText, Upload, ChevronRight, Star } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Autoschade Verhalen | Gratis Voertuigschade Claimen bij Tegenpartij",
-  description: "Upload uw Europees Schadeformulier en verhaal uw autoschade gratis op de tegenpartij. Automatische OCR-verwerking, 100% no cure no pay. Wij regelen uw voertuigschade van A tot Z.",
+  title: "Autoschade Verhalen | Gratis Voertuigschade Claimen - Zonder Eigen Risico",
+  description: "Verhaal uw autoschade direct bij de tegenpartij - zonder eigen risico, zonder premieverhoging. Upload uw schadeformulier en wij regelen alles gratis. Ook met eigen verzekering voordelig!",
   keywords: [
     "autoschade verhalen", 
     "voertuigschade verhalen", 
@@ -14,13 +14,15 @@ export const metadata: Metadata = {
     "schade verhalen tegenpartij",
     "autoschade claimen",
     "voertuigschade claimen",
+    "zonder eigen risico",
+    "geen premieverhoging",
     "europees schadeformulier upload",
     "WA schade tegenpartij",
     "gratis schadeafhandeling"
   ],
   openGraph: {
-    title: "Autoschade Verhalen | Upload Direct Uw Schadeformulier - Gratis",
-    description: "Verhaal uw autoschade of voertuigschade gratis op de tegenpartij. Upload uw schadeformulier en wij regelen alles. 100% no cure no pay.",
+    title: "Autoschade Verhalen | Zonder Eigen Risico, Zonder Premieverhoging - Gratis",
+    description: "Verhaal uw autoschade direct bij de tegenpartij - zonder eigen risico, zonder premieverhoging. Ook met eigen verzekering voordelig! Upload schadeformulier en wij regelen alles gratis.",
     url: "https://gratisschadeverhalen.nl",
     type: "website",
     locale: "nl_NL",
@@ -111,6 +113,14 @@ const jsonLd = {
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Ja, 100% gratis. Wij werken uitsluitend op no cure no pay basis. U betaalt helemaal niets als uw autoschade claim niet slaagt. Geen voorschot, geen verborgen kosten, geen verrassingen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wordt mijn autoschade niet gewoon door mijn eigen verzekeraar verhaald?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dat hangt af van uw verzekering. Bij alleen WA-verzekering doet uw verzekeraar helemaal niets – u moet zelf verhalen bij de tegenpartij. Bij beperkt casco of allrisk schiet uw verzekeraar wel voor, maar dan betaalt u eigen risico (€300-€1000+), stijgt uw premie volgend jaar, en duurt terugbetaling vaak maanden. Door direct bij de tegenpartij te verhalen via ons: geen eigen risico, geen premieverhoging, sneller geld, en volledig gratis."
           }
         },
         {
@@ -294,6 +304,187 @@ export default function HomePage() {
               <p className="text-center mt-8 text-sm text-muted-foreground">
                 Geen voorschot • Geen verborgen kosten • Betaal alleen bij succes
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Waarom zelf verhalen via ons - NIEUWE SECTIE */}
+        <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  Waarom uw autoschade via ons verhalen?
+                </h2>
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                  Ook met een eigen autoverzekering is onze dienst vaak <strong>voordeliger, sneller en zonder risico</strong>
+                </p>
+              </div>
+
+              {/* Uitleg cards */}
+              <div className="grid md:grid-cols-2 gap-6 mb-12">
+                {/* Alleen WA verzekering */}
+                <Card className="border-2 border-orange-200 bg-orange-50/50">
+                  <CardHeader>
+                    <CardTitle className="flex items-start gap-3">
+                      <span className="text-2xl">⚠️</span>
+                      <span>Heeft u alleen WA-verzekering?</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <p className="text-muted-foreground">
+                      Dan doet <strong>uw eigen verzekeraar helemaal niets</strong> voor uw schade als een ander u aanrijdt.
+                    </p>
+                    <div className="bg-white border border-orange-200 rounded-lg p-4">
+                      <p className="text-sm font-semibold text-orange-900 mb-2">Wat betekent dit?</p>
+                      <ul className="text-sm space-y-2 text-orange-800">
+                        <li className="flex items-start gap-2">
+                          <span className="text-orange-600 mt-0.5">•</span>
+                          <span>U moet zelf contact opnemen met de tegenpartij-verzekeraar</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-orange-600 mt-0.5">•</span>
+                          <span>U moet zelf een aansprakelijkheidsbrief schrijven</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-orange-600 mt-0.5">•</span>
+                          <span>U moet zelf onderhandelen over de schadevergoeding</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-orange-600 mt-0.5">•</span>
+                          <span>Of u betaalt de reparatie zelf uit eigen zak</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <p className="text-sm font-semibold text-green-700 bg-green-50 border border-green-200 rounded-lg p-3">
+                      ✅ <strong>Wij regelen dit alles gratis voor u!</strong> U hoeft niets zelf te doen.
+                    </p>
+                  </CardContent>
+                </Card>
+
+                {/* Beperkt Casco / Allrisk */}
+                <Card className="border-2 border-blue-200 bg-blue-50/50">
+                  <CardHeader>
+                    <CardTitle className="flex items-start gap-3">
+                      <span className="text-2xl">💰</span>
+                      <span>Heeft u beperkt casco of allrisk?</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <p className="text-muted-foreground">
+                      Uw verzekeraar schiet WEL voor, maar dat heeft <strong>vervelende nadelen</strong>:
+                    </p>
+                    <div className="bg-white border border-blue-200 rounded-lg p-4">
+                      <p className="text-sm font-semibold text-blue-900 mb-2">Nadelen eigen verzekeraar gebruiken:</p>
+                      <ul className="text-sm space-y-2 text-blue-800">
+                        <li className="flex items-start gap-2">
+                          <span className="text-red-600 mt-0.5">✗</span>
+                          <span><strong>Eigen risico betalen</strong> (€300-€1000+)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-red-600 mt-0.5">✗</span>
+                          <span><strong>Premie stijgt volgend jaar</strong> (schadevrije jaren kwijt)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-red-600 mt-0.5">✗</span>
+                          <span><strong>Lange wachttijd</strong> op terugbetaling eigen risico (maanden)</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="text-red-600 mt-0.5">✗</span>
+                          <span><strong>Vaak laten ze het liggen:</strong> "Verhaal het zelf maar"</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <p className="text-sm font-semibold text-green-700 bg-green-50 border border-green-200 rounded-lg p-3">
+                      ✅ <strong>Wij verhalen direct bij de tegenpartij!</strong> Geen eigen risico, geen premieverhoging.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Voordelen samenvatting */}
+              <Card className="border-2 border-primary bg-gradient-to-br from-primary/5 to-white">
+                <CardHeader className="text-center pb-4">
+                  <CardTitle className="text-2xl md:text-3xl mb-2">
+                    Uw voordelen: Direct verhalen bij de tegenpartij
+                  </CardTitle>
+                  <CardDescription className="text-base">
+                    Waarom onze dienst voordelig is, ook als u een eigen verzekering heeft
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+                    <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
+                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-semibold mb-1">Geen eigen risico</p>
+                        <p className="text-sm text-muted-foreground">
+                          De WA-verzekeraar van de tegenpartij betaalt alles. U betaalt niks uit eigen zak.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
+                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-semibold mb-1">Geen premieverhoging</p>
+                        <p className="text-sm text-muted-foreground">
+                          Uw eigen verzekering wordt niet gebruikt. Schadevrije jaren blijven behouden.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
+                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-semibold mb-1">Sneller uitbetaald</p>
+                        <p className="text-sm text-muted-foreground">
+                          Direct onderhandelen met tegenpartij. Geen wachten op regres van uw eigen verzekeraar.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
+                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-semibold mb-1">Volledig gratis</p>
+                        <p className="text-sm text-muted-foreground">
+                          100% no cure no pay. U betaalt alleen een klein percentage bij succes. Mislukt? Dan is het gratis.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
+                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-semibold mb-1">Professioneel voor u geregeld</p>
+                        <p className="text-sm text-muted-foreground">
+                          Wij schrijven de aansprakelijkheidsbrief, onderhandelen, en dreigen indien nodig met juridische stappen.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
+                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <p className="font-semibold mb-1">U hoeft niets zelf te doen</p>
+                        <p className="text-sm text-muted-foreground">
+                          Geen contact met verzekeraars, geen gedoe. Upload schadeformulier en wij regelen de rest.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 text-center">
+                    <Link href="/claim-indienen">
+                      <Button size="lg" className="text-lg px-8">
+                        <Upload className="mr-2 h-5 w-5" />
+                        Start Nu – Verhaal Uw Autoschade Gratis
+                      </Button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
@@ -581,6 +772,76 @@ export default function HomePage() {
                   <p className="text-muted-foreground">
                     Ja, 100% gratis. Wij werken uitsluitend op no cure no pay basis. U betaalt helemaal niets als uw autoschade claim niet slaagt. 
                     Geen voorschot, geen verborgen kosten, geen verrassingen. Alleen bij succes betaalt u een klein percentage van de ontvangen schadevergoeding.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2 border-primary/30 bg-primary/5">
+                <CardHeader>
+                  <CardTitle className="text-lg">Wordt mijn autoschade niet gewoon door mijn eigen verzekeraar verhaald?</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-muted-foreground">
+                    Dit is een veelgestelde vraag! Het antwoord hangt af van uw type verzekering:
+                  </p>
+                  
+                  <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded">
+                    <p className="font-semibold text-orange-900 mb-2">📋 Alleen WA-verzekering?</p>
+                    <p className="text-sm text-orange-800">
+                      Dan doet <strong>uw eigen verzekeraar helemaal niets</strong> voor schade die een ander u heeft aangedaan. 
+                      WA dekt alleen schade die u aan anderen veroorzaakt. U moet zelf verhalen bij de tegenpartij – of via ons (gratis).
+                    </p>
+                  </div>
+
+                  <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+                    <p className="font-semibold text-blue-900 mb-2">💰 Beperkt casco of allrisk?</p>
+                    <p className="text-sm text-blue-800 mb-2">
+                      Uw verzekeraar schiet WEL voor, maar met vervelende nadelen:
+                    </p>
+                    <ul className="text-sm text-blue-800 space-y-1 ml-4">
+                      <li className="flex items-start gap-2">
+                        <span className="text-red-600 mt-0.5">✗</span>
+                        <span>U betaalt <strong>eigen risico</strong> (€300-€1000+)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-red-600 mt-0.5">✗</span>
+                        <span>Uw <strong>premie stijgt volgend jaar</strong> (schadevrije jaren kwijt)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-red-600 mt-0.5">✗</span>
+                        <span><strong>Lange wachttijd</strong> op terugbetaling eigen risico (soms maanden)</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-red-600 mt-0.5">✗</span>
+                        <span>Vaak zeggen ze: <strong>"Verhaal het zelf maar bij de tegenpartij"</strong></span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded">
+                    <p className="font-semibold text-green-900 mb-2">✅ Onze aanpak: Direct verhalen bij de tegenpartij</p>
+                    <ul className="text-sm text-green-800 space-y-1 ml-4">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                        <span><strong>Geen eigen risico</strong> – tegenpartij betaalt alles</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                        <span><strong>Geen premieverhoging</strong> – uw verzekering blijft onaangetast</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                        <span><strong>Sneller uitbetaald</strong> – gemiddeld binnen 6 weken</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                        <span><strong>Volledig gratis</strong> – 100% no cure no pay</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <p className="text-sm font-medium text-primary">
+                    💡 Conclusie: Ook met een eigen verzekering is onze dienst vaak voordeliger, sneller en zonder risico!
                   </p>
                 </CardContent>
               </Card>

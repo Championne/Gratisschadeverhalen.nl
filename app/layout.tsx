@@ -33,9 +33,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "nl_NL",
     url: "https://gratisschadeverhalen.nl",
-    siteName: "Gratisschadeverhalen.nl - Gratis Autoschade Verhalen",
-    title: "Autoschade Verhalen | Upload Direct Uw Schadeformulier - Gratis",
-    description: "Verhaal uw autoschade of voertuigschade gratis op de tegenpartij. Upload uw Europees Schadeformulier en wij regelen alles. 100% no cure no pay.",
+    siteName: "Gratisschadeverhalen.nl - Autoschade Verhalen Zonder Eigen Risico",
+    title: "Autoschade Verhalen | Zonder Eigen Risico, Zonder Premieverhoging",
+    description: "Verhaal uw autoschade direct bij de tegenpartij - zonder eigen risico, zonder premieverhoging. Ook met eigen verzekering voordelig! Upload schadeformulier en wij regelen alles gratis.",
     images: [
       {
         url: "/og-image.jpg",
