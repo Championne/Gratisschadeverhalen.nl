@@ -3,7 +3,8 @@ import { createClient } from '@/lib/supabase/server'
 import { anthropic } from '@ai-sdk/anthropic'
 import { generateText } from 'ai'
 import { sendEmail } from '@/lib/email/resend'
-import { claimReceivedEmail, letselschadeDetectedEmail, adminNewClaimEmail } from '@/lib/email/templates'
+import { claimReceivedEmail, letselschadeDetectedEmail, adminNewClaimEmail, adminEscalationEmail } from '@/lib/email/templates'
+import { logAuditAction, escalateClaim, shouldEscalateOnConfidence } from '@/lib/audit/logger'
 
 export async function POST(request: NextRequest) {
   try {
@@ -27,6 +28,18 @@ export async function POST(request: NextRequest) {
       console.error('Failed to fetch claim:', fetchError)
       return NextResponse.json({ error: 'Claim not found' }, { status: 404 })
     }
+
+    // Log AI analyse start
+    await logAuditAction({
+      claimId: claim.id,
+      actionType: 'ai_analyse',
+      performedBy: 'AI',
+      details: {
+        model: 'claude-sonnet-4-20250514',
+        timestamp: new Date().toISOString(),
+      },
+      severity: 'info',
+    })
 
     // Prepare context for AI
     const context = `
@@ -103,8 +116,89 @@ FORMAT ANTWOORD PRECIES ALS:
       text.toLowerCase().includes('letselschade gedetecteerd')
     )
 
+    // =============================================
+    // ESCALATIE LOGICA
+    // =============================================
+    
+    // Extract AI confidence (parse from response if available)
+    let aiConfidence: number | null = null
+    const confidenceMatch = text.match(/aansprakelijkheid[:\s]+(\d+)%/i)
+    if (confidenceMatch) {
+      aiConfidence = parseInt(confidenceMatch[1])
+    }
+
+    // Check escalatie triggers
+    const shouldEscalate = 
+      shouldEscalateOnConfidence(claim.ocr_confidence, 70) || // OCR confidence < 70%
+      shouldEscalateOnConfidence(aiConfidence, 70) ||          // AI confidence < 70%
+      text.toLowerCase().includes('niet mogelijk') ||          // AI zegt automatisch niet mogelijk
+      text.toLowerCase().includes('escalatie nodig') ||        // Expliciet door AI
+      (!claim.verzekeraar_tegenpartij && !claim.naam_tegenpartij) // Geen tegenpartij info
+
+    let escalatieReden = ''
+    if (shouldEscalate) {
+      // Bepaal specifieke reden
+      if (shouldEscalateOnConfidence(claim.ocr_confidence, 70)) {
+        escalatieReden = `OCR confidence te laag: ${claim.ocr_confidence || 0}% (< 70%)`
+      } else if (shouldEscalateOnConfidence(aiConfidence, 70)) {
+        escalatieReden = `AI aansprakelijkheid confidence te laag: ${aiConfidence}% (< 70%)`
+      } else if (!claim.verzekeraar_tegenpartij && !claim.naam_tegenpartij) {
+        escalatieReden = 'Onvolledige tegenpartij gegevens (geen naam of verzekeraar)'
+      } else {
+        escalatieReden = 'AI heeft handmatige review aanbevolen'
+      }
+
+      console.log('🚨 ESCALATIE GEDETECTEERD:', escalatieReden)
+
+      // Escaleer de claim
+      await escalateClaim({
+        claimId: claim.id,
+        reden: escalatieReden,
+        performedBy: 'AI',
+      })
+
+      // Verstuur escalatie email naar admin
+      try {
+        const escalationEmailTemplate = adminEscalationEmail({
+          claimId: claim.id,
+          naam: claim.naam,
+          email: claim.email,
+          reden: escalatieReden,
+          confidence: aiConfidence || claim.ocr_confidence || undefined,
+          datum_ongeval: claim.datum_ongeval,
+          kenteken_tegenpartij: claim.kenteken_tegenpartij,
+          beschrijving: claim.beschrijving,
+        })
+
+        const adminEmail = process.env.RESEND_ADMIN_EMAIL || claim.email // TODO: Replace with real admin email
+        
+        console.log('📧 Versturen escalatie email naar admin:', adminEmail)
+        await sendEmail({
+          to: adminEmail,
+          subject: escalationEmailTemplate.subject,
+          html: escalationEmailTemplate.html,
+        })
+        console.log('✅ Escalatie email verzonden')
+
+        // Log escalatie email
+        await logAuditAction({
+          claimId: claim.id,
+          actionType: 'email_sent',
+          performedBy: 'SYSTEM',
+          details: {
+            email_type: 'escalation',
+            recipient: adminEmail,
+            reden: escalatieReden,
+          },
+          severity: 'critical',
+        })
+      } catch (escalationEmailError) {
+        console.error('❌ Escalatie email failed:', escalationEmailError)
+      }
+    }
+
     // Update claim with AI notes using RPC to bypass cache
-    const newStatus = heeftLetsel ? 'in_behandeling' : 'nieuw'
+    const newStatus = shouldEscalate ? 'escalated' : (heeftLetsel ? 'in_behandeling' : 'nieuw')
     
     const { error: updateError } = await supabase.rpc('update_claim_with_ai_notes', {
       claim_id: claimId,
@@ -118,6 +212,22 @@ FORMAT ANTWOORD PRECIES ALS:
       console.error('❌ Failed to save AI notes:', updateError)
     } else {
       console.log('✅✅✅ AI notes + status succesvol opgeslagen!')
+      
+      // Log status change
+      await logAuditAction({
+        claimId: claim.id,
+        actionType: 'status_change',
+        performedBy: 'AI',
+        details: {
+          oude_status: claim.status,
+          nieuwe_status: newStatus,
+          ai_confidence: aiConfidence,
+          ocr_confidence: claim.ocr_confidence,
+          mogelijk_letselschade: heeftLetsel,
+          escalated: shouldEscalate,
+        },
+        severity: shouldEscalate ? 'critical' : 'info',
+      })
     }
 
     // Send emails
@@ -141,33 +251,65 @@ FORMAT ANTWOORD PRECIES ALS:
             mogelijk_letselschade: heeftLetsel,
           })
 
-      console.log('📧 Versturen email naar claimer:', claim.email)
-      await sendEmail({
-        to: claim.email,
-        subject: claimerEmailTemplate.subject,
-        html: claimerEmailTemplate.html,
-      })
-      console.log('✅ Email verzonden naar claimer')
+      // Alleen email naar claimer als NIET geëscaleerd (escalaties gaan alleen naar admin)
+      if (!shouldEscalate) {
+        console.log('📧 Versturen email naar claimer:', claim.email)
+        await sendEmail({
+          to: claim.email,
+          subject: claimerEmailTemplate.subject,
+          html: claimerEmailTemplate.html,
+        })
+        console.log('✅ Email verzonden naar claimer')
 
-      // Email to admin
-      const adminEmailTemplate = adminNewClaimEmail({
-        naam: claim.naam,
-        email: claim.email,
-        claimId: claim.id,
-        datum_ongeval: claim.datum_ongeval,
-        kenteken_tegenpartij: claim.kenteken_tegenpartij,
-        beschrijving: claim.beschrijving,
-        status: newStatus,
-        mogelijk_letselschade: heeftLetsel,
-      })
+        // Log claimer email
+        await logAuditAction({
+          claimId: claim.id,
+          actionType: 'email_sent',
+          performedBy: 'SYSTEM',
+          details: {
+            email_type: heeftLetsel ? 'letselschade_detected' : 'claim_received',
+            recipient: claim.email,
+          },
+          severity: 'info',
+        })
+      } else {
+        console.log('⏭️ Skip claimer email (claim is escalated)')
+      }
 
-      console.log('📧 Versturen email naar admin:', claim.email) // Change to actual admin email
-      await sendEmail({
-        to: claim.email, // TODO: Change to actual admin email
-        subject: adminEmailTemplate.subject,
-        html: adminEmailTemplate.html,
-      })
-      console.log('✅ Email verzonden naar admin')
+      // Email to admin (nieuwe claim notificatie - alleen als NIET escalated)
+      if (!shouldEscalate) {
+        const adminEmailTemplate = adminNewClaimEmail({
+          naam: claim.naam,
+          email: claim.email,
+          claimId: claim.id,
+          datum_ongeval: claim.datum_ongeval,
+          kenteken_tegenpartij: claim.kenteken_tegenpartij,
+          beschrijving: claim.beschrijving,
+          status: newStatus,
+          mogelijk_letselschade: heeftLetsel,
+        })
+
+        const adminEmail = process.env.RESEND_ADMIN_EMAIL || claim.email // TODO: Replace with real admin email
+        console.log('📧 Versturen email naar admin:', adminEmail)
+        await sendEmail({
+          to: adminEmail,
+          subject: adminEmailTemplate.subject,
+          html: adminEmailTemplate.html,
+        })
+        console.log('✅ Email verzonden naar admin')
+
+        // Log admin email
+        await logAuditAction({
+          claimId: claim.id,
+          actionType: 'email_sent',
+          performedBy: 'SYSTEM',
+          details: {
+            email_type: 'admin_new_claim',
+            recipient: adminEmail,
+          },
+          severity: 'info',
+        })
+      }
 
     } catch (emailError) {
       console.error('❌ Email send failed:', emailError)

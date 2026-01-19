@@ -2,6 +2,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { formatDate } from "@/lib/utils"
 import { Calendar, MapPin, Car, FileText, User, Shield } from "lucide-react"
+import { EscalationBadge } from "./escalation-badge"
+import { AuditLogViewer } from "./audit-log-viewer"
 
 interface Claim {
   id: string
@@ -17,6 +19,9 @@ interface Claim {
   polisnummer_tegenpartij?: string
   status: string
   mogelijk_letselschade: boolean
+  escalatie_reden?: string | null
+  escalatie_opgelost?: boolean
+  ocr_confidence?: number | null
   ai_notes?: string
   created_at: string
   updated_at: string
@@ -36,6 +41,7 @@ export function ClaimDetail({ claim }: ClaimDetailProps) {
       afgerond: "Afgerond",
       geweigerd: "Geweigerd",
       geannuleerd: "Geannuleerd",
+      escalated: "Escalatie Vereist",
     }
     return labels[status] || status
   }
@@ -49,6 +55,7 @@ export function ClaimDetail({ claim }: ClaimDetailProps) {
       afgerond: "success",
       geweigerd: "destructive",
       geannuleerd: "outline",
+      escalated: "destructive",
     }
     return variants[status] || "default"
   }
@@ -65,12 +72,40 @@ export function ClaimDetail({ claim }: ClaimDetailProps) {
                 Ingediend op {formatDate(claim.created_at)}
               </CardDescription>
             </div>
-            <Badge variant={getStatusBadgeVariant(claim.status)}>
-              {getStatusLabel(claim.status)}
-            </Badge>
+            <div className="flex items-center gap-2">
+              <Badge variant={getStatusBadgeVariant(claim.status)}>
+                {getStatusLabel(claim.status)}
+              </Badge>
+              <EscalationBadge 
+                status={claim.status}
+                escalatieReden={claim.escalatie_reden}
+                escalatieOpgelost={claim.escalatie_opgelost}
+                size="md"
+              />
+            </div>
           </div>
         </CardHeader>
       </Card>
+
+      {/* Escalatie Waarschuwing */}
+      {claim.status === 'escalated' && !claim.escalatie_opgelost && claim.escalatie_reden && (
+        <Card className="border-red-300 bg-red-50">
+          <CardContent className="pt-6">
+            <div className="flex items-start gap-3">
+              <Shield className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold text-red-900">⚠️ Handmatige Aandacht Vereist</p>
+                <p className="text-sm text-red-700 mt-1">
+                  {claim.escalatie_reden}
+                </p>
+                <p className="text-xs text-red-600 mt-2">
+                  Onze medewerkers nemen contact met je op voor verdere afhandeling.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {/* Letselschade Warning */}
       {claim.mogelijk_letselschade && (
@@ -205,6 +240,9 @@ export function ClaimDetail({ claim }: ClaimDetailProps) {
           )}
         </CardContent>
       </Card>
+
+      {/* Audit Trail (Juridische Traceerbaarheid) */}
+      <AuditLogViewer claimId={claim.id} />
     </div>
   )
 }

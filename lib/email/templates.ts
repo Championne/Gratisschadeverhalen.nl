@@ -164,6 +164,136 @@ export function letselschadeDetectedEmail(data: ClaimData) {
 }
 
 /**
+ * Email naar admin: Escalatie notificatie
+ */
+export function adminEscalationEmail(data: {
+  claimId: string
+  naam: string
+  email: string
+  reden: string
+  confidence?: number
+  datum_ongeval: string
+  kenteken_tegenpartij: string
+  beschrijving: string
+}) {
+  const { claimId, naam, email, reden, confidence, datum_ongeval, kenteken_tegenpartij, beschrijving } = data
+
+  return {
+    subject: `🚨 ESCALATIE VEREIST: ${naam} | Confidence: ${confidence ? `${confidence}%` : 'N/A'}`,
+    html: `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escalatie Vereist</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 650px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
+    .header { background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); color: white; padding: 25px; border-radius: 10px 10px 0 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .content { background: white; padding: 30px; border-radius: 0 0 10px 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .alert-box { background: #fef2f2; border-left: 5px solid #dc2626; padding: 20px; margin: 20px 0; border-radius: 5px; }
+    .info-grid { display: grid; grid-template-columns: 150px 1fr; gap: 15px; margin: 20px 0; }
+    .info-label { font-weight: bold; color: #666; }
+    .info-value { color: #333; }
+    .confidence-bar { width: 100%; height: 30px; background: #e5e7eb; border-radius: 15px; overflow: hidden; margin: 10px 0; }
+    .confidence-fill { height: 100%; background: ${confidence && confidence < 50 ? '#dc2626' : confidence && confidence < 70 ? '#f59e0b' : '#10b981'}; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px; }
+    .reason-box { background: #fffbeb; border: 2px solid #f59e0b; padding: 15px; border-radius: 5px; margin: 15px 0; }
+    .button { display: inline-block; background: #dc2626; color: white !important; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 20px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .button:hover { background: #991b1b; }
+    .description-box { background: #f9fafb; padding: 15px; border-radius: 5px; border: 1px solid #e5e7eb; white-space: pre-wrap; font-size: 14px; max-height: 200px; overflow-y: auto; }
+    h1 { margin: 0; font-size: 24px; }
+    h2 { color: #dc2626; font-size: 18px; margin-top: 25px; margin-bottom: 10px; }
+    .priority-badge { display: inline-block; background: #dc2626; color: white; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; text-transform: uppercase; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🚨 ESCALATIE VEREIST</h1>
+    <span class="priority-badge">⚡ HOGE PRIORITEIT</span>
+  </div>
+  
+  <div class="content">
+    <div class="alert-box">
+      <strong style="font-size: 16px; color: #dc2626;">⚠️ Deze claim vereist handmatige aandacht</strong><br>
+      <span style="font-size: 14px; color: #666;">Automatische verwerking niet mogelijk - Directe actie noodzakelijk</span>
+    </div>
+
+    ${confidence !== undefined ? `
+    <h2>📊 Confidence Score</h2>
+    <div class="confidence-bar">
+      <div class="confidence-fill" style="width: ${confidence}%;">
+        ${confidence}%
+      </div>
+    </div>
+    <p style="font-size: 13px; color: #666; margin-top: 5px;">
+      ${confidence < 50 ? '🔴 Zeer laag - Onmiddellijke actie vereist' : confidence < 70 ? '🟡 Laag - Handmatige review nodig' : '🟢 Acceptabel - Preventieve check'}
+    </p>
+    ` : ''}
+
+    <div class="reason-box">
+      <strong>🎯 Escalatie Reden:</strong><br>
+      <span style="font-size: 15px; color: #92400e;">${reden}</span>
+    </div>
+
+    <h2>👤 Claimer Informatie</h2>
+    <div class="info-grid">
+      <div class="info-label">Claim ID:</div>
+      <div class="info-value"><code style="background: #f3f4f6; padding: 4px 8px; border-radius: 4px; font-family: monospace;">${claimId}</code></div>
+      
+      <div class="info-label">Naam:</div>
+      <div class="info-value"><strong>${naam}</strong></div>
+      
+      <div class="info-label">Email:</div>
+      <div class="info-value"><a href="mailto:${email}" style="color: #2563eb;">${email}</a></div>
+      
+      <div class="info-label">Datum ongeval:</div>
+      <div class="info-value">${new Date(datum_ongeval).toLocaleDateString('nl-NL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
+      
+      <div class="info-label">Kenteken TP:</div>
+      <div class="info-value"><strong style="font-size: 16px;">${kenteken_tegenpartij}</strong></div>
+    </div>
+
+    <h2>📝 Beschrijving Ongeval</h2>
+    <div class="description-box">${beschrijving}</div>
+
+    <h2>⚡ Aanbevolen Acties</h2>
+    <ul style="line-height: 1.8; color: #374151;">
+      <li><strong>Beoordeel</strong> de claim handmatig in het dashboard</li>
+      <li><strong>Controleer</strong> OCR extractie op fouten</li>
+      <li><strong>Verifieer</strong> tegenpartij gegevens (RDW check)</li>
+      <li><strong>Beslis</strong> of claim acceptabel is of moet worden afgewezen</li>
+      <li><strong>Neem contact op</strong> met claimer bij onduidelijkheden</li>
+    </ul>
+
+    <div style="text-align: center; margin: 30px 0;">
+      <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/dashboard/claim/${claimId}" class="button">
+        🔍 Bekijk Claim in Dashboard →
+      </a>
+    </div>
+
+    <div style="background: #f0f9ff; border: 1px solid #bae6fd; padding: 15px; border-radius: 5px; margin-top: 20px;">
+      <strong style="color: #0369a1;">💡 Tip:</strong> 
+      <span style="color: #075985; font-size: 14px;">
+        Claims met lage confidence zijn vaak incomplete uploads of complexe gevallen. 
+        Controleer of alle velden correct zijn ingevuld en of er voldoende bewijs is.
+      </span>
+    </div>
+  </div>
+  
+  <div style="text-align: center; color: #6b7280; font-size: 12px; margin-top: 25px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+    <p><strong>Gratisschadeverhalen.nl - Admin Notificatie</strong></p>
+    <p>Automatisch gegenereerd door Audit & Escalatie Systeem</p>
+    <p style="font-size: 10px; color: #9ca3af; margin-top: 10px;">
+      ⏰ Verzonden: ${new Date().toLocaleString('nl-NL', { dateStyle: 'full', timeStyle: 'short' })}
+    </p>
+  </div>
+</body>
+</html>
+    `,
+  }
+}
+
+/**
  * Email naar admin: Nieuwe claim notificatie
  */
 export function adminNewClaimEmail(data: ClaimData & { beschrijving: string; email: string }) {

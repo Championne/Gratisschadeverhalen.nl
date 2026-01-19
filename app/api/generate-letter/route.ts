@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { generateAansprakelijkheidsbrief } from '@/lib/pdf/letter-generator'
+import { logAuditAction } from '@/lib/audit/logger'
 
 export async function POST(request: NextRequest) {
   try {
@@ -39,6 +40,22 @@ export async function POST(request: NextRequest) {
       geschatte_schade: claim.geschatte_schade,
       ai_analyse: claim.ai_notes,
     })
+
+    // Log PDF generatie
+    await logAuditAction({
+      claimId: claim.id,
+      actionType: 'file_upload',
+      performedBy: `USER:${claim.email}`,
+      details: {
+        action: 'pdf_generated',
+        document_type: 'aansprakelijkheidsbrief',
+        file_size_kb: Math.round(pdfBytes.length / 1024),
+        recipient: claim.verzekeraar_tegenpartij || 'Onbekend',
+      },
+      severity: 'info',
+    })
+
+    console.log(`✅ PDF gegenereerd voor claim ${claim.id} (${Math.round(pdfBytes.length / 1024)} KB)`)
 
     // Return PDF as download
     return new NextResponse(Buffer.from(pdfBytes), {

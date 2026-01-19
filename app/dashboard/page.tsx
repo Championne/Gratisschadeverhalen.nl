@@ -30,6 +30,7 @@ export default async function DashboardPage() {
     in_behandeling: claimsData.filter(c => c.status === 'in_behandeling' || c.status === 'in_onderhandeling').length,
     afgerond: claimsData.filter(c => c.status === 'afgerond').length,
     geweigerd: claimsData.filter(c => c.status === 'geweigerd').length,
+    escalated: claimsData.filter(c => c.status === 'escalated').length,
   }
 
   return (

@@ -9,6 +9,7 @@ import Link from "next/link"
 import { formatDate } from "@/lib/utils"
 import { createClient } from "@/lib/supabase/client"
 import { toast } from "sonner"
+import { EscalationBadgeCompact } from "./escalation-badge"
 
 interface Claim {
   id: string
@@ -16,6 +17,8 @@ interface Claim {
   kenteken_tegenpartij: string
   datum_ongeval: string
   status: string
+  escalatie_reden?: string | null
+  escalatie_opgelost?: boolean
   created_at: string
   updated_at: string
 }
@@ -83,6 +86,7 @@ export function ClaimsList({ claims: initialClaims }: ClaimsListProps) {
       afgerond: "✅ Afgerond",
       geweigerd: "❌ Geweigerd",
       geannuleerd: "🚫 Geannuleerd",
+      escalated: "⚠️ Handmatige aandacht",
     }
     return labels[status] || status
   }
@@ -97,6 +101,7 @@ export function ClaimsList({ claims: initialClaims }: ClaimsListProps) {
       afgerond: "success",
       geweigerd: "destructive",
       geannuleerd: "outline",
+      escalated: "destructive",
     }
     return variants[status] || "default"
   }
@@ -133,17 +138,23 @@ export function ClaimsList({ claims: initialClaims }: ClaimsListProps) {
         <Card key={claim.id}>
           <CardHeader>
             <div className="flex items-start justify-between">
-              <div className="space-y-1">
+              <div className="space-y-1 flex items-center gap-2">
                 <CardTitle className="text-lg">
                   Claim #{claim.id.substring(0, 8)}
                 </CardTitle>
-                <CardDescription>
+                <EscalationBadgeCompact 
+                  status={claim.status}
+                  escalatieReden={claim.escalatie_reden}
+                />
+              </div>
+              <div className="flex items-center gap-2">
+                <CardDescription className="text-right mr-3">
                   Ingediend op {formatDate(claim.created_at)}
                 </CardDescription>
+                <Badge variant={getStatusBadgeVariant(claim.status)}>
+                  {getStatusLabel(claim.status)}
+                </Badge>
               </div>
-              <Badge variant={getStatusBadgeVariant(claim.status)}>
-                {getStatusLabel(claim.status)}
-              </Badge>
             </div>
           </CardHeader>
           <CardContent>
