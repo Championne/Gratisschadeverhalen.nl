@@ -140,7 +140,7 @@ export function letselschadeDetectedEmail(data: ClaimData) {
     <p><strong>Meld je letselschade apart aan bij Unitas Letselschade</strong></p>
     <p>Zij zijn gespecialiseerd in letselschade claims en kunnen je beter helpen dan wij.</p>
     
-    <a href="https://unitasletsenschade.nl" class="button">
+    <a href="https://www.unitasletselschade.nl" class="button">
       Ga naar Unitas Letselschade →
     </a>
     

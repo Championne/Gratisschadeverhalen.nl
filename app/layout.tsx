@@ -3,6 +3,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { Toaster } from "@/components/ui/sonner"
 import { CookieConsent } from "@/components/cookie-consent"
+import { WhatsAppButton } from "@/components/whatsapp-button"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -81,6 +82,7 @@ export default function RootLayout({
         {children}
         <Toaster richColors position="top-center" />
         <CookieConsent />
+        <WhatsAppButton />
       </body>
     </html>
   )

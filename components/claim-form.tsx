@@ -447,7 +447,7 @@ export function ClaimForm() {
                           Voor letselschade claims raden we aan contact op te nemen met:
                         </p>
                         <a 
-                          href="https://unitasletsenschade.nl" 
+                          href="https://www.unitasletselschade.nl" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="text-sm text-red-900 font-semibold underline mt-2 inline-block"

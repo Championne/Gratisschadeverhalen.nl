@@ -928,7 +928,7 @@ export default function HomePage() {
                   <p className="text-muted-foreground">
                     Ons platform richt zich specifiek op <strong>materiële schade</strong> aan uw voertuig (autoschade/voertuigschade). 
                     Bij lichamelijke klachten zoals whiplash, hoofdpijn, rugklachten, of andere letselschade verwijzen wij u door naar onze 
-                    gespecialiseerde partner <a href="https://unitasletsenschade.nl" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">Unitas Letselschade</a>. 
+                    gespecialiseerde partner <a href="https://www.unitasletselschade.nl" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">Unitas Letselschade</a>. 
                     Zij hebben ruime ervaring met letselschadeclaims en kunnen u helpen met het verhalen van uw persoonlijke schade.
                   </p>
                 </CardContent>
@@ -1005,16 +1005,19 @@ export default function HomePage() {
         {/* Footer */}
         <footer className="border-t bg-gray-50 py-12">
           <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-4 gap-8">
-              <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <Shield className="h-6 w-6 text-primary" />
-                  <span className="font-bold">Gratisschadeverhalen.nl</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-8 gap-y-8">
+              {/* Logo + Beschrijving - 2 kolommen breed */}
+              <div className="lg:col-span-2 lg:pr-4">
+                <div className="flex items-center gap-1.5 mb-4">
+                  <Shield className="h-5 w-5 text-primary flex-shrink-0" />
+                  <span className="font-bold text-sm leading-tight">Gratisschade<wbr />verhalen.nl</span>
                 </div>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   Gratis autoschade en voertuigschade verhalen op de WA-verzekeraar van de tegenpartij. 100% no cure no pay.
                 </p>
               </div>
+              
+              {/* Snelle Links - 1 kolom */}
               <div>
                 <h3 className="font-semibold mb-4">Snelle Links</h3>
                 <ul className="space-y-2 text-sm">
@@ -1024,23 +1027,41 @@ export default function HomePage() {
                   <li><a href="#voorbeelden" className="text-muted-foreground hover:text-primary transition-colors">Voorbeelden</a></li>
                 </ul>
               </div>
+              
+              {/* Juridisch - 1 kolom */}
+              <div>
+                <h3 className="font-semibold mb-4">Juridisch</h3>
+                <ul className="space-y-2 text-sm">
+                  <li><Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors">Privacybeleid</Link></li>
+                  <li><Link href="/algemene-voorwaarden" className="text-muted-foreground hover:text-primary transition-colors">Algemene Voorwaarden</Link></li>
+                  <li><Link href="/over-ons" className="text-muted-foreground hover:text-primary transition-colors">Over Ons</Link></li>
+                  <li><Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
+                </ul>
+              </div>
+              
+              {/* Account - 1 kolom */}
               <div>
                 <h3 className="font-semibold mb-4">Account</h3>
                 <ul className="space-y-2 text-sm">
                   <li><Link href="/login" className="text-muted-foreground hover:text-primary transition-colors">Inloggen</Link></li>
                   <li><Link href="/registreren" className="text-muted-foreground hover:text-primary transition-colors">Registreren</Link></li>
                   <li><Link href="/dashboard" className="text-muted-foreground hover:text-primary transition-colors">Dashboard</Link></li>
-                  <li><Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors">Privacy</Link></li>
                 </ul>
               </div>
+              
+              {/* Contact - 1 kolom */}
               <div>
                 <h3 className="font-semibold mb-4">Contact</h3>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>Email: info@gratisschadeverhalen.nl</li>
-                  <li>Telefoon: 088-1234567</li>
+                  <li>Email: <span className="bg-yellow-100 px-1 rounded">[INVULLEN: info@...]</span></li>
+                  <li>Telefoon: <span className="bg-yellow-100 px-1 rounded">[INVULLEN: 088-...]</span></li>
                   <li>Maandag t/m vrijdag</li>
                   <li>09:00 - 17:00 uur</li>
                 </ul>
+                <div className="mt-4 pt-4 border-t text-xs">
+                  <p>KvK: <span className="bg-yellow-100 px-1 rounded">[INVULLEN]</span></p>
+                  <p>BTW: <span className="bg-yellow-100 px-1 rounded">[INVULLEN]</span></p>
+                </div>
               </div>
             </div>
             <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">

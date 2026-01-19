@@ -117,9 +117,13 @@ export default function PrivacyPage() {
               Voor vragen over uw privacy of dit privacybeleid kunt u contact met ons opnemen:
             </p>
             <div className="mt-4 space-y-2 text-muted-foreground">
-              <p><strong>Email:</strong> privacy@gratisschadeverhalen.nl</p>
-              <p><strong>Telefoon:</strong> 088-1234567</p>
-              <p><strong>Post:</strong> Gratisschadeverhalen.nl, [Adres], Nederland</p>
+              <p><strong>Email:</strong> <span className="bg-yellow-100 px-2 py-1 rounded font-semibold">[INVULLEN: privacy@gratisschadeverhalen.nl]</span></p>
+              <p><strong>Telefoon:</strong> <span className="bg-yellow-100 px-2 py-1 rounded font-semibold">[INVULLEN: 088-1234567]</span></p>
+              <p><strong>Post:</strong> Gratisschadeverhalen.nl, <span className="bg-yellow-100 px-2 py-1 rounded font-semibold">[INVULLEN: Straat 123, 1234 AB Plaats]</span>, Nederland</p>
+              <p className="text-xs italic mt-4">
+                💡 <strong>KvK:</strong> <span className="bg-yellow-100 px-2 py-1 rounded">[INVULLEN]</span> • 
+                <strong>BTW:</strong> <span className="bg-yellow-100 px-2 py-1 rounded">[INVULLEN]</span>
+              </p>
             </div>
           </section>
 
