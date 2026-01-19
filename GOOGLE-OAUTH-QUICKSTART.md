@@ -13,21 +13,60 @@ De Google OAuth functionaliteit is **volledig geïmplementeerd** in de code. Je 
 
 ## 🚀 Setup in 3 stappen
 
-### Stap 1: Google Cloud Console (5 min)
+### Stap 1: Google Cloud Console (8 min)
 
-1. Ga naar [Google Cloud Console](https://console.cloud.google.com/)
-2. Maak een nieuw project: `Gratisschadeverhalen`
-3. Ga naar **APIs & Services** → **OAuth consent screen**
+1. **Maak Project**
+   - Ga naar [Google Cloud Console](https://console.cloud.google.com/)
+   - Klik "Select a project" → "New Project"
+   - Naam: `Gratisschadeverhalen`
+   - Klik "Create"
+
+2. **Configureer OAuth Consent Screen** (Nieuwe 2026 interface!)
+   - Ga naar **APIs & Services** → **OAuth consent screen**
+   - Klik **Get Started** (als dit je eerste keer is)
+   
+   **6 tabs doorlopen:**
+   
+   📋 **Branding:**
+   - App name: `Gratisschadeverhalen.nl`
+   - Support email: je email
+   - Home page: `https://gratisschadeverhalen.nl`
+   - Privacy policy: `https://gratisschadeverhalen.nl/privacy`
+   - Terms: `https://gratisschadeverhalen.nl/voorwaarden`
+   
+   👥 **Audience:**
    - Kies **External**
-   - Vul app naam, email, domains in
-4. Ga naar **Credentials** → **+ CREATE CREDENTIALS** → **OAuth 2.0 Client ID**
+   
+   🔐 **Scopes:**
+   - Skip (standaard is genoeg)
+   
+   🌐 **Authorized Domains:**
+   - Voeg toe: `gratisschadeverhalen.nl`
+   - Voeg toe: `supabase.co`
+   
+   📧 **Contact:**
+   - Support email: je email
+   - Developer email: je email
+   
+   🧪 **Test Users:**
+   - Voeg je eigen Google account toe
+   
+   Klik door met **Save and Continue** bij elke tab
+
+3. **Maak OAuth Client**
+   - Ga naar **Credentials** → **+ CREATE CREDENTIALS** → **OAuth 2.0 Client ID**
    - Type: **Web application**
-   - Authorized redirect URIs:
+   - Name: `Gratisschadeverhalen OAuth Client`
+   - **Authorized redirect URIs:**
      ```
      https://[YOUR-SUPABASE-PROJECT].supabase.co/auth/v1/callback
      http://localhost:54321/auth/v1/callback
      ```
-5. **Kopieer** Client ID en Client Secret
+   - Klik **Create**
+
+4. **Kopieer Credentials**
+   - Client ID (bewaar!)
+   - Client Secret (bewaar!)
 
 ### Stap 2: Supabase Dashboard (2 min)
 
@@ -111,6 +150,19 @@ Na setup kun je deze pagina's gebruiken:
 
 ### Lokaal werkt niet
 ➡️ Voeg `http://localhost:54321/auth/v1/callback` toe aan Google Cloud redirect URIs
+
+### Console redirect me steeds van OAuth Consent Screen weg
+➡️ Dit gebeurt in de nieuwe 2026 interface als je nog geen **Audience** (User Type) hebt ingesteld
+➡️ Ga naar de Audience tab en selecteer "External"
+
+### "Domain verification required"
+➡️ Je moet eigenaar zijn van gratisschadeverhalen.nl in Google Search Console
+➡️ Voor development kun je eerst met alleen `localhost` werken
+
+### "This app is blocked" tijdens login
+➡️ Je app is nog in "Testing" modus
+➡️ Zorg dat je jezelf hebt toegevoegd als Test User (zie Stap 1, tab 6)
+➡️ Voor productie moet je de app publiceren via "Publish App"
 
 ## 🎯 Next steps
 

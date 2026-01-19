@@ -8,31 +8,50 @@
 3. Naam: `Gratisschadeverhalen`
 4. Klik op "Create"
 
-### 1.2 Configureer OAuth Consent Screen
+### 1.2 Configureer OAuth Consent Screen (Updated 2026 Interface)
 1. Navigeer naar **APIs & Services** → **OAuth consent screen**
-2. Selecteer **External** (voor publieke app)
-3. Klik **Create**
+2. Als dit je eerste keer is, klik **Get Started**
+3. Je ziet nu tabs: **Branding**, **Audience**, **Scopes**, **Clients**, **Data Access**
 
-**App information:**
-- App name: `Gratisschadeverhalen.nl`
-- User support email: `jouw@email.nl`
-- App logo: Upload je logo (optioneel)
+**Tab 1: Branding (App information)**
+- **App name:** `Gratisschadeverhalen.nl`
+- **Support email:** `jouw@email.nl`
+- **App logo:** Upload je logo (optioneel, maar aanbevolen)
+- **Application home page:** `https://gratisschadeverhalen.nl`
+- **Application privacy policy:** `https://gratisschadeverhalen.nl/privacy`
+- **Application terms of service:** `https://gratisschadeverhalen.nl/voorwaarden`
+- Klik **Save and Continue**
 
-**App domain:**
-- Application home page: `https://gratisschadeverhalen.nl`
-- Application privacy policy: `https://gratisschadeverhalen.nl/privacy`
-- Application terms of service: `https://gratisschadeverhalen.nl/voorwaarden`
+**Tab 2: Audience (User Type)**
+- Selecteer **External** (beschikbaar voor alle Google gebruikers)
+- Klik **Save and Continue**
 
-**Authorized domains:**
+**Tab 3: Scopes**
+- Skip deze stap - standaard scopes (email, profile, openid) zijn voldoende
+- Klik **Save and Continue**
+
+**Tab 4: Authorized Domains**
 - Voeg toe: `gratisschadeverhalen.nl`
+- Voeg toe: `supabase.co` (voor de callback URL)
+- **Belangrijk:** Je moet eigenaar zijn van gratisschadeverhalen.nl via Google Search Console
+- Klik **Save and Continue**
 
-**Developer contact information:**
-- Email addresses: `jouw@email.nl`
+**Tab 5: Contact Information**
+- **User support email:** `jouw@email.nl`
+- **Developer contact email:** `jouw@email.nl`
+- Klik **Save and Continue**
 
-4. Klik **Save and Continue**
-5. Skip "Scopes" (standaard scopes zijn voldoende)
-6. Skip "Test users" (niet nodig voor External apps)
-7. Klik **Back to Dashboard**
+**Tab 6: Test Users (alleen voor development)**
+- Voeg je eigen Google account toe als test user
+- Dit is nodig tijdens development voordat de app verified is
+- Klik **Add Users** en voeg je email toe
+- Klik **Save and Continue**
+
+**Voltooien:**
+- Review alle instellingen
+- Klik **Back to Dashboard**
+
+> **Let op:** Je app blijft in "Testing" modus tot je deze publiceert. Voor development is dit prima.
 
 ### 1.3 Maak OAuth 2.0 Client ID aan
 1. Navigeer naar **APIs & Services** → **Credentials**
@@ -199,6 +218,17 @@ Na een succesvolle Google login, check in Supabase:
 ### Locale ontwikkeling werkt niet
 - **Oorzaak:** Supabase lokaal moet ook geconfigureerd zijn
 - **Oplossing:** Voeg `http://localhost:54321/auth/v1/callback` toe aan Google Cloud Console redirect URIs
+
+### Console redirect steeds naar OAuth Overview
+- **Oorzaak:** Nieuwe 2026 interface - Audience (User Type) niet ingesteld
+- **Oplossing:** Ga naar de Audience tab en selecteer "External", voeg test users toe
+
+### "Domain verification required"
+- **Oorzaak:** Google vereist domain ownership voor Authorized Domains
+- **Oplossing:** 
+  1. Ga naar [Google Search Console](https://search.google.com/search-console)
+  2. Voeg je domain toe en verifieer ownership
+  3. Voor development: gebruik alleen localhost URLs eerst
 
 ---
 
