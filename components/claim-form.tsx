@@ -13,7 +13,6 @@ import { submitClaim } from "@/app/actions/submit-claim"
 import { FileUpload } from "@/components/file-upload"
 import { VoiceInput } from "@/components/voice-input"
 import { OCRUpload } from "@/components/ocr-upload"
-import { AlertCircle } from "lucide-react"
 
 interface ClaimFormData {
   naam: string
@@ -48,22 +47,10 @@ export function ClaimForm() {
   const [fotos, setFotos] = useState<File[]>([])
   const [schadeformulier, setSchadeformulier] = useState<File | null>(null)
   const [ocrData, setOcrData] = useState<any>(null)
-  const [letselWarning, setLetselWarning] = useState(false)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
-
-    // Check voor letselschade keywords in beschrijving
-    if (name === "beschrijving") {
-      checkForLetselschade(value)
-    }
-  }
-
-  const checkForLetselschade = (text: string) => {
-    const letselKeywords = ['pijn', 'whiplash', 'letsel', 'hoofdpijn', 'nekpijn', 'rugpijn', 'ziekenhuis', 'ambulance', 'dokter', 'gewond']
-    const hasLetsel = letselKeywords.some(keyword => text.toLowerCase().includes(keyword))
-    setLetselWarning(hasLetsel)
   }
 
   const handleOCRComplete = (data: any) => {
@@ -436,30 +423,6 @@ export function ClaimForm() {
                 </p>
               </div>
 
-              {letselWarning && (
-                <Card className="border-red-200 bg-red-50">
-                  <CardContent className="pt-6">
-                    <div className="flex items-start gap-3">
-                      <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="font-semibold text-red-900">⚠️ Mogelijk Letselschade Gedetecteerd</p>
-                        <p className="text-sm text-red-700 mt-1">
-                          We zien keywords die wijzen op letselschade (pijn, whiplash, etc.). 
-                          Voor letselschade claims raden we aan contact op te nemen met:
-                        </p>
-                        <a 
-                          href="https://www.unitasletselschade.nl" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="text-sm text-red-900 font-semibold underline mt-2 inline-block"
-                        >
-                          Unitas Letselschade →
-                        </a>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              )}
             </CardContent>
           </Card>
 
