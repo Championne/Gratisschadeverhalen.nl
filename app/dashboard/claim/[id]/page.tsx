@@ -14,15 +14,25 @@ export default async function ClaimDetailPage({ params }: { params: Promise<{ id
     redirect("/login")
   }
 
-  // Haal claim op
+  // Haal claim op (expliciete select voor nieuwe kolommen)
   const { data: claim, error } = await supabase
     .from('claims')
-    .select('*')
+    .select(`
+      id, naam, email, telefoon, datum_ongeval, plaats_ongeval, beschrijving,
+      kenteken_tegenpartij, naam_tegenpartij, verzekeraar_tegenpartij, polisnummer_tegenpartij,
+      status, mogelijk_letselschade, escalatie_reden, escalatie_datum, escalatie_opgelost,
+      ocr_confidence, ai_notes, created_at, updated_at
+    `)
     .eq('id', id)
     .eq('user_id', user.id)
     .single()
 
-  if (error || !claim) {
+  if (error) {
+    console.error('Claim fetch error:', error)
+    notFound()
+  }
+  
+  if (!claim) {
     notFound()
   }
 

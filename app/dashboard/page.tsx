@@ -17,9 +17,14 @@ export default async function DashboardPage() {
   // Haal gebruiker's claims op
   const { data: claims, error: claimsError } = await supabase
     .from('claims')
-    .select('*')
+    .select('id, naam, email, kenteken_tegenpartij, datum_ongeval, status, escalatie_reden, escalatie_opgelost, created_at, updated_at')
     .eq('user_id', user.id)
     .order('created_at', { ascending: false })
+  
+  // Log error voor debugging
+  if (claimsError) {
+    console.error('Claims fetch error:', claimsError)
+  }
 
   const claimsData = claims || []
 
