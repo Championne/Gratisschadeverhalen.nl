@@ -22,20 +22,15 @@ interface Claim {
 }
 
 export default async function DashboardPage() {
+  // Auth check OUTSIDE try-catch (redirect throws special error)
+  const supabase = await createClient()
+  const { data: { user }, error: userError } = await supabase.auth.getUser()
+
+  if (userError || !user) {
+    redirect("/login")
+  }
+
   try {
-    const supabase = await createClient()
-
-    const { data: { user }, error: userError } = await supabase.auth.getUser()
-
-    if (userError) {
-      console.error('User auth error:', userError)
-      redirect("/login")
-    }
-
-    if (!user) {
-      redirect("/login")
-    }
-
     // Haal gebruiker's claims op met expliciete error handling
     const { data: claims, error: claimsError } = await supabase
       .from('claims')
