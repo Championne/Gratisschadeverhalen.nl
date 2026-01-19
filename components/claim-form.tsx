@@ -21,11 +21,11 @@ interface ClaimFormData {
   telefoon: string
   kenteken_tegenpartij: string
   datum_ongeval: string
-  plaats_ongeval: string
+  plaats_ongeval: string  // Verplicht
   beschrijving: string
-  naam_tegenpartij?: string
-  verzekeraar_tegenpartij?: string
-  polisnummer_tegenpartij?: string
+  naam_tegenpartij: string
+  verzekeraar_tegenpartij: string
+  polisnummer_tegenpartij?: string  // Enige optionele veld
 }
 
 export function ClaimForm() {
@@ -324,7 +324,7 @@ export function ClaimForm() {
                   <div className="flex-1">
                     <p className="font-semibold text-green-900">OCR Voltooid!</p>
                     <p className="text-sm text-green-700">
-                      Velden met een <span className="text-orange-600 font-semibold">oranje rand</span> zijn leeg en moeten worden ingevuld.
+                      Controleer de gegevens en vul eventuele <span className="text-orange-600 font-semibold">verplichte velden (*)</span> aan. Alleen polisnummer is optioneel.
                     </p>
                   </div>
                 </div>
@@ -403,14 +403,15 @@ export function ClaimForm() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="plaats_ongeval">Plaats Ongeval</Label>
+                  <Label htmlFor="plaats_ongeval">Plaats Ongeval *</Label>
                   <Input
                     id="plaats_ongeval"
                     name="plaats_ongeval"
                     value={formData.plaats_ongeval}
                     onChange={handleInputChange}
                     placeholder="Amsterdam, Damrak"
-                    className={ocrCompleted && !formData.plaats_ongeval ? 'border-orange-300 bg-orange-50' : ''}
+                    required
+                    className={ocrCompleted && !formData.plaats_ongeval ? 'border-orange-400 bg-orange-50' : ''}
                   />
                 </div>
               </div>
@@ -484,38 +485,39 @@ export function ClaimForm() {
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="naam_tegenpartij">Naam Bestuurder (optioneel)</Label>
+                  <Label htmlFor="naam_tegenpartij">Naam Bestuurder *</Label>
                   <Input
                     id="naam_tegenpartij"
                     name="naam_tegenpartij"
                     value={formData.naam_tegenpartij}
                     onChange={handleInputChange}
                     placeholder="Naam bestuurder"
-                    className={ocrCompleted && !formData.naam_tegenpartij ? 'border-orange-300 bg-orange-50' : ''}
+                    required
+                    className={ocrCompleted && !formData.naam_tegenpartij ? 'border-orange-400 bg-orange-50' : ''}
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="verzekeraar_tegenpartij">Verzekeraar Tegenpartij (optioneel)</Label>
+                  <Label htmlFor="verzekeraar_tegenpartij">Verzekeraar Tegenpartij *</Label>
                   <Input
                     id="verzekeraar_tegenpartij"
                     name="verzekeraar_tegenpartij"
                     value={formData.verzekeraar_tegenpartij}
                     onChange={handleInputChange}
                     placeholder="Aegon, Centraal Beheer, etc."
-                    className={ocrCompleted && !formData.verzekeraar_tegenpartij ? 'border-orange-300 bg-orange-50' : ''}
+                    required
+                    className={ocrCompleted && !formData.verzekeraar_tegenpartij ? 'border-orange-400 bg-orange-50' : ''}
                   />
                 </div>
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="polisnummer_tegenpartij">Polisnummer Tegenpartij (indien bekend)</Label>
+                <Label htmlFor="polisnummer_tegenpartij">Polisnummer Tegenpartij (optioneel)</Label>
                 <Input
                   id="polisnummer_tegenpartij"
                   name="polisnummer_tegenpartij"
                   value={formData.polisnummer_tegenpartij}
                   onChange={handleInputChange}
                   placeholder="Bijv. 123456789"
-                  className={ocrCompleted && !formData.polisnummer_tegenpartij ? 'border-orange-300 bg-orange-50' : ''}
                 />
                 <p className="text-sm text-muted-foreground">
                   Optioneel: staat vaak op het Europees schadeformulier

@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { CheckCircle, Home, FileText } from "lucide-react"
 import Link from "next/link"
+import { createClient } from "@/lib/supabase/server"
 
 export default async function ClaimSuccessPage({
   searchParams,
@@ -10,6 +11,10 @@ export default async function ClaimSuccessPage({
 }) {
   const params = await searchParams
   const claimId = params.claimId
+
+  // Check if user is logged in
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
 
   if (!claimId) {
     return (
@@ -129,26 +134,28 @@ export default async function ClaimSuccessPage({
         </CardContent>
       </Card>
 
-      <Card className="bg-blue-50 border-blue-200 mb-6">
-        <CardContent className="pt-6">
-          <div className="flex items-start gap-3">
-            <FileText className="h-5 w-5 text-blue-600 flex-shrink-0 mt-1" />
-            <div>
-              <p className="font-semibold text-blue-900 mb-2">
-                💡 TIP: Maak een account aan
-              </p>
-              <p className="text-sm text-blue-700 mb-3">
-                Met een account kun je de status van je claim realtime volgen en direct updates ontvangen.
-              </p>
-              <Link href="/registreren">
-                <Button variant="outline" size="sm">
-                  Account Aanmaken
-                </Button>
-              </Link>
+      {!user && (
+        <Card className="bg-blue-50 border-blue-200 mb-6">
+          <CardContent className="pt-6">
+            <div className="flex items-start gap-3">
+              <FileText className="h-5 w-5 text-blue-600 flex-shrink-0 mt-1" />
+              <div>
+                <p className="font-semibold text-blue-900 mb-2">
+                  💡 TIP: Maak een account aan
+                </p>
+                <p className="text-sm text-blue-700 mb-3">
+                  Met een account kun je de status van je claim realtime volgen en direct updates ontvangen.
+                </p>
+                <Link href="/registreren">
+                  <Button variant="outline" size="sm">
+                    Account Aanmaken
+                  </Button>
+                </Link>
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      )}
 
       <div className="flex gap-3 justify-center">
         <Link href="/">
@@ -157,9 +164,9 @@ export default async function ClaimSuccessPage({
             Naar Homepage
           </Button>
         </Link>
-        <Link href="/login">
+        <Link href={user ? `/dashboard/claim/${claimId}` : "/login"}>
           <Button>
-            Volg je Claim
+            {user ? "Bekijk je Claim" : "Volg je Claim"}
           </Button>
         </Link>
       </div>

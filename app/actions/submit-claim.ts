@@ -2,18 +2,19 @@
 
 import { createClient } from '@/lib/supabase/server'
 import { revalidatePath } from 'next/cache'
+import { logAuditAction } from '@/lib/audit/logger'
 
 interface ClaimSubmission {
   naam: string
   email: string
-  telefoon?: string
+  telefoon: string
   kenteken_tegenpartij: string
   datum_ongeval: string
-  plaats_ongeval?: string
+  plaats_ongeval: string  // Verplicht
   beschrijving: string
-  naam_tegenpartij?: string
-  verzekeraar_tegenpartij?: string
-  polisnummer_tegenpartij?: string
+  naam_tegenpartij: string
+  verzekeraar_tegenpartij: string
+  polisnummer_tegenpartij?: string  // Enige optionele veld
   ocrData?: any
 }
 
@@ -65,6 +66,27 @@ export async function submitClaim(data: ClaimSubmission) {
     }
 
     console.log('✅✅✅ Claim opgeslagen:', claim.id)
+
+    // Log claim submission to audit trail
+    try {
+      await logAuditAction({
+        claimId: claim.id,
+        actionType: 'claim_submit',
+        performedBy: user?.id ? `USER:${user.id}` : 'ANONYMOUS',
+        details: {
+          naam: data.naam,
+          email: data.email,
+          kenteken_tegenpartij: data.kenteken_tegenpartij,
+          has_ocr: !!data.ocrData,
+          ocr_confidence: data.ocrData?.confidence || 0,
+        },
+        severity: 'info',
+      })
+      console.log('✅ Audit log created for claim submission')
+    } catch (auditError) {
+      console.error('⚠️ Failed to create audit log:', auditError)
+      // Continue anyway - audit logging should not block claim submission
+    }
 
     // Trigger AI agent processing (fire and forget)
     triggerAgentProcessing(claim.id).catch(err => {
