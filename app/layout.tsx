@@ -8,11 +8,24 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: {
-    default: "Gratis Autoschade Verhalen | 100% No Cure No Pay",
+    default: "Autoschade Verhalen | Gratis Voertuigschade Claimen - 100% No Cure No Pay",
     template: "%s | Gratisschadeverhalen.nl"
   },
-  description: "Verhaal je autoschade gratis op de tegenpartij. 100% no cure no pay. Wij regelen alles voor je - van schademelding tot uitbetaling.",
-  keywords: ["autoschade", "WA schade", "tegenpartij", "schade verhalen", "gratis", "no cure no pay", "aanrijding", "schadeclaim"],
+  description: "Upload uw Europees Schadeformulier en verhaal uw autoschade gratis op de tegenpartij. Automatische OCR-verwerking, 100% no cure no pay. Wij regelen uw voertuigschade van A tot Z. Gemiddeld binnen 6 weken uitbetaald.",
+  keywords: [
+    "autoschade verhalen",
+    "voertuigschade verhalen", 
+    "gratis autoschade verhalen",
+    "schade verhalen tegenpartij",
+    "autoschade claimen",
+    "voertuigschade claimen",
+    "europees schadeformulier",
+    "WA schade tegenpartij",
+    "gratis schadeafhandeling",
+    "no cure no pay autoschade",
+    "aansprakelijkheidsbrief",
+    "schade verhaal indienen"
+  ],
   authors: [{ name: "Gratisschadeverhalen.nl" }],
   creator: "Gratisschadeverhalen.nl",
   publisher: "Gratisschadeverhalen.nl",
@@ -20,22 +33,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "nl_NL",
     url: "https://gratisschadeverhalen.nl",
-    siteName: "Gratisschadeverhalen.nl",
-    title: "Gratis Autoschade Verhalen | 100% No Cure No Pay",
-    description: "Verhaal je autoschade gratis op de tegenpartij. Wij regelen alles voor je.",
+    siteName: "Gratisschadeverhalen.nl - Gratis Autoschade Verhalen",
+    title: "Autoschade Verhalen | Upload Direct Uw Schadeformulier - Gratis",
+    description: "Verhaal uw autoschade of voertuigschade gratis op de tegenpartij. Upload uw Europees Schadeformulier en wij regelen alles. 100% no cure no pay.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Gratisschadeverhalen.nl",
+        alt: "Gratisschadeverhalen.nl - Gratis autoschade en voertuigschade verhalen",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gratis Autoschade Verhalen | 100% No Cure No Pay",
-    description: "Verhaal je autoschade gratis op de tegenpartij.",
+    title: "Autoschade Verhalen | Gratis Voertuigschade Claimen",
+    description: "Upload uw schadeformulier en verhaal uw autoschade gratis op de tegenpartij. 100% no cure no pay.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -52,6 +65,9 @@ export const metadata: Metadata = {
   verification: {
     google: "verification_token",
   },
+  alternates: {
+    canonical: "https://gratisschadeverhalen.nl"
+  }
 }
 
 export default function RootLayout({
