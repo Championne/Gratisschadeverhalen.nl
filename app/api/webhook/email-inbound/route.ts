@@ -206,11 +206,20 @@ async function processEmailAsync(emailId: string, emailData: any) {
         .eq('id', emailId)
 
       // Update claim stats
+      // First fetch current count
+      const { data: currentClaim } = await supabase
+        .from('claims')
+        .select('verzekeraar_email_count')
+        .eq('id', claimId)
+        .single()
+
+      const newCount = (currentClaim?.verzekeraar_email_count || 0) + 1
+
       await supabase
         .from('claims')
         .update({
           last_verzekeraar_email_at: new Date().toISOString(),
-          verzekeraar_email_count: supabase.raw('verzekeraar_email_count + 1'),
+          verzekeraar_email_count: newCount,
           latest_verzekeraar_response_type: analysis.email_type,
         })
         .eq('id', claimId)
