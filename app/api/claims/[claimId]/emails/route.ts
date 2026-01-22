@@ -7,10 +7,10 @@ import { createClient } from '@/lib/supabase/server'
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { claimId: string } }
+  { params }: { params: Promise<{ claimId: string }> }
 ) {
   try {
-    const { claimId } = params
+    const { claimId } = await params
 
     if (!claimId) {
       return NextResponse.json({ error: 'Claim ID required' }, { status: 400 })
