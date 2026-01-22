@@ -7,9 +7,14 @@ interface EmailOptions {
   to: string
   subject: string
   html: string
+  cc?: string
+  attachments?: Array<{
+    filename: string
+    content: Buffer | string
+  }>
 }
 
-export async function sendEmail({ to, subject, html }: EmailOptions) {
+export async function sendEmail({ to, subject, html, cc, attachments }: EmailOptions) {
   try {
     // In development, use onboarding@resend.dev if domain not verified
     const isDevelopment = process.env.NODE_ENV === 'development'
@@ -20,8 +25,10 @@ export async function sendEmail({ to, subject, html }: EmailOptions) {
     const { data, error } = await resend.emails.send({
       from: fromEmail,
       to: [to],
+      ...(cc && { cc: [cc] }),
       subject,
       html,
+      ...(attachments && { attachments }),
     })
 
     if (error) {
