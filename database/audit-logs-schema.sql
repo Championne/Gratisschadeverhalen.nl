@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS public.audit_logs (
         'ocr_run',
         'ai_analyse',
         'email_sent',
+        'email_received',
         'status_change',
         'escalatie',
         'manual_edit',

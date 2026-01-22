@@ -22,6 +22,7 @@ export type AuditActionType =
   | 'ocr_run'
   | 'ai_analyse'
   | 'email_sent'
+  | 'email_received'
   | 'status_change'
   | 'escalatie'
   | 'manual_edit'

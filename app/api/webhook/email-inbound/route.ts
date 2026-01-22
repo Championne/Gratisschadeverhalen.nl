@@ -229,7 +229,7 @@ async function processEmailAsync(emailId: string, emailData: any) {
       // Log audit
       await logAuditAction({
         claimId: claimId,
-        actionType: 'system_update',
+        actionType: 'email_received',
         details: {
           email_id: emailId,
           email_type: analysis.email_type,
