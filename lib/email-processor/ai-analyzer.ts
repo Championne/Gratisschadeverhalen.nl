@@ -81,7 +81,6 @@ export async function analyzeEmail(input: EmailAnalysisInput): Promise<EmailAnal
       model: anthropic('claude-sonnet-4-20250514'),
       prompt: prompt,
       temperature: 0.3, // Lower for consistency
-      maxTokens: 2000,
     })
 
     console.log('✅ AI analysis completed')
