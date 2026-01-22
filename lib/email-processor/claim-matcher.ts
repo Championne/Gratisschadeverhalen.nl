@@ -100,7 +100,7 @@ export async function matchEmailToClaim(
   const requires_manual_review = 
     uniqueMatches.length === 0 ||
     (uniqueMatches.length > 1 && Math.abs(uniqueMatches[0].confidence - uniqueMatches[1].confidence) < 15) ||
-    (best_match && best_match.confidence < 80)
+    (best_match !== null && best_match.confidence < 80)
 
   console.log('📊 Matching results:')
   console.log('   Total matches:', uniqueMatches.length)
