@@ -806,7 +806,7 @@ export function adminEmailReviewNeeded(data: {
       </p>
 
       <div style="text-align: center;">
-        <a href="${dashboardUrl}" class="button">Review in Dashboard</a>
+        <a href="${data.dashboardUrl}" class="button">Review in Dashboard</a>
       </div>
 
       <p style="margin-top: 30px; color: #666; font-size: 12px;">
