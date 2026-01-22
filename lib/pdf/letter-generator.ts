@@ -40,7 +40,7 @@ export async function generateAansprakelijkheidsbrief(data: LetterData): Promise
   let y = height - 50
 
   // HEADER
-  page.drawText('GRATIS SCHADEVERHALEN', {
+  page.drawText('AUTOSCHADEBUREAU', {
     x: 50, y: y, size: 18, font: boldFont, color: primaryColor,
   })
   
@@ -223,7 +223,7 @@ export async function generateAansprakelijkheidsbrief(data: LetterData): Promise
   })
   y -= 20
   
-  page.drawText('Namens Gratis Schadeverhalen', {
+  page.drawText('Namens Autoschadebureau.nl', {
     x: 50, y: y, size: 11, font: boldFont, color: textColor,
   })
   y -= 15

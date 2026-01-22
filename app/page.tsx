@@ -37,7 +37,7 @@ const jsonLd = {
     {
       "@type": "Organization",
       "@id": "https://autoschadebureau.nl/#organization",
-      "name": "Gratisschadeverhalen.nl",
+      "name": "Autoschadebureau.nl",
       "url": "https://autoschadebureau.nl",
       "logo": "https://autoschadebureau.nl/logo.png",
       "description": "Gratis autoschade en voertuigschade verhalen op de tegenpartij - 100% no cure no pay",
@@ -214,7 +214,7 @@ export default function HomePage() {
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2">
               <Shield className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold">Gratisschadeverhalen.nl</span>
+              <span className="text-xl font-bold">Autoschadebureau.nl</span>
             </Link>
             <nav className="hidden md:flex items-center gap-6">
               <a href="#hoe-werkt-het" className="text-sm font-medium hover:text-primary transition-colors">
@@ -1010,7 +1010,7 @@ export default function HomePage() {
               <div className="lg:col-span-2 lg:pr-4">
                 <div className="flex items-center gap-1.5 mb-4">
                   <Shield className="h-5 w-5 text-primary flex-shrink-0" />
-                  <span className="font-bold text-sm leading-tight">Gratisschade<wbr />verhalen.nl</span>
+                  <span className="font-bold text-sm leading-tight">Autoschade<wbr />bureau.nl</span>
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Gratis autoschade en voertuigschade verhalen op de WA-verzekeraar van de tegenpartij. 100% no cure no pay.
@@ -1069,7 +1069,7 @@ export default function HomePage() {
                 <strong>Populaire zoektermen:</strong> autoschade verhalen • voertuigschade verhalen • gratis autoschade verhalen • 
                 schade verhalen tegenpartij • autoschade claimen • WA schade verhalen
               </p>
-              <p>&copy; {new Date().getFullYear()} Gratisschadeverhalen.nl. Alle rechten voorbehouden.</p>
+              <p>&copy; {new Date().getFullYear()} Autoschadebureau.nl. Alle rechten voorbehouden.</p>
             </div>
           </div>
         </footer>

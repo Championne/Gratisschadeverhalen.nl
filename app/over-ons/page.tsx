@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export const metadata: Metadata = {
   title: "Over Ons",
-  description: "Over Gratisschadeverhalen.nl - Gratis autoschade verhalen met 100% no cure no pay",
+  description: "Over Autoschadebureau.nl - Gratis autoschade verhalen met 100% no cure no pay",
 }
 
 export default function OverOnsPage() {
@@ -16,7 +16,7 @@ export default function OverOnsPage() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Shield className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold">Gratisschadeverhalen.nl</span>
+            <span className="text-xl font-bold">Autoschadebureau.nl</span>
           </Link>
           <Link href="/">
             <Button variant="ghost" size="sm">
@@ -30,7 +30,7 @@ export default function OverOnsPage() {
       <main className="container mx-auto px-4 py-12 max-w-6xl">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Over Gratisschadeverhalen.nl</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Over Autoschadebureau.nl</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Wij maken het verhalen van autoschade <strong>eenvoudig, snel en volledig gratis</strong>. 
             Upload uw schadeformulier en wij regelen de rest – 100% no cure no pay.
@@ -59,7 +59,7 @@ export default function OverOnsPage() {
 
         {/* Waarom Wij? */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">Waarom Gratisschadeverhalen.nl?</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Waarom Autoschadebureau.nl?</h2>
           
           <div className="grid md:grid-cols-3 gap-6">
             <Card>

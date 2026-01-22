@@ -15,7 +15,7 @@ export default function LoginPage() {
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2 mb-6">
             <Shield className="h-10 w-10 text-primary" />
-            <span className="text-2xl font-bold">Gratisschadeverhalen.nl</span>
+            <span className="text-2xl font-bold">Autoschadebureau.nl</span>
           </Link>
           <h1 className="text-3xl font-bold mb-2">Welkom terug</h1>
           <p className="text-muted-foreground">

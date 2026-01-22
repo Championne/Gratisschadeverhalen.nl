@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
   title: "Algemene Voorwaarden",
-  description: "Algemene voorwaarden van Gratisschadeverhalen.nl - No cure no pay autoschade verhalen",
+  description: "Algemene voorwaarden van Autoschadebureau.nl - No cure no pay autoschade verhalen",
 }
 
 export default function AlgemeneVoorwaardenPage() {
@@ -15,7 +15,7 @@ export default function AlgemeneVoorwaardenPage() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Shield className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold">Gratisschadeverhalen.nl</span>
+            <span className="text-xl font-bold">Autoschadebureau.nl</span>
           </Link>
           <Link href="/">
             <Button variant="ghost" size="sm">
@@ -37,7 +37,7 @@ export default function AlgemeneVoorwaardenPage() {
             </p>
             <ul className="list-disc list-inside space-y-2 text-muted-foreground mt-4">
               <li><strong>Opdrachtgever:</strong> De natuurlijke persoon die schade heeft geleden als gevolg van een verkeersongeval en opdracht geeft aan Opdrachtnemer om deze schade te verhalen.</li>
-              <li><strong>Opdrachtnemer:</strong> Gratisschadeverhalen.nl, gevestigd te <span className="bg-yellow-100 font-semibold">[INVULLEN: Adres]</span>, KvK-nummer <span className="bg-yellow-100 font-semibold">[INVULLEN: KvK-nummer]</span>.</li>
+              <li><strong>Opdrachtnemer:</strong> Autoschadebureau.nl, gevestigd te <span className="bg-yellow-100 font-semibold">[INVULLEN: Adres]</span>, KvK-nummer <span className="bg-yellow-100 font-semibold">[INVULLEN: KvK-nummer]</span>.</li>
               <li><strong>Overeenkomst:</strong> De overeenkomst tussen Opdrachtgever en Opdrachtnemer met betrekking tot het verhalen van materiële schade (voertuigschade/autoschade).</li>
               <li><strong>Claim:</strong> De aanspraak tot schadevergoeding die Opdrachtgever heeft op de aansprakelijke partij of diens WA-verzekeraar.</li>
               <li><strong>No Cure No Pay:</strong> Het principe waarbij Opdrachtgever alleen betaalt bij succesvol verhaal van de schade.</li>
@@ -253,7 +253,7 @@ export default function AlgemeneVoorwaardenPage() {
           <section className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded">
             <h3 className="text-xl font-bold mb-3">📋 Bedrijfsgegevens</h3>
             <ul className="space-y-2 text-sm">
-              <li><strong>Handelsnaam:</strong> Gratisschadeverhalen.nl</li>
+              <li><strong>Handelsnaam:</strong> Autoschadebureau.nl</li>
               <li><strong>KvK-nummer:</strong> <span className="bg-yellow-100 font-semibold">[INVULLEN: KvK-nummer]</span></li>
               <li><strong>BTW-nummer:</strong> <span className="bg-yellow-100 font-semibold">[INVULLEN: BTW-nummer]</span></li>
               <li><strong>Adres:</strong> <span className="bg-yellow-100 font-semibold">[INVULLEN: Straat + huisnummer, Postcode Plaats]</span></li>
