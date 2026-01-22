@@ -3,7 +3,6 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { Toaster } from "@/components/ui/sonner"
 import { CookieConsent } from "@/components/cookie-consent"
-import { WhatsAppButton } from "@/components/whatsapp-button"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 
@@ -88,7 +87,6 @@ export default function RootLayout({
         <SiteFooter />
         <Toaster richColors position="top-center" />
         <CookieConsent />
-        <WhatsAppButton />
       </body>
     </html>
   )
