@@ -208,32 +208,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
-      <div className="flex flex-col min-h-screen">
-        {/* Header / Navigation */}
-        <header className="border-b bg-white/95 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
-          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <Shield className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold">Autoschadebureau.nl</span>
-            </Link>
-            <nav className="hidden md:flex items-center gap-6">
-              <a href="#hoe-werkt-het" className="text-sm font-medium hover:text-primary transition-colors">
-                Hoe werkt het?
-              </a>
-              <a href="#voorbeelden" className="text-sm font-medium hover:text-primary transition-colors">
-                Voorbeelden
-              </a>
-              <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors">
-                Veelgestelde vragen
-              </a>
-              <Link href="/login">
-                <Button variant="outline" size="sm">Inloggen</Button>
-              </Link>
-            </nav>
-          </div>
-        </header>
-
-        {/* Hero Section met Grote Upload CTA */}
+      {/* Hero Section met Grote Upload CTA */}
         <section className="bg-gradient-to-br from-blue-50 via-white to-green-50 pt-12 pb-20 md:pt-16 md:pb-28">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
@@ -1002,78 +977,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="border-t bg-gray-50 py-12">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-8 gap-y-8">
-              {/* Logo + Beschrijving - 2 kolommen breed */}
-              <div className="lg:col-span-2 lg:pr-4">
-                <div className="flex items-center gap-1.5 mb-4">
-                  <Shield className="h-5 w-5 text-primary flex-shrink-0" />
-                  <span className="font-bold text-sm leading-tight">Autoschade<wbr />bureau.nl</span>
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Gratis autoschade en voertuigschade verhalen op de WA-verzekeraar van de tegenpartij. 100% no cure no pay.
-                </p>
-              </div>
-              
-              {/* Snelle Links - 1 kolom */}
-              <div>
-                <h3 className="font-semibold mb-4">Snelle Links</h3>
-                <ul className="space-y-2 text-sm">
-                  <li><Link href="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
-                  <li><Link href="/claim-indienen" className="text-muted-foreground hover:text-primary transition-colors">Claim Indienen</Link></li>
-                  <li><a href="#hoe-werkt-het" className="text-muted-foreground hover:text-primary transition-colors">Hoe werkt het?</a></li>
-                  <li><a href="#voorbeelden" className="text-muted-foreground hover:text-primary transition-colors">Voorbeelden</a></li>
-                </ul>
-              </div>
-              
-              {/* Juridisch - 1 kolom */}
-              <div>
-                <h3 className="font-semibold mb-4">Juridisch</h3>
-                <ul className="space-y-2 text-sm">
-                  <li><Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors">Privacybeleid</Link></li>
-                  <li><Link href="/algemene-voorwaarden" className="text-muted-foreground hover:text-primary transition-colors">Algemene Voorwaarden</Link></li>
-                  <li><Link href="/over-ons" className="text-muted-foreground hover:text-primary transition-colors">Over Ons</Link></li>
-                  <li><Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
-                </ul>
-              </div>
-              
-              {/* Account - 1 kolom */}
-              <div>
-                <h3 className="font-semibold mb-4">Account</h3>
-                <ul className="space-y-2 text-sm">
-                  <li><Link href="/login" className="text-muted-foreground hover:text-primary transition-colors">Inloggen</Link></li>
-                  <li><Link href="/registreren" className="text-muted-foreground hover:text-primary transition-colors">Registreren</Link></li>
-                  <li><Link href="/dashboard" className="text-muted-foreground hover:text-primary transition-colors">Dashboard</Link></li>
-                </ul>
-              </div>
-              
-              {/* Contact - 1 kolom */}
-              <div>
-                <h3 className="font-semibold mb-4">Contact</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>Email: <span className="bg-yellow-100 px-1 rounded">[INVULLEN: info@...]</span></li>
-                  <li>Telefoon: <span className="bg-yellow-100 px-1 rounded">[INVULLEN: 088-...]</span></li>
-                  <li>Maandag t/m vrijdag</li>
-                  <li>09:00 - 17:00 uur</li>
-                </ul>
-                <div className="mt-4 pt-4 border-t text-xs">
-                  <p>KvK: <span className="bg-yellow-100 px-1 rounded">[INVULLEN]</span></p>
-                  <p>BTW: <span className="bg-yellow-100 px-1 rounded">[INVULLEN]</span></p>
-                </div>
-              </div>
-            </div>
-            <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-              <p className="mb-2">
-                <strong>Populaire zoektermen:</strong> autoschade verhalen • voertuigschade verhalen • gratis autoschade verhalen • 
-                schade verhalen tegenpartij • autoschade claimen • WA schade verhalen
-              </p>
-              <p>&copy; {new Date().getFullYear()} Autoschadebureau.nl. Alle rechten voorbehouden.</p>
-            </div>
-          </div>
-        </footer>
-      </div>
+      
     </>
   )
 }

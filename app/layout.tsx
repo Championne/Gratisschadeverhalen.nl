@@ -4,6 +4,8 @@ import "./globals.css"
 import { Toaster } from "@/components/ui/sonner"
 import { CookieConsent } from "@/components/cookie-consent"
 import { WhatsAppButton } from "@/components/whatsapp-button"
+import { SiteHeader } from "@/components/site-header"
+import { SiteFooter } from "@/components/site-footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -79,7 +81,11 @@ export default function RootLayout({
   return (
     <html lang="nl" suppressHydrationWarning>
       <body className={inter.className}>
-        {children}
+        <SiteHeader />
+        <main className="min-h-screen">
+          {children}
+        </main>
+        <SiteFooter />
         <Toaster richColors position="top-center" />
         <CookieConsent />
         <WhatsAppButton />
