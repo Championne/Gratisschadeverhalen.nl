@@ -126,7 +126,6 @@ export function ClaimForm() {
 
   const handleVoiceInput = (text: string) => {
     setFormData(prev => ({ ...prev, beschrijving: prev.beschrijving + " " + text }))
-    checkForLetselschade(formData.beschrijving + " " + text)
   }
 
   const validateForm = (): boolean => {
