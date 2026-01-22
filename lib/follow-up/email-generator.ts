@@ -81,7 +81,6 @@ Maximaal 300 woorden.
       model: anthropic('claude-sonnet-4-20250514'),
       prompt: prompt,
       temperature: 0.7, // Iets meer creativiteit voor originele tekst
-      maxTokens: 1000,
     })
 
     // Email subject
