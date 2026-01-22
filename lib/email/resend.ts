@@ -11,6 +11,8 @@ interface EmailOptions {
   attachments?: Array<{
     filename: string
     content: Buffer | string
+    encoding?: string
+    contentType?: string
   }>
 }
 
