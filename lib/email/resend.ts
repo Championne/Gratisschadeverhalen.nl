@@ -7,6 +7,7 @@ interface EmailOptions {
   to: string
   subject: string
   html: string
+  text?: string
   cc?: string
   attachments?: Array<{
     filename: string
@@ -16,7 +17,7 @@ interface EmailOptions {
   }>
 }
 
-export async function sendEmail({ to, subject, html, cc, attachments }: EmailOptions) {
+export async function sendEmail({ to, subject, html, text, cc, attachments }: EmailOptions) {
   try {
     // In development, use onboarding@resend.dev if domain not verified
     const isDevelopment = process.env.NODE_ENV === 'development'
@@ -30,6 +31,7 @@ export async function sendEmail({ to, subject, html, cc, attachments }: EmailOpt
       ...(cc && { cc: [cc] }),
       subject,
       html,
+      ...(text && { text }),
       ...(attachments && { attachments }),
     })
 
