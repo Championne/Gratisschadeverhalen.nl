@@ -373,6 +373,199 @@ export function adminNewClaimEmail(data: ClaimData & { beschrijving: string; ema
 }
 
 /**
+ * Email naar verzekeraar tegenpartij: Aansprakelijkstelling
+ */
+export function insuranceLiabilityEmail(data: {
+  claimId: string
+  datum_ongeval: string
+  plaats_ongeval: string
+  naam_claimer: string
+  telefoon_claimer: string
+  email_claimer: string
+  kenteken_claimer?: string
+  naam_tegenpartij: string
+  kenteken_tegenpartij: string
+  verzekeraar_tegenpartij: string
+  polisnummer_tegenpartij?: string
+  beschrijving: string
+  geschatte_schade?: number
+}) {
+  const { 
+    claimId,
+    datum_ongeval, 
+    plaats_ongeval,
+    naam_claimer, 
+    telefoon_claimer, 
+    email_claimer,
+    kenteken_claimer,
+    naam_tegenpartij, 
+    kenteken_tegenpartij, 
+    verzekeraar_tegenpartij,
+    polisnummer_tegenpartij,
+    beschrijving,
+    geschatte_schade
+  } = data
+
+  return {
+    subject: `Aansprakelijkstelling schade d.d. ${new Date(datum_ongeval).toLocaleDateString('nl-NL')} | Kenteken: ${kenteken_tegenpartij}`,
+    html: `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aansprakelijkstelling</title>
+  <style>
+    body { font-family: 'Calibri', Arial, sans-serif; line-height: 1.6; color: #1a1a1a; max-width: 700px; margin: 0 auto; padding: 40px 20px; background: #ffffff; }
+    .header { border-bottom: 3px solid #1e40af; padding-bottom: 20px; margin-bottom: 30px; }
+    .logo { font-size: 20px; font-weight: bold; color: #1e40af; }
+    .reference { background: #f0f4ff; padding: 15px; border-left: 4px solid #1e40af; margin: 20px 0; }
+    .content { font-size: 14px; }
+    .info-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    .info-table td { padding: 8px; border-bottom: 1px solid #e5e7eb; }
+    .info-table td:first-child { font-weight: bold; width: 200px; color: #4b5563; }
+    .section-title { font-size: 16px; font-weight: bold; color: #1e40af; margin-top: 30px; margin-bottom: 15px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px; }
+    .highlight-box { background: #fffbeb; border: 2px solid #f59e0b; padding: 20px; border-radius: 8px; margin: 20px 0; }
+    .footer { margin-top: 40px; padding-top: 20px; border-top: 2px solid #e5e7eb; font-size: 12px; color: #6b7280; }
+    .signature { margin-top: 40px; }
+    .attachment-notice { background: #f0f4ff; padding: 15px; border-radius: 5px; margin: 20px 0; font-size: 13px; }
+    strong { color: #1a1a1a; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">Gratis Schadeverhalen</div>
+    <div style="font-size: 12px; color: #6b7280; margin-top: 5px;">
+      ${process.env.NEXT_PUBLIC_COMPANY_ADDRESS || 'Postbus 12345, 1000 AA Amsterdam'}<br>
+      Email: info@gratisschadeverhalen.nl | Tel: ${process.env.NEXT_PUBLIC_COMPANY_PHONE || '088-000-0000'}
+    </div>
+  </div>
+
+  <div class="reference">
+    <strong>Betreft:</strong> Aansprakelijkstelling materiële schade verkeersongeval<br>
+    <strong>Datum ongeval:</strong> ${new Date(datum_ongeval).toLocaleDateString('nl-NL', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}<br>
+    <strong>Plaats ongeval:</strong> ${plaats_ongeval}<br>
+    <strong>Uw verzekerde:</strong> ${naam_tegenpartij}<br>
+    <strong>Kenteken:</strong> ${kenteken_tegenpartij}<br>
+    ${polisnummer_tegenpartij ? `<strong>Polisnummer:</strong> ${polisnummer_tegenpartij}<br>` : ''}
+    <strong>Referentie:</strong> ${claimId}<br>
+    <strong>Datum:</strong> ${new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}
+  </div>
+
+  <div class="content">
+    <p><strong>Geachte heer/mevrouw,</strong></p>
+
+    <p>Namens onze cliënt, ondergetekende ${naam_claimer}, stellen wij u hierbij aansprakelijk voor de schade die is ontstaan als gevolg van een verkeersongeval op <strong>${new Date(datum_ongeval).toLocaleDateString('nl-NL', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</strong> te <strong>${plaats_ongeval}</strong>.</p>
+
+    <div class="section-title">📋 Gegevens Benadeelde Partij (Onze Cliënt)</div>
+    <table class="info-table">
+      <tr>
+        <td>Naam</td>
+        <td>${naam_claimer}</td>
+      </tr>
+      <tr>
+        <td>Telefoonnummer</td>
+        <td>${telefoon_claimer}</td>
+      </tr>
+      <tr>
+        <td>E-mailadres</td>
+        <td><a href="mailto:${email_claimer}" style="color: #1e40af;">${email_claimer}</a></td>
+      </tr>
+      ${kenteken_claimer ? `
+      <tr>
+        <td>Kenteken voertuig</td>
+        <td><strong>${kenteken_claimer}</strong></td>
+      </tr>
+      ` : ''}
+    </table>
+
+    <div class="section-title">🚗 Gegevens Aansprakelijke Partij (Uw Verzekerde)</div>
+    <table class="info-table">
+      <tr>
+        <td>Naam verzekerde</td>
+        <td>${naam_tegenpartij}</td>
+      </tr>
+      <tr>
+        <td>Kenteken voertuig</td>
+        <td><strong>${kenteken_tegenpartij}</strong></td>
+      </tr>
+      <tr>
+        <td>Verzekeraar</td>
+        <td>${verzekeraar_tegenpartij}</td>
+      </tr>
+      ${polisnummer_tegenpartij ? `
+      <tr>
+        <td>Polisnummer</td>
+        <td>${polisnummer_tegenpartij}</td>
+      </tr>
+      ` : ''}
+    </table>
+
+    <div class="section-title">📝 Toedracht Ongeval</div>
+    <p style="background: #f9fafb; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb; white-space: pre-wrap; line-height: 1.8;">${beschrijving}</p>
+
+    ${geschatte_schade ? `
+    <div class="section-title">💰 Geschatte Schade</div>
+    <div class="highlight-box">
+      <strong style="font-size: 18px;">€ ${geschatte_schade.toLocaleString('nl-NL', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong>
+      <p style="margin: 10px 0 0 0; font-size: 13px; color: #92400e;">
+        Dit betreft een initiële schatting. De definitieve schade wordt vastgesteld na taxatie door een erkend schadebedrijf.
+      </p>
+    </div>
+    ` : ''}
+
+    <div class="section-title">⚖️ Aansprakelijkheid</div>
+    <p>Op grond van artikel 6:162 BW (Burgerlijk Wetboek) is uw verzekerde aansprakelijk voor de ontstane schade. Wij verzoeken u dan ook om binnen <strong>4 weken</strong> na dagtekening van deze brief te reageren met:</p>
+    
+    <ul style="line-height: 2;">
+      <li>Erkenning van aansprakelijkheid, of</li>
+      <li>Een gemotiveerde afwijzing met onderbouwing</li>
+    </ul>
+
+    <div class="attachment-notice">
+      <strong>📎 Bijlage:</strong> Aansprakelijkheidsbrief (PDF)<br>
+      De formele aansprakelijkheidsbrief met alle details en juridische grondslag treft u aan als bijlage bij deze email.
+    </div>
+
+    <div class="section-title">📞 Vervolgstappen</div>
+    <p>Wij verzoeken u vriendelijk om:</p>
+    <ol style="line-height: 2;">
+      <li>Een schadeclaim te registreren onder bovenstaand polisnummer</li>
+      <li>Binnen 4 weken schriftelijk te reageren op deze aansprakelijkstelling</li>
+      <li>Bij erkenning: een schade-expert te laten langskomen voor taxatie</li>
+      <li>Contact op te nemen met onze cliënt voor het maken van afspraken</li>
+    </ol>
+
+    <p><strong>Correspondentie:</strong> Alle correspondentie verloopt via ondergetekende. U kunt reageren op dit e-mailadres of telefonisch contact opnemen.</p>
+
+    <div class="signature">
+      <p>Met vriendelijke groet,</p>
+      <p>
+        <strong>Gratis Schadeverhalen</strong><br>
+        <em>Namens ${naam_claimer}</em>
+      </p>
+      <p style="margin-top: 20px; font-size: 12px; color: #6b7280;">
+        Deze email en bijbehorende aansprakelijkheidsbrief zijn gegenereerd door ons geautomatiseerde systeem.<br>
+        Alle informatie is geverifieerd door de claimer en heeft dezelfde juridische waarde als een handmatig opgestelde brief.
+      </p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><strong>Gratis Schadeverhalen</strong> | 100% No Cure No Pay | KVK: ${process.env.NEXT_PUBLIC_COMPANY_KVK || 'XXXXXXXX'}</p>
+    <p>${process.env.NEXT_PUBLIC_COMPANY_ADDRESS || 'Postbus 12345, 1000 AA Amsterdam'}</p>
+    <p>Email: info@gratisschadeverhalen.nl | Web: www.gratisschadeverhalen.nl</p>
+    <p style="margin-top: 15px; font-size: 10px; color: #9ca3af;">
+      Deze email kan vertrouwelijke informatie bevatten. Indien u niet de geadresseerde bent, verzoeken wij u de afzender direct te informeren en deze email te verwijderen.
+    </p>
+  </div>
+</body>
+</html>
+    `,
+  }
+}
+
+/**
  * Email naar claimer: Status update
  */
 export function claimStatusUpdateEmail(data: ClaimData & { aiNotes?: string }) {
@@ -441,6 +634,185 @@ export function claimStatusUpdateEmail(data: ClaimData & { aiNotes?: string }) {
   
   <div style="text-align: center; color: #666; font-size: 12px; margin-top: 20px;">
     Gratis Schadeverhalen | 100% No Cure No Pay
+  </div>
+</body>
+</html>
+    `,
+  }
+}
+
+/**
+ * Email template: Notify claimer about received verzekeraar email
+ */
+export function emailReceivedNotification(data: {
+  claimerName: string
+  verzekeraarName: string
+  emailType: string
+  summary: string
+  dashboardUrl: string
+}) {
+  const typeLabels: Record<string, string> = {
+    liability_acceptance: '✅ Aansprakelijkheid Erkend',
+    rejection: '❌ Afwijzing',
+    information_request: '📋 Informatieverzoek',
+    settlement_offer: '💰 Schikkingsvoorstel',
+    acknowledgment: '📬 Ontvangstbevestiging',
+    other: '📧 Bericht',
+  }
+
+  const typeLabel = typeLabels[data.emailType] || '📧 Nieuw Bericht'
+
+  return {
+    subject: `${typeLabel} van ${data.verzekeraarName}`,
+    html: `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; border-radius: 10px; }
+    .content { background: #f9f9f9; padding: 30px; margin-top: 20px; border-radius: 10px; }
+    .summary { background: #e3f2fd; padding: 15px; border-left: 4px solid #2196F3; margin: 15px 0; border-radius: 4px; }
+    .button { display: inline-block; background: #667eea; color: white !important; padding: 12px 30px; text-decoration: none; border-radius: 5px; margin: 20px 0; }
+    .footer { text-align: center; color: #666; font-size: 12px; margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📧 Nieuwe Reactie Ontvangen</h1>
+      <p style="margin: 10px 0 0 0; opacity: 0.9;">${data.verzekeraarName}</p>
+    </div>
+
+    <div class="content">
+      <p>Beste ${data.claimerName},</p>
+
+      <p>
+        Goed nieuws! We hebben een reactie ontvangen van <strong>${data.verzekeraarName}</strong> 
+        over jouw claim.
+      </p>
+
+      <h3>${typeLabel}</h3>
+
+      <div class="summary">
+        <strong>Samenvatting:</strong>
+        <p style="margin: 10px 0 0 0;">${data.summary}</p>
+      </div>
+
+      <p>
+        Je kunt de volledige details bekijken in je persoonlijke dashboard. 
+        Wij houden je op de hoogte van alle ontwikkelingen.
+      </p>
+
+      <div style="text-align: center;">
+        <a href="${data.dashboardUrl}" class="button">Bekijk in Dashboard</a>
+      </div>
+
+      <p>
+        Heb je vragen? Neem gerust contact met ons op.
+      </p>
+
+      <p>
+        Met vriendelijke groet,<br>
+        <strong>Team GratisSchadeVerhalen.nl</strong>
+      </p>
+    </div>
+
+    <div class="footer">
+      <p>GratisSchadeVerhalen.nl | info@gratisschadeverhalen.nl</p>
+      <p>Dit is een geautomatiseerde notificatie. De verzekeraar email is automatisch verwerkt door ons systeem.</p>
+    </div>
+  </div>
+</body>
+</html>
+    `,
+  }
+}
+
+/**
+ * Email template: Admin notification for email that needs review
+ */
+export function adminEmailReviewNeeded(data: {
+  emailId: string
+  from: string
+  subject: string
+  emailType: string
+  confidence: number
+  summary: string
+  reason: string
+  dashboardUrl: string
+}) {
+  return {
+    subject: `⚠️ Email Review Vereist - ${data.from}`,
+    html: `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: #ff9800; color: white; padding: 20px; border-radius: 10px; }
+    .content { background: #f9f9f9; padding: 20px; margin-top: 20px; border-radius: 10px; }
+    .info-box { background: white; padding: 15px; margin: 15px 0; border-left: 4px solid #ff9800; }
+    .button { display: inline-block; background: #ff9800; color: white !important; padding: 12px 30px; text-decoration: none; border-radius: 5px; margin: 20px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+    th { text-align: left; padding: 8px; background: #f4f4f4; }
+    td { padding: 8px; border-bottom: 1px solid #ddd; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>⚠️ Email Vereist Handmatige Review</h1>
+      <p style="margin: 10px 0 0 0; opacity: 0.9;">Automatische verwerking onzeker</p>
+    </div>
+
+    <div class="content">
+      <h3>Email Details</h3>
+      <table>
+        <tr>
+          <th>Van</th>
+          <td>${data.from}</td>
+        </tr>
+        <tr>
+          <th>Onderwerp</th>
+          <td>${data.subject}</td>
+        </tr>
+        <tr>
+          <th>Type</th>
+          <td>${data.emailType}</td>
+        </tr>
+        <tr>
+          <th>Match Confidence</th>
+          <td>${data.confidence}%</td>
+        </tr>
+        <tr>
+          <th>Review Reden</th>
+          <td><strong>${data.reason}</strong></td>
+        </tr>
+      </table>
+
+      <div class="info-box">
+        <strong>AI Samenvatting:</strong>
+        <p style="margin: 10px 0 0 0;">${data.summary}</p>
+      </div>
+
+      <p>
+        Deze email kon niet met voldoende zekerheid automatisch verwerkt worden. 
+        Controleer de email en match deze handmatig aan een claim indien nodig.
+      </p>
+
+      <div style="text-align: center;">
+        <a href="${dashboardUrl}" class="button">Review in Dashboard</a>
+      </div>
+
+      <p style="margin-top: 30px; color: #666; font-size: 12px;">
+        Email ID: ${data.emailId}
+      </p>
+    </div>
   </div>
 </body>
 </html>

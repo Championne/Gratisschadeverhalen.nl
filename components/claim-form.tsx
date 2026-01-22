@@ -106,7 +106,6 @@ export function ClaimForm() {
     if (data.raw_text && data.raw_text.trim()) {
       const prefix = "OCR geëxtraheerde tekst:\n"
       updates.beschrijving = prefix + data.raw_text.substring(0, 500)
-      checkForLetselschade(data.raw_text)
     }
     
     console.log('Updates die toegepast worden:', updates)

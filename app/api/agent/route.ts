@@ -5,6 +5,9 @@ import { generateText } from 'ai'
 import { sendEmail } from '@/lib/email/resend'
 import { claimReceivedEmail, letselschadeDetectedEmail, adminNewClaimEmail, adminEscalationEmail } from '@/lib/email/templates'
 import { logAuditAction, escalateClaim, shouldEscalateOnConfidence } from '@/lib/audit/logger'
+import { getVerzekeEvent } from '@/lib/verzekeraar/lookup'
+import { insuranceLiabilityEmail } from '@/lib/email/templates'
+import { generateAansprakelijkheidsbrief } from '@/lib/pdf/letter-generator'
 
 export async function POST(request: NextRequest) {
   try {
@@ -309,6 +312,193 @@ FORMAT ANTWOORD PRECIES ALS:
           },
           severity: 'info',
         })
+      }
+
+      // =============================================
+      // AUTOMATISCH VERSTUREN NAAR VERZEKERAAR
+      // =============================================
+      
+      // 🚨 FEATURE FLAG: Zet op 'true' om auto-send te activeren
+      const AUTO_SEND_TO_VERZEKERAAR = process.env.ENABLE_AUTO_SEND_TO_VERZEKERAAR === 'true'
+      
+      // Alleen versturen als:
+      // - Feature flag enabled
+      // - NIET escalated (alles OK)
+      // - GEEN letselschade (alleen materiële schade)
+      if (AUTO_SEND_TO_VERZEKERAAR && !shouldEscalate && !heeftLetsel && claim.verzekeraar_tegenpartij) {
+        console.log('🔍 Opzoeken verzekeraar email:', claim.verzekeraar_tegenpartij)
+        
+        // Zoek verzekeraar email op in database
+        const verzekeraar = await getVerzekeEvent(claim.verzekeraar_tegenpartij)
+        
+        if (verzekeraar?.email_schade) {
+          // ✅ Email gevonden - Verstuur aansprakelijkheidsbrief
+          console.log(`✅ Verzekeraar email gevonden: ${verzekeraar.email_schade}`)
+          
+          try {
+            // Genereer PDF aansprakelijkheidsbrief
+            console.log('📄 Genereren PDF aansprakelijkheidsbrief...')
+            const pdfBytes = await generateAansprakelijkheidsbrief({
+              claimId: claim.id,
+              datum_ongeval: claim.datum_ongeval,
+              plaats_ongeval: claim.plaats_ongeval || 'Niet opgegeven',
+              naam_claimer: claim.naam,
+              telefoon_claimer: claim.telefoon,
+              email_claimer: claim.email,
+              kenteken_claimer: claim.kenteken_claimer,
+              naam_tegenpartij: claim.naam_tegenpartij || 'Onbekend',
+              kenteken_tegenpartij: claim.kenteken_tegenpartij,
+              verzekeraar_tegenpartij: claim.verzekeraar_tegenpartij,
+              polisnummer_tegenpartij: claim.polisnummer_tegenpartij,
+              beschrijving: claim.beschrijving,
+              geschatte_schade: claim.geschatte_schade,
+              ai_analyse: text.substring(0, 1000), // First 1000 chars van AI analyse
+            })
+            
+            const pdfBase64 = Buffer.from(pdfBytes).toString('base64')
+            console.log(`✅ PDF gegenereerd (${Math.round(pdfBytes.length / 1024)} KB)`)
+
+            // Bereid email voor verzekeraar
+            const verzekeraEvent = insuranceLiabilityEmail({
+              claimId: claim.id,
+              datum_ongeval: claim.datum_ongeval,
+              plaats_ongeval: claim.plaats_ongeval || 'Niet opgegeven',
+              naam_claimer: claim.naam,
+              telefoon_claimer: claim.telefoon,
+              email_claimer: claim.email,
+              kenteken_claimer: claim.kenteken_claimer,
+              naam_tegenpartij: claim.naam_tegenpartij || 'Onbekend',
+              kenteken_tegenpartij: claim.kenteken_tegenpartij,
+              verzekeraar_tegenpartij: claim.verzekeraar_tegenpartij,
+              polisnummer_tegenpartij: claim.polisnummer_tegenpartij,
+              beschrijving: claim.beschrijving,
+              geschatte_schade: claim.geschatte_schade,
+            })
+
+            // Verstuur email naar verzekeraar met PDF bijlage
+            console.log(`📧 Versturen aansprakelijkheidsbrief naar verzekeraar: ${verzekeraar.email_schade}`)
+            await sendEmail({
+              to: verzekeraar.email_schade,
+              cc: claim.email, // CC naar claimer zodat zij op de hoogte zijn
+              subject: verzekeraEvent.subject,
+              html: verzekeraEvent.html,
+              attachments: [{
+                filename: `Aansprakelijkheidsbrief_${claim.kenteken_tegenpartij}_${new Date(claim.datum_ongeval).toISOString().split('T')[0]}.pdf`,
+                content: pdfBase64,
+                encoding: 'base64',
+                contentType: 'application/pdf',
+              }],
+            })
+            
+            console.log('✅ Aansprakelijkheidsbrief verzonden naar verzekeraar!')
+
+            // Update claim status
+            await supabase
+              .from('claims')
+              .update({ status: 'aansprakelijkheidsbrief_verzonden' })
+              .eq('id', claim.id)
+
+            // Log verzending
+            await logAuditAction({
+              claimId: claim.id,
+              actionType: 'email_sent',
+              performedBy: 'SYSTEM',
+              details: {
+                email_type: 'aansprakelijkheidsbrief_verzekeraar',
+                recipient: verzekeraar.email_schade,
+                verzekeraar: verzekeraar.naam,
+                cc: claim.email,
+                pdf_size_kb: Math.round(pdfBytes.length / 1024),
+                automated: true,
+              },
+              severity: 'info',
+            })
+
+            console.log('🎉 Volledige flow compleet: Email + PDF naar verzekeraar verzonden!')
+            
+          } catch (pdfError) {
+            console.error('❌ PDF generatie of verzending naar verzekeraar failed:', pdfError)
+            
+            // Escaleer als PDF/email faalt
+            await escalateClaim({
+              claimId: claim.id,
+              reden: `Fout bij versturen naar verzekeraar: ${pdfError instanceof Error ? pdfError.message : 'Onbekende fout'}`,
+              performedBy: 'SYSTEM',
+            })
+
+            // Email admin over fout
+            const adminEmail = process.env.RESEND_ADMIN_EMAIL
+            if (adminEmail) {
+              await sendEmail({
+                to: adminEmail,
+                subject: `🚨 FOUT: Automatische verzending naar verzekeraar mislukt`,
+                html: `
+                  <h2>Automatische verzending mislukt</h2>
+                  <p><strong>Claim ID:</strong> ${claim.id}</p>
+                  <p><strong>Verzekeraar:</strong> ${claim.verzekeraar_tegenpartij}</p>
+                  <p><strong>Email:</strong> ${verzekeraar.email_schade}</p>
+                  <p><strong>Fout:</strong> ${pdfError instanceof Error ? pdfError.message : 'Onbekende fout'}</p>
+                  <p>De claim is geëscaleerd voor handmatige afhandeling.</p>
+                `,
+              })
+            }
+          }
+          
+        } else {
+          // ❌ Email NIET gevonden - Escaleer naar admin
+          console.log(`⚠️  Verzekeraar email niet gevonden voor: "${claim.verzekeraar_tegenpartij}"`)
+          console.log('🚨 Escaleren naar admin: Verzekeraar email onbekend')
+          
+          await escalateClaim({
+            claimId: claim.id,
+            reden: `Verzekeraar email niet gevonden in database: "${claim.verzekeraar_tegenpartij}"`,
+            performedBy: 'SYSTEM',
+          })
+
+          // Email admin over ontbrekende verzekeraar
+          const adminEmail = process.env.RESEND_ADMIN_EMAIL
+          if (adminEmail) {
+            await sendEmail({
+              to: adminEmail,
+              subject: `🚨 ESCALATIE: Verzekeraar email onbekend - ${claim.verzekeraar_tegenpartij}`,
+              html: `
+                <h2>Verzekeraar Email Niet Gevonden</h2>
+                <p><strong>Claim ID:</strong> ${claim.id}</p>
+                <p><strong>Claimer:</strong> ${claim.naam} (${claim.email})</p>
+                <p><strong>Verzekeraar (ingevoerd):</strong> "${claim.verzekeraar_tegenpartij}"</p>
+                <p><strong>Actie vereist:</strong></p>
+                <ul>
+                  <li>Zoek het correcte email adres van de verzekeraar</li>
+                  <li>Voeg toe aan database (tabel: verzekeraars)</li>
+                  <li>Verstuur aansprakelijkheidsbrief handmatig via dashboard</li>
+                </ul>
+                <p><a href="${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/dashboard/claim/${claim.id}">Bekijk Claim in Dashboard →</a></p>
+              `,
+            })
+          }
+
+          // Log escalatie
+          await logAuditAction({
+            claimId: claim.id,
+            actionType: 'escalatie',
+            performedBy: 'SYSTEM',
+            details: {
+              reden: 'Verzekeraar email niet gevonden',
+              verzekeraar_naam: claim.verzekeraar_tegenpartij,
+              automated_check: true,
+            },
+            severity: 'critical',
+          })
+        }
+      } else if (!AUTO_SEND_TO_VERZEKERAAR) {
+        console.log('⏭️ Skip verzending naar verzekeraar (feature flag disabled)')
+        console.log('💡 Tip: Zet ENABLE_AUTO_SEND_TO_VERZEKERAAR=true om auto-send te activeren')
+      } else if (!shouldEscalate && heeftLetsel) {
+        console.log('⏭️ Skip verzending naar verzekeraar (mogelijk letselschade)')
+      } else if (shouldEscalate) {
+        console.log('⏭️ Skip verzending naar verzekeraar (claim is geëscaleerd)')
+      } else if (!claim.verzekeraar_tegenpartij) {
+        console.log('⚠️  Verzekeraar naam ontbreekt - kan niet versturen')
       }
 
     } catch (emailError) {
