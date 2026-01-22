@@ -280,7 +280,7 @@ async function processEmailAsync(emailId: string, emailData: any) {
         // Log audit
         await logAuditAction({
           claimId: claimId,
-          actionType: 'status_changed',
+          actionType: 'status_change',
           details: {
             oude_status: 'in_behandeling', // TODO: get actual old status
             nieuwe_status: newStatus,
