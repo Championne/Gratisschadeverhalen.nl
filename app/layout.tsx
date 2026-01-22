@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: {
     default: "Autoschade Verhalen | Gratis Voertuigschade Claimen - 100% No Cure No Pay",
-    template: "%s | Gratisschadeverhalen.nl"
+    template: "%s | Autoschadebureau.nl"
   },
   description: "Upload uw Europees Schadeformulier en verhaal uw autoschade gratis op de tegenpartij. Automatische OCR-verwerking, 100% no cure no pay. Wij regelen uw voertuigschade van A tot Z. Gemiddeld binnen 6 weken uitbetaald.",
   keywords: [
@@ -27,14 +27,14 @@ export const metadata: Metadata = {
     "aansprakelijkheidsbrief",
     "schade verhaal indienen"
   ],
-  authors: [{ name: "Gratisschadeverhalen.nl" }],
-  creator: "Gratisschadeverhalen.nl",
-  publisher: "Gratisschadeverhalen.nl",
+  authors: [{ name: "Autoschadebureau.nl" }],
+  creator: "Autoschadebureau.nl",
+  publisher: "Autoschadebureau.nl",
   openGraph: {
     type: "website",
     locale: "nl_NL",
-    url: "https://gratisschadeverhalen.nl",
-    siteName: "Gratisschadeverhalen.nl - Autoschade Verhalen Zonder Eigen Risico",
+    url: "https://autoschadebureau.nl",
+    siteName: "Autoschadebureau.nl - Autoschade Verhalen Zonder Eigen Risico",
     title: "Autoschade Verhalen | Zonder Eigen Risico, Zonder Premieverhoging",
     description: "Verhaal uw autoschade direct bij de tegenpartij - zonder eigen risico, zonder premieverhoging. Ook met eigen verzekering voordelig! Upload schadeformulier en wij regelen alles gratis.",
     images: [
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Gratisschadeverhalen.nl - Gratis autoschade en voertuigschade verhalen",
+        alt: "Autoschadebureau.nl - Gratis autoschade en voertuigschade verhalen",
       },
     ],
   },
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     google: "verification_token",
   },
   alternates: {
-    canonical: "https://gratisschadeverhalen.nl"
+    canonical: "https://autoschadebureau.nl"
   }
 }
 

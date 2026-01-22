@@ -113,7 +113,7 @@ Maximaal 300 woorden.
     <div class="logo">Gratis Schadeverhalen</div>
     <div style="font-size: 12px; color: #6b7280; margin-top: 5px;">
       Postbus 12345, 1000 AA Amsterdam<br>
-      Email: info@gratisschadeverhalen.nl | Tel: 088-000-0000
+      Email: info@autoschadebureau.nl | Tel: 088-000-0000
     </div>
   </div>
 
@@ -134,7 +134,7 @@ Maximaal 300 woorden.
   <div class="cta-box">
     <strong>📞 Contact Opnemen?</strong><br>
     U kunt ons bereiken op:<br>
-    • Email: info@gratisschadeverhalen.nl<br>
+    • Email: info@autoschadebureau.nl<br>
     • Telefoon: 088-000-0000<br>
     • Of rechtstreeks onze cliënt: ${naam_claimer} (${telefoon_claimer})
   </div>
@@ -186,7 +186,7 @@ ${telefoon_claimer}
 
 ---
 Gratis Schadeverhalen
-info@gratisschadeverhalen.nl
+info@autoschadebureau.nl
 088-000-0000
     `.trim()
 

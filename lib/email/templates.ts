@@ -71,7 +71,7 @@ export function claimReceivedEmail(data: ClaimData) {
     </a>
     
     <h2>📞 Vragen?</h2>
-    <p>Neem gerust contact met ons op via info@gratisschadeverhalen.nl</p>
+    <p>Neem gerust contact met ons op via info@autoschadebureau.nl</p>
   </div>
   
   <div class="footer">
@@ -437,7 +437,7 @@ export function insuranceLiabilityEmail(data: {
     <div class="logo">Gratis Schadeverhalen</div>
     <div style="font-size: 12px; color: #6b7280; margin-top: 5px;">
       ${process.env.NEXT_PUBLIC_COMPANY_ADDRESS || 'Postbus 12345, 1000 AA Amsterdam'}<br>
-      Email: info@gratisschadeverhalen.nl | Tel: ${process.env.NEXT_PUBLIC_COMPANY_PHONE || '088-000-0000'}
+      Email: info@autoschadebureau.nl | Tel: ${process.env.NEXT_PUBLIC_COMPANY_PHONE || '088-000-0000'}
     </div>
   </div>
 
@@ -554,7 +554,7 @@ export function insuranceLiabilityEmail(data: {
   <div class="footer">
     <p><strong>Gratis Schadeverhalen</strong> | 100% No Cure No Pay | KVK: ${process.env.NEXT_PUBLIC_COMPANY_KVK || 'XXXXXXXX'}</p>
     <p>${process.env.NEXT_PUBLIC_COMPANY_ADDRESS || 'Postbus 12345, 1000 AA Amsterdam'}</p>
-    <p>Email: info@gratisschadeverhalen.nl | Web: www.gratisschadeverhalen.nl</p>
+    <p>Email: info@autoschadebureau.nl | Web: www.autoschadebureau.nl</p>
     <p style="margin-top: 15px; font-size: 10px; color: #9ca3af;">
       Deze email kan vertrouwelijke informatie bevatten. Indien u niet de geadresseerde bent, verzoeken wij u de afzender direct te informeren en deze email te verwijderen.
     </p>
@@ -721,7 +721,7 @@ export function emailReceivedNotification(data: {
     </div>
 
     <div class="footer">
-      <p>GratisSchadeVerhalen.nl | info@gratisschadeverhalen.nl</p>
+      <p>GratisSchadeVerhalen.nl | info@autoschadebureau.nl</p>
       <p>Dit is een geautomatiseerde notificatie. De verzekeraar email is automatisch verwerkt door ons systeem.</p>
     </div>
   </div>

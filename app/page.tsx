@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Autoschade Verhalen | Zonder Eigen Risico, Zonder Premieverhoging - Gratis",
     description: "Verhaal uw autoschade direct bij de tegenpartij - zonder eigen risico, zonder premieverhoging. Ook met eigen verzekering voordelig! Upload schadeformulier en wij regelen alles gratis.",
-    url: "https://gratisschadeverhalen.nl",
+    url: "https://autoschadebureau.nl",
     type: "website",
     locale: "nl_NL",
   },
@@ -36,10 +36,10 @@ const jsonLd = {
     // Organization
     {
       "@type": "Organization",
-      "@id": "https://gratisschadeverhalen.nl/#organization",
+      "@id": "https://autoschadebureau.nl/#organization",
       "name": "Gratisschadeverhalen.nl",
-      "url": "https://gratisschadeverhalen.nl",
-      "logo": "https://gratisschadeverhalen.nl/logo.png",
+      "url": "https://autoschadebureau.nl",
+      "logo": "https://autoschadebureau.nl/logo.png",
       "description": "Gratis autoschade en voertuigschade verhalen op de tegenpartij - 100% no cure no pay",
       "address": {
         "@type": "PostalAddress",
@@ -48,19 +48,19 @@ const jsonLd = {
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer service",
-        "email": "info@gratisschadeverhalen.nl",
+        "email": "info@autoschadebureau.nl",
         "availableLanguage": "Dutch"
       }
     },
     // Service
     {
       "@type": "Service",
-      "@id": "https://gratisschadeverhalen.nl/#service",
+      "@id": "https://autoschadebureau.nl/#service",
       "serviceType": "Autoschade Verhalen",
       "name": "Gratis Autoschade en Voertuigschade Verhalen",
       "description": "Professionele afhandeling van autoschade en voertuigschade claims tegen de tegenpartij. Upload uw Europees Schadeformulier en wij regelen alles gratis.",
       "provider": {
-        "@id": "https://gratisschadeverhalen.nl/#organization"
+        "@id": "https://autoschadebureau.nl/#organization"
       },
       "areaServed": "NL",
       "priceRange": "Gratis - 100% No Cure No Pay"
@@ -76,28 +76,28 @@ const jsonLd = {
           "position": 1,
           "name": "Upload uw Europees Schadeformulier",
           "text": "Upload een foto of scan van uw ingevulde Europees Schadeformulier. Ons OCR-systeem leest automatisch de gegevens in en vult het formulier voor u in. U hoeft alleen te controleren of alles klopt.",
-          "image": "https://gratisschadeverhalen.nl/step1.jpg"
+          "image": "https://autoschadebureau.nl/step1.jpg"
         },
         {
           "@type": "HowToStep",
           "position": 2,
           "name": "Controleer en voltooi uw gegevens",
           "text": "Check de automatisch ingevulde velden, voeg foto's van de schade toe, en vul eventuele ontbrekende informatie aan.",
-          "image": "https://gratisschadeverhalen.nl/step2.jpg"
+          "image": "https://autoschadebureau.nl/step2.jpg"
         },
         {
           "@type": "HowToStep",
           "position": 3,
           "name": "Wij nemen het over",
           "text": "Binnen 24 uur beoordelen wij uw autoschade claim, stellen een professionele aansprakelijkheidsbrief op, en sturen deze naar de WA-verzekeraar van de tegenpartij.",
-          "image": "https://gratisschadeverhalen.nl/step3.jpg"
+          "image": "https://autoschadebureau.nl/step3.jpg"
         },
         {
           "@type": "HowToStep",
           "position": 4,
           "name": "Ontvang uw schadevergoeding",
           "text": "Wij onderhandelen voor u met de verzekeraar tot volledige vergoeding. Gemiddeld binnen 6 weken ontvangt u de uitbetaling. Volledig gratis - u betaalt alleen bij succes.",
-          "image": "https://gratisschadeverhalen.nl/step4.jpg"
+          "image": "https://autoschadebureau.nl/step4.jpg"
         }
       ],
       "totalTime": "PT6W"
@@ -105,7 +105,7 @@ const jsonLd = {
     // FAQ Schema
     {
       "@type": "FAQPage",
-      "@id": "https://gratisschadeverhalen.nl/#faq",
+      "@id": "https://autoschadebureau.nl/#faq",
       "mainEntity": [
         {
           "@type": "Question",

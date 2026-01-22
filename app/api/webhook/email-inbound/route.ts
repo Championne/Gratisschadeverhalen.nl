@@ -327,7 +327,7 @@ async function processEmailAsync(emailId: string, emailData: any) {
 
     // Notify admin if requires review
     if (matchResult.requires_manual_review || analysis.requires_admin_action) {
-      const adminEmail = process.env.ADMIN_EMAIL || 'admin@gratisschadeverhalen.nl'
+      const adminEmail = process.env.ADMIN_EMAIL || 'admin@autoschadebureau.nl'
       
       const adminNotification = adminEmailReviewNeeded({
         emailId: emailId,
@@ -387,7 +387,7 @@ async function processEmailAsync(emailId: string, emailData: any) {
       .eq('id', emailId)
 
     // Notify admin about processing error
-    const adminEmail = process.env.ADMIN_EMAIL || 'admin@gratisschadeverhalen.nl'
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@autoschadebureau.nl'
     await sendEmail({
       to: adminEmail,
       subject: `⚠️ Email Processing Error - ${emailId}`,

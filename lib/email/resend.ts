@@ -23,7 +23,7 @@ export async function sendEmail({ to, subject, html, text, cc, attachments }: Em
     const isDevelopment = process.env.NODE_ENV === 'development'
     const fromEmail = isDevelopment 
       ? 'Gratis Schadeverhalen <onboarding@resend.dev>'
-      : 'Gratis Schadeverhalen <noreply@gratisschadeverhalen.nl>'
+      : 'Autoschadebureau <noreply@autoschadebureau.nl>'
 
     const { data, error } = await resend.emails.send({
       from: fromEmail,

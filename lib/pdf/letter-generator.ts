@@ -250,7 +250,7 @@ export async function generateAansprakelijkheidsbrief(data: LetterData): Promise
     color: grayColor,
   })
   
-  page.drawText('www.gratisschadeverhalen.nl | info@gratisschadeverhalen.nl', {
+  page.drawText('www.autoschadebureau.nl | info@autoschadebureau.nl', {
     x: 50, y: 35, size: 8, font: regularFont, color: grayColor,
   })
 
