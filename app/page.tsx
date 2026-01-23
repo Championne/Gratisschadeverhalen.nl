@@ -336,6 +336,34 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* De Verhaalservice Intro - Geïnspireerd door 112schade */}
+        <section className="py-12 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                De verhaalservice voor uw voertuig- en letselschade
+              </h2>
+              <div className="text-lg text-muted-foreground space-y-4">
+                <p className="leading-relaxed">
+                  <strong>Autoschadebureau.nl</strong> is een laagdrempelige juridische dienstverlener. 
+                  Wij verhalen de <strong>voertuigschade</strong> en <strong className="text-purple-600">letselschade</strong> op de tegenpartij.
+                </p>
+                <p className="leading-relaxed">
+                  Van advies en aansprakelijk stellen tot en met een juridische procedure.
+                </p>
+                <div className="pt-4 pb-2">
+                  <div className="inline-block bg-purple-50 border border-purple-200 rounded-lg px-6 py-3">
+                    <p className="text-sm text-purple-900">
+                      <strong>Letselschade?</strong> Wij detecteren automatisch letsel en verwijzen u door naar onze 
+                      gespecialiseerde partner <strong>Unitas Letselschade</strong> voor optimale begeleiding.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* HOE WERKT HET - 4 Stappen Proces */}
         <section className="py-16 md:py-20 bg-gradient-to-b from-blue-50 to-white">
           <div className="container mx-auto px-4">
