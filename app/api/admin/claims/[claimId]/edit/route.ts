@@ -4,7 +4,7 @@ import { logAuditAction } from "@/lib/audit/logger"
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { claimId: string } }
+  { params }: { params: Promise<{ claimId: string }> }
 ) {
   try {
     const supabase = await createClient()
@@ -15,7 +15,7 @@ export async function PATCH(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    const claimId = params.claimId
+    const { claimId } = await params
     const body = await request.json()
     const { changes, ...formData } = body
 
