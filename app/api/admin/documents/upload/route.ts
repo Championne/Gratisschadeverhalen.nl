@@ -83,20 +83,26 @@ export async function POST(request: NextRequest) {
     }
 
     // Log audit action
-    await logAuditAction({
-      claimId,
-      actionType: 'document_uploaded',
-      performedBy: `ADMIN:${user.email}`,
-      details: {
-        document_id: document.id,
-        file_name: file.name,
-        file_type: file.type,
-        file_size: file.size,
-        document_type: documentType,
-        description: description || null,
-      },
-      severity: 'info',
-    })
+    console.log(`[Document Upload] About to log audit action for claim: ${claimId}`)
+    try {
+      await logAuditAction({
+        claimId,
+        actionType: 'document_uploaded',
+        performedBy: `ADMIN:${user.email}`,
+        details: {
+          document_id: document.id,
+          file_name: file.name,
+          file_type: file.type,
+          file_size: file.size,
+          document_type: documentType,
+          description: description || null,
+        },
+        severity: 'info',
+      })
+      console.log(`[Document Upload] Audit log created successfully`)
+    } catch (auditError) {
+      console.error('[Document Upload] Failed to create audit log:', auditError)
+    }
 
     console.log(`[Document Upload] Document saved: ${document.id}`)
 

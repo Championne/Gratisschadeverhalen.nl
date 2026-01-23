@@ -66,19 +66,25 @@ export async function DELETE(
     }
 
     // Log audit action
-    await logAuditAction({
-      claimId: document.claim_id,
-      actionType: 'document_deleted',
-      performedBy: `ADMIN:${user.email}`,
-      details: {
-        document_id: document.id,
-        file_name: document.file_name,
-        file_type: document.file_type,
-        document_type: document.document_type,
-        deleted_by: user.email,
-      },
-      severity: 'warning',
-    })
+    console.log(`[Document Delete] About to log audit action for claim: ${document.claim_id}`)
+    try {
+      await logAuditAction({
+        claimId: document.claim_id,
+        actionType: 'document_deleted',
+        performedBy: `ADMIN:${user.email}`,
+        details: {
+          document_id: document.id,
+          file_name: document.file_name,
+          file_type: document.file_type,
+          document_type: document.document_type,
+          deleted_by: user.email,
+        },
+        severity: 'warning',
+      })
+      console.log(`[Document Delete] Audit log created successfully`)
+    } catch (auditError) {
+      console.error('[Document Delete] Failed to create audit log:', auditError)
+    }
 
     console.log(`[Document Delete] Document soft-deleted: ${documentId}`)
 
