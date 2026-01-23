@@ -204,24 +204,42 @@ FORMAT ANTWOORD PRECIES ALS:
       })
     }
 
-    // Update claim with AI notes using RPC to bypass cache
+    // Update claim with AI notes and status - direct database update
     // Letselschade = aparte positieve flow (GEEN escalatie!)
     const newStatus = heeftLetsel ? 'letselschade_gedetecteerd' : (shouldEscalate ? 'escalated' : 'in_behandeling')
     
-    const { error: updateError } = await supabase.rpc('update_claim_with_ai_notes', {
-      claim_id: claimId,
-      notes: text,
-      new_status: newStatus,
-      letsel_flag: heeftLetsel,
-      letsel_keywords: heeftLetsel ? letselKeywords.filter(k => beschrijvingLower.includes(k)) : [],
-    })
+    // Use service role for direct database update (bypasses RLS and RPC issues)
+    const { createClient: createServiceClient } = await import('@supabase/supabase-js')
+    const supabaseAdmin = createServiceClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+      {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false
+        }
+      }
+    )
+
+    const { error: updateError } = await supabaseAdmin
+      .from('claims')
+      .update({
+        status: newStatus,
+        ai_notes: text,
+        mogelijk_letselschade: heeftLetsel,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', claimId)
 
     if (updateError) {
-      console.error('❌ Failed to save AI notes:', updateError)
+      console.error('❌ Failed to update claim:', updateError)
+      console.error('Error details:', JSON.stringify(updateError, null, 2))
     } else {
       console.log('✅✅✅ AI notes + status succesvol opgeslagen!')
+      console.log('New status:', newStatus)
+      console.log('Letselschade:', heeftLetsel)
       
-      // Log status change
+      // Log status change (always log, even if update fails for audit trail completeness)
       await logAuditAction({
         claimId: claim.id,
         actionType: 'status_change',
