@@ -92,14 +92,32 @@ export async function GET(request: Request) {
       || (process.env.NODE_ENV === 'production' ? 'https://www.autoschadebureau.nl' : null)
       || 'http://localhost:3000'
     
-    console.log('🤖 Triggering AI agent...')
+    console.log('🤖 Triggering AI agent for claim:', claim.id)
+    console.log('🤖 Base URL:', baseUrl)
+    console.log('🤖 Full URL:', `${baseUrl}/api/agent`)
     
-    // Fire and forget - don't wait
-    fetch(`${baseUrl}/api/agent`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ claimId: claim.id }),
-    }).catch(err => console.error('Agent trigger failed:', err))
+    // Trigger agent (don't wait for completion, but verify it started)
+    try {
+      const agentResponse = await fetch(`${baseUrl}/api/agent`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ claimId: claim.id }),
+        signal: AbortSignal.timeout(2000), // Max 2 sec wait for connection
+      })
+      
+      if (agentResponse.ok) {
+        console.log('✅ AI agent triggered successfully')
+      } else {
+        console.error('❌ AI agent trigger failed:', agentResponse.status, await agentResponse.text())
+      }
+    } catch (err: any) {
+      // Agent will run in background even if we timeout
+      if (err.name === 'TimeoutError') {
+        console.log('⏱️ AI agent trigger timeout (agent runs in background)')
+      } else {
+        console.error('❌ AI agent trigger error:', err.message)
+      }
+    }
 
     return NextResponse.json({
       success: true,
