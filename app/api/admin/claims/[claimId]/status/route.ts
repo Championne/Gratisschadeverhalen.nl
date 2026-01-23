@@ -1,0 +1,92 @@
+import { NextResponse } from "next/server"
+import { createClient } from "@/lib/supabase/server"
+
+export async function PATCH(
+  request: Request,
+  { params }: { params: Promise<{ claimId: string }> }
+) {
+  try {
+    const { claimId } = await params
+    const { status, note } = await request.json()
+
+    const supabase = await createClient()
+
+    // Check authentication
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) {
+      return NextResponse.json(
+        { error: "Unauthorized" },
+        { status: 401 }
+      )
+    }
+
+    // TODO: Add admin role check when implemented
+
+    // First fetch current claim to get old status
+    const { data: existingClaim } = await supabase
+      .from("claims")
+      .select("status")
+      .eq("id", claimId)
+      .single()
+
+    const oldStatus = existingClaim?.status || 'unknown'
+
+    // Update claim status
+    const { data: claim, error: updateError } = await supabase
+      .from("claims")
+      .update({ 
+        status,
+        updated_at: new Date().toISOString()
+      })
+      .eq("id", claimId)
+      .select()
+      .single()
+
+    if (updateError) {
+      console.error("Error updating claim status:", updateError)
+      return NextResponse.json(
+        { error: "Failed to update claim status" },
+        { status: 500 }
+      )
+    }
+
+    // Log the status change in audit_logs
+    await supabase
+      .from("audit_logs")
+      .insert({
+        user_id: user.id,
+        claim_id: claimId,
+        action_type: 'status_change',
+        details: note 
+          ? `Status gewijzigd van ${oldStatus} naar ${status}: ${note}`
+          : `Status gewijzigd van ${oldStatus} naar ${status}`,
+        ip_address: request.headers.get('x-forwarded-for') || 'unknown'
+      })
+
+    // If there's a note, also add it as a separate comment
+    if (note) {
+      await supabase
+        .from("audit_logs")
+        .insert({
+          user_id: user.id,
+          claim_id: claimId,
+          action_type: 'comment_added',
+          details: note,
+          ip_address: request.headers.get('x-forwarded-for') || 'unknown'
+        })
+    }
+
+    return NextResponse.json({ 
+      success: true,
+      claim 
+    })
+
+  } catch (error) {
+    console.error("Error in status update API:", error)
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 }
+    )
+  }
+}

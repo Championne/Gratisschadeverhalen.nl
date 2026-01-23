@@ -35,7 +35,7 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link href="/dashboard" className="flex items-center gap-2">
           <Shield className="h-8 w-8 text-primary" />
-          <span className="text-xl font-bold">Gratisschadeverhalen.nl</span>
+          <span className="text-xl font-bold">Autoschadebureau.nl</span>
         </Link>
 
         <div className="flex items-center gap-4">
@@ -70,6 +70,12 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
                 <Link href="/dashboard">
                   <Shield className="mr-2 h-4 w-4" />
                   Mijn Claims
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/dashboard/admin">
+                  <Shield className="mr-2 h-4 w-4" />
+                  Admin Dashboard
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />

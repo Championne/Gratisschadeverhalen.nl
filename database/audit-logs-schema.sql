@@ -24,7 +24,8 @@ CREATE TABLE IF NOT EXISTS public.audit_logs (
         'file_upload',
         'file_delete',
         'login',
-        'view_claim'
+        'view_claim',
+        'comment_added'
     )),
     
     -- Actor tracking (wie heeft actie uitgevoerd)

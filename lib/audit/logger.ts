@@ -30,6 +30,7 @@ export type AuditActionType =
   | 'file_delete'
   | 'login'
   | 'view_claim'
+  | 'comment_added'
 
 export type AuditSeverity = 'info' | 'warning' | 'critical'
 
