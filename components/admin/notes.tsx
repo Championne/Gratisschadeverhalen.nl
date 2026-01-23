@@ -28,9 +28,10 @@ interface Note {
 
 interface AdminNotesProps {
   claimId: string
+  onNoteAdded?: () => void
 }
 
-export function AdminNotes({ claimId }: AdminNotesProps) {
+export function AdminNotes({ claimId, onNoteAdded }: AdminNotesProps) {
   const router = useRouter()
   const [notes, setNotes] = useState<Note[]>([])
   const [newNote, setNewNote] = useState("")
@@ -78,7 +79,11 @@ export function AdminNotes({ claimId }: AdminNotesProps) {
       setNotes([data.note, ...notes])
       setNewNote("")
       toast.success("Notitie toegevoegd")
-      router.refresh() // Refresh page to update audit logs
+      
+      // Call the callback to refresh audit logs
+      if (onNoteAdded) {
+        onNoteAdded()
+      }
     } catch (error) {
       console.error("Error adding note:", error)
       toast.error("Fout bij toevoegen notitie")

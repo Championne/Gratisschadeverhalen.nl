@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { formatDistanceToNow } from "date-fns"
 import { nl } from "date-fns/locale"
@@ -51,8 +51,21 @@ const statusLabels = {
   geannuleerd: "Geannuleerd",
 }
 
-export function AdminClaimDetail({ claim, auditLogs, emails }: AdminClaimDetailProps) {
+export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails }: AdminClaimDetailProps) {
   const router = useRouter()
+  const [auditLogs, setAuditLogs] = useState(initialAuditLogs)
+
+  const refreshAuditLogs = async () => {
+    try {
+      const response = await fetch(`/api/admin/claims/${claim.id}/audit-logs`)
+      if (response.ok) {
+        const data = await response.json()
+        setAuditLogs(data.auditLogs || [])
+      }
+    } catch (error) {
+      console.error("Error refreshing audit logs:", error)
+    }
+  }
 
   return (
     <div className="space-y-6">
@@ -353,10 +366,17 @@ export function AdminClaimDetail({ claim, auditLogs, emails }: AdminClaimDetailP
         {/* Sidebar */}
         <div className="space-y-6">
           {/* Status Update */}
-          <AdminStatusUpdate claimId={claim.id} currentStatus={claim.status} />
+          <AdminStatusUpdate 
+            claimId={claim.id} 
+            currentStatus={claim.status} 
+            onStatusUpdated={refreshAuditLogs}
+          />
 
           {/* Notes */}
-          <AdminNotes claimId={claim.id} />
+          <AdminNotes 
+            claimId={claim.id}
+            onNoteAdded={refreshAuditLogs}
+          />
 
           {/* Quick Actions */}
           <Card>

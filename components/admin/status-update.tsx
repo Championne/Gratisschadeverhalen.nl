@@ -25,6 +25,7 @@ import { Loader2 } from "lucide-react"
 interface AdminStatusUpdateProps {
   claimId: string
   currentStatus: string
+  onStatusUpdated?: () => void
 }
 
 const statusOptions = [
@@ -62,6 +63,11 @@ export function AdminStatusUpdate({ claimId, currentStatus }: AdminStatusUpdateP
       toast.success("Status succesvol bijgewerkt")
       setNote("")
       router.refresh()
+      
+      // Call the callback to refresh audit logs
+      if (onStatusUpdated) {
+        onStatusUpdated()
+      }
     } catch (error) {
       console.error("Error updating status:", error)
       toast.error("Fout bij bijwerken status")
