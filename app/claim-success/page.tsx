@@ -127,7 +127,7 @@ export default async function ClaimSuccessPage({
             <div>
               <p className="font-semibold">Uitbetaling</p>
               <p className="text-sm text-muted-foreground">
-                Je ontvangt de schadevergoeding - 100% No Cure No Pay
+                Je ontvangt de schadevergoeding - u betaalt niets
               </p>
             </div>
           </div>

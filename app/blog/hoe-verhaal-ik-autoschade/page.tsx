@@ -469,7 +469,7 @@ ing</a>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
-                      <span><strong>100% No Cure No Pay</strong> – u betaalt ALLEEN bij succes</span>
+                      <span><strong>100% Gratis</strong> – u betaalt niets, tegenpartij betaalt alles</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />

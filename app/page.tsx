@@ -40,7 +40,7 @@ const jsonLd = {
       "name": "Autoschadebureau.nl",
       "url": "https://autoschadebureau.nl",
       "logo": "https://autoschadebureau.nl/logo.png",
-      "description": "Gratis autoschade en voertuigschade verhalen op de tegenpartij - 100% no cure no pay",
+      "description": "Gratis autoschade en voertuigschade verhalen op de tegenpartij - U betaalt niets, tegenpartij betaalt alles",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "NL"
@@ -63,7 +63,7 @@ const jsonLd = {
         "@id": "https://autoschadebureau.nl/#organization"
       },
       "areaServed": "NL",
-      "priceRange": "Gratis - 100% No Cure No Pay"
+      "priceRange": "Gratis - Tegenpartij betaalt alles"
     },
     // HowTo Schema
     {
@@ -228,7 +228,7 @@ export default function HomePage() {
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-green-600" />
-                    <span>No Cure No Pay</span>
+                    <span>U betaalt niets</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle className="h-5 w-5 text-green-600" />
@@ -486,11 +486,11 @@ export default function HomePage() {
                   <p className="text-xs text-muted-foreground">256-bit Encryptie</p>
                 </div>
 
-                {/* Badge 3: No Cure No Pay */}
+                {/* Badge 3: 100% Gratis */}
                 <div className="text-center p-4 rounded-lg bg-gray-50">
                   <Euro className="h-10 w-10 mx-auto mb-2 text-yellow-600" />
-                  <p className="font-semibold text-sm">No Cure No Pay</p>
-                  <p className="text-xs text-muted-foreground">Geen Risico</p>
+                  <p className="font-semibold text-sm">100% Gratis</p>
+                  <p className="text-xs text-muted-foreground">U betaalt niets</p>
                 </div>
 
                 {/* Badge 4: Nederlandse Service */}
@@ -1132,7 +1132,7 @@ export default function HomePage() {
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                        <span><strong>Volledig gratis</strong> – 100% no cure no pay</span>
+                        <span><strong>Volledig gratis</strong> – u betaalt niets, tegenpartij betaalt alles</span>
                       </li>
                     </ul>
                   </div>
@@ -1284,7 +1284,7 @@ export default function HomePage() {
               Upload nu uw Europees Schadeformulier en start direct met het verhalen van uw voertuigschade op de tegenpartij
             </p>
             <p className="text-lg mb-8 opacity-90">
-              100% Gratis • No Cure No Pay • Gemiddeld 6 weken • Geen risico
+              100% Gratis • U betaalt niets • Gemiddeld 6 weken • Geen risico
             </p>
             <Link href="/claim-indienen">
               <Button size="lg" variant="secondary" className="text-lg px-10 h-14 shadow-xl hover:shadow-2xl transition-all">

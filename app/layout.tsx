@@ -17,10 +17,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Autoschade Verhalen | Gratis Voertuigschade Claimen - 100% No Cure No Pay",
+    default: "Autoschade Verhalen | Gratis Voertuigschade Claimen - U Betaalt Niets",
     template: "%s | Autoschadebureau.nl"
   },
-  description: "Upload uw Europees Schadeformulier en verhaal uw autoschade gratis op de tegenpartij. Automatische OCR-verwerking, 100% no cure no pay. Wij regelen uw voertuigschade van A tot Z. Gemiddeld binnen 6 weken uitbetaald.",
+  description: "Upload uw Europees Schadeformulier en verhaal uw autoschade gratis op de tegenpartij. Automatische OCR-verwerking, u betaalt niets. Wij regelen uw voertuigschade van A tot Z. Gemiddeld binnen 6 weken uitbetaald.",
   keywords: [
     "autoschade verhalen",
     "voertuigschade verhalen", 
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "europees schadeformulier",
     "WA schade tegenpartij",
     "gratis schadeafhandeling",
-    "no cure no pay autoschade",
+    "gratis autoschade afhandeling",
     "aansprakelijkheidsbrief",
     "schade verhaal indienen"
   ],
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Autoschade Verhalen | Gratis Voertuigschade Claimen",
-    description: "Upload uw schadeformulier en verhaal uw autoschade gratis op de tegenpartij. 100% no cure no pay.",
+    description: "Upload uw schadeformulier en verhaal uw autoschade gratis op de tegenpartij. U betaalt niets.",
     images: ["/og-image.jpg"],
   },
   robots: {

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
   title: "Claim Indienen",
-  description: "Dien je autoschade claim in. Volledig gratis, 100% no cure no pay.",
+  description: "Dien je autoschade claim in. Volledig gratis, u betaalt niets.",
 }
 
 export default function ClaimIndienenPage() {
@@ -22,7 +22,7 @@ export default function ClaimIndienenPage() {
             <p className="text-lg text-muted-foreground">
               Vul onderstaand formulier in en wij nemen binnen 24 uur contact met je op.
               <br />
-              <strong className="text-primary">100% gratis, no cure no pay.</strong>
+              <strong className="text-primary">100% gratis, u betaalt niets.</strong>
             </p>
           </div>
 

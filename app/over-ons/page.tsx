@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export const metadata: Metadata = {
   title: "Over Ons",
-  description: "Over Autoschadebureau.nl - Gratis autoschade verhalen met 100% no cure no pay",
+  description: "Over Autoschadebureau.nl - Gratis autoschade verhalen, u betaalt niets",
 }
 
 export default function OverOnsPage() {
@@ -18,7 +18,7 @@ export default function OverOnsPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Over Autoschadebureau.nl</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Wij maken het verhalen van autoschade <strong>eenvoudig, snel en volledig gratis</strong>. 
-            Upload uw schadeformulier en wij regelen de rest – 100% no cure no pay.
+            Upload uw schadeformulier en wij regelen de rest – u betaalt niets.
           </p>
         </div>
 
@@ -35,8 +35,8 @@ export default function OverOnsPage() {
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                 <strong>Elke automobilist verdient een eerlijke kans om zijn schade verhaald te krijgen.</strong> 
                 Veel mensen weten niet dat ze schade kunnen verhalen op de tegenpartij, of ze vinden het te ingewikkeld. 
-                Wij maken het proces <strong>simpel, transparant en volledig gratis</strong>. Geen voorschot, geen verborgen kosten – 
-                alleen een klein percentage bij succes.
+                Wij maken het proces <strong>simpel, transparant en volledig gratis</strong>. U betaalt niets – 
+                alle kosten worden door de WA-verzekeraar van de tegenpartij vergoed.
               </p>
             </CardContent>
           </Card>
@@ -52,7 +52,7 @@ export default function OverOnsPage() {
                 <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
                   <CheckCircle className="h-6 w-6 text-green-600" />
                 </div>
-                <CardTitle>100% No Cure No Pay</CardTitle>
+                <CardTitle>100% Gratis</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
   title: "Algemene Voorwaarden",
-  description: "Algemene voorwaarden van Autoschadebureau.nl - No cure no pay autoschade verhalen",
+  description: "Algemene voorwaarden van Autoschadebureau.nl - Gratis autoschade verhalen",
 }
 
 export default function AlgemeneVoorwaardenPage() {
@@ -25,7 +25,7 @@ export default function AlgemeneVoorwaardenPage() {
               <li><strong>Opdrachtnemer:</strong> Autoschadebureau.nl, gevestigd te <span className="bg-yellow-100 font-semibold">[INVULLEN: Adres]</span>, KvK-nummer <span className="bg-yellow-100 font-semibold">[INVULLEN: KvK-nummer]</span>.</li>
               <li><strong>Overeenkomst:</strong> De overeenkomst tussen Opdrachtgever en Opdrachtnemer met betrekking tot het verhalen van materiële schade (voertuigschade/autoschade).</li>
               <li><strong>Claim:</strong> De aanspraak tot schadevergoeding die Opdrachtgever heeft op de aansprakelijke partij of diens WA-verzekeraar.</li>
-              <li><strong>No Cure No Pay:</strong> Het principe waarbij Opdrachtgever alleen betaalt bij succesvol verhaal van de schade.</li>
+              <li><strong>Kosten:</strong> Alle kosten voor het verhalen van de schade worden door de WA-verzekeraar van de aansprakelijke partij vergoed. Opdrachtgever betaalt niets.</li>
             </ul>
           </section>
 
@@ -98,9 +98,9 @@ export default function AlgemeneVoorwaardenPage() {
               De volledige schadevergoeding wordt rechtstreeks aan Opdrachtgever uitbetaald. De buitengerechtelijke incassokosten worden separaat door de verzekeraar aan Opdrachtnemer voldaan. Opdrachtgever ontvangt dus 100% van zijn schade.
             </p>
 
-            <h3 className="text-xl font-semibold mb-3 mt-4">4.4 No Cure No Pay</h3>
+            <h3 className="text-xl font-semibold mb-3 mt-4">4.4 Gratis Service</h3>
             <p className="text-muted-foreground">
-              Opdrachtnemer werkt uitsluitend op <strong>no cure no pay</strong> basis. Als het verhaal van de schade niet slaagt (bijvoorbeeld bij gebrek aan aansprakelijkheid of bewijslast), betaalt Opdrachtgever niets en worden er geen kosten in rekening gebracht.
+              Opdrachtgever betaalt <strong>niets</strong> voor de diensten van Opdrachtnemer. Alle kosten voor het verhalen van de schade, inclusief de kosten van Opdrachtnemer, worden door de WA-verzekeraar van de aansprakelijke partij vergoed. Dit geldt zowel bij succesvol als bij niet-succesvol verhaal van de schade.
             </p>
           </section>
 

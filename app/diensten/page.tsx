@@ -261,7 +261,7 @@ export default function DienstenPage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm">Ook letselschade 100% no cure no pay</span>
+                      <span className="text-sm">Ook letselschade - u betaalt niets</span>
                     </li>
                   </ul>
                 </CardContent>
