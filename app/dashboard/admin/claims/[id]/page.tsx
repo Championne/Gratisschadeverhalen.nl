@@ -23,25 +23,15 @@ export default async function AdminClaimDetailPage({
     redirect("/login")
   }
 
-  // Fetch claim with all related data
+  // Fetch claim (naam, email, telefoon are already in claims table)
   const { data: claim, error } = await supabase
     .from("claims")
-    .select(`
-      *,
-      users:user_id (
-        id,
-        email,
-        naam,
-        telefoonnummer,
-        adres,
-        postcode,
-        plaats
-      )
-    `)
+    .select("*")
     .eq("id", id)
     .single()
 
   if (error || !claim) {
+    console.error("Error fetching claim:", error)
     notFound()
   }
 

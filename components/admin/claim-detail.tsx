@@ -67,7 +67,7 @@ export function AdminClaimDetail({ claim, auditLogs, emails }: AdminClaimDetailP
             <ArrowLeft className="h-4 w-4" />
           </Button>
           <div>
-            <h1 className="text-3xl font-bold">Claim {claim.referentie}</h1>
+            <h1 className="text-3xl font-bold">Claim {claim.id.substring(0, 8)}</h1>
             <p className="text-muted-foreground">
               Aangemaakt {formatDistanceToNow(new Date(claim.created_at), {
                 addSuffix: true,
@@ -109,26 +109,19 @@ export function AdminClaimDetail({ claim, auditLogs, emails }: AdminClaimDetailP
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <p className="text-sm text-muted-foreground">Naam</p>
-                      <p className="font-medium">{claim.users?.naam || 'Niet ingevuld'}</p>
+                      <p className="font-medium">{claim.naam || 'Niet ingevuld'}</p>
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Email</p>
-                      <p className="font-medium">{claim.users?.email}</p>
+                      <p className="font-medium">{claim.email}</p>
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Telefoon</p>
-                      <p className="font-medium">{claim.users?.telefoonnummer || 'Niet ingevuld'}</p>
+                      <p className="font-medium">{claim.telefoon || 'Niet ingevuld'}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Adres</p>
-                      <p className="font-medium">
-                        {claim.users?.adres ? (
-                          <>
-                            {claim.users.adres}<br />
-                            {claim.users.postcode} {claim.users.plaats}
-                          </>
-                        ) : 'Niet ingevuld'}
-                      </p>
+                      <p className="text-sm text-muted-foreground">Plaats Ongeval</p>
+                      <p className="font-medium">{claim.plaats_ongeval || 'Niet ingevuld'}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -145,20 +138,20 @@ export function AdminClaimDetail({ claim, auditLogs, emails }: AdminClaimDetailP
                 <CardContent className="grid gap-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <p className="text-sm text-muted-foreground">Kenteken Aanvrager</p>
-                      <p className="font-mono font-medium text-lg">{claim.kenteken_aanvrager}</p>
-                    </div>
-                    <div>
                       <p className="text-sm text-muted-foreground">Kenteken Tegenpartij</p>
                       <p className="font-mono font-medium text-lg">{claim.kenteken_tegenpartij}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Merk Aanvrager</p>
-                      <p className="font-medium">{claim.merk_aanvrager || 'Niet ingevuld'}</p>
+                      <p className="text-sm text-muted-foreground">Naam Tegenpartij</p>
+                      <p className="font-medium">{claim.naam_tegenpartij || 'Niet ingevuld'}</p>
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Merk Tegenpartij</p>
-                      <p className="font-medium">{claim.merk_tegenpartij || 'Niet ingevuld'}</p>
+                      <p className="text-sm text-muted-foreground">Verzekeraar Tegenpartij</p>
+                      <p className="font-medium">{claim.verzekeraar_tegenpartij || 'Niet ingevuld'}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">Polisnummer</p>
+                      <p className="font-medium">{claim.polisnummer_tegenpartij || 'Niet ingevuld'}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -185,41 +178,36 @@ export function AdminClaimDetail({ claim, auditLogs, emails }: AdminClaimDetailP
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Locatie</p>
-                      <p className="font-medium">{claim.locatie_ongeval || 'Niet ingevuld'}</p>
+                      <p className="font-medium">{claim.plaats_ongeval || 'Niet ingevuld'}</p>
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Geschat Bedrag</p>
                       <p className="font-medium text-lg">
-                        {claim.schadebedrag_geschat 
-                          ? `€${claim.schadebedrag_geschat.toLocaleString('nl-NL')}`
+                        {claim.geschatte_schade 
+                          ? `€${Number(claim.geschatte_schade).toLocaleString('nl-NL')}`
                           : 'Niet ingevuld'
                         }
                       </p>
                     </div>
                     <div>
-                      <p className="text-sm text-muted-foreground">Verzekeraar Tegenpartij</p>
-                      <p className="font-medium">{claim.verzekeraar_tegenpartij || 'Niet ingevuld'}</p>
+                      <p className="text-sm text-muted-foreground">Reparatie Offerte</p>
+                      <p className="font-medium">
+                        {claim.reparatie_offerte 
+                          ? `€${Number(claim.reparatie_offerte).toLocaleString('nl-NL')}`
+                          : 'Niet ingevuld'
+                        }
+                      </p>
                     </div>
                   </div>
 
                   <Separator />
 
                   <div>
-                    <p className="text-sm text-muted-foreground mb-2">Beschrijving Schade</p>
-                    <p className="text-sm">
-                      {claim.beschrijving_schade || 'Geen beschrijving opgegeven'}
+                    <p className="text-sm text-muted-foreground mb-2">Beschrijving</p>
+                    <p className="text-sm whitespace-pre-wrap">
+                      {claim.beschrijving || 'Geen beschrijving opgegeven'}
                     </p>
                   </div>
-
-                  {claim.omstandigheden && (
-                    <>
-                      <Separator />
-                      <div>
-                        <p className="text-sm text-muted-foreground mb-2">Omstandigheden</p>
-                        <p className="text-sm">{claim.omstandigheden}</p>
-                      </div>
-                    </>
-                  )}
                 </CardContent>
               </Card>
             </TabsContent>
