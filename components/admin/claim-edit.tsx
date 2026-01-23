@@ -24,6 +24,7 @@ interface ClaimEditProps {
 }
 
 export function ClaimEdit({ claim, onUpdate }: ClaimEditProps) {
+  console.log('[ClaimEdit] Component rendered with claim:', claim?.id)
   const router = useRouter()
   const [isEditing, setIsEditing] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
@@ -130,7 +131,10 @@ export function ClaimEdit({ claim, onUpdate }: ClaimEditProps) {
       {/* Edit Toggle Button */}
       <div className="flex justify-end">
         {!isEditing ? (
-          <Button onClick={() => setIsEditing(true)} variant="outline">
+          <Button onClick={() => {
+            console.log('[ClaimEdit] Edit button clicked')
+            setIsEditing(true)
+          }} variant="outline">
             <Edit className="h-4 w-4 mr-2" />
             Claim Bewerken
           </Button>
