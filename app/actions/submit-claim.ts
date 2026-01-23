@@ -72,13 +72,15 @@ export async function submitClaim(data: ClaimSubmission) {
       await logAuditAction({
         claimId: claim.id,
         actionType: 'claim_submit',
-        performedBy: user?.id ? `USER:${user.id}` : 'ANONYMOUS',
+        performedBy: user?.email ? `USER:${user.email}` : `GUEST:${data.email}`,
         details: {
           naam: data.naam,
           email: data.email,
           kenteken_tegenpartij: data.kenteken_tegenpartij,
+          verzekeraar_tegenpartij: data.verzekeraar_tegenpartij,
           has_ocr: !!data.ocrData,
           ocr_confidence: data.ocrData?.confidence || 0,
+          datum_ongeval: data.datum_ongeval,
         },
         severity: 'info',
       })
