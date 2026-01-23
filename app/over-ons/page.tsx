@@ -56,8 +56,8 @@ export default function OverOnsPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  U betaalt <strong>niets vooraf</strong> en <strong>niets bij mislukking</strong>. 
-                  Alleen bij succesvol verhaal van uw autoschade betaalt u een klein percentage. Transparant en eerlijk.
+                  U betaalt <strong>letterlijk niets</strong>. De WA-verzekeraar van de tegenpartij betaalt alle kosten, 
+                  inclusief onze kosten. Transparant en eerlijk.
                 </p>
               </CardContent>
             </Card>
@@ -164,7 +164,7 @@ export default function OverOnsPage() {
               <CardContent>
                 <p className="text-muted-foreground">
                   Geen verborgen kosten, geen verrassingen. U weet precies waar u aan toe bent. 
-                  Alle voorwaarden en kosten zijn helder gecommuniceerd vóórdat u start.
+                  U volgt alles online via uw dashboard en krijgt volledige transparantie over het hele proces.
                 </p>
               </CardContent>
             </Card>
@@ -230,20 +230,36 @@ export default function OverOnsPage() {
                 Wij focussen op <strong>materiële schade aan voertuigen</strong> (autoschade/voertuigschade). 
                 Voor <strong>letselschade</strong> (whiplash, hoofdpijn, etc.) werken wij samen met gespecialiseerde partners:
               </p>
-              <div className="bg-white border-2 border-purple-300 rounded-lg p-6 inline-block">
-                <p className="font-semibold text-lg mb-2">🤝 Partner voor Letselschade</p>
-                <a 
-                  href="https://www.unitasletselschade.nl" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline text-lg font-medium"
-                >
-                  Unitas Letselschade →
-                </a>
-                <p className="text-sm text-muted-foreground mt-2">
-                  Gespecialiseerd in letselschade claims met jarenlange ervaring
-                </p>
-              </div>
+              <a 
+                href="https://www.unitasletselschade.nl" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block group"
+              >
+                <div className="bg-white border-2 border-purple-300 rounded-lg p-6 hover:border-purple-400 transition-all hover:shadow-lg">
+                  <p className="font-semibold text-lg mb-4 text-muted-foreground">🤝 Partner voor Letselschade</p>
+                  
+                  {/* Unitas Logo */}
+                  <div className="flex items-center justify-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center flex-shrink-0">
+                      <span className="text-white font-bold text-xl">U</span>
+                    </div>
+                    <div>
+                      <p className="font-bold text-xl text-purple-900 group-hover:text-purple-700 transition-colors">
+                        Unitas Letselschade
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <p className="text-sm text-muted-foreground">
+                    Gespecialiseerd in letselschade claims met jarenlange ervaring
+                  </p>
+                  
+                  <p className="text-primary font-medium mt-3 group-hover:underline">
+                    Bezoek website →
+                  </p>
+                </div>
+              </a>
               <p className="text-sm text-muted-foreground mt-6">
                 💡 <strong>Automatische doorverwijzing:</strong> Ons systeem herkent automatisch letselschade-indicaties 
                 (zoals "pijn", "whiplash", "hoofdpijn") en informeert u over de mogelijkheid van letselschade verhaal.
@@ -286,7 +302,7 @@ export default function OverOnsPage() {
                 </Button>
               </Link>
               <p className="text-sm text-blue-100 mt-4">
-                Geen voorschot • Geen verborgen kosten • Betaal alleen bij succes
+                U betaalt niets • Tegenpartij betaalt alles • 100% gratis
               </p>
             </CardContent>
           </Card>
