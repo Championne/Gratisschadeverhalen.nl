@@ -14,7 +14,9 @@ export async function middleware(request: NextRequest) {
   // Early return voor publieke routes
   const publicPaths = ['/', '/claim-indienen', '/privacy', '/algemene-voorwaarden', '/over-ons', '/contact', '/api']
   if (publicPaths.some(path => request.nextUrl.pathname.startsWith(path))) {
-    return NextResponse.next()
+    const response = NextResponse.next()
+    response.headers.set('x-pathname', request.nextUrl.pathname)
+    return response
   }
 
   let response = NextResponse.next({
@@ -22,6 +24,9 @@ export async function middleware(request: NextRequest) {
       headers: request.headers,
     },
   })
+
+  // Add pathname to headers for layout conditional rendering
+  response.headers.set('x-pathname', request.nextUrl.pathname)
 
   try {
     const supabase = createServerClient(
@@ -97,9 +102,13 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/',
-    '/dashboard/:path*',
-    '/login',
-    '/registreren',
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - public files (images, etc)
+     */
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { headers } from "next/headers"
 import "./globals.css"
 import { Toaster } from "@/components/ui/sonner"
 import { CookieConsent } from "@/components/cookie-consent"
@@ -72,19 +73,25 @@ export const metadata: Metadata = {
   }
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const headersList = await headers()
+  const pathname = headersList.get("x-pathname") || ""
+  
+  // Don't show SiteHeader/Footer on dashboard pages (they have their own DashboardHeader)
+  const isDashboard = pathname.startsWith("/dashboard")
+
   return (
     <html lang="nl" suppressHydrationWarning>
       <body className={inter.className}>
-        <SiteHeader />
-        <main className="min-h-screen">
+        {!isDashboard && <SiteHeader />}
+        <main className={isDashboard ? "" : "min-h-screen"}>
           {children}
         </main>
-        <SiteFooter />
+        {!isDashboard && <SiteFooter />}
         <Toaster richColors position="top-center" />
         <CookieConsent />
       </body>
