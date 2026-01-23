@@ -204,11 +204,11 @@ FORMAT ANTWOORD PRECIES ALS:
       })
     }
 
-    // Update claim with AI notes and status - direct database update
+    // Update claim with AI notes - Direct update met service role (bypasses RLS + geen RPC dependency)
     // Letselschade = aparte positieve flow (GEEN escalatie!)
     const newStatus = heeftLetsel ? 'letselschade_gedetecteerd' : (shouldEscalate ? 'escalated' : 'in_behandeling')
     
-    // Use service role for direct database update (bypasses RLS and RPC issues)
+    // Use service role for reliable updates
     const { createClient: createServiceClient } = await import('@supabase/supabase-js')
     const supabaseAdmin = createServiceClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -224,37 +224,37 @@ FORMAT ANTWOORD PRECIES ALS:
     const { error: updateError } = await supabaseAdmin
       .from('claims')
       .update({
-        status: newStatus,
         ai_notes: text,
+        status: newStatus,
         mogelijk_letselschade: heeftLetsel,
         updated_at: new Date().toISOString(),
       })
       .eq('id', claimId)
 
     if (updateError) {
-      console.error('❌ Failed to update claim:', updateError)
+      console.error('❌ Failed to save AI notes:', updateError)
       console.error('Error details:', JSON.stringify(updateError, null, 2))
     } else {
       console.log('✅✅✅ AI notes + status succesvol opgeslagen!')
-      console.log('New status:', newStatus)
-      console.log('Letselschade:', heeftLetsel)
-      
-      // Log status change (always log, even if update fails for audit trail completeness)
-      await logAuditAction({
-        claimId: claim.id,
-        actionType: 'status_change',
-        performedBy: 'AI',
-        details: {
-          oude_status: claim.status,
-          nieuwe_status: newStatus,
-          ai_confidence: aiConfidence,
-          mogelijk_letselschade: heeftLetsel,
-          escalated: shouldEscalate,
-          letselschade_flow: heeftLetsel,
-        },
-        severity: heeftLetsel ? 'warning' : (shouldEscalate ? 'critical' : 'info'),
-      })
     }
+    
+    // ALWAYS log status change (zelfs als update faalde, voor debugging)
+    await logAuditAction({
+      claimId: claim.id,
+      actionType: 'status_change',
+      performedBy: 'AI',
+      details: {
+        oude_status: claim.status,
+        nieuwe_status: newStatus,
+        ai_confidence: aiConfidence,
+        mogelijk_letselschade: heeftLetsel,
+        escalated: shouldEscalate,
+        letselschade_flow: heeftLetsel,
+        update_success: !updateError,
+        update_error: updateError?.message,
+      },
+      severity: heeftLetsel ? 'warning' : (shouldEscalate ? 'critical' : 'info'),
+    })
 
     // Send emails (each with individual error handling and logging)
     
