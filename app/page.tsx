@@ -237,44 +237,44 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Grote Upload CTA Card */}
-              <Card className="border-2 border-primary shadow-2xl bg-gradient-to-br from-primary/5 to-white max-w-2xl mx-auto">
-                <CardHeader className="text-center pb-4">
-                  <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Upload className="h-8 w-8 text-primary" />
-                  </div>
-                  <CardTitle className="text-2xl md:text-3xl mb-2">
-                    Upload hier uw Europees Schadeformulier
-                  </CardTitle>
-                  <CardDescription className="text-base">
-                    <strong>Scan of maak een foto?</strong> Wij lezen het automatisch in met OCR. 
-                    U hoeft alleen nog te controleren en aan te vullen.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm">
-                    <p className="text-blue-900 font-medium mb-2">✨ Zo simpel werkt het:</p>
-                    <ul className="space-y-1 text-blue-800">
-                      <li>1. Upload foto/scan van uw schadeformulier</li>
-                      <li>2. Wij vullen automatisch alle velden in (kentekens, datum, etc.)</li>
-                      <li>3. U controleert en vult eventueel aan</li>
-                      <li>4. Klaar! Wij starten direct uw autoschade claim</li>
-                    </ul>
-                  </div>
-                  
-                  <Link href="/claim-indienen" className="block">
-                    <Button size="lg" className="w-full text-lg h-14 text-white shadow-lg hover:shadow-xl transition-all">
+              {/* Grote Upload CTA Card - Hele card is klikbaar */}
+              <Link href="/claim-indienen" className="block group max-w-2xl mx-auto">
+                <Card className="border-2 border-primary shadow-2xl bg-gradient-to-br from-primary/5 to-white cursor-pointer hover:shadow-3xl hover:scale-[1.02] transition-all duration-200 active:scale-[0.99]">
+                  <CardHeader className="text-center pb-4">
+                    <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                      <Upload className="h-8 w-8 text-primary" />
+                    </div>
+                    <CardTitle className="text-2xl md:text-3xl mb-2">
+                      Upload hier uw Europees Schadeformulier
+                    </CardTitle>
+                    <CardDescription className="text-base">
+                      <strong>Scan of maak een foto?</strong> Wij lezen het automatisch in met OCR. 
+                      U hoeft alleen nog te controleren en aan te vullen.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm">
+                      <p className="text-blue-900 font-medium mb-2">✨ Zo simpel werkt het:</p>
+                      <ul className="space-y-1 text-blue-800">
+                        <li>1. Upload foto/scan van uw schadeformulier</li>
+                        <li>2. Wij vullen automatisch alle velden in (kentekens, datum, etc.)</li>
+                        <li>3. U controleert en vult eventueel aan</li>
+                        <li>4. Klaar! Wij starten direct uw autoschade claim</li>
+                      </ul>
+                    </div>
+                    
+                    <Button size="lg" className="w-full text-lg h-14 text-white shadow-lg group-hover:shadow-xl transition-all pointer-events-none">
                       <Upload className="mr-2 h-5 w-5" />
                       Start Nu – Gratis Autoschade Verhalen
                       <ChevronRight className="ml-2 h-5 w-5" />
                     </Button>
-                  </Link>
 
-                  <p className="text-center text-xs text-muted-foreground">
-                    Geen schadeformulier? <Link href="/claim-indienen" className="text-primary hover:underline font-medium">Vul dan handmatig in →</Link>
-                  </p>
-                </CardContent>
-              </Card>
+                    <p className="text-center text-xs text-muted-foreground">
+                      Geen schadeformulier? <span className="text-primary hover:underline font-medium">Vul dan handmatig in →</span>
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
 
               <p className="text-center mt-8 text-sm text-muted-foreground">
                 Geen voorschot • Geen verborgen kosten • Betaal alleen bij succes
