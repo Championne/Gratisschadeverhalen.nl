@@ -69,12 +69,21 @@ export default async function AdminClaimDetailPage({
     .eq("matched_claim_id", id)
     .order("received_at", { ascending: false })
 
+  // Fetch documents (excluding soft-deleted)
+  const { data: documents } = await supabaseAdmin
+    .from("documents")
+    .select("*")
+    .eq("claim_id", id)
+    .is("deleted_at", null)
+    .order("uploaded_at", { ascending: false })
+
   return (
     <div className="container mx-auto px-4 py-8">
       <AdminClaimDetail 
         claim={claim}
         auditLogs={auditLogs || []}
         emails={emails || []}
+        documents={documents || []}
       />
     </div>
   )

@@ -31,11 +31,14 @@ import {
 import { AdminStatusUpdate } from "./status-update"
 import { AdminNotes } from "./notes"
 import { ClaimEdit } from "./claim-edit"
+import { DocumentUpload } from "./document-upload"
+import { DocumentList } from "./document-list"
 
 interface AdminClaimDetailProps {
   claim: any
   auditLogs: any[]
   emails: any[]
+  documents: any[]
 }
 
 const statusColors = {
@@ -58,7 +61,7 @@ const statusLabels = {
   geannuleerd: "Geannuleerd",
 }
 
-export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails }: AdminClaimDetailProps) {
+export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails, documents: initialDocuments }: AdminClaimDetailProps) {
   const router = useRouter()
   const [auditLogs, setAuditLogs] = useState(initialAuditLogs)
 
@@ -72,6 +75,11 @@ export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails }:
     } catch (error) {
       console.error("Error refreshing audit logs:", error)
     }
+  }
+
+  const refreshPage = () => {
+    router.refresh()
+    refreshAuditLogs()
   }
 
   return (
@@ -173,20 +181,18 @@ export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails }:
             </TabsContent>
 
             {/* Documents Tab */}
-            <TabsContent value="documents">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Documenten</CardTitle>
-                  <CardDescription>
-                    Geüploade bestanden en gegenereerde documenten
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-center text-muted-foreground py-8">
-                    Documenten viewer komt binnenkort
-                  </p>
-                </CardContent>
-              </Card>
+            <TabsContent value="documents" className="space-y-6">
+              {/* Document Upload */}
+              <DocumentUpload 
+                claimId={claim.id} 
+                onUploadComplete={refreshPage}
+              />
+              
+              {/* Document List */}
+              <DocumentList 
+                documents={initialDocuments}
+                onDelete={refreshPage}
+              />
             </TabsContent>
 
             {/* Audit Log Tab */}
@@ -247,6 +253,16 @@ export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails }:
                             borderColor = "border-orange-500"
                             bgColor = "bg-orange-50"
                             actionLabel = "Handmatig Aangepast"
+                          } else if (log.action_type === 'document_uploaded') {
+                            icon = "📎"
+                            borderColor = "border-blue-500"
+                            bgColor = "bg-blue-50"
+                            actionLabel = "Document Geüpload"
+                          } else if (log.action_type === 'document_deleted') {
+                            icon = "🗑️"
+                            borderColor = "border-red-500"
+                            bgColor = "bg-red-50"
+                            actionLabel = "Document Verwijderd"
                           } else if (log.action_type === 'email_sent') {
                             icon = "📧"
                             borderColor = "border-green-500"
@@ -665,6 +681,57 @@ export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails }:
                                       </div>
                                     )}
                                     
+                                    {log.action_type === 'document_uploaded' && (
+                                      <div className="space-y-2">
+                                        <div className="p-3 bg-blue-50 border border-blue-200 rounded">
+                                          <div className="text-xs font-semibold text-blue-900 mb-1">📎 Document Toegevoegd</div>
+                                          {log.details.file_name && (
+                                            <div className="text-sm font-medium text-blue-900">{log.details.file_name}</div>
+                                          )}
+                                        </div>
+                                        
+                                        <div className="grid grid-cols-2 gap-2 text-xs">
+                                          {log.details.document_type && (
+                                            <div className="p-2 bg-white border border-blue-200 rounded">
+                                              <div className="text-muted-foreground">Type</div>
+                                              <div className="font-semibold">{log.details.document_type.replace(/_/g, ' ')}</div>
+                                            </div>
+                                          )}
+                                          {log.details.file_size && (
+                                            <div className="p-2 bg-white border border-blue-200 rounded">
+                                              <div className="text-muted-foreground">Grootte</div>
+                                              <div className="font-semibold">
+                                                {(log.details.file_size / 1024).toFixed(1)} KB
+                                              </div>
+                                            </div>
+                                          )}
+                                        </div>
+                                        
+                                        {log.details.description && (
+                                          <div className="text-sm text-muted-foreground">
+                                            💬 {log.details.description}
+                                          </div>
+                                        )}
+                                      </div>
+                                    )}
+                                    
+                                    {log.action_type === 'document_deleted' && (
+                                      <div className="space-y-2">
+                                        <div className="p-3 bg-red-50 border border-red-200 rounded">
+                                          <div className="text-xs font-semibold text-red-900 mb-1">🗑️ Document Verwijderd</div>
+                                          {log.details.file_name && (
+                                            <div className="text-sm font-medium text-red-900">{log.details.file_name}</div>
+                                          )}
+                                        </div>
+                                        
+                                        {log.details.deleted_by && (
+                                          <div className="text-xs text-muted-foreground">
+                                            <strong>Verwijderd door:</strong> {log.details.deleted_by}
+                                          </div>
+                                        )}
+                                      </div>
+                                    )}
+                                    
                                     {log.action_type === 'email_sent' && (
                                       <div className="space-y-3">
                                         {/* Success/Error Status - Prominent */}
@@ -745,7 +812,7 @@ export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails }:
                                     )}
                                     
                                     {/* Fallback for any other details */}
-                                    {!['claim_submit', 'ai_analyse', 'status_change', 'escalatie', 'comment_added', 'manual_edit', 'email_sent'].includes(log.action_type) && (
+                                    {!['claim_submit', 'ai_analyse', 'status_change', 'escalatie', 'comment_added', 'manual_edit', 'document_uploaded', 'document_deleted', 'email_sent'].includes(log.action_type) && (
                                       <div className="text-xs font-mono bg-muted p-2 rounded overflow-x-auto">
                                         {JSON.stringify(log.details, null, 2)}
                                       </div>
