@@ -2,6 +2,15 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 
 export async function middleware(request: NextRequest) {
+  // OAuth callback handler: redirect to /auth/callback if code is present
+  // This handles cases where OAuth provider redirects to homepage instead of callback URL
+  if (request.nextUrl.pathname === '/' && request.nextUrl.searchParams.has('code')) {
+    const code = request.nextUrl.searchParams.get('code')
+    const callbackUrl = new URL('/auth/callback', request.url)
+    callbackUrl.searchParams.set('code', code!)
+    return NextResponse.redirect(callbackUrl)
+  }
+
   // Early return voor publieke routes
   const publicPaths = ['/', '/claim-indienen', '/privacy', '/algemene-voorwaarden', '/over-ons', '/contact', '/api']
   if (publicPaths.some(path => request.nextUrl.pathname.startsWith(path))) {
