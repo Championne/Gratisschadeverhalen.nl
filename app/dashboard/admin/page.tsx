@@ -10,6 +10,10 @@ export const metadata: Metadata = {
   description: "Beheer alle claims en gebruikers",
 }
 
+// Disable caching for admin dashboard (always fetch fresh data)
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
+
 export default async function AdminDashboardPage() {
   const supabase = await createClient()
 

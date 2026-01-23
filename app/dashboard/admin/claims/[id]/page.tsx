@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   description: "Bekijk en beheer claim details",
 }
 
+// Disable caching for this page (always fetch fresh data)
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
+
 export default async function AdminClaimDetailPage({
   params,
 }: {
