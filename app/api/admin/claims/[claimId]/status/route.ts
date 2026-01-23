@@ -64,34 +64,52 @@ export async function PATCH(
     }
 
     // Log the status change in audit_logs
-    const { error: auditError } = await supabaseAdmin
+    const auditData = {
+      user_id: user.id,
+      claim_id: claimId,
+      action_type: 'status_change',
+      details: note 
+        ? `Status gewijzigd van ${oldStatus} naar ${status}: ${note}`
+        : `Status gewijzigd van ${oldStatus} naar ${status}`,
+      ip_address: request.headers.get('x-forwarded-for') || 'unknown'
+    }
+    
+    console.log('[Status Update] Creating audit log:', auditData)
+    
+    const { data: auditLog, error: auditError } = await supabaseAdmin
       .from("audit_logs")
-      .insert({
-        user_id: user.id,
-        claim_id: claimId,
-        action_type: 'status_change',
-        details: note 
-          ? `Status gewijzigd van ${oldStatus} naar ${status}: ${note}`
-          : `Status gewijzigd van ${oldStatus} naar ${status}`,
-        ip_address: request.headers.get('x-forwarded-for') || 'unknown'
-      })
+      .insert(auditData)
+      .select()
 
     if (auditError) {
       console.error("Error logging audit:", auditError)
       // Don't fail the request if audit logging fails
+    } else {
+      console.log('[Status Update] Audit log created:', auditLog)
     }
 
     // If there's a note, also add it as a separate comment
     if (note) {
-      await supabaseAdmin
+      const commentData = {
+        user_id: user.id,
+        claim_id: claimId,
+        action_type: 'comment_added',
+        details: note,
+        ip_address: request.headers.get('x-forwarded-for') || 'unknown'
+      }
+      
+      console.log('[Status Update] Creating comment audit log:', commentData)
+      
+      const { data: commentLog, error: commentError } = await supabaseAdmin
         .from("audit_logs")
-        .insert({
-          user_id: user.id,
-          claim_id: claimId,
-          action_type: 'comment_added',
-          details: note,
-          ip_address: request.headers.get('x-forwarded-for') || 'unknown'
-        })
+        .insert(commentData)
+        .select()
+        
+      if (commentError) {
+        console.error("Error logging comment:", commentError)
+      } else {
+        console.log('[Status Update] Comment audit log created:', commentLog)
+      }
     }
 
     return NextResponse.json({ 

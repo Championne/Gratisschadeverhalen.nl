@@ -294,6 +294,16 @@ export function AdminClaimDetail({ claim, auditLogs, emails }: AdminClaimDetailP
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
+                  {/* Debug info */}
+                  <div className="mb-4 p-3 bg-muted rounded text-xs">
+                    <strong>Debug:</strong> {auditLogs.length} audit logs gevonden
+                    {auditLogs.length > 0 && (
+                      <pre className="mt-2 overflow-auto">
+                        {JSON.stringify(auditLogs[0], null, 2)}
+                      </pre>
+                    )}
+                  </div>
+
                   {auditLogs.length === 0 ? (
                     <p className="text-center text-muted-foreground py-8">
                       Nog geen audit logs
