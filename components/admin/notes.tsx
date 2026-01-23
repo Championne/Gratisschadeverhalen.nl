@@ -80,9 +80,14 @@ export function AdminNotes({ claimId, onNoteAdded }: AdminNotesProps) {
       setNewNote("")
       toast.success("Notitie toegevoegd")
       
-      // Call the callback to refresh audit logs
+      // Refresh the page to update server components
+      router.refresh()
+      
+      // Call the callback to refresh audit logs (with small delay to ensure refresh completes)
       if (onNoteAdded) {
-        onNoteAdded()
+        setTimeout(() => {
+          onNoteAdded()
+        }, 500)
       }
     } catch (error) {
       console.error("Error adding note:", error)
