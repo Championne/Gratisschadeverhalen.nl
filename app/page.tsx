@@ -112,7 +112,7 @@ const jsonLd = {
           "name": "Kan ik echt gratis mijn autoschade verhalen?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ja, 100% gratis. Wij werken uitsluitend op no cure no pay basis. U betaalt helemaal niets als uw autoschade claim niet slaagt. Geen voorschot, geen verborgen kosten, geen verrassingen."
+            "text": "Ja, 100% gratis. De WA-verzekeraar van de tegenpartij betaalt ALLE kosten, inclusief onze kosten. U betaalt dus letterlijk niets – geen voorschot, geen verborgen kosten, geen percentage."
           }
         },
         {
@@ -298,8 +298,7 @@ export default function HomePage() {
                   </div>
                   <h3 className="text-xl font-bold mb-3">Tegenpartij betaalt alles</h3>
                   <p className="text-muted-foreground">
-                    U betaalt niets. De WA-verzekeraar van de tegenpartij vergoedt alle kosten. 
-                    Wij rekenen pas af bij succes.
+                    U betaalt niets. De WA-verzekeraar van de tegenpartij vergoedt alle kosten, inclusief onze kosten.
                   </p>
                 </div>
 
@@ -719,7 +718,7 @@ export default function HomePage() {
                       <div>
                         <p className="font-semibold mb-1">Volledig gratis</p>
                         <p className="text-sm text-muted-foreground">
-                          100% no cure no pay. U betaalt alleen een klein percentage bij succes. Mislukt? Dan is het gratis.
+                          U betaalt niets. De WA-verzekeraar van de tegenpartij vergoedt ALLE kosten, inclusief onze kosten.
                         </p>
                       </div>
                     </div>
@@ -837,7 +836,7 @@ export default function HomePage() {
                       <CardTitle className="text-xl mb-2">Uitbetaling schadevergoeding</CardTitle>
                       <CardDescription>
                         Zodra de verzekeraar akkoord gaat, ontvangt u de volledige schadevergoeding direct op uw rekening. 
-                        Gemiddeld binnen 6 weken volledig afgehandeld. Volledig gratis – u betaalt alleen bij succes (no cure no pay).
+                        Gemiddeld binnen 6 weken volledig afgehandeld. Volledig gratis – alle kosten worden door de tegenpartij betaald.
                       </CardDescription>
                     </div>
                   </div>
@@ -962,7 +961,7 @@ export default function HomePage() {
                   Waarom is autoschade verhalen bij ons gratis?
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  Wij werken op basis van <strong>100% no cure no pay</strong>. Dit betekent:
+                  De <strong>WA-verzekeraar van de tegenpartij</strong> betaalt ALLE kosten. Dit betekent:
                 </p>
               </div>
 
@@ -970,12 +969,12 @@ export default function HomePage() {
                 <Card>
                   <CardHeader>
                     <Euro className="h-10 w-10 text-primary mb-2" />
-                    <CardTitle>Geen kosten vooraf</CardTitle>
+                    <CardTitle>Tegenpartij betaalt alles</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">
-                      U betaalt geen cent voordat uw autoschade succesvol is verhaald. Geen voorschot, geen inschrijfkosten, 
-                      geen verborgen tarieven.
+                      De WA-verzekeraar van de schuldige partij betaalt de volledige schadevergoeding én onze kosten. 
+                      U betaalt dus nooit iets – niet vooraf, en ook niet achteraf.
                     </p>
                   </CardContent>
                 </Card>
@@ -983,12 +982,12 @@ export default function HomePage() {
                 <Card>
                   <CardHeader>
                     <CheckCircle className="h-10 w-10 text-primary mb-2" />
-                    <CardTitle>Alleen betalen bij succes</CardTitle>
+                    <CardTitle>U betaalt niets</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">
-                      Pas als de verzekeraar uw voertuigschade volledig heeft vergoed, rekenen wij een klein percentage van de uitbetaling. 
-                      Mislukt de claim? Dan betaalt u niets.
+                      De WA-verzekeraar van de tegenpartij betaalt ALLE kosten, inclusief onze kosten. 
+                      U hoeft dus letterlijk niets te betalen – geen voorschot, geen percentage, helemaal niets.
                     </p>
                   </CardContent>
                 </Card>
@@ -1000,8 +999,8 @@ export default function HomePage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">
-                      U weet van tevoren precies wat het kost als uw autoschade claim slaagt. Geen verrassingen achteraf. 
-                      Alles staat duidelijk in de voorwaarden.
+                      U volgt uw claim 24/7 online en ziet alle updates direct in uw dashboard. 
+                      Geen verrassingen, alle kosten worden door de tegenpartij betaald.
                     </p>
                   </CardContent>
                 </Card>
@@ -1040,8 +1039,8 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Ja, 100% gratis. Wij werken uitsluitend op no cure no pay basis. U betaalt helemaal niets als uw autoschade claim niet slaagt. 
-                    Geen voorschot, geen verborgen kosten, geen verrassingen. Alleen bij succes betaalt u een klein percentage van de ontvangen schadevergoeding.
+                    Ja, 100% gratis. De WA-verzekeraar van de tegenpartij betaalt ALLE kosten, inclusief onze kosten. 
+                    U betaalt dus letterlijk niets – geen voorschot, geen verborgen kosten, geen percentage. Alles wordt door de tegenpartij vergoed.
                   </p>
                 </CardContent>
               </Card>
@@ -1225,7 +1224,7 @@ export default function HomePage() {
                   <p className="text-muted-foreground">
                     Wij hebben ruime ervaring met weigerende of traag reagerende verzekeraars. Als een verzekeraar initieel weigert uw voertuigschade te vergoeden, 
                     onderzoeken wij de zaak grondig en bouwen een sterker dossier. Indien nodig schakelen we een gespecialiseerde advocaat in voor juridische stappen. 
-                    In <strong>95% van de gevallen</strong> komen we uiteindelijk tot een schikking. U betaalt helemaal niets als we uw autoschade niet succesvol verhalen – dat is ons no cure no pay principe.
+                    In <strong>95% van de gevallen</strong> komen we uiteindelijk tot een schikking. U betaalt altijd niets – alle kosten worden door de WA-verzekeraar van de tegenpartij betaald.
                   </p>
                 </CardContent>
               </Card>
