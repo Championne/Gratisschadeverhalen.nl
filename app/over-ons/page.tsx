@@ -300,7 +300,7 @@ export default function OverOnsPage() {
 
         {/* Team Section (Optioneel) */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-6">Ons Team</h2>
+          <h2 className="text-3xl font-bold text-center mb-6">Uw Autoschadespecialist</h2>
           <Card className="max-w-3xl mx-auto">
             <CardContent className="text-center py-12">
               <div className="h-24 w-24 rounded-full bg-gray-200 mx-auto mb-6 flex items-center justify-center">

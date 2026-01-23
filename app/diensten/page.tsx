@@ -424,7 +424,7 @@ export default function DienstenPage() {
                   <p className="text-muted-foreground">
                     Direct! Upload een foto van uw Europees Schadeformulier, of vul handmatig in. 
                     Onze OCR-technologie verwerkt het formulier binnen enkele seconden. 
-                    Binnen 24 uur beoordeelt ons team uw claim en starten we de communicatie met de verzekeraar.
+                    Binnen 24 uur beoordeelt uw autoschadespecialist uw claim en starten we de communicatie met de verzekeraar.
                   </p>
                 </CardContent>
               </Card>
