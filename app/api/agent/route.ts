@@ -130,9 +130,8 @@ FORMAT ANTWOORD PRECIES ALS:
       aiConfidence = parseInt(confidenceMatch[1])
     }
 
-    // Check escalatie triggers
+    // Check escalatie triggers (OCR confidence check VERWIJDERD - gebruiker heeft al gevalideerd)
     const shouldEscalate = 
-      shouldEscalateOnConfidence(claim.ocr_confidence, 70) || // OCR confidence < 70%
       shouldEscalateOnConfidence(aiConfidence, 70) ||          // AI confidence < 70%
       text.toLowerCase().includes('niet mogelijk') ||          // AI zegt automatisch niet mogelijk
       text.toLowerCase().includes('escalatie nodig') ||        // Expliciet door AI
@@ -141,9 +140,7 @@ FORMAT ANTWOORD PRECIES ALS:
     let escalatieReden = ''
     if (shouldEscalate) {
       // Bepaal specifieke reden
-      if (shouldEscalateOnConfidence(claim.ocr_confidence, 70)) {
-        escalatieReden = `OCR confidence te laag: ${claim.ocr_confidence || 0}% (< 70%)`
-      } else if (shouldEscalateOnConfidence(aiConfidence, 70)) {
+      if (shouldEscalateOnConfidence(aiConfidence, 70)) {
         escalatieReden = `AI aansprakelijkheid confidence te laag: ${aiConfidence}% (< 70%)`
       } else if (!claim.verzekeraar_tegenpartij && !claim.naam_tegenpartij) {
         escalatieReden = 'Onvolledige tegenpartij gegevens (geen naam of verzekeraar)'
@@ -207,7 +204,8 @@ FORMAT ANTWOORD PRECIES ALS:
     }
 
     // Update claim with AI notes using RPC to bypass cache
-    const newStatus = shouldEscalate ? 'escalated' : (heeftLetsel ? 'in_behandeling' : 'nieuw')
+    // Letselschade = aparte positieve flow (GEEN escalatie!)
+    const newStatus = heeftLetsel ? 'letselschade_gedetecteerd' : (shouldEscalate ? 'escalated' : 'in_behandeling')
     
     const { error: updateError } = await supabase.rpc('update_claim_with_ai_notes', {
       claim_id: claimId,
@@ -231,17 +229,18 @@ FORMAT ANTWOORD PRECIES ALS:
           oude_status: claim.status,
           nieuwe_status: newStatus,
           ai_confidence: aiConfidence,
-          ocr_confidence: claim.ocr_confidence,
           mogelijk_letselschade: heeftLetsel,
           escalated: shouldEscalate,
+          letselschade_flow: heeftLetsel,
         },
-        severity: shouldEscalate ? 'critical' : 'info',
+        severity: heeftLetsel ? 'warning' : (shouldEscalate ? 'critical' : 'info'),
       })
     }
 
     // Send emails (each with individual error handling and logging)
     
-    // Email to claimer (alleen als NIET geëscaleerd)
+    // Email to claimer (altijd versturen, behalve bij echte escalatie)
+    // Bij letselschade WEL email (positieve boodschap!)
     if (!shouldEscalate) {
       let claimerEmailSuccess = false
       let claimerEmailError = null

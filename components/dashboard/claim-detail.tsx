@@ -36,12 +36,13 @@ export function ClaimDetail({ claim }: ClaimDetailProps) {
     const labels: { [key: string]: string } = {
       nieuw: "Nieuw",
       in_behandeling: "In Behandeling",
+      letselschade_gedetecteerd: "Letselschade Specialist Ingeschakeld",
       aansprakelijkheidsbrief_verzonden: "Brief Verzonden",
       in_onderhandeling: "In Onderhandeling",
       afgerond: "Afgerond",
       geweigerd: "Geweigerd",
       geannuleerd: "Geannuleerd",
-      escalated: "Escalatie Vereist",
+      escalated: "In Review",
     }
     return labels[status] || status
   }
@@ -50,12 +51,13 @@ export function ClaimDetail({ claim }: ClaimDetailProps) {
     const variants: { [key: string]: any } = {
       nieuw: "default",
       in_behandeling: "secondary",
+      letselschade_gedetecteerd: "default",
       aansprakelijkheidsbrief_verzonden: "secondary",
       in_onderhandeling: "warning",
       afgerond: "success",
       geweigerd: "destructive",
       geannuleerd: "outline",
-      escalated: "destructive",
+      escalated: "warning",
     }
     return variants[status] || "default"
   }
@@ -87,19 +89,20 @@ export function ClaimDetail({ claim }: ClaimDetailProps) {
         </CardHeader>
       </Card>
 
-      {/* Escalatie Waarschuwing */}
-      {claim.status === 'escalated' && !claim.escalatie_opgelost && claim.escalatie_reden && (
-        <Card className="border-red-300 bg-red-50">
+      {/* Escalatie Waarschuwing (alleen bij echte problemen, NIET bij letselschade) */}
+      {claim.status === 'escalated' && !claim.escalatie_opgelost && claim.escalatie_reden && 
+       !claim.escalatie_reden.toLowerCase().includes('letsel') && (
+        <Card className="border-orange-300 bg-orange-50">
           <CardContent className="pt-6">
             <div className="flex items-start gap-3">
-              <Shield className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+              <Shield className="h-5 w-5 text-orange-600 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-semibold text-red-900">⚠️ Handmatige Aandacht Vereist</p>
-                <p className="text-sm text-red-700 mt-1">
-                  {claim.escalatie_reden}
+                <p className="font-semibold text-orange-900">🔍 In Review</p>
+                <p className="text-sm text-orange-700 mt-1">
+                  Onze medewerkers bekijken je claim persoonlijk om de beste afhandeling te garanderen.
                 </p>
-                <p className="text-xs text-red-600 mt-2">
-                  Onze medewerkers nemen contact met je op voor verdere afhandeling.
+                <p className="text-xs text-orange-600 mt-2">
+                  💬 Je hoort binnen 1-2 werkdagen van ons.
                 </p>
               </div>
             </div>
@@ -107,16 +110,27 @@ export function ClaimDetail({ claim }: ClaimDetailProps) {
         </Card>
       )}
 
-      {/* Letselschade Warning */}
-      {claim.mogelijk_letselschade && (
-        <Card className="border-red-200 bg-red-50">
+      {/* Letselschade - Positieve Melding */}
+      {(claim.mogelijk_letselschade || claim.status === 'letselschade_gedetecteerd') && (
+        <Card className="border-purple-300 bg-purple-50">
           <CardContent className="pt-6">
             <div className="flex items-start gap-3">
-              <Shield className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+              <Shield className="h-6 w-6 text-purple-600 flex-shrink-0 mt-0.5" />
               <div>
-                <p className="font-semibold text-red-900">Mogelijke Letselschade</p>
-                <p className="text-sm text-red-700 mt-1">
-                  We hebben indicaties van letselschade gevonden. Overweeg contact op te nemen met een letselschade specialist.
+                <p className="font-semibold text-purple-900 text-lg">✅ Letselschade Specialist Ingeschakeld</p>
+                <p className="text-sm text-purple-800 mt-2">
+                  We hebben mogelijk letselschade gedetecteerd en schakelen automatisch onze gespecialiseerde partner <strong>Unitas Letselschade</strong> in.
+                </p>
+                <div className="mt-3 p-3 bg-white/50 rounded-md border border-purple-200">
+                  <p className="text-sm text-purple-900 font-medium mb-1">📞 Wat gebeurt er nu?</p>
+                  <ul className="text-sm text-purple-800 space-y-1 ml-4 list-disc">
+                    <li>Een specialist van Unitas neemt <strong>binnen 24 uur</strong> contact met je op</li>
+                    <li>Zij begeleiden je gratis door het hele letselschade traject</li>
+                    <li>Wij blijven je schade claim afhandelen</li>
+                  </ul>
+                </div>
+                <p className="text-xs text-purple-600 mt-2 italic">
+                  💡 Dit is een extra service - je betaalt hier niets voor!
                 </p>
               </div>
             </div>
