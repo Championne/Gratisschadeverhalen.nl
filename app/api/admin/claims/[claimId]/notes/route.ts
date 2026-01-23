@@ -8,8 +8,6 @@ export async function GET(
   try {
     const { claimId } = await params
     const supabase = await createClient()
-
-    // Check authentication
     const { data: { user } } = await supabase.auth.getUser()
 
     if (!user) {
@@ -19,8 +17,21 @@ export async function GET(
       )
     }
 
+    // Use service role for admin operations
+    const { createClient: createServiceClient } = await import('@supabase/supabase-js')
+    const supabaseAdmin = createServiceClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+      {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false
+        }
+      }
+    )
+
     // Fetch notes from audit logs with type 'comment_added'
-    const { data: auditLogs, error } = await supabase
+    const { data: auditLogs, error } = await supabaseAdmin
       .from("audit_logs")
       .select("*")
       .eq("claim_id", claimId)
@@ -70,8 +81,6 @@ export async function POST(
     }
 
     const supabase = await createClient()
-
-    // Check authentication
     const { data: { user } } = await supabase.auth.getUser()
 
     if (!user) {
@@ -81,8 +90,21 @@ export async function POST(
       )
     }
 
+    // Use service role for admin operations
+    const { createClient: createServiceClient } = await import('@supabase/supabase-js')
+    const supabaseAdmin = createServiceClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+      {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false
+        }
+      }
+    )
+
     // Add note as audit log
-    const { data: auditLog, error } = await supabase
+    const { data: auditLog, error } = await supabaseAdmin
       .from("audit_logs")
       .insert({
         user_id: user.id,

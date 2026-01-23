@@ -9,9 +9,8 @@ export async function PATCH(
     const { claimId } = await params
     const { status, note } = await request.json()
 
+    // Use regular client for auth check
     const supabase = await createClient()
-
-    // Check authentication
     const { data: { user } } = await supabase.auth.getUser()
 
     if (!user) {
@@ -23,8 +22,21 @@ export async function PATCH(
 
     // TODO: Add admin role check when implemented
 
+    // Use service role for admin operations (bypasses RLS)
+    const { createClient: createServiceClient } = await import('@supabase/supabase-js')
+    const supabaseAdmin = createServiceClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+      {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false
+        }
+      }
+    )
+
     // First fetch current claim to get old status
-    const { data: existingClaim } = await supabase
+    const { data: existingClaim } = await supabaseAdmin
       .from("claims")
       .select("status")
       .eq("id", claimId)
@@ -33,7 +45,7 @@ export async function PATCH(
     const oldStatus = existingClaim?.status || 'unknown'
 
     // Update claim status
-    const { data: claim, error: updateError } = await supabase
+    const { data: claim, error: updateError } = await supabaseAdmin
       .from("claims")
       .update({ 
         status,
@@ -46,13 +58,13 @@ export async function PATCH(
     if (updateError) {
       console.error("Error updating claim status:", updateError)
       return NextResponse.json(
-        { error: "Failed to update claim status" },
+        { error: "Failed to update claim status", details: updateError.message },
         { status: 500 }
       )
     }
 
     // Log the status change in audit_logs
-    await supabase
+    const { error: auditError } = await supabaseAdmin
       .from("audit_logs")
       .insert({
         user_id: user.id,
@@ -64,9 +76,14 @@ export async function PATCH(
         ip_address: request.headers.get('x-forwarded-for') || 'unknown'
       })
 
+    if (auditError) {
+      console.error("Error logging audit:", auditError)
+      // Don't fail the request if audit logging fails
+    }
+
     // If there's a note, also add it as a separate comment
     if (note) {
-      await supabase
+      await supabaseAdmin
         .from("audit_logs")
         .insert({
           user_id: user.id,
