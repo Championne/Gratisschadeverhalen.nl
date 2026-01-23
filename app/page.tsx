@@ -507,10 +507,10 @@ export default function HomePage() {
                     </p>
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-600">
-                        MJ
+                        SM
                       </div>
                       <div>
-                        <p className="font-semibold">Maria J.</p>
+                        <p className="font-semibold">Sophie M.</p>
                         <p className="text-sm text-muted-foreground">Amsterdam</p>
                       </div>
                     </div>
@@ -532,10 +532,10 @@ export default function HomePage() {
                     </p>
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-600">
-                        PB
+                        TR
                       </div>
                       <div>
-                        <p className="font-semibold">Peter B.</p>
+                        <p className="font-semibold">Thijs R.</p>
                         <p className="text-sm text-muted-foreground">Rotterdam</p>
                       </div>
                     </div>
@@ -556,10 +556,10 @@ export default function HomePage() {
                     </p>
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center font-bold text-purple-600">
-                        LV
+                        NB
                       </div>
                       <div>
-                        <p className="font-semibold">Linda v.d. B.</p>
+                        <p className="font-semibold">Noor B.</p>
                         <p className="text-sm text-muted-foreground">Utrecht</p>
                       </div>
                     </div>
@@ -873,7 +873,7 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">
-                    <strong>Situatie:</strong> Mevrouw De Vries werd aangereden op een supermarktparkeerplaats. De tegenpartij gaf haar kenteken, 
+                    <strong>Situatie:</strong> Mevrouw Dekker werd aangereden op een supermarktparkeerplaats. De tegenpartij gaf haar kenteken, 
                     maar wilde daarna niet meer reageren.
                   </p>
                   <p className="text-sm text-muted-foreground mb-4">
@@ -881,7 +881,7 @@ export default function HomePage() {
                     een taxatierapport aangevraagd, en aansprakelijkheid vastgesteld.
                   </p>
                   <p className="text-sm font-semibold text-green-700">
-                    Resultaat: Volledige vergoeding van € 2.850 binnen 5 weken. Mevrouw De Vries betaalde helemaal niets.
+                    Resultaat: Volledige vergoeding van € 2.850 binnen 5 weken. Mevrouw Dekker betaalde helemaal niets.
                   </p>
                 </CardContent>
               </Card>
@@ -900,7 +900,7 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">
-                    <strong>Situatie:</strong> De heer Jansen werd van achteren aangereden in een file op de A2. 
+                    <strong>Situatie:</strong> Meneer Visser werd van achteren aangereden in een file op de A2. 
                     Bumper en achterlichten zwaar beschadigd. De tegenpartij ontkende aanvankelijk schuld.
                   </p>
                   <p className="text-sm text-muted-foreground mb-4">
@@ -927,7 +927,7 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">
-                    <strong>Situatie:</strong> Meneer Pietersen kreeg spiegelschade toen een auto hem inhaalde en te dicht langs kwam. 
+                    <strong>Situatie:</strong> Meneer Scholten kreeg spiegelschade toen een auto hem inhaalde en te dicht langs kwam. 
                     Geen Europees Schadeformulier ingevuld, alleen kenteken genoteerd.
                   </p>
                   <p className="text-sm text-muted-foreground mb-4">
