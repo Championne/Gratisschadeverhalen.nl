@@ -35,7 +35,7 @@ const statusOptions = [
   { value: "geannuleerd", label: "Geannuleerd" },
 ]
 
-export function AdminStatusUpdate({ claimId, currentStatus }: AdminStatusUpdateProps) {
+export function AdminStatusUpdate({ claimId, currentStatus, onStatusUpdated }: AdminStatusUpdateProps) {
   const router = useRouter()
   const [status, setStatus] = useState(currentStatus)
   const [note, setNote] = useState("")
