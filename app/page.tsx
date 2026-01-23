@@ -277,7 +277,7 @@ export default function HomePage() {
               </Link>
 
               <p className="text-center mt-8 text-sm text-muted-foreground">
-                Geen voorschot • Geen verborgen kosten • Betaal alleen bij succes
+                U betaalt niets • Tegenpartij betaalt alles • 100% gratis
               </p>
             </div>
           </div>
