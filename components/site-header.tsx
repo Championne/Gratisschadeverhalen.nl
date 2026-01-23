@@ -11,7 +11,7 @@ export function SiteHeader() {
           <Shield className="h-7 w-7 text-primary" />
           <div className="flex flex-col leading-tight text-center">
             <span className="text-lg font-bold">Autoschade</span>
-            <span className="text-lg font-bold">bureau.nl</span>
+            <span className="text-lg font-bold">Bureau.nl</span>
           </div>
         </Link>
 
