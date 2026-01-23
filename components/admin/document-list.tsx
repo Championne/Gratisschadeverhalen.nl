@@ -57,6 +57,7 @@ export function DocumentList({ documents, onDelete }: DocumentListProps) {
   const [deletingId, setDeletingId] = useState<string | null>(null)
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
   const [documentToDelete, setDocumentToDelete] = useState<Document | null>(null)
+  const [downloadingId, setDownloadingId] = useState<string | null>(null)
 
   const getFileIcon = (fileType: string) => {
     if (fileType.startsWith('image/')) {
@@ -65,6 +66,36 @@ export function DocumentList({ documents, onDelete }: DocumentListProps) {
       return <FileText className="h-4 w-4" />
     }
     return <File className="h-4 w-4" />
+  }
+
+  const handleDownload = async (doc: Document) => {
+    try {
+      setDownloadingId(doc.id)
+      toast.loading("Bestand downloaden...", { id: "download" })
+
+      // Fetch the file from Vercel Blob
+      const response = await fetch(doc.file_url)
+      const blob = await response.blob()
+
+      // Create a temporary URL and trigger download
+      const url = window.URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = doc.file_name
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      window.URL.revokeObjectURL(url)
+
+      toast.dismiss("download")
+      toast.success("Download gestart")
+    } catch (error) {
+      console.error('Download error:', error)
+      toast.dismiss("download")
+      toast.error('Fout bij downloaden van document')
+    } finally {
+      setDownloadingId(null)
+    }
   }
 
   const formatFileSize = (bytes: number) => {
@@ -199,14 +230,14 @@ export function DocumentList({ documents, onDelete }: DocumentListProps) {
                   <Button
                     size="sm"
                     variant="outline"
-                    asChild
+                    onClick={() => handleDownload(doc)}
+                    disabled={downloadingId === doc.id}
                   >
-                    <a 
-                      href={doc.file_url} 
-                      download={doc.file_name}
-                    >
+                    {downloadingId === doc.id ? (
+                      <Loader2 className="h-3 w-3 animate-spin" />
+                    ) : (
                       <Download className="h-3 w-3" />
-                    </a>
+                    )}
                   </Button>
                   
                   <Button
