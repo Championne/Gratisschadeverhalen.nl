@@ -34,6 +34,34 @@ interface AuditLogViewerProps {
   claimId: string
 }
 
+// Helper function to get user-friendly status names
+function getStatusDisplayName(status: string): string {
+  const statusNames: Record<string, string> = {
+    'nieuw': 'Nieuw',
+    'in_behandeling': 'In Behandeling',
+    'afgerond': 'Afgerond',
+    'geannuleerd': 'Geannuleerd',
+    'escalated': 'In Review',
+    'afgewezen': 'Afgewezen',
+    'letselschade_gedetecteerd': 'Letselschade Specialist'
+  }
+  return statusNames[status] || status
+}
+
+// Helper function to explain what a status means
+function getStatusExplanation(status: string): string {
+  const explanations: Record<string, string> = {
+    'nieuw': 'Je claim is ontvangen en wordt binnenkort automatisch beoordeeld.',
+    'in_behandeling': 'We zijn actief bezig met het verwerken van jouw claim. We sturen een aansprakelijkheidsbrief naar de verzekeraar.',
+    'afgerond': 'Je claim is succesvol afgehandeld! De schadevergoeding is uitgekeerd.',
+    'geannuleerd': 'Deze claim is geannuleerd op jouw verzoek.',
+    'escalated': 'Een medewerker bekijkt jouw claim persoonlijk. We nemen binnen 2 werkdagen contact op.',
+    'afgewezen': 'Helaas kunnen we deze claim niet in behandeling nemen. Je ontvangt een email met uitleg.',
+    'letselschade_gedetecteerd': 'Je claim wordt behandeld door onze letselschade specialist (Unitas). Zij nemen binnen 2 werkdagen contact op.'
+  }
+  return explanations[status] || 'Je claim status is gewijzigd.'
+}
+
 export function AuditLogViewer({ claimId }: AuditLogViewerProps) {
   const [logs, setLogs] = useState<AuditLog[]>([])
   const [loading, setLoading] = useState(true)
@@ -224,10 +252,42 @@ export function AuditLogViewer({ claimId }: AuditLogViewerProps) {
                       {log.details && Object.keys(log.details).length > 0 && (
                         <div className="text-sm space-y-2 mt-2 pt-2 border-t border-muted/30">
                           {log.action_type === 'claim_submit' && (
-                            <div className="space-y-1">
-                              {log.details.kenteken_tegenpartij && (
-                                <div>📋 Kenteken tegenpartij: <strong>{log.details.kenteken_tegenpartij}</strong></div>
-                              )}
+                            <div className="space-y-2">
+                              <div className="font-medium text-sm">📋 Ingediende gegevens:</div>
+                              <div className="space-y-1.5 pl-2">
+                                {log.details.naam && (
+                                  <div className="text-sm">👤 Uw naam: <strong>{log.details.naam}</strong></div>
+                                )}
+                                {log.details.email && (
+                                  <div className="text-sm">✉️ Email: <strong>{log.details.email}</strong></div>
+                                )}
+                                {log.details.kenteken_tegenpartij && (
+                                  <div className="text-sm">🚗 Kenteken tegenpartij: <strong className="text-primary">{log.details.kenteken_tegenpartij}</strong></div>
+                                )}
+                                {log.details.verzekeraar_tegenpartij && (
+                                  <div className="text-sm">🏢 Verzekeraar tegenpartij: <strong>{log.details.verzekeraar_tegenpartij}</strong></div>
+                                )}
+                                {log.details.datum_ongeval && (
+                                  <div className="text-sm">📅 Datum ongeval: <strong>{new Date(log.details.datum_ongeval).toLocaleDateString('nl-NL')}</strong></div>
+                                )}
+                                {log.details.has_ocr !== undefined && (
+                                  <div className="text-sm">
+                                    {log.details.has_ocr 
+                                      ? '✅ Europees Schadeformulier automatisch ingelezen' 
+                                      : '📝 Handmatig ingevoerd'}
+                                  </div>
+                                )}
+                                {log.details.ocr_confidence !== undefined && log.details.ocr_confidence > 0 && (
+                                  <div className="text-sm">
+                                    🎯 OCR betrouwbaarheid: <strong>{log.details.ocr_confidence}%</strong>
+                                  </div>
+                                )}
+                              </div>
+                              <div className="mt-3 pt-2 border-t border-muted/30">
+                                <div className="text-sm text-muted-foreground">
+                                  💡 <strong>Volgende stap:</strong> Onze AI analyseert nu automatisch jouw claim
+                                </div>
+                              </div>
                               {log.details.test_claim && (
                                 <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-yellow-100 text-yellow-800 rounded text-xs font-medium">
                                   🧪 Test Claim
@@ -237,71 +297,183 @@ export function AuditLogViewer({ claimId }: AuditLogViewerProps) {
                           )}
                           
                           {log.action_type === 'ai_analyse' && (
-                            <div className="text-muted-foreground">
-                              ✓ Jouw claim is automatisch beoordeeld voor verwerking
+                            <div className="space-y-2">
+                              <div className="text-sm">
+                                🤖 Onze AI heeft jouw claim automatisch beoordeeld en geanalyseerd
+                              </div>
+                              <div className="space-y-1.5 pl-2">
+                                {log.details.ai_confidence !== undefined && log.details.ai_confidence !== null && (
+                                  <div className="text-sm">
+                                    📊 Aansprakelijkheid tegenpartij: <strong className="text-primary">{log.details.ai_confidence}%</strong>
+                                  </div>
+                                )}
+                                {log.details.mogelijk_letselschade && (
+                                  <div className="text-sm">
+                                    ⚠️ Mogelijke letselschade gedetecteerd - <strong className="text-orange-600">doorverwezen naar specialist</strong>
+                                  </div>
+                                )}
+                                {log.details.escalated && (
+                                  <div className="text-sm">
+                                    🔍 Handmatige controle vereist - <strong className="text-blue-600">medewerker neemt contact op</strong>
+                                  </div>
+                                )}
+                                {!log.details.mogelijk_letselschade && !log.details.escalated && (
+                                  <div className="text-sm text-green-600">
+                                    ✅ Claim kan automatisch verwerkt worden
+                                  </div>
+                                )}
+                              </div>
+                              <div className="mt-3 pt-2 border-t border-muted/30">
+                                <div className="text-sm text-muted-foreground">
+                                  💡 <strong>Volgende stap:</strong> {
+                                    log.details.mogelijk_letselschade 
+                                      ? 'Letselschade specialist neemt contact op'
+                                      : log.details.escalated
+                                      ? 'Medewerker bekijkt jouw claim'
+                                      : 'Wij sturen een aansprakelijkheidsbrief naar de verzekeraar'
+                                  }
+                                </div>
+                              </div>
                             </div>
                           )}
                           
                           {log.action_type === 'status_change' && (
-                            <div className="space-y-1">
+                            <div className="space-y-2">
                               {(log.details.oude_status || log.details.old_status) && (
-                                <div className="flex items-center gap-2">
-                                  <span className="px-2 py-0.5 bg-gray-200 rounded text-xs font-medium">
-                                    {log.details.oude_status || log.details.old_status}
-                                  </span>
-                                  <span>→</span>
-                                  <span className="px-2 py-0.5 bg-green-200 rounded text-xs font-medium">
-                                    {log.details.nieuwe_status || log.details.new_status}
-                                  </span>
+                                <div>
+                                  <div className="text-sm font-medium mb-2">Status veranderd:</div>
+                                  <div className="flex items-center gap-2 pl-2">
+                                    <span className="px-2.5 py-1 bg-gray-200 text-gray-700 rounded text-sm font-medium">
+                                      {getStatusDisplayName(log.details.oude_status || log.details.old_status)}
+                                    </span>
+                                    <span className="text-muted-foreground">→</span>
+                                    <span className="px-2.5 py-1 bg-green-500 text-white rounded text-sm font-medium">
+                                      {getStatusDisplayName(log.details.nieuwe_status || log.details.new_status)}
+                                    </span>
+                                  </div>
                                 </div>
                               )}
+                              
+                              {/* AI Confidence */}
+                              {log.details.ai_confidence !== undefined && log.details.ai_confidence !== null && (
+                                <div className="text-sm pl-2">
+                                  📊 Aansprakelijkheid: <strong>{log.details.ai_confidence}%</strong>
+                                </div>
+                              )}
+                              
+                              {/* Letselschade flow */}
+                              {log.details.letselschade_flow && (
+                                <div className="pl-2 space-y-1">
+                                  <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-purple-100 text-purple-800 rounded text-xs font-medium">
+                                    🏥 Letselschade Specialist Flow
+                                  </div>
+                                  <div className="text-sm text-muted-foreground mt-1">
+                                    Je claim wordt behandeld door onze letselschade specialist (Unitas)
+                                  </div>
+                                </div>
+                              )}
+                              
+                              {/* Note from admin */}
                               {log.details.note && (
-                                <div className="text-muted-foreground">💬 {log.details.note}</div>
-                              )}
-                              {log.details.mogelijk_letselschade && (
-                                <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-orange-100 text-orange-800 rounded text-xs font-medium">
-                                  ⚠️ Mogelijke letselschade gedetecteerd
+                                <div className="pl-2 p-2 bg-blue-50 border border-blue-200 rounded text-sm">
+                                  <strong>💬 Opmerking:</strong> {log.details.note}
                                 </div>
                               )}
+                              
+                              {/* Escalated */}
+                              {log.details.escalated && !log.details.letselschade_flow && (
+                                <div className="pl-2">
+                                  <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-orange-100 text-orange-800 rounded text-xs font-medium">
+                                    🔍 Handmatige controle
+                                  </div>
+                                </div>
+                              )}
+                              
+                              {/* Next steps based on new status */}
+                              <div className="mt-3 pt-2 border-t border-muted/30">
+                                <div className="text-sm text-muted-foreground">
+                                  💡 <strong>Wat betekent dit?</strong> {getStatusExplanation(log.details.nieuwe_status || log.details.new_status)}
+                                </div>
+                              </div>
                             </div>
                           )}
                           
                           {log.action_type === 'escalatie' && (
-                            <div className="space-y-1">
+                            <div className="space-y-2">
+                              <div className="text-sm">
+                                🔍 Jouw claim vereist handmatige controle door een medewerker
+                              </div>
                               {log.details.reden && (
-                                <div className="p-2 bg-red-100 border border-red-200 rounded text-red-900">
-                                  <strong>Reden:</strong> {log.details.reden}
+                                <div className="p-3 bg-orange-50 border border-orange-200 rounded">
+                                  <div className="text-sm font-medium text-orange-900 mb-1">Waarom handmatige controle?</div>
+                                  <div className="text-sm text-orange-800">{log.details.reden}</div>
                                 </div>
                               )}
-                              <div className="text-xs text-muted-foreground">
-                                💡 Een medewerker neemt contact met je op
+                              <div className="mt-3 pt-2 border-t border-muted/30">
+                                <div className="space-y-1">
+                                  <div className="text-sm font-medium">💡 Wat gebeurt er nu?</div>
+                                  <ul className="text-sm text-muted-foreground space-y-1 pl-4">
+                                    <li className="list-disc">Een medewerker bekijkt jouw claim persoonlijk</li>
+                                    <li className="list-disc">We nemen binnen <strong>2 werkdagen</strong> contact met je op</li>
+                                    <li className="list-disc">Je kunt ons altijd bellen op <strong className="text-primary">085 060 7905</strong></li>
+                                  </ul>
+                                </div>
                               </div>
                             </div>
                           )}
                           
                           {log.action_type === 'email_sent' && (
-                            <div className="space-y-1">
+                            <div className="space-y-2">
                               {/* Success/Error Status */}
                               {log.details.success !== undefined && (
-                                <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium ${
+                                <div className={`inline-flex items-center gap-1 px-2.5 py-1 rounded text-sm font-medium ${
                                   log.details.success 
                                     ? 'bg-green-100 text-green-800' 
                                     : 'bg-orange-100 text-orange-800'
                                 }`}>
-                                  {log.details.success ? '✅ Email verzonden' : '⏳ Email wordt verzonden'}
+                                  {log.details.success ? '✅ Email succesvol verzonden' : '⏳ Email wordt verzonden'}
                                 </div>
                               )}
+                              
+                              {/* Email Type with detailed description */}
                               {log.details.email_type && (
-                                <div className="text-muted-foreground text-xs">
-                                  {log.details.email_type === 'claim_received' && '📬 Bevestigingsmail'}
-                                  {log.details.email_type === 'escalation' && '🚨 Escalatie notificatie'}
-                                  {log.details.email_type === 'letselschade_detected' && '⚠️ Letselschade notificatie'}
-                                  {log.details.email_type === 'aansprakelijkheidsbrief_verzekeraar' && '📄 Brief naar verzekeraar'}
+                                <div className="space-y-1 pl-2">
+                                  <div className="text-sm font-medium">
+                                    {log.details.email_type === 'claim_received' && '📬 Bevestigingsmail'}
+                                    {log.details.email_type === 'escalation' && '🚨 Escalatie notificatie'}
+                                    {log.details.email_type === 'letselschade_detected' && '🏥 Letselschade notificatie'}
+                                    {log.details.email_type === 'aansprakelijkheidsbrief_verzekeraar' && '📄 Brief naar verzekeraar'}
+                                    {log.details.email_type === 'admin_new_claim' && '📋 Interne notificatie'}
+                                    {!['claim_received', 'escalation', 'letselschade_detected', 'aansprakelijkheidsbrief_verzekeraar', 'admin_new_claim'].includes(log.details.email_type) && `📧 ${log.details.email_type}`}
+                                  </div>
+                                  <div className="text-sm text-muted-foreground">
+                                    {log.details.email_type === 'claim_received' && 'Je ontvangt een bevestiging dat we jouw claim hebben ontvangen'}
+                                    {log.details.email_type === 'escalation' && 'Onze medewerker is op de hoogte gebracht voor handmatige controle'}
+                                    {log.details.email_type === 'letselschade_detected' && 'Je ontvangt informatie over de letselschade procedure en contactgegevens van onze partner Unitas'}
+                                    {log.details.email_type === 'aansprakelijkheidsbrief_verzekeraar' && 'Aansprakelijkheidsbrief is verzonden naar de verzekeraar van de tegenpartij'}
+                                    {log.details.email_type === 'admin_new_claim' && 'Ons team is op de hoogte gebracht van jouw nieuwe claim'}
+                                  </div>
                                 </div>
                               )}
+                              
+                              {/* Recipient (if relevant for user) */}
+                              {log.details.recipient && log.details.email_type !== 'admin_new_claim' && (
+                                <div className="text-xs text-muted-foreground pl-2">
+                                  📧 Verzonden naar: <strong>{log.details.recipient}</strong>
+                                </div>
+                              )}
+                              
+                              {/* Automated flag */}
                               {log.details.automated && (
-                                <div className="text-xs text-muted-foreground">
-                                  🤖 Automatisch verzonden
+                                <div className="text-xs text-muted-foreground pl-2">
+                                  🤖 Automatisch verzonden door ons systeem
+                                </div>
+                              )}
+                              
+                              {/* Error message (if failed) */}
+                              {log.details.error && !log.details.success && (
+                                <div className="text-xs text-orange-600 pl-2 mt-2">
+                                  ⚠️ Email wordt nog verwerkt - geen zorgen, dit lost zich vanzelf op
                                 </div>
                               )}
                             </div>
