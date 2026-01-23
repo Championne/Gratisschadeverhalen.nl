@@ -80,13 +80,14 @@ export function ClaimsList({ claims: initialClaims }: ClaimsListProps) {
     const labels: { [key: string]: string } = {
       nieuw: "Nieuw",
       in_behandeling: "🤖 AI in behandeling",
+      letselschade_gedetecteerd: "🏥 Letselschade Specialist",
       wacht_op_info: "⏳ Wacht op info",
       aansprakelijkheidsbrief_verzonden: "✉️ Brief verzonden",
       in_onderhandeling: "💬 In onderhandeling",
       afgerond: "✅ Afgerond",
       geweigerd: "❌ Geweigerd",
       geannuleerd: "🚫 Geannuleerd",
-      escalated: "⚠️ Handmatige aandacht",
+      escalated: "🔍 In Review",
     }
     return labels[status] || status
   }
@@ -95,13 +96,14 @@ export function ClaimsList({ claims: initialClaims }: ClaimsListProps) {
     const variants: { [key: string]: any } = {
       nieuw: "default",
       in_behandeling: "secondary",
+      letselschade_gedetecteerd: "default",
       wacht_op_info: "warning",
       aansprakelijkheidsbrief_verzonden: "secondary",
       in_onderhandeling: "warning",
       afgerond: "success",
       geweigerd: "destructive",
       geannuleerd: "outline",
-      escalated: "destructive",
+      escalated: "warning",
     }
     return variants[status] || "default"
   }
@@ -135,53 +137,57 @@ export function ClaimsList({ claims: initialClaims }: ClaimsListProps) {
   return (
     <div className="space-y-4">
       {claims.map((claim) => (
-        <Card key={claim.id}>
-          <CardHeader>
-            <div className="flex items-start justify-between">
-              <div className="space-y-1 flex items-center gap-2">
-                <CardTitle className="text-lg">
-                  Claim #{claim.id.substring(0, 8)}
-                </CardTitle>
-                <EscalationBadgeCompact 
-                  status={claim.status}
-                  escalatieReden={claim.escalatie_reden}
-                />
+        <Link 
+          key={claim.id} 
+          href={`/dashboard/claim/${claim.id}`}
+          className="block group"
+        >
+          <Card className="cursor-pointer hover:shadow-lg hover:scale-[1.01] transition-all duration-200 active:scale-[0.99]">
+            <CardHeader>
+              <div className="flex items-start justify-between">
+                <div className="space-y-1 flex items-center gap-2 pointer-events-none">
+                  <CardTitle className="text-lg">
+                    Claim #{claim.id.substring(0, 8)}
+                  </CardTitle>
+                  <EscalationBadgeCompact 
+                    status={claim.status}
+                    escalatieReden={claim.escalatie_reden}
+                  />
+                </div>
+                <div className="flex items-center gap-2 pointer-events-none">
+                  <CardDescription className="text-right mr-3">
+                    Ingediend op {formatDate(claim.created_at)}
+                  </CardDescription>
+                  <Badge variant={getStatusBadgeVariant(claim.status)}>
+                    {getStatusLabel(claim.status)}
+                  </Badge>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <CardDescription className="text-right mr-3">
-                  Ingediend op {formatDate(claim.created_at)}
-                </CardDescription>
-                <Badge variant={getStatusBadgeVariant(claim.status)}>
-                  {getStatusLabel(claim.status)}
-                </Badge>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-3 gap-4 mb-4 pointer-events-none">
+                <div>
+                  <p className="text-sm text-muted-foreground">Naam</p>
+                  <p className="font-medium">{claim.naam}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Kenteken Tegenpartij</p>
+                  <p className="font-medium">{claim.kenteken_tegenpartij}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Datum Ongeval</p>
+                  <p className="font-medium">{formatDate(claim.datum_ongeval)}</p>
+                </div>
               </div>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-3 gap-4 mb-4">
-              <div>
-                <p className="text-sm text-muted-foreground">Naam</p>
-                <p className="font-medium">{claim.naam}</p>
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Kenteken Tegenpartij</p>
-                <p className="font-medium">{claim.kenteken_tegenpartij}</p>
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Datum Ongeval</p>
-                <p className="font-medium">{formatDate(claim.datum_ongeval)}</p>
-              </div>
-            </div>
-            <div className="flex gap-2">
-              <Link href={`/dashboard/claim/${claim.id}`}>
-                <Button variant="outline" size="sm">
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm" className="pointer-events-none">
                   <Eye className="mr-2 h-4 w-4" />
                   Details Bekijken
                 </Button>
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
       ))}
     </div>
   )
