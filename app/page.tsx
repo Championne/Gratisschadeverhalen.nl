@@ -337,6 +337,247 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* HOE WERKT HET - 4 Stappen Proces */}
+        <section className="py-16 md:py-20 bg-gradient-to-b from-blue-50 to-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              {/* Header */}
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  Zo werkt het
+                </h2>
+                <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                  Van ongeval tot uitbetaling in 4 eenvoudige stappen
+                </p>
+              </div>
+
+              {/* 4 Stappen */}
+              <div className="grid md:grid-cols-4 gap-8 relative">
+                {/* Connecting Line (desktop only) */}
+                <div className="hidden md:block absolute top-12 left-0 right-0 h-1 bg-gradient-to-r from-primary via-blue-400 to-green-500" style={{ top: '48px', zIndex: 0 }}></div>
+
+                {/* Step 1 */}
+                <div className="relative z-10">
+                  <div className="text-center">
+                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-primary text-white flex items-center justify-center text-3xl font-bold shadow-lg">
+                      1
+                    </div>
+                    <div className="bg-white rounded-lg p-6 shadow-md border-2 border-primary/20 min-h-[180px]">
+                      <h3 className="font-bold text-lg mb-2">Upload Formulier</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Maak foto van uw Europees Schadeformulier en upload. 
+                        OCR leest automatisch alle gegevens.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="relative z-10">
+                  <div className="text-center">
+                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-blue-500 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
+                      2
+                    </div>
+                    <div className="bg-white rounded-lg p-6 shadow-md border-2 border-blue-200 min-h-[180px]">
+                      <h3 className="font-bold text-lg mb-2">Controleer & Verstuur</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Check de ingevulde gegevens, voeg eventueel foto's toe 
+                        en verstuur. Klaar in 2 minuten!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 3 */}
+                <div className="relative z-10">
+                  <div className="text-center">
+                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-orange-500 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
+                      3
+                    </div>
+                    <div className="bg-white rounded-lg p-6 shadow-md border-2 border-orange-200 min-h-[180px]">
+                      <h3 className="font-bold text-lg mb-2">Wij Regelen Alles</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Binnen 24 uur beoordelen we uw claim. Wij sturen 
+                        aansprakelijkheidsbrief en onderhandelen.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Step 4 */}
+                <div className="relative z-10">
+                  <div className="text-center">
+                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-green-500 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
+                      4
+                    </div>
+                    <div className="bg-white rounded-lg p-6 shadow-md border-2 border-green-200 min-h-[180px]">
+                      <h3 className="font-bold text-lg mb-2">Uitbetaling</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Gemiddeld binnen 6 weken ontvangt u de volledige 
+                        schadevergoeding. Wij houden u op de hoogte.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="text-center mt-12">
+                <Link href="/claim-indienen">
+                  <Button size="lg" className="text-lg px-8">
+                    <Upload className="mr-2 h-5 w-5" />
+                    Start Nu – Gratis Claim Indienen
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Trust Badges Section */}
+        <section className="py-12 bg-white border-y">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-8">
+                <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-4">
+                  Vertrouwd door duizenden Nederlanders
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
+                {/* Badge 1: 100% Veilig */}
+                <div className="text-center p-4 rounded-lg bg-gray-50">
+                  <Shield className="h-10 w-10 mx-auto mb-2 text-green-600" />
+                  <p className="font-semibold text-sm">100% Veilig</p>
+                  <p className="text-xs text-muted-foreground">AVG Compliant</p>
+                </div>
+
+                {/* Badge 2: SSL Beveiligd */}
+                <div className="text-center p-4 rounded-lg bg-gray-50">
+                  <CheckCircle className="h-10 w-10 mx-auto mb-2 text-blue-600" />
+                  <p className="font-semibold text-sm">SSL Beveiligd</p>
+                  <p className="text-xs text-muted-foreground">256-bit Encryptie</p>
+                </div>
+
+                {/* Badge 3: No Cure No Pay */}
+                <div className="text-center p-4 rounded-lg bg-gray-50">
+                  <Euro className="h-10 w-10 mx-auto mb-2 text-yellow-600" />
+                  <p className="font-semibold text-sm">No Cure No Pay</p>
+                  <p className="text-xs text-muted-foreground">Geen Risico</p>
+                </div>
+
+                {/* Badge 4: Nederlandse Service */}
+                <div className="text-center p-4 rounded-lg bg-gray-50">
+                  <Star className="h-10 w-10 mx-auto mb-2 text-orange-600" />
+                  <p className="font-semibold text-sm">NL Service</p>
+                  <p className="text-xs text-muted-foreground">Altijd Bereikbaar</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="py-16 bg-gradient-to-b from-white to-blue-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              {/* Header */}
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  Wat onze klanten zeggen
+                </h2>
+                <p className="text-xl text-muted-foreground">
+                  Meer dan 1.000+ tevreden klanten gingen u voor
+                </p>
+              </div>
+
+              {/* Testimonials Grid */}
+              <div className="grid md:grid-cols-3 gap-6">
+                {/* Testimonial 1 */}
+                <Card className="border-2">
+                  <CardContent className="pt-6">
+                    <div className="flex mb-4">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground mb-4 italic">
+                      "Super snel en makkelijk! Foto gemaakt van mijn schadeformulier, 
+                      geüpload, en binnen 5 weken had ik €2.350 op mijn rekening. 
+                      Helemaal niets voor hoeven betalen!"
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-600">
+                        MJ
+                      </div>
+                      <div>
+                        <p className="font-semibold">Maria J.</p>
+                        <p className="text-sm text-muted-foreground">Amsterdam</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Testimonial 2 */}
+                <Card className="border-2 border-primary">
+                  <CardContent className="pt-6">
+                    <div className="flex mb-4">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground mb-4 italic">
+                      "Eindelijk een partij die het voor je regelt zonder gedoe. 
+                      Dashboard werkt perfect, je ziet precies wat er gebeurt. 
+                      Professionele aanpak!"
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-600">
+                        PB
+                      </div>
+                      <div>
+                        <p className="font-semibold">Peter B.</p>
+                        <p className="text-sm text-muted-foreground">Rotterdam</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Testimonial 3 */}
+                <Card className="border-2">
+                  <CardContent className="pt-6">
+                    <div className="flex mb-4">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground mb-4 italic">
+                      "Via mijn eigen verzekering had ik €500 eigen risico moeten betalen. 
+                      Nu kreeg ik €1.850 vergoed zonder iets te betalen. Echt een aanrader!"
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center font-bold text-purple-600">
+                        LV
+                      </div>
+                      <div>
+                        <p className="font-semibold">Linda v.d. B.</p>
+                        <p className="text-sm text-muted-foreground">Utrecht</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Review Platform Note */}
+              <div className="text-center mt-8">
+                <p className="text-sm text-muted-foreground">
+                  Reviews worden verzameld via TrustPilot • Geverifieerde klanten
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Waarom zelf verhalen via ons - NIEUWE SECTIE */}
         <section className="py-12 bg-gradient-to-b from-white to-blue-50">
           <div className="container mx-auto px-4">
