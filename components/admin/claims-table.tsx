@@ -142,7 +142,11 @@ export function AdminClaimsTable({ claims }: AdminClaimsTableProps) {
               </TableRow>
             ) : (
               filteredClaims.map((claim: any) => (
-                <TableRow key={claim.id} className="cursor-pointer hover:bg-muted/50">
+                <TableRow 
+                  key={claim.id} 
+                  className="cursor-pointer hover:bg-muted/50"
+                  onClick={() => router.push(`/dashboard/admin/claims/${claim.id}`)}
+                >
                   <TableCell className="font-medium">
                     {claim.id?.substring(0, 8)}
                   </TableCell>
