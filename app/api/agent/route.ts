@@ -123,27 +123,28 @@ FORMAT ANTWOORD PRECIES ALS:
     // ESCALATIE LOGICA
     // =============================================
     
-    // Extract AI confidence (parse from response if available)
+    // Extract AI confidence (parse from response, support ranges like "90-95%")
     let aiConfidence: number | null = null
-    const confidenceMatch = text.match(/aansprakelijkheid[:\s]+(\d+)%/i)
+    const confidenceMatch = text.match(/aansprakelijkheid[:\s]+(\d+)(?:-\d+)?%/i)
     if (confidenceMatch) {
       aiConfidence = parseInt(confidenceMatch[1])
     }
 
-    // Check escalatie triggers (OCR confidence check VERWIJDERD - gebruiker heeft al gevalideerd)
-    const shouldEscalate = 
-      shouldEscalateOnConfidence(aiConfidence, 70) ||          // AI confidence < 70%
+    // Letselschade heeft PRIORITEIT - als gedetecteerd, GEEN escalatie voor confidence issues!
+    // Escalatie alleen voor ECHTE problemen (geen tegenpartij info, AI zegt expliciet niet mogelijk)
+    const shouldEscalate = !heeftLetsel && (
       text.toLowerCase().includes('niet mogelijk') ||          // AI zegt automatisch niet mogelijk
       text.toLowerCase().includes('escalatie nodig') ||        // Expliciet door AI
       (!claim.verzekeraar_tegenpartij && !claim.naam_tegenpartij) // Geen tegenpartij info
+    )
 
     let escalatieReden = ''
     if (shouldEscalate) {
-      // Bepaal specifieke reden
-      if (shouldEscalateOnConfidence(aiConfidence, 70)) {
-        escalatieReden = `AI aansprakelijkheid confidence te laag: ${aiConfidence}% (< 70%)`
-      } else if (!claim.verzekeraar_tegenpartij && !claim.naam_tegenpartij) {
+      // Bepaal specifieke reden (confidence check verwijderd - niet meer relevant)
+      if (!claim.verzekeraar_tegenpartij && !claim.naam_tegenpartij) {
         escalatieReden = 'Onvolledige tegenpartij gegevens (geen naam of verzekeraar)'
+      } else if (text.toLowerCase().includes('niet mogelijk')) {
+        escalatieReden = 'Automatische verwerking niet mogelijk (AI beoordeling)'
       } else {
         escalatieReden = 'AI heeft handmatige review aanbevolen'
       }
