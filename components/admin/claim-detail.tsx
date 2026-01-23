@@ -30,6 +30,7 @@ import {
 } from "lucide-react"
 import { AdminStatusUpdate } from "./status-update"
 import { AdminNotes } from "./notes"
+import { ClaimEdit } from "./claim-edit"
 
 interface AdminClaimDetailProps {
   claim: any
@@ -116,119 +117,7 @@ export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails }:
 
             {/* Details Tab */}
             <TabsContent value="details" className="space-y-4">
-              {/* Klant Informatie */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <User className="h-5 w-5" />
-                    Klant Informatie
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="grid gap-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <p className="text-sm text-muted-foreground">Naam</p>
-                      <p className="font-medium">{claim.naam || 'Niet ingevuld'}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Email</p>
-                      <p className="font-medium">{claim.email}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Telefoon</p>
-                      <p className="font-medium">{claim.telefoon || 'Niet ingevuld'}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Plaats Ongeval</p>
-                      <p className="font-medium">{claim.plaats_ongeval || 'Niet ingevuld'}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Voertuig Informatie */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Car className="h-5 w-5" />
-                    Voertuig Informatie
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="grid gap-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <p className="text-sm text-muted-foreground">Kenteken Tegenpartij</p>
-                      <p className="font-mono font-medium text-lg">{claim.kenteken_tegenpartij}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Naam Tegenpartij</p>
-                      <p className="font-medium">{claim.naam_tegenpartij || 'Niet ingevuld'}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Verzekeraar Tegenpartij</p>
-                      <p className="font-medium">{claim.verzekeraar_tegenpartij || 'Niet ingevuld'}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Polisnummer</p>
-                      <p className="font-medium">{claim.polisnummer_tegenpartij || 'Niet ingevuld'}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Schade Informatie */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <FileText className="h-5 w-5" />
-                    Schade Informatie
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <p className="text-sm text-muted-foreground">Datum Ongeval</p>
-                      <p className="font-medium">
-                        {claim.datum_ongeval 
-                          ? new Date(claim.datum_ongeval).toLocaleDateString('nl-NL')
-                          : 'Niet ingevuld'
-                        }
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Locatie</p>
-                      <p className="font-medium">{claim.plaats_ongeval || 'Niet ingevuld'}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Geschat Bedrag</p>
-                      <p className="font-medium text-lg">
-                        {claim.geschatte_schade 
-                          ? `€${Number(claim.geschatte_schade).toLocaleString('nl-NL')}`
-                          : 'Niet ingevuld'
-                        }
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">Reparatie Offerte</p>
-                      <p className="font-medium">
-                        {claim.reparatie_offerte 
-                          ? `€${Number(claim.reparatie_offerte).toLocaleString('nl-NL')}`
-                          : 'Niet ingevuld'
-                        }
-                      </p>
-                    </div>
-                  </div>
-
-                  <Separator />
-
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-2">Beschrijving</p>
-                    <p className="text-sm whitespace-pre-wrap">
-                      {claim.beschrijving || 'Geen beschrijving opgegeven'}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
+              <ClaimEdit claim={claim} onUpdate={refreshAuditLogs} />
             </TabsContent>
 
             {/* Emails Tab */}
@@ -353,6 +242,11 @@ export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails }:
                             borderColor = "border-blue-400"
                             bgColor = "bg-blue-50"
                             actionLabel = "Opmerking Toegevoegd"
+                          } else if (log.action_type === 'manual_edit') {
+                            icon = "✏️"
+                            borderColor = "border-orange-500"
+                            bgColor = "bg-orange-50"
+                            actionLabel = "Handmatig Aangepast"
                           } else if (log.action_type === 'email_sent') {
                             icon = "📧"
                             borderColor = "border-green-500"
@@ -717,6 +611,60 @@ export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails }:
                                       </div>
                                     )}
                                     
+                                    {log.action_type === 'manual_edit' && (
+                                      <div className="space-y-3">
+                                        {/* Edit Summary */}
+                                        <div className="p-3 bg-orange-50 border border-orange-200 rounded">
+                                          <div className="text-xs font-semibold text-orange-900 mb-1">✏️ Handmatige Aanpassing</div>
+                                          <div className="text-sm text-orange-800">
+                                            {log.details.edited_by && <span>Door: <strong>{log.details.edited_by}</strong></span>}
+                                            {log.details.edited_fields && log.details.edited_fields.length > 0 && (
+                                              <span className="ml-2">• {log.details.edited_fields.length} veld(en) gewijzigd</span>
+                                            )}
+                                          </div>
+                                        </div>
+                                        
+                                        {/* Field Changes */}
+                                        {log.details.changes && Object.keys(log.details.changes).length > 0 && (
+                                          <div className="border-t pt-2">
+                                            <div className="text-xs font-semibold mb-2">Gewijzigde Velden</div>
+                                            <div className="space-y-2">
+                                              {Object.entries(log.details.changes).map(([field, change]: [string, any]) => (
+                                                <div key={field} className="p-2 bg-white border border-gray-200 rounded text-xs">
+                                                  <div className="font-semibold text-gray-700 mb-1">
+                                                    {field.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                                                  </div>
+                                                  <div className="flex items-center gap-2">
+                                                    <span className="px-2 py-0.5 bg-red-100 text-red-800 rounded font-mono text-xs">
+                                                      {change.old || '(leeg)'}
+                                                    </span>
+                                                    <span>→</span>
+                                                    <span className="px-2 py-0.5 bg-green-100 text-green-800 rounded font-mono text-xs">
+                                                      {change.new || '(leeg)'}
+                                                    </span>
+                                                  </div>
+                                                </div>
+                                              ))}
+                                            </div>
+                                          </div>
+                                        )}
+                                        
+                                        {/* Timestamp */}
+                                        {log.details.timestamp && (
+                                          <div className="text-xs text-muted-foreground">
+                                            <strong>Tijdstip:</strong> {new Date(log.details.timestamp).toLocaleString('nl-NL', {
+                                              day: '2-digit',
+                                              month: 'short',
+                                              year: 'numeric',
+                                              hour: '2-digit',
+                                              minute: '2-digit',
+                                              second: '2-digit'
+                                            })}
+                                          </div>
+                                        )}
+                                      </div>
+                                    )}
+                                    
                                     {log.action_type === 'email_sent' && (
                                       <div className="space-y-3">
                                         {/* Success/Error Status - Prominent */}
@@ -797,7 +745,7 @@ export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails }:
                                     )}
                                     
                                     {/* Fallback for any other details */}
-                                    {!['claim_submit', 'ai_analyse', 'status_change', 'escalatie', 'comment_added', 'email_sent'].includes(log.action_type) && (
+                                    {!['claim_submit', 'ai_analyse', 'status_change', 'escalatie', 'comment_added', 'manual_edit', 'email_sent'].includes(log.action_type) && (
                                       <div className="text-xs font-mono bg-muted p-2 rounded overflow-x-auto">
                                         {JSON.stringify(log.details, null, 2)}
                                       </div>
