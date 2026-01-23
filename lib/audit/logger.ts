@@ -51,12 +51,6 @@ export interface LogAuditActionParams {
  */
 export async function logAuditAction(params: LogAuditActionParams): Promise<string | null> {
   try {
-    console.log('🔍 [AUDIT DEBUG] Starting logAuditAction:', {
-      claimId: params.claimId,
-      actionType: params.actionType,
-      performedBy: params.performedBy,
-    })
-
     // Use service role to bypass RLS
     const { createClient: createServiceClient } = await import('@supabase/supabase-js')
     const supabaseAdmin = createServiceClient(
@@ -70,8 +64,6 @@ export async function logAuditAction(params: LogAuditActionParams): Promise<stri
       }
     )
 
-    console.log('🔍 [AUDIT DEBUG] Supabase Admin client created')
-
     const insertData = {
       claim_id: params.claimId,
       action_type: params.actionType,
@@ -81,8 +73,6 @@ export async function logAuditAction(params: LogAuditActionParams): Promise<stri
       ip_address: params.ipAddress || null,
     }
 
-    console.log('🔍 [AUDIT DEBUG] Insert data:', JSON.stringify(insertData, null, 2))
-
     const { data, error } = await supabaseAdmin
       .from('audit_logs')
       .insert(insertData)
@@ -90,20 +80,13 @@ export async function logAuditAction(params: LogAuditActionParams): Promise<stri
       .single()
 
     if (error) {
-      console.error('❌ [AUDIT DEBUG] Insert failed:', error)
-      console.error('❌ [AUDIT DEBUG] Error code:', error.code)
-      console.error('❌ [AUDIT DEBUG] Error message:', error.message)
-      console.error('❌ [AUDIT DEBUG] Error details:', JSON.stringify(error, null, 2))
+      console.error(`[Audit Log] Failed to log ${params.actionType}:`, error.message)
       return null
     }
 
-    console.log(`✅ [AUDIT DEBUG] Audit logged successfully: ${params.actionType} by ${params.performedBy}`)
-    console.log(`✅ [AUDIT DEBUG] Inserted ID: ${data.id}`)
     return data.id as string
   } catch (error: any) {
-    console.error('❌ [AUDIT DEBUG] Exception:', error)
-    console.error('❌ [AUDIT DEBUG] Exception message:', error.message)
-    console.error('❌ [AUDIT DEBUG] Exception stack:', error.stack)
+    console.error('[Audit Log] Exception:', error.message)
     return null
   }
 }
