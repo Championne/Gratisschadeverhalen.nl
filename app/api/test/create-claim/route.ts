@@ -71,6 +71,22 @@ export async function GET(request: Request) {
 
     console.log('✅ Test claim created:', claim.id)
 
+    // Log claim submission
+    const { logAuditAction } = await import('@/lib/audit/logger')
+    await logAuditAction({
+      claimId: claim.id,
+      actionType: 'claim_submit',
+      performedBy: `USER:${user.email}`,
+      details: {
+        naam: testClaim.naam,
+        email: testClaim.email,
+        kenteken_tegenpartij: testClaim.kenteken_tegenpartij,
+        test_claim: true,
+      },
+      severity: 'info',
+    })
+    console.log('✅ Audit log created for test claim')
+
     // Trigger AI agent
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL 
       || (process.env.NODE_ENV === 'production' ? 'https://www.autoschadebureau.nl' : null)
