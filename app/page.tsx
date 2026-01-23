@@ -218,7 +218,7 @@ export default function HomePage() {
                   Gratis Uw <span className="text-primary">Autoschade Verhalen</span> – Upload Direct Uw Schadeformulier
                 </h1>
                 <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-4xl mx-auto">
-                  Aangereden? Verhaal uw autoschade of voertuigschade <strong>volledig gratis</strong> op de WA-verzekering van de tegenpartij. 
+                  Aangereden? Wij verhalen uw voertuigschade op de tegenpartij. 
                   Wij regelen alles – van aansprakelijkheidsbrief tot uitbetaling.
                 </p>
                 <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground flex-wrap">
