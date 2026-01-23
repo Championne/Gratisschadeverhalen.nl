@@ -39,6 +39,18 @@ export default async function AdminDashboardPage() {
 
   if (error) {
     console.error("Error fetching claims:", error)
+    // Show error in UI for debugging
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+          <h2 className="text-red-800 font-semibold mb-2">Database Error</h2>
+          <p className="text-red-600 text-sm">{error.message}</p>
+          <pre className="mt-2 text-xs bg-red-100 p-2 rounded overflow-auto">
+            {JSON.stringify(error, null, 2)}
+          </pre>
+        </div>
+      </div>
+    )
   }
 
   // Calculate stats
@@ -46,6 +58,10 @@ export default async function AdminDashboardPage() {
   const newClaims = claims?.filter(c => c.status === 'nieuw').length || 0
   const inBehandeling = claims?.filter(c => c.status === 'in_behandeling').length || 0
   const afgerond = claims?.filter(c => c.status === 'afgerond').length || 0
+
+  // Debug logging
+  console.log('[Admin Dashboard] Total claims fetched:', totalClaims)
+  console.log('[Admin Dashboard] Claims data:', claims)
 
   return (
     <div className="container mx-auto px-4 py-8">
