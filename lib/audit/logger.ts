@@ -45,27 +45,44 @@ export interface LogAuditActionParams {
 
 /**
  * Log een actie naar audit_logs tabel
+ * Uses service role to bypass RLS policies
  */
 export async function logAuditAction(params: LogAuditActionParams): Promise<string | null> {
   try {
-    const supabase = await createClient()
+    // Use service role to bypass RLS
+    const { createClient: createServiceClient } = await import('@supabase/supabase-js')
+    const supabaseAdmin = createServiceClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+      {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false
+        }
+      }
+    )
     
-    const { data, error } = await supabase.rpc('log_audit_action', {
-      p_claim_id: params.claimId,
-      p_action_type: params.actionType,
-      p_performed_by: params.performedBy,
-      p_details: params.details || {},
-      p_severity: params.severity || 'info',
-      p_ip_address: params.ipAddress || null,
-    })
+    const { data, error } = await supabaseAdmin
+      .from('audit_logs')
+      .insert({
+        claim_id: params.claimId,
+        action_type: params.actionType,
+        performed_by: params.performedBy,
+        details: params.details || {},
+        severity: params.severity || 'info',
+        ip_address: params.ipAddress || null,
+      })
+      .select('id')
+      .single()
 
     if (error) {
       console.error('❌ Audit log failed:', error)
+      console.error('Error details:', JSON.stringify(error, null, 2))
       return null
     }
 
     console.log(`✅ Audit logged: ${params.actionType} by ${params.performedBy}`)
-    return data as string
+    return data.id as string
   } catch (error) {
     console.error('❌ Audit log exception:', error)
     return null
