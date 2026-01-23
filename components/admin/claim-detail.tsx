@@ -786,18 +786,17 @@ export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails }:
               <CardTitle>Acties</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              <Button className="w-full" variant="outline">
+              <Button className="w-full" variant="outline" disabled>
                 <Mail className="mr-2 h-4 w-4" />
                 Email Verzenden
               </Button>
-              <Button className="w-full" variant="outline">
+              <Button className="w-full" variant="outline" disabled>
                 <FileText className="mr-2 h-4 w-4" />
                 Document Genereren
               </Button>
-              <Button className="w-full" variant="outline">
-                <Edit className="mr-2 h-4 w-4" />
-                Claim Bewerken
-              </Button>
+              <p className="text-xs text-muted-foreground text-center pt-2">
+                💡 Gebruik de "Details" tab om de claim te bewerken
+              </p>
             </CardContent>
           </Card>
         </div>
