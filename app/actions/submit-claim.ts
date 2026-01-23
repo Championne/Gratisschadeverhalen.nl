@@ -117,9 +117,12 @@ export async function submitClaim(data: ClaimSubmission) {
  */
 async function triggerAgentProcessing(claimId: string) {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+    // Determine base URL (production vs local)
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL 
+      || (process.env.NODE_ENV === 'production' ? 'https://www.autoschadebureau.nl' : null)
+      || 'http://localhost:3000'
     
-    console.log('🤖 Triggering AI agent for claim:', claimId)
+    console.log('🤖 Triggering AI agent for claim:', claimId, 'URL:', baseUrl)
     
     const response = await fetch(`${baseUrl}/api/agent`, {
       method: 'POST',
