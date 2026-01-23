@@ -37,7 +37,7 @@ export function SiteHeader() {
           </Link>
           <Link href="/dashboard">
             <Button variant="default" size="sm">
-              Dashboard
+              Mijn Dossier
             </Button>
           </Link>
         </nav>
