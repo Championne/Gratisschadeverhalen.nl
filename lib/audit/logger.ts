@@ -28,6 +28,8 @@ export type AuditActionType =
   | 'manual_edit'
   | 'file_upload'
   | 'file_delete'
+  | 'document_uploaded'
+  | 'document_deleted'
   | 'login'
   | 'view_claim'
   | 'comment_added'
