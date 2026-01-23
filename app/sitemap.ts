@@ -6,6 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Static pages
   const staticPages = [
     '',
+    '/diensten',
     '/claim-indienen',
     '/over-ons',
     '/contact',
@@ -17,6 +18,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: route === '' ? 'weekly' : 'monthly' as 'weekly' | 'monthly',
-    priority: route === '' ? 1.0 : route === '/claim-indienen' ? 0.9 : 0.7,
+    priority: route === '' ? 1.0 : route === '/claim-indienen' ? 0.9 : route === '/diensten' ? 0.8 : 0.7,
   }))
 }

@@ -20,6 +20,9 @@ export function SiteHeader() {
           <Link href="/" className="text-sm font-medium transition-colors hover:text-primary">
             Home
           </Link>
+          <Link href="/diensten" className="text-sm font-medium transition-colors hover:text-primary">
+            Diensten
+          </Link>
           <Link href="/claim-indienen" className="text-sm font-medium transition-colors hover:text-primary">
             Claim Indienen
           </Link>

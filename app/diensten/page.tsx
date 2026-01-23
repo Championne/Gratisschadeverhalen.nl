@@ -1,0 +1,463 @@
+import { Metadata } from "next"
+import Link from "next/link"
+import { 
+  FileText, 
+  Shield, 
+  Clock, 
+  Euro, 
+  Car, 
+  CheckCircle, 
+  Camera,
+  UserCheck,
+  FileSearch,
+  Zap,
+  ArrowRight
+} from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+
+export const metadata: Metadata = {
+  title: "Onze Diensten - Autoschade Verhalen | Autoschadebureau.nl",
+  description: "Alle diensten van Autoschadebureau.nl: autoschade verhalen, OCR schadeformulier verwerking, online claim tracking, expertise organisatie en meer. Volledig gratis.",
+  keywords: [
+    "autoschade verhalen diensten",
+    "schadeformulier OCR",
+    "online claim tracking",
+    "WA schade verhalen",
+    "autoschade expertise",
+    "gratis schadeafhandeling"
+  ],
+}
+
+export default function DienstenPage() {
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-blue-50 via-white to-green-50 pt-16 pb-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Onze Diensten
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8">
+              Wij regelen van A tot Z uw autoschade verhaal op de tegenpartij. 
+              Volledig digitaal, transparant en 100% gratis voor u.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link href="/claim-indienen">
+                <Button size="lg" className="text-lg">
+                  Start Nu - Claim Indienen
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button size="lg" variant="outline" className="text-lg">
+                  Neem Contact Op
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Services Grid */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Wat wij voor u doen
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Van schadeformulier uploaden tot uitbetaling – wij nemen alles uit handen
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Dienst 1: Autoschade Verhalen */}
+              <Card className="border-2 border-primary/20">
+                <CardHeader>
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                    <Car className="h-8 w-8 text-primary" />
+                  </div>
+                  <CardTitle className="text-2xl">Autoschade Verhalen</CardTitle>
+                  <CardDescription className="text-base">
+                    Onze kerndienst: uw voertuigschade volledig verhalen op de WA-verzekeraar van de tegenpartij
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Aansprakelijkheidsbrief opstellen en versturen</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Alle communicatie met de tegenpartij en verzekeraar</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Onderhandelen over schadevergoeding</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Volledige administratieve afhandeling</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">U betaalt niets - alles wordt door tegenpartij vergoed</span>
+                    </li>
+                  </ul>
+                  <div className="mt-6">
+                    <Link href="/claim-indienen">
+                      <Button className="w-full">
+                        Start Nu
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Dienst 2: OCR Schadeformulier Verwerking */}
+              <Card className="border-2">
+                <CardHeader>
+                  <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+                    <Camera className="h-8 w-8 text-blue-600" />
+                  </div>
+                  <CardTitle className="text-2xl">OCR Formulier Verwerking</CardTitle>
+                  <CardDescription className="text-base">
+                    Maak een foto van uw Europees Schadeformulier - wij lezen het automatisch in
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Automatische herkenning van kentekens, datum en locatie</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">AI-gestuurde verwerking van handgeschreven tekst</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Automatisch invullen van claim formulier</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Bespaar tijd - klaar in 2 minuten</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">U controleert en vult eventueel aan</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              {/* Dienst 3: Online Claim Tracking */}
+              <Card className="border-2">
+                <CardHeader>
+                  <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-4">
+                    <FileText className="h-8 w-8 text-green-600" />
+                  </div>
+                  <CardTitle className="text-2xl">Online Claim Tracking</CardTitle>
+                  <CardDescription className="text-base">
+                    Volg uw claim 24/7 in uw persoonlijke dashboard met realtime updates
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Realtime statusupdates over uw claim</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Alle documenten direct inzichtelijk</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Tijdlijn met volledige audit trail</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Upload extra documenten wanneer nodig</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Beveiligd met Google login</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              {/* Dienst 4: Expertise & Taxatie Organisatie */}
+              <Card className="border-2">
+                <CardHeader>
+                  <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mb-4">
+                    <FileSearch className="h-8 w-8 text-orange-600" />
+                  </div>
+                  <CardTitle className="text-2xl">Expertise & Taxatie</CardTitle>
+                  <CardDescription className="text-base">
+                    Wij organiseren professionele taxatie van uw schade en onderhandelen over het bedrag
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Inschakelen van gecertificeerde taxateurs</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Coördineren van schade-inspectie</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Beoordeling van taxatierapport</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Onderhandelen met verzekeraar over bedrag</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Zorgen voor eerlijke vergoeding</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              {/* Dienst 5: Letselschade Detectie */}
+              <Card className="border-2">
+                <CardHeader>
+                  <div className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mb-4">
+                    <UserCheck className="h-8 w-8 text-purple-600" />
+                  </div>
+                  <CardTitle className="text-2xl">Letselschade Detectie</CardTitle>
+                  <CardDescription className="text-base">
+                    AI-detectie van mogelijke letselschade en doorverwijzing naar gespecialiseerde partners
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Automatische scan op letselschade signalen</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Doorverwijzing naar Unitas Letselschade (partner)</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Gespecialiseerde begeleiding bij letsel</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Naadloze overdracht van uw dossier</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Ook letselschade 100% no cure no pay</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+
+              {/* Dienst 6: Juridische Escalatie */}
+              <Card className="border-2">
+                <CardHeader>
+                  <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mb-4">
+                    <Shield className="h-8 w-8 text-red-600" />
+                  </div>
+                  <CardTitle className="text-2xl">Juridische Escalatie</CardTitle>
+                  <CardDescription className="text-base">
+                    Bij weigering of traag reagerende verzekeraars schakelen wij juridische expertise in
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Inschakelen van gespecialiseerde advocaten</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Versturen van formele aanmaningen</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Opstarten van juridische procedures</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">95% van de zaken komt tot schikking</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Alle kosten gedekt door tegenpartij</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 bg-gradient-to-b from-blue-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Waarom voor ons kiezen?
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Wat ons onderscheidt van andere schadebureaus
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <Card>
+                <CardHeader>
+                  <Zap className="h-12 w-12 text-primary mb-4" />
+                  <CardTitle>Volledig Digitaal</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Van upload tot uitbetaling 100% online. OCR-technologie verwerkt uw formulieren automatisch. 
+                    Realtime tracking via uw dashboard.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <Euro className="h-12 w-12 text-primary mb-4" />
+                  <CardTitle>100% Gratis</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    U betaalt letterlijk niets. De WA-verzekeraar van de tegenpartij vergoedt alle kosten, 
+                    inclusief onze kosten. Geen voorschot, geen percentage.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <Clock className="h-12 w-12 text-primary mb-4" />
+                  <CardTitle>Snel & Efficiënt</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Gemiddeld binnen 6 weken volledig afgehandeld. Professionele beoordeling binnen 24 uur. 
+                    Wij handelen direct na indienen.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-primary text-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Klaar om uw autoschade te verhalen?
+            </h2>
+            <p className="text-xl mb-8 opacity-90">
+              Upload uw schadeformulier en wij starten direct met uw claim. 100% gratis en zonder risico.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link href="/claim-indienen">
+                <Button size="lg" variant="secondary" className="text-lg">
+                  Start Nu - Claim Indienen
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button size="lg" variant="outline" className="text-lg bg-transparent border-white text-white hover:bg-white hover:text-primary">
+                  Eerst Vragen Stellen
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Veelgestelde Vragen
+              </h2>
+            </div>
+
+            <div className="space-y-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Welke diensten bieden jullie NIET aan?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Wij richten ons specifiek op het verhalen van voertuigschade (materiële schade). 
+                    Voor letselschade verwijzen wij door naar onze partner Unitas Letselschade, die gespecialiseerd is in persoonlijk letsel. 
+                    Wij bieden geen directe rechtsbijstand of medische diensten aan.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Hoe snel kan ik starten?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Direct! Upload een foto van uw Europees Schadeformulier, of vul handmatig in. 
+                    Onze OCR-technologie verwerkt het formulier binnen enkele seconden. 
+                    Binnen 24 uur beoordeelt ons team uw claim en starten we de communicatie met de verzekeraar.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Wat als ik geen schadeformulier heb?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Geen probleem! U kunt ook handmatig een claim indienen. 
+                    Zolang u het kenteken van de tegenpartij heeft, kunnen wij de claim starten. 
+                    Wel adviseren wij altijd om een Europees Schadeformulier in te vullen bij een ongeval.
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-lg">Werken jullie samen met garages?</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    Ja, wij werken samen met een netwerk van gecertificeerde taxateurs en garages. 
+                    U bent vrij om zelf een garage te kiezen, of wij kunnen u doorverwijzen naar een betrouwbare partner. 
+                    De verzekeraar vergoedt de reparatiekosten rechtstreeks of via ons.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}
