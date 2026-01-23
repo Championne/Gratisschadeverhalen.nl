@@ -459,7 +459,7 @@ FORMAT ANTWOORD PRECIES ALS:
                 error: pdfError.message || 'Unknown error',
                 automated: true,
               },
-              severity: 'error',
+              severity: 'critical',
             })
             
             // Escaleer als PDF/email faalt
