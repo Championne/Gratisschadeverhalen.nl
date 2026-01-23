@@ -252,52 +252,6 @@ export default function OverOnsPage() {
           </Card>
         </section>
 
-        {/* Statistieken (Placeholders) */}
-        <section className="mb-16">
-          <Card className="bg-gradient-to-r from-primary/5 to-blue-50 border-2 border-primary/20">
-            <CardHeader className="text-center">
-              <CardTitle className="text-3xl">Onze Resultaten</CardTitle>
-              <CardDescription className="text-base">
-                Cijfers die voor zich spreken (update zodra data beschikbaar is)
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-4 gap-6 text-center">
-                <div className="bg-white rounded-lg p-6 shadow">
-                  <div className="text-4xl font-bold text-primary mb-2 bg-yellow-100 inline-block px-3 py-1 rounded">
-                    [XXX]
-                  </div>
-                  <p className="text-sm text-muted-foreground">Claims Succesvol Afgehandeld</p>
-                </div>
-
-                <div className="bg-white rounded-lg p-6 shadow">
-                  <div className="text-4xl font-bold text-primary mb-2 bg-yellow-100 inline-block px-3 py-1 rounded">
-                    €[X]M
-                  </div>
-                  <p className="text-sm text-muted-foreground">Totaal Uitgekeerd aan Klanten</p>
-                </div>
-
-                <div className="bg-white rounded-lg p-6 shadow">
-                  <div className="text-4xl font-bold text-primary mb-2 bg-yellow-100 inline-block px-3 py-1 rounded">
-                    [X.X]
-                  </div>
-                  <p className="text-sm text-muted-foreground">Gemiddelde Beoordeling (uit 5)</p>
-                </div>
-
-                <div className="bg-white rounded-lg p-6 shadow">
-                  <div className="text-4xl font-bold text-primary mb-2 bg-yellow-100 inline-block px-3 py-1 rounded">
-                    [XX]
-                  </div>
-                  <p className="text-sm text-muted-foreground">Gemiddelde Afhandeltijd (dagen)</p>
-                </div>
-              </div>
-              <p className="text-center text-xs text-muted-foreground mt-6 italic">
-                💡 Update deze cijfers zodra u voldoende data heeft verzameld
-              </p>
-            </CardContent>
-          </Card>
-        </section>
-
         {/* Team Section (Optioneel) */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-6">Uw Autoschadespecialist</h2>
