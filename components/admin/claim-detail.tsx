@@ -390,132 +390,409 @@ export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails }:
                                   </div>
                                 </div>
                                 
-                                {/* Timestamp and performer */}
-                                <div className="text-xs text-muted-foreground mb-2 space-y-0.5">
-                                  <div>{new Date(log.created_at).toLocaleString('nl-NL', { 
-                                    day: '2-digit', 
-                                    month: '2-digit', 
-                                    year: 'numeric',
-                                    hour: '2-digit', 
-                                    minute: '2-digit',
-                                    second: '2-digit'
-                                  })}</div>
+                                {/* Timestamp, performer, and metadata */}
+                                <div className="text-xs text-muted-foreground mb-2 space-y-1">
+                                  <div className="flex items-center gap-2 flex-wrap">
+                                    <span className="font-mono">{new Date(log.created_at).toLocaleString('nl-NL', { 
+                                      day: '2-digit', 
+                                      month: '2-digit', 
+                                      year: 'numeric',
+                                      hour: '2-digit', 
+                                      minute: '2-digit',
+                                      second: '2-digit'
+                                    })}</span>
+                                    {/* Severity Badge */}
+                                    <span className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-xs font-medium ${
+                                      log.severity === 'critical' ? 'bg-red-100 text-red-800' :
+                                      log.severity === 'warning' ? 'bg-yellow-100 text-yellow-800' :
+                                      'bg-blue-100 text-blue-800'
+                                    }`}>
+                                      {log.severity === 'critical' ? '🔴' : log.severity === 'warning' ? '🟡' : '🔵'} {log.severity}
+                                    </span>
+                                  </div>
                                   <div className="flex items-center gap-1">
                                     <User className="h-3 w-3" />
-                                    <span>{log.performed_by}</span>
+                                    <span className="font-medium">{log.performed_by}</span>
                                   </div>
+                                  {log.ip_address && (
+                                    <div className="flex items-center gap-1 text-xs">
+                                      <span>📍</span>
+                                      <span className="font-mono">{log.ip_address}</span>
+                                    </div>
+                                  )}
                                 </div>
                                 
                                 {/* Details */}
                                 {log.details && (
                                   <div className="text-sm space-y-2 mt-2 pt-2 border-t border-muted/30">
                                     {log.action_type === 'claim_submit' && (
-                                      <div className="space-y-1">
-                                        {log.details.naam && <div><strong>Naam:</strong> {log.details.naam}</div>}
-                                        {log.details.email && <div><strong>Email:</strong> {log.details.email}</div>}
-                                        {log.details.kenteken_tegenpartij && <div><strong>Kenteken:</strong> {log.details.kenteken_tegenpartij}</div>}
-                                        {log.details.test_claim && (
-                                          <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-yellow-100 text-yellow-800 rounded text-xs font-medium">
-                                            🧪 Test Claim
+                                      <div className="space-y-3">
+                                        {/* Claimer Info */}
+                                        <div className="grid grid-cols-2 gap-2 text-xs">
+                                          {log.details.naam && (
+                                            <div className="p-2 bg-blue-50 rounded">
+                                              <div className="text-muted-foreground">Naam Claimer</div>
+                                              <div className="font-semibold">{log.details.naam}</div>
+                                            </div>
+                                          )}
+                                          {log.details.email && (
+                                            <div className="p-2 bg-blue-50 rounded">
+                                              <div className="text-muted-foreground">Email</div>
+                                              <div className="font-semibold">{log.details.email}</div>
+                                            </div>
+                                          )}
+                                        </div>
+                                        
+                                        {/* Tegenpartij Info */}
+                                        <div className="border-t pt-2">
+                                          <div className="text-xs font-semibold mb-2">Tegenpartij Gegevens</div>
+                                          <div className="grid grid-cols-2 gap-2 text-xs">
+                                            {log.details.kenteken_tegenpartij && (
+                                              <div className="p-2 bg-orange-50 rounded">
+                                                <div className="text-muted-foreground">Kenteken</div>
+                                                <div className="font-semibold text-orange-700">{log.details.kenteken_tegenpartij}</div>
+                                              </div>
+                                            )}
+                                            {log.details.verzekeraar_tegenpartij && (
+                                              <div className="p-2 bg-orange-50 rounded">
+                                                <div className="text-muted-foreground">Verzekeraar</div>
+                                                <div className="font-semibold">{log.details.verzekeraar_tegenpartij}</div>
+                                              </div>
+                                            )}
+                                          </div>
+                                        </div>
+                                        
+                                        {/* Ongeval Info */}
+                                        {log.details.datum_ongeval && (
+                                          <div className="border-t pt-2">
+                                            <div className="text-xs">
+                                              <strong>Datum ongeval:</strong> {new Date(log.details.datum_ongeval).toLocaleDateString('nl-NL', { 
+                                                weekday: 'long', 
+                                                year: 'numeric', 
+                                                month: 'long', 
+                                                day: 'numeric' 
+                                              })}
+                                            </div>
                                           </div>
                                         )}
+                                        
+                                        {/* OCR Info */}
+                                        <div className="border-t pt-2">
+                                          <div className="text-xs font-semibold mb-2">OCR Informatie</div>
+                                          <div className="flex gap-2">
+                                            {log.details.has_ocr !== undefined && (
+                                              <div className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium ${
+                                                log.details.has_ocr ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
+                                              }`}>
+                                                {log.details.has_ocr ? '✅ OCR gebruikt' : '📝 Handmatig ingevoerd'}
+                                              </div>
+                                            )}
+                                            {log.details.ocr_confidence !== undefined && (
+                                              <div className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium ${
+                                                log.details.ocr_confidence >= 80 ? 'bg-green-100 text-green-800' :
+                                                log.details.ocr_confidence >= 50 ? 'bg-yellow-100 text-yellow-800' :
+                                                'bg-red-100 text-red-800'
+                                              }`}>
+                                                🎯 Betrouwbaarheid: {log.details.ocr_confidence}%
+                                              </div>
+                                            )}
+                                          </div>
+                                        </div>
+                                        
+                                        {/* Flags */}
+                                        <div className="flex flex-wrap gap-2">
+                                          {log.details.test_claim && (
+                                            <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-yellow-100 text-yellow-800 rounded text-xs font-medium">
+                                              🧪 Test Claim
+                                            </div>
+                                          )}
+                                        </div>
                                       </div>
                                     )}
                                     
                                     {log.action_type === 'ai_analyse' && (
-                                      <div className="space-y-1">
-                                        {log.details.model && <div><strong>Model:</strong> {log.details.model}</div>}
-                                        {log.details.timestamp && <div><strong>Analyse tijdstip:</strong> {new Date(log.details.timestamp).toLocaleString('nl-NL')}</div>}
+                                      <div className="space-y-3">
+                                        {/* Model Info */}
+                                        <div className="grid grid-cols-2 gap-2 text-xs">
+                                          {log.details.model && (
+                                            <div className="p-2 bg-purple-50 rounded">
+                                              <div className="text-muted-foreground">AI Model</div>
+                                              <div className="font-semibold font-mono">{log.details.model}</div>
+                                            </div>
+                                          )}
+                                          {log.details.timestamp && (
+                                            <div className="p-2 bg-purple-50 rounded">
+                                              <div className="text-muted-foreground">Analyse Tijdstip</div>
+                                              <div className="font-semibold">{new Date(log.details.timestamp).toLocaleString('nl-NL', {
+                                                hour: '2-digit',
+                                                minute: '2-digit',
+                                                second: '2-digit'
+                                              })}</div>
+                                            </div>
+                                          )}
+                                        </div>
+                                        
+                                        {/* AI Confidence */}
+                                        {log.details.ai_confidence !== undefined && log.details.ai_confidence !== null && (
+                                          <div className="border-t pt-2">
+                                            <div className="text-xs font-semibold mb-1">Aansprakelijkheid Beoordeling</div>
+                                            <div className={`inline-flex items-center gap-1 px-3 py-1.5 rounded text-sm font-bold ${
+                                              log.details.ai_confidence >= 80 ? 'bg-green-100 text-green-800' :
+                                              log.details.ai_confidence >= 60 ? 'bg-yellow-100 text-yellow-800' :
+                                              'bg-red-100 text-red-800'
+                                            }`}>
+                                              📊 AI Confidence: {log.details.ai_confidence}%
+                                            </div>
+                                          </div>
+                                        )}
+                                        
+                                        {/* Letselschade Detectie */}
+                                        {log.details.mogelijk_letselschade !== undefined && (
+                                          <div className="border-t pt-2">
+                                            <div className={`p-2 rounded text-xs ${
+                                              log.details.mogelijk_letselschade 
+                                                ? 'bg-orange-100 text-orange-900 border border-orange-300' 
+                                                : 'bg-green-100 text-green-900 border border-green-300'
+                                            }`}>
+                                              <div className="font-semibold mb-1">
+                                                {log.details.mogelijk_letselschade ? '⚠️ Letselschade Gedetecteerd' : '✅ Geen Letselschade'}
+                                              </div>
+                                              {log.details.mogelijk_letselschade && (
+                                                <div>Claim wordt doorverwezen naar letselschade specialist (Unitas)</div>
+                                              )}
+                                            </div>
+                                          </div>
+                                        )}
+                                        
+                                        {/* Escalatie Info */}
+                                        {log.details.escalated !== undefined && (
+                                          <div className="border-t pt-2">
+                                            <div className={`p-2 rounded text-xs ${
+                                              log.details.escalated 
+                                                ? 'bg-red-100 text-red-900 border border-red-300' 
+                                                : 'bg-green-100 text-green-900 border border-green-300'
+                                            }`}>
+                                              <div className="font-semibold">
+                                                {log.details.escalated ? '🚨 Handmatige Controle Vereist' : '✅ Automatische Verwerking Mogelijk'}
+                                              </div>
+                                            </div>
+                                          </div>
+                                        )}
                                       </div>
                                     )}
                                     
                                     {log.action_type === 'status_change' && (
-                                      <div className="space-y-1">
+                                      <div className="space-y-3">
+                                        {/* Status Transition */}
                                         {(log.details.oude_status || log.details.old_status) && (
-                                          <div className="flex items-center gap-2">
-                                            <span className="px-2 py-0.5 bg-gray-200 rounded text-xs font-medium">
-                                              {log.details.oude_status || log.details.old_status}
-                                            </span>
-                                            <span>→</span>
-                                            <span className="px-2 py-0.5 bg-green-200 rounded text-xs font-medium">
-                                              {log.details.nieuwe_status || log.details.new_status}
-                                            </span>
+                                          <div>
+                                            <div className="text-xs font-semibold mb-2">Status Transitie</div>
+                                            <div className="flex items-center gap-3 p-2 bg-gray-50 rounded">
+                                              <span className="px-3 py-1.5 bg-gray-300 text-gray-800 rounded text-sm font-semibold">
+                                                {log.details.oude_status || log.details.old_status}
+                                              </span>
+                                              <span className="text-muted-foreground">→</span>
+                                              <span className="px-3 py-1.5 bg-green-500 text-white rounded text-sm font-semibold">
+                                                {log.details.nieuwe_status || log.details.new_status}
+                                              </span>
+                                            </div>
                                           </div>
                                         )}
-                                        {log.details.note && <div><strong>Notitie:</strong> {log.details.note}</div>}
-                                        {log.details.ai_confidence !== undefined && (
-                                          <div><strong>AI Vertrouwen:</strong> {log.details.ai_confidence}%</div>
-                                        )}
-                                        {log.details.ocr_confidence !== undefined && (
-                                          <div><strong>OCR Vertrouwen:</strong> {log.details.ocr_confidence}%</div>
-                                        )}
-                                        {log.details.mogelijk_letselschade !== undefined && (
-                                          <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium ${
-                                            log.details.mogelijk_letselschade 
-                                              ? 'bg-orange-100 text-orange-800' 
-                                              : 'bg-green-100 text-green-800'
+                                        
+                                        {/* Update Success/Error */}
+                                        {log.details.update_success !== undefined && (
+                                          <div className={`p-2 rounded text-xs font-medium ${
+                                            log.details.update_success 
+                                              ? 'bg-green-100 text-green-800 border border-green-300' 
+                                              : 'bg-red-100 text-red-800 border border-red-300'
                                           }`}>
-                                            {log.details.mogelijk_letselschade ? '⚠️ Mogelijk Letselschade' : '✅ Geen Letselschade'}
+                                            {log.details.update_success ? '✅ Database Update Succesvol' : '❌ Database Update Mislukt'}
+                                            {log.details.update_error && (
+                                              <div className="mt-1 text-xs font-normal">
+                                                <strong>Error:</strong> {log.details.update_error}
+                                              </div>
+                                            )}
                                           </div>
                                         )}
-                                        {log.details.escalated && (
-                                          <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-red-100 text-red-800 rounded text-xs font-medium">
-                                            🚨 Geëscaleerd
+                                        
+                                        {/* Confidence Metrics */}
+                                        {(log.details.ai_confidence !== undefined || log.details.ocr_confidence !== undefined) && (
+                                          <div className="border-t pt-2">
+                                            <div className="text-xs font-semibold mb-2">Confidence Metrics</div>
+                                            <div className="grid grid-cols-2 gap-2">
+                                              {log.details.ai_confidence !== undefined && (
+                                                <div className={`p-2 rounded text-xs ${
+                                                  log.details.ai_confidence >= 80 ? 'bg-green-100 text-green-800' :
+                                                  log.details.ai_confidence >= 60 ? 'bg-yellow-100 text-yellow-800' :
+                                                  'bg-red-100 text-red-800'
+                                                }`}>
+                                                  <div className="text-muted-foreground text-xs">AI Confidence</div>
+                                                  <div className="font-bold text-sm">{log.details.ai_confidence}%</div>
+                                                </div>
+                                              )}
+                                              {log.details.ocr_confidence !== undefined && (
+                                                <div className={`p-2 rounded text-xs ${
+                                                  log.details.ocr_confidence >= 80 ? 'bg-green-100 text-green-800' :
+                                                  log.details.ocr_confidence >= 50 ? 'bg-yellow-100 text-yellow-800' :
+                                                  'bg-red-100 text-red-800'
+                                                }`}>
+                                                  <div className="text-muted-foreground text-xs">OCR Confidence</div>
+                                                  <div className="font-bold text-sm">{log.details.ocr_confidence}%</div>
+                                                </div>
+                                              )}
+                                            </div>
+                                          </div>
+                                        )}
+                                        
+                                        {/* Flags */}
+                                        <div className="flex flex-wrap gap-2">
+                                          {log.details.mogelijk_letselschade && (
+                                            <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-orange-100 text-orange-800 rounded text-xs font-medium">
+                                              ⚠️ Mogelijk Letselschade
+                                            </div>
+                                          )}
+                                          {log.details.escalated && (
+                                            <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-red-100 text-red-800 rounded text-xs font-medium">
+                                              🚨 Geëscaleerd
+                                            </div>
+                                          )}
+                                          {log.details.letselschade_flow && (
+                                            <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-purple-100 text-purple-800 rounded text-xs font-medium">
+                                              🏥 Letselschade Flow
+                                            </div>
+                                          )}
+                                        </div>
+                                        
+                                        {/* Admin Note */}
+                                        {log.details.note && (
+                                          <div className="border-t pt-2">
+                                            <div className="text-xs font-semibold mb-1">Notitie van Admin</div>
+                                            <div className="p-2 bg-blue-50 border border-blue-200 rounded text-sm italic">
+                                              "{log.details.note}"
+                                            </div>
                                           </div>
                                         )}
                                       </div>
                                     )}
                                     
                                     {log.action_type === 'escalatie' && (
-                                      <div className="space-y-1">
+                                      <div className="space-y-3">
+                                        {/* Escalatie Reden */}
                                         {log.details.reden && (
-                                          <div className="p-2 bg-red-100 border border-red-300 rounded text-red-900">
-                                            <strong>Reden:</strong> {log.details.reden}
+                                          <div className="p-3 bg-red-100 border-2 border-red-300 rounded text-red-900">
+                                            <div className="text-xs font-semibold mb-1">🚨 Escalatie Reden</div>
+                                            <div className="text-sm font-medium">{log.details.reden}</div>
                                           </div>
                                         )}
+                                        
+                                        {/* Timestamp */}
+                                        {log.details.timestamp && (
+                                          <div className="text-xs text-muted-foreground">
+                                            <strong>Escalatie tijdstip:</strong> {new Date(log.details.timestamp).toLocaleString('nl-NL', {
+                                              day: '2-digit',
+                                              month: 'short',
+                                              year: 'numeric',
+                                              hour: '2-digit',
+                                              minute: '2-digit',
+                                              second: '2-digit'
+                                            })}
+                                          </div>
+                                        )}
+                                        
+                                        {/* Action Required */}
+                                        <div className="p-2 bg-yellow-50 border border-yellow-300 rounded text-xs">
+                                          <strong>⚠️ Actie Vereist:</strong> Medewerker moet contact opnemen met claimer binnen 2 werkdagen
+                                        </div>
                                       </div>
                                     )}
                                     
                                     {log.action_type === 'comment_added' && (
-                                      <div className="space-y-1">
+                                      <div className="space-y-2">
                                         {log.details.comment && (
-                                          <div className="italic text-muted-foreground">"{log.details.comment}"</div>
+                                          <div className="p-3 bg-blue-50 border border-blue-200 rounded">
+                                            <div className="text-xs font-semibold text-blue-900 mb-1">💬 Interne Opmerking</div>
+                                            <div className="text-sm italic text-blue-900">"{log.details.comment}"</div>
+                                          </div>
                                         )}
                                       </div>
                                     )}
                                     
                                     {log.action_type === 'email_sent' && (
-                                      <div className="space-y-1">
-                                        {/* Success/Error Status */}
+                                      <div className="space-y-3">
+                                        {/* Success/Error Status - Prominent */}
                                         {log.details.success !== undefined && (
-                                          <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium ${
+                                          <div className={`p-3 rounded font-medium ${
                                             log.details.success 
-                                              ? 'bg-green-100 text-green-800' 
-                                              : 'bg-red-100 text-red-800'
+                                              ? 'bg-green-100 text-green-900 border-2 border-green-300' 
+                                              : 'bg-red-100 text-red-900 border-2 border-red-300'
                                           }`}>
-                                            {log.details.success ? '✅ Succesvol verzonden' : '❌ Verzending mislukt'}
+                                            <div className="flex items-center gap-2 text-sm">
+                                              {log.details.success ? '✅ Email Succesvol Verzonden' : '❌ Email Verzending Mislukt'}
+                                            </div>
                                           </div>
                                         )}
+                                        
+                                        {/* Email Details */}
+                                        <div className="grid grid-cols-2 gap-2 text-xs">
+                                          {log.details.email_type && (
+                                            <div className="p-2 bg-blue-50 rounded">
+                                              <div className="text-muted-foreground">Email Type</div>
+                                              <div className="font-semibold">{log.details.email_type.replace(/_/g, ' ')}</div>
+                                            </div>
+                                          )}
+                                          {log.details.recipient && (
+                                            <div className="p-2 bg-blue-50 rounded">
+                                              <div className="text-muted-foreground">Ontvanger</div>
+                                              <div className="font-semibold font-mono text-xs">{log.details.recipient}</div>
+                                            </div>
+                                          )}
+                                        </div>
+                                        
+                                        {/* Additional Recipients */}
+                                        {log.details.cc && (
+                                          <div className="text-xs">
+                                            <strong>CC:</strong> <span className="font-mono">{log.details.cc}</span>
+                                          </div>
+                                        )}
+                                        
+                                        {/* Email Context */}
+                                        {(log.details.verzekeraar || log.details.reden || log.details.pdf_size_kb) && (
+                                          <div className="border-t pt-2 space-y-1 text-xs">
+                                            {log.details.verzekeraar && (
+                                              <div><strong>Verzekeraar:</strong> {log.details.verzekeraar}</div>
+                                            )}
+                                            {log.details.pdf_size_kb && (
+                                              <div><strong>PDF Grootte:</strong> {log.details.pdf_size_kb} KB</div>
+                                            )}
+                                            {log.details.reden && (
+                                              <div className="p-2 bg-orange-50 border border-orange-200 rounded mt-2">
+                                                <strong>Reden:</strong> {log.details.reden}
+                                              </div>
+                                            )}
+                                          </div>
+                                        )}
+                                        
+                                        {/* Error Details - Full Stack */}
                                         {log.details.error && (
-                                          <div className="p-2 bg-red-50 border border-red-200 rounded text-red-900 text-xs mt-1">
-                                            <strong>Error:</strong> {log.details.error}
+                                          <div className="border-t pt-2">
+                                            <div className="text-xs font-semibold mb-1 text-red-800">❌ Error Details</div>
+                                            <div className="p-2 bg-red-50 border border-red-200 rounded text-red-900 text-xs font-mono">
+                                              <div className="whitespace-pre-wrap break-all">{log.details.error}</div>
+                                            </div>
+                                            <div className="mt-2 p-2 bg-yellow-50 border border-yellow-300 rounded text-xs">
+                                              <strong>💡 Tip:</strong> Check Resend dashboard en domain verificatie status
+                                            </div>
                                           </div>
                                         )}
-                                        {log.details.email_type && (
-                                          <div><strong>Type:</strong> {log.details.email_type.replace(/_/g, ' ')}</div>
-                                        )}
-                                        {log.details.recipient && (
-                                          <div><strong>Ontvanger:</strong> {log.details.recipient}</div>
-                                        )}
-                                        {log.details.cc && <div><strong>CC:</strong> {log.details.cc}</div>}
-                                        {log.details.verzekeraar && <div><strong>Verzekeraar:</strong> {log.details.verzekeraar}</div>}
-                                        {log.details.pdf_size_kb && <div><strong>PDF Grootte:</strong> {log.details.pdf_size_kb} KB</div>}
-                                        {log.details.reden && <div><strong>Reden:</strong> {log.details.reden}</div>}
-                                        {log.details.automated && (
-                                          <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-purple-100 text-purple-800 rounded text-xs font-medium">
-                                            🤖 Automatisch verzonden
-                                          </div>
-                                        )}
+                                        
+                                        {/* Flags */}
+                                        <div className="flex flex-wrap gap-2">
+                                          {log.details.automated && (
+                                            <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-purple-100 text-purple-800 rounded text-xs font-medium">
+                                              🤖 Automatisch verzonden
+                                            </div>
+                                          )}
+                                        </div>
                                       </div>
                                     )}
                                     
