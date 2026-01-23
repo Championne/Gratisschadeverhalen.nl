@@ -161,6 +161,10 @@ FORMAT ANTWOORD PRECIES ALS:
       })
 
       // Verstuur escalatie email naar admin
+      const adminEmail = process.env.RESEND_ADMIN_EMAIL || claim.email // TODO: Replace with real admin email
+      let emailSuccess = false
+      let emailError = null
+      
       try {
         const escalationEmailTemplate = adminEscalationEmail({
           claimId: claim.id,
@@ -172,8 +176,6 @@ FORMAT ANTWOORD PRECIES ALS:
           kenteken_tegenpartij: claim.kenteken_tegenpartij,
           beschrijving: claim.beschrijving,
         })
-
-        const adminEmail = process.env.RESEND_ADMIN_EMAIL || claim.email // TODO: Replace with real admin email
         
         console.log('📧 Versturen escalatie email naar admin:', adminEmail)
         await sendEmail({
@@ -182,22 +184,26 @@ FORMAT ANTWOORD PRECIES ALS:
           html: escalationEmailTemplate.html,
         })
         console.log('✅ Escalatie email verzonden')
-
-        // Log escalatie email
-        await logAuditAction({
-          claimId: claim.id,
-          actionType: 'email_sent',
-          performedBy: 'SYSTEM',
-          details: {
-            email_type: 'escalation',
-            recipient: adminEmail,
-            reden: escalatieReden,
-          },
-          severity: 'critical',
-        })
-      } catch (escalationEmailError) {
+        emailSuccess = true
+      } catch (escalationEmailError: any) {
         console.error('❌ Escalatie email failed:', escalationEmailError)
+        emailError = escalationEmailError.message || 'Unknown error'
       }
+      
+      // Log email attempt (success or failure)
+      await logAuditAction({
+        claimId: claim.id,
+        actionType: 'email_sent',
+        performedBy: 'SYSTEM',
+        details: {
+          email_type: 'escalation',
+          recipient: adminEmail,
+          reden: escalatieReden,
+          success: emailSuccess,
+          error: emailError,
+        },
+        severity: 'critical',
+      })
     }
 
     // Update claim with AI notes using RPC to bypass cache
@@ -233,29 +239,32 @@ FORMAT ANTWOORD PRECIES ALS:
       })
     }
 
-    // Send emails
-    try {
-      // Email to claimer
-      const claimerEmailTemplate = heeftLetsel 
-        ? letselschadeDetectedEmail({
-            naam: claim.naam,
-            claimId: claim.id,
-            datum_ongeval: claim.datum_ongeval,
-            kenteken_tegenpartij: claim.kenteken_tegenpartij,
-            status: newStatus,
-            mogelijk_letselschade: heeftLetsel,
-          })
-        : claimReceivedEmail({
-            naam: claim.naam,
-            claimId: claim.id,
-            datum_ongeval: claim.datum_ongeval,
-            kenteken_tegenpartij: claim.kenteken_tegenpartij,
-            status: newStatus,
-            mogelijk_letselschade: heeftLetsel,
-          })
+    // Send emails (each with individual error handling and logging)
+    
+    // Email to claimer (alleen als NIET geëscaleerd)
+    if (!shouldEscalate) {
+      let claimerEmailSuccess = false
+      let claimerEmailError = null
+      
+      try {
+        const claimerEmailTemplate = heeftLetsel 
+          ? letselschadeDetectedEmail({
+              naam: claim.naam,
+              claimId: claim.id,
+              datum_ongeval: claim.datum_ongeval,
+              kenteken_tegenpartij: claim.kenteken_tegenpartij,
+              status: newStatus,
+              mogelijk_letselschade: heeftLetsel,
+            })
+          : claimReceivedEmail({
+              naam: claim.naam,
+              claimId: claim.id,
+              datum_ongeval: claim.datum_ongeval,
+              kenteken_tegenpartij: claim.kenteken_tegenpartij,
+              status: newStatus,
+              mogelijk_letselschade: heeftLetsel,
+            })
 
-      // Alleen email naar claimer als NIET geëscaleerd (escalaties gaan alleen naar admin)
-      if (!shouldEscalate) {
         console.log('📧 Versturen email naar claimer:', claim.email)
         await sendEmail({
           to: claim.email,
@@ -263,24 +272,36 @@ FORMAT ANTWOORD PRECIES ALS:
           html: claimerEmailTemplate.html,
         })
         console.log('✅ Email verzonden naar claimer')
-
-        // Log claimer email
-        await logAuditAction({
-          claimId: claim.id,
-          actionType: 'email_sent',
-          performedBy: 'SYSTEM',
-          details: {
-            email_type: heeftLetsel ? 'letselschade_detected' : 'claim_received',
-            recipient: claim.email,
-          },
-          severity: 'info',
-        })
-      } else {
-        console.log('⏭️ Skip claimer email (claim is escalated)')
+        claimerEmailSuccess = true
+      } catch (claimerEmailError_: any) {
+        console.error('❌ Claimer email failed:', claimerEmailError_)
+        claimerEmailError = claimerEmailError_.message || 'Unknown error'
       }
 
-      // Email to admin (nieuwe claim notificatie - alleen als NIET escalated)
-      if (!shouldEscalate) {
+      // Log claimer email attempt (success or failure)
+      await logAuditAction({
+        claimId: claim.id,
+        actionType: 'email_sent',
+        performedBy: 'SYSTEM',
+        details: {
+          email_type: heeftLetsel ? 'letselschade_detected' : 'claim_received',
+          recipient: claim.email,
+          success: claimerEmailSuccess,
+          error: claimerEmailError,
+        },
+        severity: 'info',
+      })
+    } else {
+      console.log('⏭️ Skip claimer email (claim is escalated)')
+    }
+
+    // Email to admin (nieuwe claim notificatie - alleen als NIET escalated)
+    if (!shouldEscalate) {
+      let adminEmailSuccess = false
+      let adminEmailError = null
+      const adminEmail = process.env.RESEND_ADMIN_EMAIL || claim.email // TODO: Replace with real admin email
+      
+      try {
         const adminEmailTemplate = adminNewClaimEmail({
           naam: claim.naam,
           email: claim.email,
@@ -292,7 +313,6 @@ FORMAT ANTWOORD PRECIES ALS:
           mogelijk_letselschade: heeftLetsel,
         })
 
-        const adminEmail = process.env.RESEND_ADMIN_EMAIL || claim.email // TODO: Replace with real admin email
         console.log('📧 Versturen email naar admin:', adminEmail)
         await sendEmail({
           to: adminEmail,
@@ -300,19 +320,26 @@ FORMAT ANTWOORD PRECIES ALS:
           html: adminEmailTemplate.html,
         })
         console.log('✅ Email verzonden naar admin')
-
-        // Log admin email
-        await logAuditAction({
-          claimId: claim.id,
-          actionType: 'email_sent',
-          performedBy: 'SYSTEM',
-          details: {
-            email_type: 'admin_new_claim',
-            recipient: adminEmail,
-          },
-          severity: 'info',
-        })
+        adminEmailSuccess = true
+      } catch (adminEmailError_: any) {
+        console.error('❌ Admin email failed:', adminEmailError_)
+        adminEmailError = adminEmailError_.message || 'Unknown error'
       }
+
+      // Log admin email attempt (success or failure)
+      await logAuditAction({
+        claimId: claim.id,
+        actionType: 'email_sent',
+        performedBy: 'SYSTEM',
+        details: {
+          email_type: 'admin_new_claim',
+          recipient: adminEmail,
+          success: adminEmailSuccess,
+          error: adminEmailError,
+        },
+        severity: 'info',
+      })
+    }
 
       // =============================================
       // AUTOMATISCH VERSTUREN NAAR VERZEKERAAR
@@ -416,8 +443,24 @@ FORMAT ANTWOORD PRECIES ALS:
 
             console.log('🎉 Volledige flow compleet: Email + PDF naar verzekeraar verzonden!')
             
-          } catch (pdfError) {
+          } catch (pdfError: any) {
             console.error('❌ PDF generatie of verzending naar verzekeraar failed:', pdfError)
+            
+            // Log failed email attempt
+            await logAuditAction({
+              claimId: claim.id,
+              actionType: 'email_sent',
+              performedBy: 'SYSTEM',
+              details: {
+                email_type: 'aansprakelijkheidsbrief_verzekeraar',
+                recipient: verzekeraar.email_schade,
+                verzekeraar: verzekeraar.naam,
+                success: false,
+                error: pdfError.message || 'Unknown error',
+                automated: true,
+              },
+              severity: 'error',
+            })
             
             // Escaleer als PDF/email faalt
             await escalateClaim({
@@ -429,18 +472,22 @@ FORMAT ANTWOORD PRECIES ALS:
             // Email admin over fout
             const adminEmail = process.env.RESEND_ADMIN_EMAIL
             if (adminEmail) {
-              await sendEmail({
-                to: adminEmail,
-                subject: `🚨 FOUT: Automatische verzending naar verzekeraar mislukt`,
-                html: `
-                  <h2>Automatische verzending mislukt</h2>
-                  <p><strong>Claim ID:</strong> ${claim.id}</p>
-                  <p><strong>Verzekeraar:</strong> ${claim.verzekeraar_tegenpartij}</p>
-                  <p><strong>Email:</strong> ${verzekeraar.email_schade}</p>
-                  <p><strong>Fout:</strong> ${pdfError instanceof Error ? pdfError.message : 'Onbekende fout'}</p>
-                  <p>De claim is geëscaleerd voor handmatige afhandeling.</p>
-                `,
-              })
+              try {
+                await sendEmail({
+                  to: adminEmail,
+                  subject: `🚨 FOUT: Automatische verzending naar verzekeraar mislukt`,
+                  html: `
+                    <h2>Automatische verzending mislukt</h2>
+                    <p><strong>Claim ID:</strong> ${claim.id}</p>
+                    <p><strong>Verzekeraar:</strong> ${claim.verzekeraar_tegenpartij}</p>
+                    <p><strong>Email:</strong> ${verzekeraar.email_schade}</p>
+                    <p><strong>Fout:</strong> ${pdfError instanceof Error ? pdfError.message : 'Onbekende fout'}</p>
+                    <p>De claim is geëscaleerd voor handmatige afhandeling.</p>
+                  `,
+                })
+              } catch (adminEmailError) {
+                console.error('❌ Failed to send admin error notification:', adminEmailError)
+              }
             }
           }
           
@@ -500,11 +547,6 @@ FORMAT ANTWOORD PRECIES ALS:
       } else if (!claim.verzekeraar_tegenpartij) {
         console.log('⚠️  Verzekeraar naam ontbreekt - kan niet versturen')
       }
-
-    } catch (emailError) {
-      console.error('❌ Email send failed:', emailError)
-      // Continue anyway - emails are not critical
-    }
 
     return NextResponse.json({
       success: true,

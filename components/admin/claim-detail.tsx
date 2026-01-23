@@ -484,6 +484,21 @@ export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails }:
                                     
                                     {log.action_type === 'email_sent' && (
                                       <div className="space-y-1">
+                                        {/* Success/Error Status */}
+                                        {log.details.success !== undefined && (
+                                          <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium ${
+                                            log.details.success 
+                                              ? 'bg-green-100 text-green-800' 
+                                              : 'bg-red-100 text-red-800'
+                                          }`}>
+                                            {log.details.success ? '✅ Succesvol verzonden' : '❌ Verzending mislukt'}
+                                          </div>
+                                        )}
+                                        {log.details.error && (
+                                          <div className="p-2 bg-red-50 border border-red-200 rounded text-red-900 text-xs mt-1">
+                                            <strong>Error:</strong> {log.details.error}
+                                          </div>
+                                        )}
                                         {log.details.email_type && (
                                           <div><strong>Type:</strong> {log.details.email_type.replace(/_/g, ' ')}</div>
                                         )}
@@ -493,6 +508,7 @@ export function AdminClaimDetail({ claim, auditLogs: initialAuditLogs, emails }:
                                         {log.details.cc && <div><strong>CC:</strong> {log.details.cc}</div>}
                                         {log.details.verzekeraar && <div><strong>Verzekeraar:</strong> {log.details.verzekeraar}</div>}
                                         {log.details.pdf_size_kb && <div><strong>PDF Grootte:</strong> {log.details.pdf_size_kb} KB</div>}
+                                        {log.details.reden && <div><strong>Reden:</strong> {log.details.reden}</div>}
                                         {log.details.automated && (
                                           <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-purple-100 text-purple-800 rounded text-xs font-medium">
                                             🤖 Automatisch verzonden
