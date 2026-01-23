@@ -122,45 +122,49 @@ export function OCRUpload({ onOCRComplete }: OCRUploadProps) {
         {!file ? (
           <div className="space-y-4">
             {/* Grote klikbare upload area */}
-            <label 
-              htmlFor="file-upload" 
-              className="cursor-pointer block"
+            <div
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
               onDrop={handleDrop}
             >
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center hover:border-blue-400 hover:bg-blue-50 transition-colors">
-                <div className="flex flex-col items-center gap-4">
-                  <div className="rounded-full bg-blue-100 p-4">
-                    <Upload className="h-8 w-8 text-blue-600" />
-                  </div>
-                  
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2">
-                      Upload Europees Schadeformulier
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-2">
-                      Klik hier of sleep een bestand hiernaartoe
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      Ondersteunde formaten: JPG, PNG, WEBP, PDF (max 10MB)
-                    </p>
-                  </div>
-                  
-                  <div className="flex items-center gap-2 text-blue-600">
-                    <FileText className="h-5 w-5" />
-                    <span className="text-sm font-medium">Selecteer bestand</span>
+              <label 
+                htmlFor="file-upload" 
+                className="cursor-pointer block"
+              >
+                <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center hover:border-blue-400 hover:bg-blue-50 transition-all duration-200 active:scale-[0.99]">
+                  <div className="flex flex-col items-center gap-4 pointer-events-none">
+                    <div className="rounded-full bg-blue-100 p-4">
+                      <Upload className="h-8 w-8 text-blue-600" />
+                    </div>
+                    
+                    <div>
+                      <h3 className="font-semibold text-lg mb-2">
+                        Upload Europees Schadeformulier
+                      </h3>
+                      <p className="text-sm text-gray-600 mb-2">
+                        <strong>Klik overal in dit venster</strong> of sleep een bestand hiernaartoe
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        Ondersteunde formaten: JPG, PNG, WEBP, PDF (max 10MB)
+                      </p>
+                    </div>
+                    
+                    <div className="flex items-center gap-2 text-blue-600">
+                      <FileText className="h-5 w-5" />
+                      <span className="text-sm font-medium">Klik om bestand te selecteren</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <input
-                id="file-upload"
-                type="file"
-                className="hidden"
-                accept="image/*,.pdf"
-                onChange={handleFileChange}
-              />
-            </label>
+              </label>
+                <input
+                  id="file-upload"
+                  type="file"
+                  className="hidden"
+                  accept="image/*,.pdf"
+                  onChange={handleFileChange}
+                />
+              </label>
+            </div>
           </div>
         ) : (
           <div className="space-y-4">
