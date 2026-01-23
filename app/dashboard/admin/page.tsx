@@ -23,7 +23,7 @@ export default async function AdminDashboardPage() {
   // TODO: Add admin role check when role system is implemented
   // For now, any authenticated user can access admin
 
-  // Fetch all claims (without user join for now - we'll add that separately)
+  // Fetch all claims (naam and email are already in claims table)
   const { data: claims, error } = await supabase
     .from("claims")
     .select("*")
@@ -31,7 +31,6 @@ export default async function AdminDashboardPage() {
 
   if (error) {
     console.error("Error fetching claims:", error)
-    // Show error in UI for debugging
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="bg-red-50 border border-red-200 rounded-lg p-4">
@@ -45,31 +44,15 @@ export default async function AdminDashboardPage() {
     )
   }
 
-  // Fetch user data separately for each claim
-  const claimsWithUsers = await Promise.all(
-    (claims || []).map(async (claim) => {
-      const { data: userData } = await supabase
-        .from("users")
-        .select("id, email, naam, telefoonnummer")
-        .eq("id", claim.user_id)
-        .single()
-      
-      return {
-        ...claim,
-        users: userData
-      }
-    })
-  )
-
   // Calculate stats
-  const totalClaims = claimsWithUsers?.length || 0
-  const newClaims = claimsWithUsers?.filter(c => c.status === 'nieuw').length || 0
-  const inBehandeling = claimsWithUsers?.filter(c => c.status === 'in_behandeling').length || 0
-  const afgerond = claimsWithUsers?.filter(c => c.status === 'afgerond').length || 0
+  const totalClaims = claims?.length || 0
+  const newClaims = claims?.filter(c => c.status === 'nieuw').length || 0
+  const inBehandeling = claims?.filter(c => c.status === 'in_behandeling').length || 0
+  const afgerond = claims?.filter(c => c.status === 'afgerond').length || 0
 
   // Debug logging
   console.log('[Admin Dashboard] Total claims fetched:', totalClaims)
-  console.log('[Admin Dashboard] Claims data:', claimsWithUsers)
+  console.log('[Admin Dashboard] First claim sample:', claims?.[0])
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -129,24 +112,24 @@ export default async function AdminDashboardPage() {
             </TabsList>
 
             <TabsContent value="all" className="mt-6">
-              <AdminClaimsTable claims={claimsWithUsers || []} />
+              <AdminClaimsTable claims={claims || []} />
             </TabsContent>
 
             <TabsContent value="nieuw" className="mt-6">
               <AdminClaimsTable 
-                claims={claimsWithUsers?.filter(c => c.status === 'nieuw') || []} 
+                claims={claims?.filter(c => c.status === 'nieuw') || []} 
               />
             </TabsContent>
 
             <TabsContent value="in_behandeling" className="mt-6">
               <AdminClaimsTable 
-                claims={claimsWithUsers?.filter(c => c.status === 'in_behandeling') || []} 
+                claims={claims?.filter(c => c.status === 'in_behandeling') || []} 
               />
             </TabsContent>
 
             <TabsContent value="afgerond" className="mt-6">
               <AdminClaimsTable 
-                claims={claimsWithUsers?.filter(c => c.status === 'afgerond') || []} 
+                claims={claims?.filter(c => c.status === 'afgerond') || []} 
               />
             </TabsContent>
           </Tabs>

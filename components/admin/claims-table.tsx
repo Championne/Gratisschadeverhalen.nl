@@ -68,13 +68,13 @@ export function AdminClaimsTable({ claims }: AdminClaimsTableProps) {
   ).sort()
 
   // Filter claims
-  const filteredClaims = claims.filter(claim => {
+  const filteredClaims = claims.filter((claim: any) => {
     const matchesSearch = 
-      claim.referentie?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      claim.kenteken_aanvrager?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      claim.id?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       claim.kenteken_tegenpartij?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      claim.users?.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      claim.users?.naam?.toLowerCase().includes(searchTerm.toLowerCase())
+      claim.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      claim.naam?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      claim.naam_tegenpartij?.toLowerCase().includes(searchTerm.toLowerCase())
 
     const matchesVezekeraar = 
       verzekeraaarFilter === "all" || 
@@ -141,34 +141,34 @@ export function AdminClaimsTable({ claims }: AdminClaimsTableProps) {
                 </TableCell>
               </TableRow>
             ) : (
-              filteredClaims.map((claim) => (
+              filteredClaims.map((claim: any) => (
                 <TableRow key={claim.id} className="cursor-pointer hover:bg-muted/50">
                   <TableCell className="font-medium">
-                    {claim.referentie}
+                    {claim.id?.substring(0, 8)}
                   </TableCell>
                   <TableCell>
-                    <Badge className={statusColors[claim.status as keyof typeof statusColors]}>
-                      {statusLabels[claim.status as keyof typeof statusLabels]}
+                    <Badge className={statusColors[claim.status as keyof typeof statusColors] || "bg-gray-500"}>
+                      {statusLabels[claim.status as keyof typeof statusLabels] || claim.status}
                     </Badge>
                   </TableCell>
                   <TableCell>
                     <div className="flex flex-col">
-                      <span className="font-medium">{claim.users?.naam || 'Onbekend'}</span>
-                      <span className="text-xs text-muted-foreground">{claim.users?.email}</span>
+                      <span className="font-medium">{claim.naam || 'Onbekend'}</span>
+                      <span className="text-xs text-muted-foreground">{claim.email}</span>
                     </div>
                   </TableCell>
                   <TableCell>
                     <div className="flex flex-col text-sm">
-                      <span className="text-xs text-muted-foreground">Aanvrager:</span>
-                      <span className="font-mono">{claim.kenteken_aanvrager}</span>
-                      <span className="text-xs text-muted-foreground mt-1">Tegenpartij:</span>
-                      <span className="font-mono">{claim.kenteken_tegenpartij}</span>
+                      <span className="text-xs text-muted-foreground">Tegenpartij:</span>
+                      <span className="font-mono">{claim.kenteken_tegenpartij || '-'}</span>
+                      <span className="text-xs text-muted-foreground mt-1">Naam:</span>
+                      <span className="text-sm">{claim.naam_tegenpartij || '-'}</span>
                     </div>
                   </TableCell>
                   <TableCell>{claim.verzekeraar_tegenpartij || '-'}</TableCell>
                   <TableCell>
-                    {claim.schadebedrag_geschat 
-                      ? `€${claim.schadebedrag_geschat.toLocaleString('nl-NL')}`
+                    {claim.geschatte_schade 
+                      ? `€${Number(claim.geschatte_schade).toLocaleString('nl-NL')}`
                       : '-'
                     }
                   </TableCell>
