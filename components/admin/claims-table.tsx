@@ -46,14 +46,18 @@ interface AdminClaimsTableProps {
 const statusColors = {
   nieuw: "bg-blue-500",
   in_behandeling: "bg-orange-500",
+  escalated: "bg-red-600",
   afgerond: "bg-green-500",
+  afgewezen: "bg-red-500",
   geannuleerd: "bg-gray-500",
 }
 
 const statusLabels = {
   nieuw: "Nieuw",
   in_behandeling: "In Behandeling",
+  escalated: "Geëscaleerd",
   afgerond: "Afgerond",
+  afgewezen: "Afgewezen",
   geannuleerd: "Geannuleerd",
 }
 

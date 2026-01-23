@@ -31,7 +31,9 @@ interface AdminStatusUpdateProps {
 const statusOptions = [
   { value: "nieuw", label: "Nieuw" },
   { value: "in_behandeling", label: "In Behandeling" },
+  { value: "escalated", label: "Geëscaleerd" },
   { value: "afgerond", label: "Afgerond" },
+  { value: "afgewezen", label: "Afgewezen" },
   { value: "geannuleerd", label: "Geannuleerd" },
 ]
 
