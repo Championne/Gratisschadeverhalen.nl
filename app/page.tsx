@@ -283,6 +283,60 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* USP Section - 3 Key Benefits */}
+        <section className="py-12 md:py-16 bg-white border-y">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+                {/* USP 1: Tegenpartij betaalt */}
+                <div className="text-center group">
+                  <div className="relative mb-6">
+                    <div className="w-32 h-32 mx-auto bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all group-hover:scale-105">
+                      <div className="absolute inset-0 bg-yellow-600/20 rounded-full transform rotate-45"></div>
+                      <Euro className="h-16 w-16 text-white relative z-10" strokeWidth={2.5} />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Tegenpartij betaalt alles</h3>
+                  <p className="text-muted-foreground">
+                    U betaalt niets. De WA-verzekeraar van de tegenpartij vergoedt alle kosten. 
+                    Wij rekenen pas af bij succes.
+                  </p>
+                </div>
+
+                {/* USP 2: Volledige transparantie */}
+                <div className="text-center group">
+                  <div className="relative mb-6">
+                    <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all group-hover:scale-105">
+                      <div className="absolute inset-0 bg-blue-700/20 rounded-full transform rotate-45"></div>
+                      <FileText className="h-16 w-16 text-white relative z-10" strokeWidth={2.5} />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Volledige transparantie</h3>
+                  <p className="text-muted-foreground">
+                    Volg uw claim realtime in uw dashboard. Alle correspondentie, 
+                    documenten en updates direct inzichtelijk.
+                  </p>
+                </div>
+
+                {/* USP 3: Snel resultaat */}
+                <div className="text-center group">
+                  <div className="relative mb-6">
+                    <div className="w-32 h-32 mx-auto bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all group-hover:scale-105">
+                      <div className="absolute inset-0 bg-green-700/20 rounded-full transform rotate-45"></div>
+                      <Clock className="h-16 w-16 text-white relative z-10" strokeWidth={2.5} />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Snel resultaat</h3>
+                  <p className="text-muted-foreground">
+                    Gemiddeld binnen 6 weken volledig afgehandeld. 
+                    Direct actie na indienen, professionele expertise.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Waarom zelf verhalen via ons - NIEUWE SECTIE */}
         <section className="py-12 bg-gradient-to-b from-white to-blue-50">
           <div className="container mx-auto px-4">
