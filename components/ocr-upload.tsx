@@ -155,7 +155,6 @@ export function OCRUpload({ onOCRComplete }: OCRUploadProps) {
                     </div>
                   </div>
                 </div>
-              </label>
                 <input
                   id="file-upload"
                   type="file"
