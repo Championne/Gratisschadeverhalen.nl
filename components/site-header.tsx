@@ -7,9 +7,16 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <Shield className="h-7 w-7 text-primary" />
-          <span className="text-xl font-bold">Autoschadebureau.nl</span>
+        <Link href="/" className="flex items-center gap-3">
+          <Shield className="h-8 w-8 text-primary" />
+          <div className="flex flex-col leading-tight">
+            <span className="text-xl font-bold tracking-wide uppercase" style={{ fontFamily: 'Georgia, serif' }}>
+              Autoschade
+            </span>
+            <span className="text-lg font-semibold tracking-wider text-primary" style={{ fontFamily: 'Georgia, serif' }}>
+              Bureau
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
