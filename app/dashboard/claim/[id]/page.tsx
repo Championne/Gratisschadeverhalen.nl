@@ -4,6 +4,10 @@ import { DashboardHeader } from "@/components/dashboard/header"
 import { ClaimDetail } from "@/components/dashboard/claim-detail"
 import { notFound } from "next/navigation"
 
+// Disable caching for claim detail page (always fetch fresh data)
+export const revalidate = 0
+export const dynamic = 'force-dynamic'
+
 export default async function ClaimDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const supabase = await createClient()
