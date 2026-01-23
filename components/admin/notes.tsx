@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { formatDistanceToNow } from "date-fns"
 import { nl } from "date-fns/locale"
@@ -30,6 +31,7 @@ interface AdminNotesProps {
 }
 
 export function AdminNotes({ claimId }: AdminNotesProps) {
+  const router = useRouter()
   const [notes, setNotes] = useState<Note[]>([])
   const [newNote, setNewNote] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -76,6 +78,7 @@ export function AdminNotes({ claimId }: AdminNotesProps) {
       setNotes([data.note, ...notes])
       setNewNote("")
       toast.success("Notitie toegevoegd")
+      router.refresh() // Refresh page to update audit logs
     } catch (error) {
       console.error("Error adding note:", error)
       toast.error("Fout bij toevoegen notitie")
