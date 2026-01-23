@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 export default function OverOnsPage() {
   return (
     <div className="min-h-screen bg-white">
-      <main className="container mx-auto px-4 py-12 max-w-6xl">
+      <main className="container mx-auto px-4 py-8 max-w-6xl">
         {/* Hero Section */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Over Autoschadebureau.nl</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Wij maken het verhalen van autoschade <strong>eenvoudig, snel en volledig gratis</strong>. 
@@ -23,7 +23,7 @@ export default function OverOnsPage() {
         </div>
 
         {/* Missie */}
-        <section className="mb-16">
+        <section className="mb-10">
           <Card className="border-2 border-primary">
             <CardHeader className="text-center">
               <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center">

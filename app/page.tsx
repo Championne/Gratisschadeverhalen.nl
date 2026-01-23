@@ -209,11 +209,11 @@ export default function HomePage() {
       />
       
       {/* Hero Section met Grote Upload CTA */}
-        <section className="bg-gradient-to-br from-blue-50 via-white to-green-50 pt-12 pb-20 md:pt-16 md:pb-28">
+        <section className="bg-gradient-to-br from-blue-50 via-white to-green-50 pt-8 pb-12 md:pt-10 md:pb-16">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               {/* Hoofdtitel */}
-              <div className="text-center mb-12">
+              <div className="text-center mb-8">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight">
                   Gratis Uw <span className="text-primary">Autoschade Verhalen</span> – Upload Direct Uw Schadeformulier
                 </h1>
@@ -284,10 +284,10 @@ export default function HomePage() {
         </section>
 
         {/* Waarom zelf verhalen via ons - NIEUWE SECTIE */}
-        <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+        <section className="py-12 bg-gradient-to-b from-white to-blue-50">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-12">
+              <div className="text-center mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   Waarom uw autoschade via ons verhalen?
                 </h2>
@@ -297,7 +297,7 @@ export default function HomePage() {
               </div>
 
               {/* Uitleg cards */}
-              <div className="grid md:grid-cols-2 gap-6 mb-12">
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
                 {/* Alleen WA verzekering */}
                 <Card className="border-2 border-orange-200 bg-orange-50/50">
                   <CardHeader>
@@ -465,9 +465,9 @@ export default function HomePage() {
         </section>
 
         {/* Hoe werkt het Section */}
-        <section id="hoe-werkt-het" className="py-20 bg-white">
+        <section id="hoe-werkt-het" className="py-12 bg-white">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Zo verhalen wij uw autoschade in 4 stappen
               </h2>
@@ -553,9 +553,9 @@ export default function HomePage() {
         </section>
 
         {/* Voorbeeldcases Section */}
-        <section id="voorbeelden" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <section id="voorbeelden" className="py-12 bg-gradient-to-b from-gray-50 to-white">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Succesverhalen: Autoschade verhalen in de praktijk
               </h2>
@@ -647,7 +647,7 @@ export default function HomePage() {
               </Card>
             </div>
 
-            <div className="text-center mt-12">
+            <div className="text-center mt-8">
               <Link href="/claim-indienen">
                 <Button size="lg" className="text-lg px-8">
                   <Upload className="mr-2 h-5 w-5" />
@@ -659,10 +659,10 @@ export default function HomePage() {
         </section>
 
         {/* Waarom gratis Section */}
-        <section className="py-20 bg-white">
+        <section className="py-12 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
+              <div className="text-center mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   Waarom is autoschade verhalen bij ons gratis?
                 </h2>
@@ -729,9 +729,9 @@ export default function HomePage() {
         </section>
 
         {/* Uitgebreide FAQ Section */}
-        <section id="faq" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <section id="faq" className="py-12 bg-gradient-to-b from-gray-50 to-white">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+            <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Veelgestelde vragen over autoschade verhalen</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Alles wat u moet weten over het gratis verhalen van uw voertuigschade
@@ -953,7 +953,7 @@ export default function HomePage() {
         </section>
 
         {/* Final CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-primary to-blue-700 text-white">
+        <section className="py-12 bg-gradient-to-r from-primary to-blue-700 text-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Klaar om uw autoschade gratis te verhalen?
