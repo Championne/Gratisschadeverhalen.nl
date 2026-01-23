@@ -46,12 +46,12 @@ export async function GET(
       )
     }
 
-    // Transform audit logs to notes format
+    // Transform audit logs to notes format (new schema with performed_by and JSONB details)
     const notes = auditLogs.map(log => ({
       id: log.id,
-      note: log.details,
+      details: log.details,
       created_at: log.created_at,
-      created_by: log.user_id
+      performed_by: log.performed_by
     }))
 
     return NextResponse.json({ notes })
@@ -131,12 +131,12 @@ export async function POST(
       )
     }
 
-    // Transform to note format
+    // Transform to note format (new schema)
     const noteResponse = {
       id: auditLog.id,
-      note: auditLog.details,
+      details: auditLog.details,
       created_at: auditLog.created_at,
-      created_by: auditLog.user_id
+      performed_by: auditLog.performed_by
     }
 
     return NextResponse.json({ 
