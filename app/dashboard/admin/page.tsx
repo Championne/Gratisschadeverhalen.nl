@@ -23,8 +23,21 @@ export default async function AdminDashboardPage() {
   // TODO: Add admin role check when role system is implemented
   // For now, any authenticated user can access admin
 
+  // Use service role for admin operations (bypasses RLS)
+  const { createClient: createServiceClient } = await import('@supabase/supabase-js')
+  const supabaseAdmin = createServiceClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false
+      }
+    }
+  )
+
   // Fetch all claims (naam and email are already in claims table)
-  const { data: claims, error } = await supabase
+  const { data: claims, error } = await supabaseAdmin
     .from("claims")
     .select("*")
     .order("created_at", { ascending: false })

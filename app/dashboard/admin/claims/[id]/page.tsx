@@ -23,8 +23,21 @@ export default async function AdminClaimDetailPage({
     redirect("/login")
   }
 
+  // Use service role for admin operations (bypasses RLS)
+  const { createClient: createServiceClient } = await import('@supabase/supabase-js')
+  const supabaseAdmin = createServiceClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false
+      }
+    }
+  )
+
   // Fetch claim (naam, email, telefoon are already in claims table)
-  const { data: claim, error } = await supabase
+  const { data: claim, error } = await supabaseAdmin
     .from("claims")
     .select("*")
     .eq("id", id)
@@ -35,15 +48,15 @@ export default async function AdminClaimDetailPage({
     notFound()
   }
 
-  // Fetch audit logs
-  const { data: auditLogs } = await supabase
+  // Fetch audit logs (service role bypasses RLS)
+  const { data: auditLogs } = await supabaseAdmin
     .from("audit_logs")
     .select("*")
     .eq("claim_id", id)
     .order("created_at", { ascending: false })
 
   // Fetch emails related to this claim
-  const { data: emails } = await supabase
+  const { data: emails } = await supabaseAdmin
     .from("inbound_emails")
     .select(`
       *,
