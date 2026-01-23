@@ -103,15 +103,22 @@ export async function POST(
       }
     )
 
+    // Get user email for performed_by field
+    const { data: userData } = await supabaseAdmin.auth.admin.getUserById(user.id)
+    const performedBy = `ADMIN:${userData?.user?.email || 'unknown'}`
+
     // Add note as audit log
     const { data: auditLog, error } = await supabaseAdmin
       .from("audit_logs")
       .insert({
-        user_id: user.id,
         claim_id: claimId,
         action_type: 'comment_added',
-        details: note.trim(),
-        ip_address: request.headers.get('x-forwarded-for') || 'unknown'
+        performed_by: performedBy,
+        details: {
+          comment: note.trim()
+        },
+        severity: 'info',
+        ip_address: request.headers.get('x-forwarded-for') || null
       })
       .select()
       .single()

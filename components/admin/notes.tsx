@@ -18,9 +18,11 @@ import { Loader2, Plus } from "lucide-react"
 
 interface Note {
   id: string
-  note: string
+  details: {
+    comment?: string
+  }
   created_at: string
-  created_by: string
+  performed_by: string
 }
 
 interface AdminNotesProps {
@@ -131,12 +133,19 @@ export function AdminNotes({ claimId }: AdminNotesProps) {
             <div className="space-y-3">
               {notes.map((note) => (
                 <div key={note.id} className="text-sm border-l-2 border-primary pl-3 py-2">
-                  <p className="whitespace-pre-wrap">{note.note}</p>
+                  <p className="whitespace-pre-wrap">
+                    {typeof note.details === 'object' && note.details.comment 
+                      ? note.details.comment 
+                      : typeof note.details === 'string' 
+                        ? note.details 
+                        : 'Geen notitie tekst'
+                    }
+                  </p>
                   <p className="text-xs text-muted-foreground mt-2">
                     {formatDistanceToNow(new Date(note.created_at), {
                       addSuffix: true,
                       locale: nl
-                    })}
+                    })} • {note.performed_by}
                   </p>
                 </div>
               ))}

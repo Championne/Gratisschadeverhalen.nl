@@ -63,15 +63,22 @@ export async function PATCH(
       )
     }
 
+    // Get user email for performed_by field
+    const { data: userData } = await supabaseAdmin.auth.admin.getUserById(user.id)
+    const performedBy = `ADMIN:${userData?.user?.email || 'unknown'}`
+
     // Log the status change in audit_logs
     const auditData = {
-      user_id: user.id,
       claim_id: claimId,
       action_type: 'status_change',
-      details: note 
-        ? `Status gewijzigd van ${oldStatus} naar ${status}: ${note}`
-        : `Status gewijzigd van ${oldStatus} naar ${status}`,
-      ip_address: request.headers.get('x-forwarded-for') || 'unknown'
+      performed_by: performedBy,
+      details: {
+        old_status: oldStatus,
+        new_status: status,
+        note: note || null
+      },
+      severity: 'info',
+      ip_address: request.headers.get('x-forwarded-for') || null
     }
     
     console.log('[Status Update] Creating audit log:', auditData)
@@ -91,11 +98,14 @@ export async function PATCH(
     // If there's a note, also add it as a separate comment
     if (note) {
       const commentData = {
-        user_id: user.id,
         claim_id: claimId,
         action_type: 'comment_added',
-        details: note,
-        ip_address: request.headers.get('x-forwarded-for') || 'unknown'
+        performed_by: performedBy,
+        details: {
+          comment: note
+        },
+        severity: 'info',
+        ip_address: request.headers.get('x-forwarded-for') || null
       }
       
       console.log('[Status Update] Creating comment audit log:', commentData)
