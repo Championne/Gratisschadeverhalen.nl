@@ -6,8 +6,14 @@ import { Toaster } from "@/components/ui/sonner"
 import { CookieConsent } from "@/components/cookie-consent"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
+import { StructuredData } from "@/components/structured-data"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: 'swap',
+  preload: true,
+  variable: '--font-inter',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -86,6 +92,9 @@ export default async function RootLayout({
 
   return (
     <html lang="nl" suppressHydrationWarning>
+      <head>
+        <StructuredData />
+      </head>
       <body className={inter.className}>
         {!isDashboard && <SiteHeader />}
         <main className={isDashboard ? "" : "min-h-screen"}>

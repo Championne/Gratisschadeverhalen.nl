@@ -6,9 +6,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/dashboard/', '/api/', '/auth/'],
+        disallow: [
+          '/dashboard/',
+          '/api/',
+          '/_next/',
+        ],
       },
     ],
-    sitemap: 'https://autoschadebureau.nl/sitemap.xml',
+    sitemap: 'https://www.autoschadebureau.nl/sitemap.xml',
   }
 }

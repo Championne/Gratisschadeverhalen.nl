@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { toast } from "sonner"
-import confetti from "canvas-confetti"
 import { submitClaim } from "@/app/actions/submit-claim"
 import { FileUpload } from "@/components/file-upload"
 import { VoiceInput } from "@/components/voice-input"
@@ -212,11 +211,14 @@ export function ClaimForm() {
         throw new Error(result.error || 'Submission failed')
       }
 
-      // Success!
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
+      // Success! (lazy load confetti)
+      import('canvas-confetti').then((module) => {
+        const confetti = module.default
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 }
+        })
       })
 
       toast.success("✅ Claim succesvol ingediend!", {
