@@ -3,6 +3,8 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Shield, Clock, Euro, FileText, Upload, ChevronRight, Star, Car } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 import { HowToSchema, ReviewSchema } from "@/components/schema/howto-review-schema"
 
 export const metadata: Metadata = {
@@ -366,15 +368,15 @@ export default function HomePage() {
 
               <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-8 text-sm text-muted-foreground">
                 <span className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                  <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0" />
                   <span>U betaalt niets</span>
                 </span>
                 <span className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                  <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0" />
                   <span>Tegenpartij betaalt alles</span>
                 </span>
                 <span className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                  <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0" />
                   <span>100% gratis</span>
                 </span>
               </div>
