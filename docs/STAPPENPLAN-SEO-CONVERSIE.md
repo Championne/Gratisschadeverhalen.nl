@@ -116,7 +116,7 @@ verification: {
 
 ---
 
-### 2.3 ⬜ Lokale pagina's verbeteren
+### 2.3 ✅ Lokale pagina's verbeteren
 **Prioriteit:** MEDIUM  
 **Impact:** Betere lokale rankings  
 **Geschatte tijd:** 2 uur
@@ -360,12 +360,12 @@ Stap 3: Verstuur
 | Fase | Taken | Voltooid | Status |
 |------|-------|----------|--------|
 | 1. Kritiek | 4 | 4 | ✅ 100% |
-| 2. Quick Wins | 4 | 2 | 🟡 50% |
+| 2. Quick Wins | 4 | 4 | ✅ 100% |
 | 3. Conversie | 4 | 0 | ⬜ |
 | 4. Content | 3 | 0 | ⬜ |
 | 5. Performance | 3 | 0 | ⬜ |
 | 6. Trust | 3 | 0 | ⬜ |
-| **TOTAAL** | **21** | **7** | **33%** |
+| **TOTAAL** | **21** | **8** | **38%** |
 
 ---
 
