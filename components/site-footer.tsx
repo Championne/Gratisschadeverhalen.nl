@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Car, Mail, Phone, MapPin, Clock } from "lucide-react"
+import Image from "next/image"
+import { Mail, Phone, MapPin, Clock } from "lucide-react"
 
 export function SiteFooter() {
   const currentYear = new Date().getFullYear()
@@ -11,15 +12,14 @@ export function SiteFooter() {
           
           {/* Logo & Description */}
           <div className="space-y-3 lg:col-span-1 xl:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
-              <Car className="h-8 w-8 text-primary" />
-              <div className="flex items-center gap-2">
-                <div className="flex flex-col leading-none">
-                  <span className="text-base font-bold leading-tight">Autoschade</span>
-                  <span className="text-base font-bold leading-tight">Bureau</span>
-                </div>
-                <span className="text-xl font-bold text-primary self-center">.nl</span>
-              </div>
+            <Link href="/" className="inline-block">
+              <Image 
+                src="/logo.png" 
+                alt="Autoschadebureau.nl Logo" 
+                width={160}
+                height={45}
+                className="h-10 w-auto"
+              />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Gratis autoschade verhalen tegenpartij. 

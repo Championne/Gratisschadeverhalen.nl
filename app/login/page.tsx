@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import { LoginForm } from "@/components/auth/login-form"
-import { Car } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 
 export const metadata: Metadata = {
@@ -13,15 +13,15 @@ export default function LoginPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-3 mb-6">
-            <Car className="h-12 w-12 text-primary" />
-            <div className="flex items-center gap-2">
-              <div className="flex flex-col leading-none">
-                <span className="text-xl font-bold leading-tight">Autoschade</span>
-                <span className="text-xl font-bold leading-tight">Bureau</span>
-              </div>
-              <span className="text-2xl font-bold text-primary self-center">.nl</span>
-            </div>
+          <Link href="/" className="inline-block mb-6">
+            <Image 
+              src="/logo.png" 
+              alt="Autoschadebureau.nl Logo" 
+              width={200}
+              height={56}
+              priority
+              className="h-14 w-auto mx-auto"
+            />
           </Link>
           <h1 className="text-3xl font-bold mb-2">Welkom terug</h1>
           <p className="text-muted-foreground">

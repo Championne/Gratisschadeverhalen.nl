@@ -2,7 +2,8 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Car, Menu, X } from "lucide-react"
+import Image from "next/image"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function SiteHeader() {
@@ -12,15 +13,15 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center justify-between pl-8 pr-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <Car className="h-10 w-10 text-primary" />
-          <div className="flex items-center gap-2">
-            <div className="flex flex-col leading-none">
-              <span className="text-lg font-bold leading-tight">Autoschade</span>
-              <span className="text-lg font-bold leading-tight">Bureau</span>
-            </div>
-            <span className="text-2xl font-bold text-primary self-center">.nl</span>
-          </div>
+        <Link href="/" className="flex items-center">
+          <Image 
+            src="/logo.png" 
+            alt="Autoschadebureau.nl Logo" 
+            width={180}
+            height={50}
+            priority
+            className="h-12 w-auto"
+          />
         </Link>
 
         {/* Desktop Navigation */}

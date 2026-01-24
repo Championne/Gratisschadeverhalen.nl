@@ -1,7 +1,8 @@
 "use client"
 
-import { Car, LogOut, User, Plus, FileText, Shield } from "lucide-react"
+import { LogOut, User, Plus, FileText, Shield } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -33,15 +34,15 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
   return (
     <header className="border-b bg-white sticky top-0 z-40">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3">
-          <Car className="h-10 w-10 text-primary" />
-          <div className="flex items-center gap-2">
-            <div className="flex flex-col leading-none">
-              <span className="text-lg font-bold leading-tight">Autoschade</span>
-              <span className="text-lg font-bold leading-tight">Bureau</span>
-            </div>
-            <span className="text-2xl font-bold text-primary self-center">.nl</span>
-          </div>
+        <Link href="/" className="flex items-center">
+          <Image 
+            src="/logo.png" 
+            alt="Autoschadebureau.nl Logo" 
+            width={160}
+            height={45}
+            priority
+            className="h-10 w-auto"
+          />
         </Link>
 
         <div className="flex items-center gap-4">
