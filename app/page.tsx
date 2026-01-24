@@ -304,8 +304,8 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
-      {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-50 via-white to-green-50 pt-12 pb-16 md:pt-16 md:pb-20">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-br from-blue-50 via-white to-green-50 pt-8 pb-12 md:pt-12 md:pb-16">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto text-center">
               {/* Hoofdtitel */}
@@ -323,26 +323,15 @@ export default function HomePage() {
                 op de tegenpartij.
               </p>
 
-              <p className="text-lg md:text-xl text-muted-foreground mb-8">
+              <p className="text-lg md:text-xl text-muted-foreground mb-4">
                 Van advies en aansprakelijk stellen tot en met een juridische procedure.
               </p>
-
-              {/* Letselschade Banner */}
-              <div className="bg-purple-50 border-2 border-purple-200 rounded-lg p-6 mb-10 max-w-3xl mx-auto">
-                <p className="text-base md:text-lg text-purple-900">
-                  <strong>Letselschade?</strong> Wij detecteren automatisch letsel en verwijzen u door naar onze gespecialiseerde partner{" "}
-                  <a href="https://unitasletselschade.nl" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-bold">
-                    Unitas Letselschade
-                  </a>{" "}
-                  voor optimale begeleiding.
-                </p>
-              </div>
             </div>
           </div>
         </section>
 
       {/* Upload CTA Section */}
-        <section className="bg-gray-50 py-12 md:py-16">
+        <section className="bg-gray-50 py-10 md:py-14">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               {/* Grote Upload CTA Card - Hele card is klikbaar */}
@@ -400,7 +389,7 @@ export default function HomePage() {
         </section>
 
         {/* USP Section - 3 Key Benefits */}
-        <section className="py-12 md:py-16 bg-white border-y">
+        <section className="py-10 md:py-14 bg-white border-y">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="grid md:grid-cols-3 gap-6 md:gap-8">
@@ -453,7 +442,7 @@ export default function HomePage() {
         </section>
 
         {/* Trust Badges & Social Proof */}
-        <section className="py-8 bg-gray-50 border-b">
+        <section className="py-6 bg-gray-50 border-b">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               {/* Trust Badges Grid */}
@@ -520,7 +509,7 @@ export default function HomePage() {
         </section>
 
         {/* HOE WERKT HET - 4 Stappen Proces */}
-        <section className="py-16 md:py-20 bg-gradient-to-b from-blue-50 to-white">
+        <section className="py-12 md:py-16 bg-gradient-to-b from-blue-50 to-white">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               {/* Header */}
@@ -619,7 +608,7 @@ export default function HomePage() {
         </section>
 
         {/* Trust Badges Section */}
-        <section className="py-12 bg-white border-y">
+        <section className="py-10 md:py-12 bg-white border-y">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-8">
@@ -662,7 +651,7 @@ export default function HomePage() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-16 bg-gradient-to-b from-white to-blue-50">
+        <section className="py-12 md:py-16 bg-gradient-to-b from-white to-blue-50">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               {/* Header */}
@@ -763,7 +752,7 @@ export default function HomePage() {
         </section>
 
         {/* Waarom zelf verhalen via ons - NIEUWE SECTIE */}
-        <section className="py-12 bg-gradient-to-b from-white to-blue-50">
+        <section className="py-10 md:py-12 bg-gradient-to-b from-white to-blue-50">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-8">
@@ -1137,7 +1126,7 @@ export default function HomePage() {
         </section>
 
         {/* Waarom gratis Section */}
-        <section className="py-12 bg-white">
+        <section className="py-10 md:py-12 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-8">
@@ -1431,7 +1420,7 @@ export default function HomePage() {
         </section>
 
         {/* Final CTA Section */}
-        <section className="py-12 bg-gradient-to-r from-primary to-blue-700 text-white">
+        <section className="py-10 md:py-12 bg-gradient-to-r from-primary to-blue-700 text-white">
           <div className="container mx-auto px-6 sm:px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Klaar om uw autoschade gratis te verhalen?
