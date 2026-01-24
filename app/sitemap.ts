@@ -14,6 +14,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/contact',
     '/privacy',
     '/algemene-voorwaarden',
+    // Lokale SEO pagina's
+    '/autoschade-verhalen-amsterdam',
+    '/autoschade-verhalen-rotterdam',
+    '/autoschade-verhalen-den-haag',
+    '/autoschade-verhalen-utrecht',
+    '/autoschade-verhalen-eindhoven',
   ]
 
   // Blog posts
@@ -25,6 +31,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/aansprakelijkheidsbrief-schrijven',
     '/blog/wa-verzekering-tegenpartij-claimen',
     '/blog/expertiserapport-controleren',
+    '/blog/schade-verhalen-zonder-formulier',
+    '/blog/dagwaarde-auto-berekenen',
+    '/blog/vervangend-vervoer-autoschade',
   ]
 
   const staticSitemap = staticPages.map((route) => ({

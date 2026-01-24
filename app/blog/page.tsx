@@ -266,9 +266,37 @@ const blogPosts = [
     date: "12 november 2025",
     featured: false,
   },
+  // NIEUWE ARTIKELEN - JANUARI 2026
+  {
+    slug: "schade-verhalen-zonder-formulier",
+    title: "Schade Verhalen Zonder Schadeformulier: Het Kan Wél!",
+    excerpt: "Geen Europees Schadeformulier ingevuld na het ongeval? Geen paniek! U kunt nog steeds uw autoschade verhalen bij de tegenpartij.",
+    category: "Praktisch",
+    readTime: "5 min",
+    date: "24 januari 2026",
+    featured: true,
+  },
+  {
+    slug: "dagwaarde-auto-berekenen",
+    title: "Dagwaarde Auto Berekenen: Zo Krijgt U Waar U Recht Op Heeft",
+    excerpt: "Bij autoschade speelt de dagwaarde een cruciale rol. Leer hoe verzekeraars rekenen en voorkom dat u te weinig krijgt.",
+    category: "Financieel",
+    readTime: "6 min",
+    date: "24 januari 2026",
+    featured: false,
+  },
+  {
+    slug: "vervangend-vervoer-autoschade",
+    title: "Vervangend Vervoer bij Autoschade: Hier Heeft U Recht Op",
+    excerpt: "Heeft u recht op een huurauto na een ongeval? Ontdek wat de tegenpartij moet vergoeden en hoe u dit regelt.",
+    category: "Rechten",
+    readTime: "5 min",
+    date: "24 januari 2026",
+    featured: false,
+  },
 ]
 
-const categories = ["Alle", "Handleiding", "Praktisch", "Verzekeringen", "Juridisch", "Financieel"]
+const categories = ["Alle", "Handleiding", "Praktisch", "Verzekeringen", "Juridisch", "Financieel", "Rechten"]
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("Alle")
