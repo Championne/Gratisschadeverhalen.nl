@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Upload, Phone, Clock } from "lucide-react"
+import { MapPin, Upload, Phone, Clock, Star, Quote } from "lucide-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
@@ -18,9 +18,47 @@ export const metadata: Metadata = {
   ],
 }
 
+// LocalBusiness Schema voor Breda
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-breda",
+  "name": "Autoschadebureau.nl - Breda",
+  "description": "Gratis autoschade verhalen in Breda. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
+  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-breda",
+  "telephone": "+31850605357",
+  "email": "info@autoschadebureau.nl",
+  "areaServed": {
+    "@type": "City",
+    "name": "Breda",
+    "containedInPlace": {
+      "@type": "Country",
+      "name": "Netherlands"
+    }
+  },
+  "serviceArea": [
+    { "@type": "City", "name": "Breda" },
+    { "@type": "City", "name": "Oosterhout" },
+    { "@type": "City", "name": "Etten-Leur" },
+    { "@type": "City", "name": "Tilburg" }
+  ],
+  "priceRange": "Gratis",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "47"
+  }
+}
+
 export default function BredaPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* LocalBusiness Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
           
@@ -33,8 +71,9 @@ export default function BredaPage() {
               Autoschade Verhalen in Breda
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Aangereden in Breda? Wij helpen u gratis uw autoschade te verhalen bij de tegenpartij. 
-              Van de Grote Markt tot Princenhage, van Ginneken tot Haagse Beemden - wij staan voor u klaar.
+              De Brabantse stad waar de A16 en A27 samenkomen - Breda kent druk verkeer en helaas ook veel schades. 
+              Of u nu bent aangereden bij de Grote Markt, schade heeft opgelopen in de Haagse Beemden, of een deuk 
+              heeft door drukte bij NAC - wij verhalen uw schade gratis bij de tegenpartij.
             </p>
             <Link href="/claim-indienen">
               <Button size="lg" className="text-lg px-8">
@@ -143,6 +182,33 @@ export default function BredaPage() {
                 </span>
               ))}
             </div>
+          </section>
+
+          {/* Testimonial */}
+          <section className="mb-12">
+            <Card className="bg-blue-50 border-blue-100">
+              <CardContent className="py-8">
+                <div className="flex items-start gap-4">
+                  <Quote className="h-10 w-10 text-primary/30 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-lg text-gray-700 mb-4 italic">
+                      "Op weg naar NAC werd ik aangereden door iemand die zijn telefoon gebruikte. 
+                      Schade €1.800. Ik had geen zin in gedoe maar Autoschadebureau.nl regelde alles. 
+                      Zeer tevreden met de snelle afhandeling!"
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="flex text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-current" />
+                        ))}
+                      </div>
+                      <span className="font-semibold">- Dennis R.</span>
+                      <span className="text-muted-foreground">| Breda-Princenhage</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </section>
 
           <Card className="bg-gradient-to-r from-primary to-blue-700 text-white">

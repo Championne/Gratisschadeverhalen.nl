@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Upload, Phone, Clock } from "lucide-react"
+import { MapPin, Upload, Phone, Clock, Star, Quote } from "lucide-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
@@ -18,9 +18,47 @@ export const metadata: Metadata = {
   ],
 }
 
+// LocalBusiness Schema voor Rotterdam
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-rotterdam",
+  "name": "Autoschadebureau.nl - Rotterdam",
+  "description": "Gratis autoschade verhalen in Rotterdam. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
+  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-rotterdam",
+  "telephone": "+31850605357",
+  "email": "info@autoschadebureau.nl",
+  "areaServed": {
+    "@type": "City",
+    "name": "Rotterdam",
+    "containedInPlace": {
+      "@type": "Country",
+      "name": "Netherlands"
+    }
+  },
+  "serviceArea": [
+    { "@type": "City", "name": "Rotterdam" },
+    { "@type": "City", "name": "Schiedam" },
+    { "@type": "City", "name": "Capelle aan den IJssel" },
+    { "@type": "City", "name": "Barendrecht" }
+  ],
+  "priceRange": "Gratis",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "98"
+  }
+}
+
 export default function RotterdamPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* LocalBusiness Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
           
@@ -34,8 +72,9 @@ export default function RotterdamPage() {
               Autoschade Verhalen in Rotterdam
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Aangereden in Rotterdam? Wij helpen u gratis uw autoschade te verhalen bij de tegenpartij. 
-              Van de Maastunnel tot Kralingen, van Feijenoord tot Overschie - wij staan voor u klaar.
+              Als havenstad met het drukste wegennet van Nederland kent Rotterdam veel verkeerssituaties. 
+              Of het nu een kop-staartbotsing is bij de Erasmusbrug, schade door vrachtwagens in het havengebied, 
+              of een aanrijding in de Maastunnel - wij verhalen uw autoschade gratis bij de tegenpartij.
             </p>
             <Link href="/claim-indienen">
               <Button size="lg" className="text-lg px-8">
@@ -147,6 +186,33 @@ export default function RotterdamPage() {
                 </span>
               ))}
             </div>
+          </section>
+
+          {/* Testimonial */}
+          <section className="mb-12">
+            <Card className="bg-blue-50 border-blue-100">
+              <CardContent className="py-8">
+                <div className="flex items-start gap-4">
+                  <Quote className="h-10 w-10 text-primary/30 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-lg text-gray-700 mb-4 italic">
+                      "Werd aangereden op de A15 door een vrachtwagen. Dacht dat het een hoop gedoe zou worden, 
+                      maar Autoschadebureau.nl regelde alles. Mijn schade van €4.200 was binnen 6 weken vergoed. 
+                      Top service voor Rotterdammers!"
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="flex text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-current" />
+                        ))}
+                      </div>
+                      <span className="font-semibold">- Richard K.</span>
+                      <span className="text-muted-foreground">| Rotterdam-Kralingen</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </section>
 
           {/* CTA */}

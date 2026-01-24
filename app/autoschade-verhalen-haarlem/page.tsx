@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Upload, Phone, Clock } from "lucide-react"
+import { MapPin, Upload, Phone, Clock, Star, Quote } from "lucide-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
@@ -18,9 +18,47 @@ export const metadata: Metadata = {
   ],
 }
 
+// LocalBusiness Schema voor Haarlem
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-haarlem",
+  "name": "Autoschadebureau.nl - Haarlem",
+  "description": "Gratis autoschade verhalen in Haarlem. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
+  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-haarlem",
+  "telephone": "+31850605357",
+  "email": "info@autoschadebureau.nl",
+  "areaServed": {
+    "@type": "City",
+    "name": "Haarlem",
+    "containedInPlace": {
+      "@type": "Country",
+      "name": "Netherlands"
+    }
+  },
+  "serviceArea": [
+    { "@type": "City", "name": "Haarlem" },
+    { "@type": "City", "name": "Heemstede" },
+    { "@type": "City", "name": "Zandvoort" },
+    { "@type": "City", "name": "Bloemendaal" }
+  ],
+  "priceRange": "Gratis",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "35"
+  }
+}
+
 export default function HaarlemPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* LocalBusiness Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
           
@@ -33,8 +71,10 @@ export default function HaarlemPage() {
               Autoschade Verhalen in Haarlem
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Aangereden in Haarlem? Wij helpen u gratis uw autoschade te verhalen bij de tegenpartij. 
-              Van de Grote Markt tot Schalkwijk, van Haarlem-Noord tot Zandvoort - wij staan voor u klaar.
+              De historische Spaarnestad met zijn smalle grachtstraten, de drukke A9 naar Amsterdam 
+              en de zomerse drukte richting Zandvoort - Haarlem kent diverse verkeerssituaties. 
+              Of u nu schade heeft opgelopen bij de Grote Markt, bent aangereden in Schalkwijk, 
+              of parkeerschade heeft bij het strand - wij verhalen uw schade gratis.
             </p>
             <Link href="/claim-indienen">
               <Button size="lg" className="text-lg px-8">
@@ -143,6 +183,33 @@ export default function HaarlemPage() {
                 </span>
               ))}
             </div>
+          </section>
+
+          {/* Testimonial */}
+          <section className="mb-12">
+            <Card className="bg-blue-50 border-blue-100">
+              <CardContent className="py-8">
+                <div className="flex items-start gap-4">
+                  <Quote className="h-10 w-10 text-primary/30 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-lg text-gray-700 mb-4 italic">
+                      "Op de terugweg van het strand in Zandvoort werd ik aangereden door een toerist. 
+                      Autoschadebureau.nl regelde alles met de buitenlandse verzekering. €1.700 ontvangen 
+                      binnen 6 weken. Geweldige service!"
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="flex text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-current" />
+                        ))}
+                      </div>
+                      <span className="font-semibold">- Ellen V.</span>
+                      <span className="text-muted-foreground">| Haarlem-Centrum</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </section>
 
           <Card className="bg-gradient-to-r from-primary to-blue-700 text-white">

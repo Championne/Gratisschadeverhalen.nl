@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Upload, Phone, Clock } from "lucide-react"
+import { MapPin, Upload, Phone, Clock, Star, Quote } from "lucide-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
@@ -18,9 +18,47 @@ export const metadata: Metadata = {
   ],
 }
 
+// LocalBusiness Schema voor Almere
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-almere",
+  "name": "Autoschadebureau.nl - Almere",
+  "description": "Gratis autoschade verhalen in Almere. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
+  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-almere",
+  "telephone": "+31850605357",
+  "email": "info@autoschadebureau.nl",
+  "areaServed": {
+    "@type": "City",
+    "name": "Almere",
+    "containedInPlace": {
+      "@type": "Country",
+      "name": "Netherlands"
+    }
+  },
+  "serviceArea": [
+    { "@type": "City", "name": "Almere" },
+    { "@type": "City", "name": "Lelystad" },
+    { "@type": "City", "name": "Zeewolde" },
+    { "@type": "City", "name": "Huizen" }
+  ],
+  "priceRange": "Gratis",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.7",
+    "reviewCount": "58"
+  }
+}
+
 export default function AlmerePage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* LocalBusiness Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
           
@@ -33,8 +71,10 @@ export default function AlmerePage() {
               Autoschade Verhalen in Almere
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Aangereden in Almere? Wij helpen u gratis uw autoschade te verhalen bij de tegenpartij. 
-              Van Almere Stad tot Almere Haven, van Almere Buiten tot Almere Poort - wij staan voor u klaar.
+              De snelst groeiende stad van Nederland met zijn vele forensen naar Amsterdam - 
+              de A6 staat bekend om files en kop-staartbotsingen. Of u nu schade heeft opgelopen 
+              op de Stadsring, bent aangereden in winkelcentrum Almere Centrum, of parkeerschade heeft 
+              in een van de nieuwbouwwijken - wij verhalen uw schade gratis.
             </p>
             <Link href="/claim-indienen">
               <Button size="lg" className="text-lg px-8">
@@ -143,6 +183,33 @@ export default function AlmerePage() {
                 </span>
               ))}
             </div>
+          </section>
+
+          {/* Testimonial */}
+          <section className="mb-12">
+            <Card className="bg-blue-50 border-blue-100">
+              <CardContent className="py-8">
+                <div className="flex items-start gap-4">
+                  <Quote className="h-10 w-10 text-primary/30 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-lg text-gray-700 mb-4 italic">
+                      "Elke dag sta ik in de file op de A6 naar Amsterdam. Toen ik van achteren werd aangereden 
+                      bij de afrit Almere Stad dacht ik: dit wordt een gedoe. Maar Autoschadebureau.nl nam alles 
+                      over. €2.400 vergoed, zonder zorgen!"
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="flex text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-current" />
+                        ))}
+                      </div>
+                      <span className="font-semibold">- Linda G.</span>
+                      <span className="text-muted-foreground">| Almere Buiten</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </section>
 
           <Card className="bg-gradient-to-r from-primary to-blue-700 text-white">

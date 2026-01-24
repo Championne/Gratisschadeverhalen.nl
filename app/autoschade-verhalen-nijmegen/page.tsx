@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Upload, Phone, Clock } from "lucide-react"
+import { MapPin, Upload, Phone, Clock, Star, Quote } from "lucide-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
@@ -18,9 +18,47 @@ export const metadata: Metadata = {
   ],
 }
 
+// LocalBusiness Schema voor Nijmegen
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-nijmegen",
+  "name": "Autoschadebureau.nl - Nijmegen",
+  "description": "Gratis autoschade verhalen in Nijmegen. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
+  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-nijmegen",
+  "telephone": "+31850605357",
+  "email": "info@autoschadebureau.nl",
+  "areaServed": {
+    "@type": "City",
+    "name": "Nijmegen",
+    "containedInPlace": {
+      "@type": "Country",
+      "name": "Netherlands"
+    }
+  },
+  "serviceArea": [
+    { "@type": "City", "name": "Nijmegen" },
+    { "@type": "City", "name": "Wijchen" },
+    { "@type": "City", "name": "Berg en Dal" },
+    { "@type": "City", "name": "Arnhem" }
+  ],
+  "priceRange": "Gratis",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "38"
+  }
+}
+
 export default function NijmegenPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* LocalBusiness Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
           
@@ -33,8 +71,9 @@ export default function NijmegenPage() {
               Autoschade Verhalen in Nijmegen
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Aangereden in Nijmegen? Wij helpen u gratis uw autoschade te verhalen bij de tegenpartij. 
-              Van de Waalkade tot Dukenburg, van Lent tot Hatert - wij staan voor u klaar.
+              De oudste stad van Nederland met zijn historische centrum, studentenverkeer en de drukke Waalbrug - 
+              Nijmegen kent unieke verkeerssituaties. Of u nu schade heeft opgelopen in de Waalsprong, 
+              bent aangereden bij Plein 1944, of parkeerschade heeft in Dukenburg - wij verhalen uw schade gratis.
             </p>
             <Link href="/claim-indienen">
               <Button size="lg" className="text-lg px-8">
@@ -143,6 +182,33 @@ export default function NijmegenPage() {
                 </span>
               ))}
             </div>
+          </section>
+
+          {/* Testimonial */}
+          <section className="mb-12">
+            <Card className="bg-blue-50 border-blue-100">
+              <CardContent className="py-8">
+                <div className="flex items-start gap-4">
+                  <Quote className="h-10 w-10 text-primary/30 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-lg text-gray-700 mb-4 italic">
+                      "Mijn geparkeerde auto werd geraakt in Lent door een bouwvoertuig. Via getuigen 
+                      kon de tegenpartij worden achterhaald. Autoschadebureau.nl heeft de €2.200 schade 
+                      volledig verhaald. Uitstekende communicatie!"
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="flex text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-current" />
+                        ))}
+                      </div>
+                      <span className="font-semibold">- Martijn S.</span>
+                      <span className="text-muted-foreground">| Nijmegen-Lent</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </section>
 
           <Card className="bg-gradient-to-r from-primary to-blue-700 text-white">

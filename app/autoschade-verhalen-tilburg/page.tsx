@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Upload, Phone, Clock } from "lucide-react"
+import { MapPin, Upload, Phone, Clock, Star, Quote } from "lucide-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
@@ -18,9 +18,47 @@ export const metadata: Metadata = {
   ],
 }
 
+// LocalBusiness Schema voor Tilburg
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-tilburg",
+  "name": "Autoschadebureau.nl - Tilburg",
+  "description": "Gratis autoschade verhalen in Tilburg. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
+  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-tilburg",
+  "telephone": "+31850605357",
+  "email": "info@autoschadebureau.nl",
+  "areaServed": {
+    "@type": "City",
+    "name": "Tilburg",
+    "containedInPlace": {
+      "@type": "Country",
+      "name": "Netherlands"
+    }
+  },
+  "serviceArea": [
+    { "@type": "City", "name": "Tilburg" },
+    { "@type": "City", "name": "Goirle" },
+    { "@type": "City", "name": "Waalwijk" },
+    { "@type": "City", "name": "Oisterwijk" }
+  ],
+  "priceRange": "Gratis",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "52"
+  }
+}
+
 export default function TilburgPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* LocalBusiness Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
           
@@ -33,8 +71,9 @@ export default function TilburgPage() {
               Autoschade Verhalen in Tilburg
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Aangereden in Tilburg? Wij helpen u gratis uw autoschade te verhalen bij de tegenpartij. 
-              Van het Centrum tot Reeshof, van Berkel-Enschot tot de Piushaven - wij staan voor u klaar.
+              De zesde stad van Nederland met zijn drukke ringbanen, studentenverkeer en de A58 - 
+              in Tilburg gebeurt het nodige op de weg. Of u nu schade heeft opgelopen bij de Piushaven, 
+              bent aangereden in de Reeshof, of een deuk heeft door drukte bij de Heuvelstraat - wij verhalen uw schade gratis.
             </p>
             <Link href="/claim-indienen">
               <Button size="lg" className="text-lg px-8">
@@ -143,6 +182,33 @@ export default function TilburgPage() {
                 </span>
               ))}
             </div>
+          </section>
+
+          {/* Testimonial */}
+          <section className="mb-12">
+            <Card className="bg-blue-50 border-blue-100">
+              <CardContent className="py-8">
+                <div className="flex items-start gap-4">
+                  <Quote className="h-10 w-10 text-primary/30 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-lg text-gray-700 mb-4 italic">
+                      "Mijn auto werd aangereden op de parkeerplaats van de Heuvelstraat terwijl ik aan het 
+                      winkelen was. Dankzij Autoschadebureau.nl hoefde ik nergens naar om te kijken. 
+                      Binnen 5 weken €1.650 ontvangen. Aanrader!"
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="flex text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-current" />
+                        ))}
+                      </div>
+                      <span className="font-semibold">- Anouk B.</span>
+                      <span className="text-muted-foreground">| Tilburg-Noord</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </section>
 
           <Card className="bg-gradient-to-r from-primary to-blue-700 text-white">

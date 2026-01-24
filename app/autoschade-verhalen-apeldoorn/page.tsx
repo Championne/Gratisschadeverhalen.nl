@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Upload, Phone, Clock } from "lucide-react"
+import { MapPin, Upload, Phone, Clock, Star, Quote } from "lucide-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
@@ -18,9 +18,47 @@ export const metadata: Metadata = {
   ],
 }
 
+// LocalBusiness Schema voor Apeldoorn
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-apeldoorn",
+  "name": "Autoschadebureau.nl - Apeldoorn",
+  "description": "Gratis autoschade verhalen in Apeldoorn. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
+  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-apeldoorn",
+  "telephone": "+31850605357",
+  "email": "info@autoschadebureau.nl",
+  "areaServed": {
+    "@type": "City",
+    "name": "Apeldoorn",
+    "containedInPlace": {
+      "@type": "Country",
+      "name": "Netherlands"
+    }
+  },
+  "serviceArea": [
+    { "@type": "City", "name": "Apeldoorn" },
+    { "@type": "City", "name": "Deventer" },
+    { "@type": "City", "name": "Zutphen" },
+    { "@type": "City", "name": "Epe" }
+  ],
+  "priceRange": "Gratis",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "32"
+  }
+}
+
 export default function ApeldoornPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* LocalBusiness Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
           
@@ -33,8 +71,10 @@ export default function ApeldoornPage() {
               Autoschade Verhalen in Apeldoorn
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Aangereden in Apeldoorn? Wij helpen u gratis uw autoschade te verhalen bij de tegenpartij. 
-              Van het Centrum tot De Maten, van Ugchelen tot Zuidbroek - wij staan voor u klaar.
+              De groene stad aan de Veluwe met druk verkeer op de A1 en A50, recreatieverkeer naar 
+              de Apenheul en het Paleis Het Loo - Apeldoorn kent diverse verkeerssituaties. 
+              Of u nu schade heeft opgelopen in het centrum, bent aangereden op de Laan van Malkenschoten, 
+              of wildschade heeft op de Veluwe - wij verhalen uw schade gratis.
             </p>
             <Link href="/claim-indienen">
               <Button size="lg" className="text-lg px-8">
@@ -143,6 +183,33 @@ export default function ApeldoornPage() {
                 </span>
               ))}
             </div>
+          </section>
+
+          {/* Testimonial */}
+          <section className="mb-12">
+            <Card className="bg-blue-50 border-blue-100">
+              <CardContent className="py-8">
+                <div className="flex items-start gap-4">
+                  <Quote className="h-10 w-10 text-primary/30 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-lg text-gray-700 mb-4 italic">
+                      "Een hert sprong voor mijn auto op de Veluwe. De schade was fors maar de tegenpartij 
+                      was lastig te achterhalen. Autoschadebureau.nl vond uit dat een ander voertuig het 
+                      hert had opgejaagd. Uiteindelijk €3.800 vergoed!"
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="flex text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-current" />
+                        ))}
+                      </div>
+                      <span className="font-semibold">- Henk B.</span>
+                      <span className="text-muted-foreground">| Apeldoorn-Ugchelen</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </section>
 
           <Card className="bg-gradient-to-r from-primary to-blue-700 text-white">

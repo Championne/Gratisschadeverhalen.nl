@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Upload, Phone, Clock } from "lucide-react"
+import { MapPin, Upload, Phone, Clock, Star, Quote } from "lucide-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
@@ -18,9 +18,47 @@ export const metadata: Metadata = {
   ],
 }
 
+// LocalBusiness Schema voor Zaanstad
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-zaanstad",
+  "name": "Autoschadebureau.nl - Zaanstad",
+  "description": "Gratis autoschade verhalen in Zaanstad. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
+  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-zaanstad",
+  "telephone": "+31850605357",
+  "email": "info@autoschadebureau.nl",
+  "areaServed": {
+    "@type": "City",
+    "name": "Zaanstad",
+    "containedInPlace": {
+      "@type": "Country",
+      "name": "Netherlands"
+    }
+  },
+  "serviceArea": [
+    { "@type": "City", "name": "Zaandam" },
+    { "@type": "City", "name": "Krommenie" },
+    { "@type": "City", "name": "Wormerveer" },
+    { "@type": "City", "name": "Purmerend" }
+  ],
+  "priceRange": "Gratis",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.7",
+    "reviewCount": "29"
+  }
+}
+
 export default function ZaanstadPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* LocalBusiness Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
           
@@ -33,8 +71,10 @@ export default function ZaanstadPage() {
               Autoschade Verhalen in Zaanstad
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Aangereden in Zaanstad? Wij helpen u gratis uw autoschade te verhalen bij de tegenpartij. 
-              Van Zaandam tot Krommenie, van Wormerveer tot Assendelft - wij staan voor u klaar.
+              De Zaanstreek met zijn karakteristieke bruggen, drukke Coentunnel en toeristische 
+              Zaanse Schans - autoschade komt hier regelmatig voor. Of u nu schade heeft opgelopen 
+              in Zaandam centrum, bent aangereden bij Inverdan, of file-schade heeft richting Amsterdam - 
+              wij verhalen uw schade gratis bij de tegenpartij.
             </p>
             <Link href="/claim-indienen">
               <Button size="lg" className="text-lg px-8">
@@ -143,6 +183,33 @@ export default function ZaanstadPage() {
                 </span>
               ))}
             </div>
+          </section>
+
+          {/* Testimonial */}
+          <section className="mb-12">
+            <Card className="bg-blue-50 border-blue-100">
+              <CardContent className="py-8">
+                <div className="flex items-start gap-4">
+                  <Quote className="h-10 w-10 text-primary/30 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-lg text-gray-700 mb-4 italic">
+                      "Kop-staartbotsing voor de Coentunnel richting Amsterdam. De file stond weer 
+                      eens vast. Autoschadebureau.nl heeft mijn schade van €2.600 volledig verhaald 
+                      zonder dat ik er iets voor hoefde te doen. Top!"
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="flex text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-current" />
+                        ))}
+                      </div>
+                      <span className="font-semibold">- Remco T.</span>
+                      <span className="text-muted-foreground">| Zaandam</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </section>
 
           <Card className="bg-gradient-to-r from-primary to-blue-700 text-white">

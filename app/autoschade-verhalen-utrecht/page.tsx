@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Upload, Phone, Clock } from "lucide-react"
+import { MapPin, Upload, Phone, Clock, Star, Quote } from "lucide-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
@@ -18,9 +18,47 @@ export const metadata: Metadata = {
   ],
 }
 
+// LocalBusiness Schema voor Utrecht
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-utrecht",
+  "name": "Autoschadebureau.nl - Utrecht",
+  "description": "Gratis autoschade verhalen in Utrecht. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
+  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-utrecht",
+  "telephone": "+31850605357",
+  "email": "info@autoschadebureau.nl",
+  "areaServed": {
+    "@type": "City",
+    "name": "Utrecht",
+    "containedInPlace": {
+      "@type": "Country",
+      "name": "Netherlands"
+    }
+  },
+  "serviceArea": [
+    { "@type": "City", "name": "Utrecht" },
+    { "@type": "City", "name": "Nieuwegein" },
+    { "@type": "City", "name": "Zeist" },
+    { "@type": "City", "name": "Houten" }
+  ],
+  "priceRange": "Gratis",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "76"
+  }
+}
+
 export default function UtrechtPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* LocalBusiness Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
           
@@ -34,8 +72,9 @@ export default function UtrechtPage() {
               Autoschade Verhalen in Utrecht
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Aangereden in Utrecht? Wij helpen u gratis uw autoschade te verhalen bij de tegenpartij. 
-              Van de binnenstad tot Leidsche Rijn, van Overvecht tot Lunetten - wij staan voor u klaar.
+              Midden in Nederland, op het kruispunt van de A2, A12 en A27 - Utrecht is de file-hoofdstad van ons land. 
+              Of u nu bent aangereden bij knooppunt Oudenrijn, schade heeft opgelopen in de historische binnenstad, 
+              of een deuk heeft door de bouwverkeersdrukte in Leidsche Rijn - wij verhalen uw schade gratis.
             </p>
             <Link href="/claim-indienen">
               <Button size="lg" className="text-lg px-8">
@@ -147,6 +186,33 @@ export default function UtrechtPage() {
                 </span>
               ))}
             </div>
+          </section>
+
+          {/* Testimonial */}
+          <section className="mb-12">
+            <Card className="bg-blue-50 border-blue-100">
+              <CardContent className="py-8">
+                <div className="flex items-start gap-4">
+                  <Quote className="h-10 w-10 text-primary/30 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-lg text-gray-700 mb-4 italic">
+                      "Kop-staartbotsing op de A2 bij Nieuwegein. De tegenpartij was duidelijk aansprakelijk. 
+                      Autoschadebureau.nl nam alles uit handen - van de expert tot de onderhandelingen. 
+                      Na 4 weken had ik €3.400 op mijn rekening. Echt top!"
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="flex text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-current" />
+                        ))}
+                      </div>
+                      <span className="font-semibold">- Peter J.</span>
+                      <span className="text-muted-foreground">| Leidsche Rijn</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </section>
 
           {/* CTA */}

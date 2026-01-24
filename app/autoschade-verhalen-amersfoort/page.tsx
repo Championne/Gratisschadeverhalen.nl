@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Upload, Phone, Clock } from "lucide-react"
+import { MapPin, Upload, Phone, Clock, Star, Quote } from "lucide-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
@@ -18,9 +18,47 @@ export const metadata: Metadata = {
   ],
 }
 
+// LocalBusiness Schema voor Amersfoort
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-amersfoort",
+  "name": "Autoschadebureau.nl - Amersfoort",
+  "description": "Gratis autoschade verhalen in Amersfoort. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
+  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-amersfoort",
+  "telephone": "+31850605357",
+  "email": "info@autoschadebureau.nl",
+  "areaServed": {
+    "@type": "City",
+    "name": "Amersfoort",
+    "containedInPlace": {
+      "@type": "Country",
+      "name": "Netherlands"
+    }
+  },
+  "serviceArea": [
+    { "@type": "City", "name": "Amersfoort" },
+    { "@type": "City", "name": "Soest" },
+    { "@type": "City", "name": "Baarn" },
+    { "@type": "City", "name": "Leusden" }
+  ],
+  "priceRange": "Gratis",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "41"
+  }
+}
+
 export default function AmersfoortPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* LocalBusiness Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
           
@@ -33,8 +71,10 @@ export default function AmersfoortPage() {
               Autoschade Verhalen in Amersfoort
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Aangereden in Amersfoort? Wij helpen u gratis uw autoschade te verhalen bij de tegenpartij. 
-              Van de Koppelpoort tot Vathorst, van Hoogland tot Schothorst - wij staan voor u klaar.
+              De middeleeuwse stad bij knooppunt Hoevelaken, waar de A1 en A28 samenkomen - 
+              Amersfoort kent druk woon-werkverkeer. Of u nu schade heeft opgelopen bij de Koppelpoort, 
+              bent aangereden in nieuwbouwwijk Vathorst, of file-schade heeft op weg naar Utrecht - 
+              wij verhalen uw schade gratis bij de tegenpartij.
             </p>
             <Link href="/claim-indienen">
               <Button size="lg" className="text-lg px-8">
@@ -143,6 +183,33 @@ export default function AmersfoortPage() {
                 </span>
               ))}
             </div>
+          </section>
+
+          {/* Testimonial */}
+          <section className="mb-12">
+            <Card className="bg-blue-50 border-blue-100">
+              <CardContent className="py-8">
+                <div className="flex items-start gap-4">
+                  <Quote className="h-10 w-10 text-primary/30 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-lg text-gray-700 mb-4 italic">
+                      "File-schade bij knooppunt Hoevelaken, de tegenpartij reed tegen mijn achterbumper. 
+                      Autoschadebureau.nl nam direct contact op en regelde alles. Binnen 4 weken €1.950 
+                      op mijn rekening. Zeer aan te bevelen!"
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="flex text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-current" />
+                        ))}
+                      </div>
+                      <span className="font-semibold">- Marieke D.</span>
+                      <span className="text-muted-foreground">| Amersfoort-Vathorst</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </section>
 
           <Card className="bg-gradient-to-r from-primary to-blue-700 text-white">

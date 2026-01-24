@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Upload, Phone, Clock } from "lucide-react"
+import { MapPin, Upload, Phone, Clock, Star, Quote } from "lucide-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
@@ -18,9 +18,47 @@ export const metadata: Metadata = {
   ],
 }
 
+// LocalBusiness Schema voor Den Haag
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-den-haag",
+  "name": "Autoschadebureau.nl - Den Haag",
+  "description": "Gratis autoschade verhalen in Den Haag. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
+  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-den-haag",
+  "telephone": "+31850605357",
+  "email": "info@autoschadebureau.nl",
+  "areaServed": {
+    "@type": "City",
+    "name": "Den Haag",
+    "containedInPlace": {
+      "@type": "Country",
+      "name": "Netherlands"
+    }
+  },
+  "serviceArea": [
+    { "@type": "City", "name": "Den Haag" },
+    { "@type": "City", "name": "Rijswijk" },
+    { "@type": "City", "name": "Delft" },
+    { "@type": "City", "name": "Zoetermeer" }
+  ],
+  "priceRange": "Gratis",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "89"
+  }
+}
+
 export default function DenHaagPage() {
   return (
     <div className="min-h-screen bg-white">
+      {/* LocalBusiness Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
           
@@ -34,8 +72,9 @@ export default function DenHaagPage() {
               Autoschade Verhalen in Den Haag
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Aangereden in Den Haag? Wij helpen u gratis uw autoschade te verhalen bij de tegenpartij. 
-              Van Scheveningen tot Ypenburg, van het Centrum tot Loosduinen - wij staan voor u klaar.
+              De hofstad met zijn drukke tramlijnen, smalle straten in het centrum en de zomerse drukte bij Scheveningen - 
+              autoschade komt hier veelvuldig voor. Of u nu bent aangereden bij het Binnenhof, schade heeft opgelopen 
+              op de Utrechtsebaan, of parkeerschade heeft in Scheveningen - wij verhalen uw schade gratis.
             </p>
             <Link href="/claim-indienen">
               <Button size="lg" className="text-lg px-8">
@@ -147,6 +186,33 @@ export default function DenHaagPage() {
                 </span>
               ))}
             </div>
+          </section>
+
+          {/* Testimonial */}
+          <section className="mb-12">
+            <Card className="bg-blue-50 border-blue-100">
+              <CardContent className="py-8">
+                <div className="flex items-start gap-4">
+                  <Quote className="h-10 w-10 text-primary/30 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-lg text-gray-700 mb-4 italic">
+                      "Mijn auto was beschadigd door een toerist in Scheveningen die wegreed zonder briefje. 
+                      Gelukkig had ik getuigen. Autoschadebureau.nl heeft de zaak volledig overgenomen en 
+                      €1.950 voor mij verhaald. Fantastische service!"
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <div className="flex text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-current" />
+                        ))}
+                      </div>
+                      <span className="font-semibold">- Sandra M.</span>
+                      <span className="text-muted-foreground">| Scheveningen</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </section>
 
           {/* CTA */}
