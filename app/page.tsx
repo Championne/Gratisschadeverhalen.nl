@@ -885,12 +885,9 @@ export default function HomePage() {
               {/* Voordelen samenvatting */}
               <Card className="border-2 border-primary bg-gradient-to-br from-primary/5 to-white">
                 <CardHeader className="text-center pb-4">
-                  <CardTitle className="text-2xl md:text-3xl mb-2">
+                  <CardTitle className="text-2xl md:text-3xl">
                     Uw voordelen: Direct verhalen bij de tegenpartij
                   </CardTitle>
-                  <CardDescription className="text-base">
-                    Waarom onze dienst voordelig is, ook als u een eigen verzekering heeft
-                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
