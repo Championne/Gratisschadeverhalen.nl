@@ -538,7 +538,7 @@ Met vriendelijke groet,
               <p className="text-muted-foreground mb-6">
                 Onze juristen stellen dagelijks professionele aansprakelijkheidsbrieven op die voldoen aan alle 
                 juridische eisen. Verzekeraars reageren sneller en positiever op onze brieven. 
-                <strong> 100% gratis - u betaalt niets!</strong>
+                <strong> U betaalt niets - snelle expertise!</strong>
               </p>
               <Link href="/claim-indienen">
                 <Button size="lg" className="text-lg px-8">

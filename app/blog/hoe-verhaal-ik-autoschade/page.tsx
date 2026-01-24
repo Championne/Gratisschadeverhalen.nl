@@ -402,7 +402,7 @@ ing</a>
             <ul className="space-y-2 text-muted-foreground">
               <li>⏱️ <strong>1-2 weken:</strong> Eerste reactie verzekeraar</li>
               <li>⏱️ <strong>2-4 weken:</strong> Beoordeling en voorstel</li>
-              <li>⏱️ <strong>4-8 weken:</strong> Finale uitbetaling (gemiddeld 6 weken)</li>
+              <li>⏱️ <strong>4-8 weken:</strong> Finale uitbetaling</li>
             </ul>
           </section>
 
@@ -469,7 +469,7 @@ ing</a>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
-                      <span><strong>100% Gratis</strong> – u betaalt niets, tegenpartij betaalt alles</span>
+                      <span><strong>U betaalt niets</strong> – tegenpartij betaalt alles</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
@@ -485,7 +485,7 @@ ing</a>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
-                      <span><strong>Gemiddeld 6 weken</strong> tot uitbetaling</span>
+                      <span><strong>Snelle expertise</strong> – direct starten met uw claim</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <CheckCircle className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />

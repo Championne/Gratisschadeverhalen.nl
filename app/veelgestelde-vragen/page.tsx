@@ -6,7 +6,7 @@ import { ChevronDown, MessageCircle, Phone, Mail, ArrowRight, CheckCircle } from
 
 export const metadata: Metadata = {
   title: "Veelgestelde Vragen | Autoschade Verhalen - Gratis & Vrijblijvend",
-  description: "Alle antwoorden op uw vragen over autoschade verhalen. Wat kost het? Hoe lang duurt het? Wat als tegenpartij niet betaalt? 100% gratis - u betaalt niets.",
+  description: "Alle antwoorden op uw vragen over autoschade verhalen. Wat kost het? Hoe lang duurt het? Wat als tegenpartij niet betaalt? U betaalt niets - snelle expertise.",
   keywords: [
     "veelgestelde vragen autoschade",
     "wat kost autoschade verhalen",
@@ -243,11 +243,11 @@ export default function VeelgesteldeVragenPage() {
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <CheckCircle className="h-5 w-5 text-green-600" />
-              <span>100% Gratis - U betaalt niets</span>
+              <span>U betaalt niets</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle className="h-5 w-5 text-green-600" />
-              <span>Gemiddeld 4-8 weken afhandeling</span>
+              <span>Snelle expertise</span>
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle className="h-5 w-5 text-green-600" />

@@ -541,7 +541,7 @@ export default function TotalLossAutoPage() {
                 </Button>
               </Link>
               <p className="text-sm text-muted-foreground mt-4">
-                100% gratis • U betaalt niets • Ook bij mislukking geen kosten
+                Snelle expertise • Ook bij mislukking geen kosten
               </p>
             </CardContent>
           </Card>

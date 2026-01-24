@@ -530,7 +530,7 @@ export default function EuropeesSchadeformulierPage() {
                   </Button>
                 </Link>
                 <p className="text-sm text-muted-foreground mt-4">
-                  100% gratis • U betaalt niets • Gemiddeld binnen 6 weken afgehandeld
+                  Snelle expertise • Geen kosten
                 </p>
               </CardContent>
             </Card>

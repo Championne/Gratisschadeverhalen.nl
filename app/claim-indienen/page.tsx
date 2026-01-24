@@ -22,7 +22,7 @@ export default function ClaimIndienenPage() {
             <p className="text-lg text-muted-foreground">
               Vul onderstaand formulier in en wij nemen binnen 24 uur contact met je op.
               <br />
-              <strong className="text-primary">100% gratis, u betaalt niets.</strong>
+              <strong className="text-primary">Snelle expertise, u betaalt niets.</strong>
             </p>
           </div>
 

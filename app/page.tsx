@@ -478,15 +478,15 @@ export default function HomePage() {
                   <p className="text-xs text-muted-foreground">U betaalt niets</p>
                 </div>
 
-                {/* Badge 3: Gemiddeld 6 weken */}
+                {/* Badge 3: Snelle Expertise */}
                 <div className="bg-white border-2 border-gray-200 rounded-lg p-4 text-center hover:border-blue-400 hover:shadow-md transition-all">
                   <div className="flex justify-center mb-2">
                     <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
                       <Clock className="h-6 w-6 text-blue-600" />
                     </div>
                   </div>
-                  <p className="font-bold text-sm mb-1">Snel Resultaat</p>
-                  <p className="text-xs text-muted-foreground">Gem. binnen 6 weken</p>
+                  <p className="font-bold text-sm mb-1">Snelle Expertise</p>
+                  <p className="text-xs text-muted-foreground">Direct starten</p>
                 </div>
 
                 {/* Badge 4: Nederlandse Service */}
@@ -1466,7 +1466,7 @@ export default function HomePage() {
               Upload nu uw Europees Schadeformulier en start direct met het verhalen van uw voertuigschade op de tegenpartij
             </p>
             <p className="text-lg mb-8 opacity-90">
-              100% Gratis • U betaalt niets • Gemiddeld 6 weken • Geen risico
+              Snelle expertise • Geen risico
             </p>
             <Link href="/claim-indienen" className="inline-block w-full sm:w-auto">
               <Button size="lg" variant="secondary" className="text-base sm:text-lg px-6 sm:px-10 h-14 shadow-xl hover:shadow-2xl transition-all w-full sm:w-auto">
