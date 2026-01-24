@@ -330,7 +330,7 @@ export default function HomePage() {
         </section>
 
       {/* Upload CTA Section */}
-        <section className="bg-gray-50 py-10 md:py-14">
+        <section className="bg-gray-50 py-12 md:py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               {/* Section Title */}
@@ -391,7 +391,7 @@ export default function HomePage() {
         </section>
 
         {/* USP Section - 3 Key Benefits */}
-        <section className="py-8 md:py-10 bg-white border-y">
+        <section className="py-10 md:py-12 bg-white border-y">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <div className="grid md:grid-cols-3 gap-6 md:gap-8">
@@ -541,7 +541,7 @@ export default function HomePage() {
         </section>
 
         {/* Trust Badges Section */}
-        <section className="py-8 md:py-10 bg-white border-y">
+        <section className="py-10 md:py-12 bg-white border-y">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-8">
@@ -679,7 +679,7 @@ export default function HomePage() {
         </section>
 
         {/* Waarom zelf verhalen via ons - NIEUWE SECTIE */}
-        <section className="py-8 md:py-10 bg-gradient-to-b from-white to-blue-50">
+        <section className="py-10 md:py-12 bg-gradient-to-b from-white to-blue-50">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-8">
@@ -777,7 +777,7 @@ export default function HomePage() {
         </section>
 
         {/* Hoe werkt het Section */}
-        <section id="hoe-werkt-het" className="py-8 md:py-10 bg-white">
+        <section id="hoe-werkt-het" className="py-10 md:py-12 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -865,7 +865,7 @@ export default function HomePage() {
         </section>
 
         {/* Voorbeeldcases Section */}
-        <section id="voorbeelden" className="py-8 md:py-10 bg-gradient-to-b from-gray-50 to-white">
+        <section id="voorbeelden" className="py-10 md:py-12 bg-gradient-to-b from-gray-50 to-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -972,7 +972,7 @@ export default function HomePage() {
         </section>
 
         {/* Waarom gratis Section */}
-        <section className="py-8 md:py-10 bg-white">
+        <section className="py-10 md:py-12 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-8">
@@ -1383,7 +1383,7 @@ export default function HomePage() {
 
 
         {/* Final CTA Section */}
-        <section className="py-8 md:py-10 bg-gradient-to-r from-primary to-blue-700 text-white">
+        <section className="py-10 md:py-12 bg-gradient-to-r from-primary to-blue-700 text-white">
           <div className="container mx-auto px-6 sm:px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Klaar om uw autoschade gratis te verhalen?

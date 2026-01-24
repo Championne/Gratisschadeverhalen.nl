@@ -18,7 +18,7 @@ export default function OverOnsPage() {
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-5xl mx-auto">
         {/* Hero Section */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Over Autoschadebureau.nl</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Wij maken het verhalen van autoschade <strong>eenvoudig, snel en volledig gratis</strong>. 
@@ -27,7 +27,7 @@ export default function OverOnsPage() {
         </div>
 
         {/* Missie */}
-        <section className="mb-10">
+        <section className="mb-12">
           <Card className="border-2 border-primary">
             <CardHeader className="text-center">
               <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center">
@@ -47,7 +47,7 @@ export default function OverOnsPage() {
         </section>
 
         {/* Waarom Wij? */}
-        <section className="mb-16">
+        <section className="mb-12">
           <h2 className="text-3xl font-bold text-center mb-12">Waarom Autoschadebureau.nl?</h2>
           
           <div className="grid md:grid-cols-3 gap-6">
@@ -99,7 +99,7 @@ export default function OverOnsPage() {
         </section>
 
         {/* Hoe het werkt - Kort */}
-        <section className="mb-16">
+        <section className="mb-12">
           <Card className="bg-gradient-to-br from-blue-50 to-white border-2">
             <CardHeader className="text-center">
               <CardTitle className="text-3xl">Zo Simpel Werkt Het</CardTitle>
@@ -154,7 +154,7 @@ export default function OverOnsPage() {
         </section>
 
         {/* Waarden */}
-        <section className="mb-16">
+        <section className="mb-12">
           <h2 className="text-3xl font-bold text-center mb-12">Onze Kernwaarden</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
@@ -221,7 +221,7 @@ export default function OverOnsPage() {
         </section>
 
         {/* Partner Samenwerking */}
-        <section className="mb-16">
+        <section className="mb-12">
           <Card className="bg-purple-50/50 border-purple-200 border-2">
             <CardHeader className="text-center">
               <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-purple-100 flex items-center justify-center">
@@ -271,7 +271,7 @@ export default function OverOnsPage() {
         </section>
 
         {/* Team Section (Optioneel) */}
-        <section className="mb-16">
+        <section className="mb-12">
           <h2 className="text-3xl font-bold text-center mb-6">Uw Autoschadespecialist</h2>
           <Card className="max-w-3xl mx-auto">
             <CardContent className="text-center py-12">
