@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/breadcrumbs"
-import { AlertTriangle, CheckCircle, ArrowLeft, FileText, Upload, Eye, Calculator } from "lucide-react"
+import { AlertTriangle, CheckCircle, ArrowLeft, FileText, Upload, Eye, Calculator, Phone } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Expertiserapport Controleren: 7 Cruciale Punten om op te Letten (2026)",
