@@ -12,27 +12,38 @@ declare global {
 
 export function BotpressChat() {
   useEffect(() => {
-    // Load the Botpress script
+    // Check if script already exists
+    if (document.getElementById("botpress-webchat-script")) {
+      return
+    }
+
+    // Load the Botpress script (v3.3 - latest version)
     const script = document.createElement("script")
-    script.src = "https://cdn.botpress.cloud/webchat/v2.2/inject.js"
+    script.id = "botpress-webchat-script"
+    script.src = "https://cdn.botpress.cloud/webchat/v3.3/inject.js"
     script.async = true
     
     script.onload = () => {
-      // Initialize once script is loaded
-      if (window.botpress) {
-        window.botpress.init({
-          configUrl: "https://files.bpcontent.cloud/2026/01/24/16/20260124164752-PSUJJVBF.json"
-        })
-      }
+      // Wait a bit for botpress to initialize
+      setTimeout(() => {
+        if (window.botpress) {
+          window.botpress.init({
+            configUrl: "https://files.bpcontent.cloud/2026/01/24/16/20260124164752-PSUJJVBF.json"
+          })
+        } else {
+          console.error("Botpress not available after script load")
+        }
+      }, 100)
+    }
+
+    script.onerror = () => {
+      console.error("Failed to load Botpress script")
     }
     
     document.body.appendChild(script)
     
     return () => {
-      // Cleanup on unmount
-      if (script.parentNode) {
-        script.parentNode.removeChild(script)
-      }
+      // Don't remove on unmount to prevent re-loading issues
     }
   }, [])
 
