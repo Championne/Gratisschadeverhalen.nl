@@ -18,13 +18,17 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createServiceClient } from '@/lib/supabase/service'
 import { analyzeEmail, shouldAutoUpdate } from '@/lib/email-processor/ai-analyzer'
 import { matchEmailToClaim } from '@/lib/email-processor/claim-matcher'
+import { generateAutoReply, isComplexDispute } from '@/lib/ai/email-auto-responder'
+import { analyzeEmailAttachments } from '@/lib/email-processor/attachment-analyzer'
 import { logAuditAction } from '@/lib/audit/logger'
 import { sendEmail } from '@/lib/email/resend'
-import { emailReceivedNotification, adminEmailReviewNeeded } from '@/lib/email/templates'
+import { emailReceivedNotification, adminEmailReviewNeeded, autoReplySentNotification, adminComplexDisputeEmail } from '@/lib/email/templates'
 
-// Feature flag
+// Feature flags
 const ENABLE_EMAIL_PROCESSING = process.env.ENABLE_EMAIL_PROCESSING === 'true'
 const AUTO_UPDATE_ENABLED = process.env.ENABLE_AUTO_STATUS_UPDATE === 'true'
+const AUTO_REPLY_ENABLED = process.env.ENABLE_AUTO_REPLY === 'true'
+const ATTACHMENT_ANALYSIS_ENABLED = process.env.ENABLE_ATTACHMENT_ANALYSIS === 'true'
 
 export async function POST(req: NextRequest) {
   console.log('📧 Inbound email webhook triggered')
@@ -235,12 +239,38 @@ async function processEmailAsync(emailId: string, emailData: any) {
           email_type: analysis.email_type,
           confidence: matchConfidence,
           summary: analysis.summary_nl,
+          from_email: emailData.from_email,
+          subject: emailData.subject,
         },
         severity: 'info',
         performedBy: 'SYSTEM',
       })
     } else {
       console.log('⚠️  No claim match found')
+      
+      // Log ongematchte email in audit trail (met claimId = null)
+      await logAuditAction({
+        claimId: null,
+        actionType: 'email_unmatched',
+        performedBy: 'SYSTEM',
+        details: {
+          email_id: emailId,
+          email_type: analysis.email_type,
+          from_email: emailData.from_email,
+          from_name: emailData.from_name,
+          subject: emailData.subject,
+          summary: analysis.summary_nl,
+          detected_references: analysis.detected_claim_references,
+          detected_license_plates: analysis.detected_license_plates,
+          match_candidates: matchResult.all_matches?.slice(0, 3).map((m: any) => ({
+            claim_id: m.claim_id,
+            confidence: m.confidence,
+            reason: m.match_reason,
+          })) || [],
+          reason: 'Geen claim match gevonden met voldoende confidence',
+        },
+        severity: 'warning',
+      })
     }
 
     // Step 3: Auto Status Update (if enabled and confidence high enough)
@@ -293,6 +323,196 @@ async function processEmailAsync(emailId: string, emailData: any) {
       }
     } else if (!AUTO_UPDATE_ENABLED) {
       console.log('⏭️  Auto status update disabled (feature flag)')
+    }
+
+    // Step 3.5: Auto-Reply (if enabled)
+    if (claimId && AUTO_REPLY_ENABLED && analysis.email_type !== 'other') {
+      console.log('🤖 Step 3.5: Auto-Reply')
+      
+      // Haal claim gegevens op voor auto-reply
+      const { data: claimForReply } = await supabase
+        .from('claims')
+        .select('naam, email, verzekeraar_tegenpartij')
+        .eq('id', claimId)
+        .single()
+
+      if (claimForReply) {
+        try {
+          const autoReplyResult = await generateAutoReply({
+            emailId,
+            claimId,
+            emailType: analysis.email_type,
+            originalSubject: emailData.subject,
+            originalBody: emailData.body_text,
+            senderEmail: emailData.from_email,
+            senderName: emailData.from_name,
+            claimerName: claimForReply.naam,
+            claimerEmail: claimForReply.email,
+            verzekeraarName: claimForReply.verzekeraar_tegenpartij || emailData.from_name || 'Verzekeraar',
+            analysisResult: analysis,
+          })
+
+          if (autoReplyResult.should_auto_reply && autoReplyResult.reply_html) {
+            // Verstuur auto-reply naar verzekeraar
+            await sendEmail({
+              to: emailData.from_email,
+              cc: claimForReply.email, // CC naar claimer
+              subject: autoReplyResult.reply_subject!,
+              html: autoReplyResult.reply_html,
+            })
+
+            console.log('✅ Auto-reply verzonden naar:', emailData.from_email)
+
+            // Update inbound_emails record
+            await supabase
+              .from('inbound_emails')
+              .update({
+                auto_reply_sent: true,
+                auto_reply_content: autoReplyResult.reply_body,
+                auto_reply_sent_at: new Date().toISOString(),
+              })
+              .eq('id', emailId)
+
+            // Log auto-reply in audit trail
+            await logAuditAction({
+              claimId,
+              actionType: 'auto_reply_sent',
+              performedBy: 'SYSTEM',
+              details: {
+                email_id: emailId,
+                reply_type: analysis.email_type,
+                recipient: emailData.from_email,
+                cc: claimForReply.email,
+                subject: autoReplyResult.reply_subject,
+                confidence: autoReplyResult.confidence,
+                reason: autoReplyResult.reason,
+              },
+              severity: 'info',
+            })
+
+            // Notificatie naar claimer over auto-reply
+            const autoReplyNotification = autoReplySentNotification({
+              naam: claimForReply.naam,
+              claimId,
+              verzekeraarName: claimForReply.verzekeraar_tegenpartij || emailData.from_email,
+              replyType: analysis.email_type,
+              replySummary: autoReplyResult.reply_body?.substring(0, 200) + '...',
+            })
+
+            await sendEmail({
+              to: claimForReply.email,
+              subject: autoReplyNotification.subject,
+              html: autoReplyNotification.html,
+            })
+
+          } else if (autoReplyResult.escalation_needed) {
+            // Escalatie nodig - log en notificeer admin
+            console.log('⚠️ Auto-reply escalation needed:', autoReplyResult.escalation_reason)
+
+            // Check of het een complexe betwisting is
+            if (isComplexDispute(analysis)) {
+              const adminEmail = process.env.ADMIN_EMAIL || 'admin@autoschadebureau.nl'
+              
+              const escalationEmail = adminComplexDisputeEmail({
+                claimId,
+                claimerName: claimForReply.naam,
+                claimerEmail: claimForReply.email,
+                verzekeraarName: claimForReply.verzekeraar_tegenpartij || emailData.from_email,
+                emailType: analysis.email_type,
+                reason: autoReplyResult.escalation_reason || 'Complexe betwisting gedetecteerd',
+                summary: analysis.summary_nl,
+                suggestedActions: analysis.suggested_actions,
+                dashboardUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard/admin/claims/${claimId}`,
+              })
+
+              await sendEmail({
+                to: adminEmail,
+                subject: escalationEmail.subject,
+                html: escalationEmail.html,
+              })
+
+              // Log escalatie
+              await logAuditAction({
+                claimId,
+                actionType: 'escalatie',
+                performedBy: 'SYSTEM',
+                details: {
+                  reden: autoReplyResult.escalation_reason,
+                  email_id: emailId,
+                  email_type: analysis.email_type,
+                  auto_reply_blocked: true,
+                },
+                severity: 'critical',
+              })
+            }
+          }
+        } catch (autoReplyError) {
+          console.error('❌ Auto-reply error:', autoReplyError)
+          // Log error maar laat flow doorgaan
+          await logAuditAction({
+            claimId,
+            actionType: 'auto_reply_sent',
+            performedBy: 'SYSTEM',
+            details: {
+              email_id: emailId,
+              success: false,
+              error: autoReplyError instanceof Error ? autoReplyError.message : 'Unknown error',
+            },
+            severity: 'warning',
+          })
+        }
+      }
+    } else if (!AUTO_REPLY_ENABLED) {
+      console.log('⏭️  Auto-reply disabled (feature flag)')
+    }
+
+    // Step 3.6: Attachment Analysis (if enabled and has attachments)
+    if (claimId && ATTACHMENT_ANALYSIS_ENABLED && emailData.has_attachments && emailData.raw_webhook_data?.attachments) {
+      console.log('📎 Step 3.6: Attachment Analysis')
+      
+      try {
+        const attachmentResults = await analyzeEmailAttachments(
+          emailId,
+          claimId,
+          emailData.raw_webhook_data.attachments
+        )
+
+        // Update email record with attachment analysis
+        await supabase
+          .from('inbound_emails')
+          .update({
+            attachment_analysis: attachmentResults,
+            triggered_reanalysis: attachmentResults.some(r => r.triggered_reanalysis),
+          })
+          .eq('id', emailId)
+
+        console.log(`✅ Analyzed ${attachmentResults.length} attachment(s)`)
+        
+        // Als een bijlage heranalyse heeft getriggerd, log dit
+        const triggeringAttachments = attachmentResults.filter(r => r.triggered_reanalysis)
+        if (triggeringAttachments.length > 0) {
+          await logAuditAction({
+            claimId,
+            actionType: 'reanalysis_triggered',
+            performedBy: 'SYSTEM',
+            details: {
+              email_id: emailId,
+              reason: 'Email bijlage analyse',
+              attachments: triggeringAttachments.map(a => ({
+                filename: a.filename,
+                type: a.type,
+                is_damage_photo: a.analysis.is_damage_photo,
+                is_expertise_report: a.analysis.is_expertise_report,
+              })),
+            },
+            severity: 'info',
+          })
+        }
+      } catch (attachmentError) {
+        console.error('❌ Attachment analysis error:', attachmentError)
+      }
+    } else if (!ATTACHMENT_ANALYSIS_ENABLED) {
+      console.log('⏭️  Attachment analysis disabled (feature flag)')
     }
 
     // Step 4: Notifications

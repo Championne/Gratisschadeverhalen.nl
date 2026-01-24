@@ -21,18 +21,26 @@ export type AuditActionType =
   | 'claim_submit'
   | 'ocr_run'
   | 'ai_analyse'
+  | 'ai_reanalyse'
+  | 'ai_damage_estimate'
   | 'email_sent'
   | 'email_received'
+  | 'email_unmatched'        // Email ontvangen maar niet gematcht aan claim
+  | 'auto_reply_sent'        // Automatisch antwoord verzonden
   | 'status_change'
   | 'escalatie'
   | 'manual_edit'
+  | 'user_edit'              // Gebruiker heeft claim gewijzigd
   | 'file_upload'
   | 'file_delete'
+  | 'document_upload'
   | 'document_uploaded'
   | 'document_deleted'
+  | 'email_attachment_processed'
   | 'login'
   | 'view_claim'
   | 'comment_added'
+  | 'reanalysis_triggered'   // Heranalyse getriggerd
 
 export type AuditSeverity = 'info' | 'warning' | 'critical'
 

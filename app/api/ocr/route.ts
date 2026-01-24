@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import vision from '@google-cloud/vision'
 import { put } from '@vercel/blob'
 import type { ImageAnnotatorClient } from '@google-cloud/vision/build/src/v1'
+import { logAuditAction } from '@/lib/audit/logger'
 
 // Initialize Google Cloud Vision client
 let visionClient: ImageAnnotatorClient | null = null
@@ -87,16 +88,49 @@ export async function POST(request: NextRequest) {
       // Continue without file URL
     }
 
+    const confidence = calculateConfidence(extractedData)
+
+    // Log OCR actie in audit trail (claimId is nog niet bekend, dus null)
+    await logAuditAction({
+      claimId: null,
+      actionType: 'ocr_run',
+      performedBy: 'SYSTEM',
+      details: {
+        file_name: file.name,
+        file_size_kb: Math.round(file.size / 1024),
+        file_type: file.type,
+        fields_extracted: Object.keys(extractedData),
+        confidence: confidence,
+        has_kenteken: !!extractedData.kenteken_tegenpartij,
+        has_datum: !!extractedData.datum,
+        file_url: fileUrl || null,
+      },
+      severity: 'info',
+    })
+
     return NextResponse.json({
       success: true,
       raw_text: fullText,
       extracted_data: extractedData,
       file_url: fileUrl,
-      confidence: calculateConfidence(extractedData),
+      confidence: confidence,
     })
 
   } catch (error: any) {
     console.error('❌ OCR Error:', error)
+    
+    // Log OCR fout in audit trail
+    await logAuditAction({
+      claimId: null,
+      actionType: 'ocr_run',
+      performedBy: 'SYSTEM',
+      details: {
+        error: error.message,
+        success: false,
+      },
+      severity: 'warning',
+    })
+
     return NextResponse.json(
       { 
         error: 'OCR verwerking mislukt', 
