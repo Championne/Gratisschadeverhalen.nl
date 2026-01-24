@@ -152,14 +152,14 @@ export default function ContactPage() {
               <CardContent className="p-0">
                 <div className="w-full h-[400px] rounded-b-lg overflow-hidden">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2455.6847912843856!2d4.3135!3d52.0378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5b72b9c5e5e5d%3A0x8d9c5e5e5e5e5e5e!2sEinsteinlaan%2028%2C%202289%20CC%20Rijswijk!5e0!3m2!1snl!2snl!4v1234567890123!5m2!1snl!2snl"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2455.5!2d4.322!3d52.037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c5b7364db2f6a9%3A0x5e5e5e5e5e5e5e5e!2sEinsteinlaan%2028%2C%202289%20CC%20Rijswijk!5e0!3m2!1snl!2snl!4v1706095845123!5m2!1snl!2snl"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Kantoorlocatie Autoschadebureau.nl"
+                    title="Kantoorlocatie Autoschadebureau.nl - Einsteinlaan 28, Rijswijk"
                   />
                 </div>
               </CardContent>
@@ -197,39 +197,6 @@ export default function ContactPage() {
             </Card>
           </div>
         </div>
-
-        {/* Google Maps Placeholder */}
-        <Card className="mt-8">
-          <CardHeader>
-            <CardTitle>Locatie</CardTitle>
-            <CardDescription>
-              Ons kantoor is gevestigd op het onderstaande adres
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="bg-gray-100 rounded-lg h-96 flex items-center justify-center border-2 border-dashed border-gray-300">
-              <div className="text-center space-y-4">
-                <MapPin className="h-16 w-16 text-gray-400 mx-auto" />
-                <div className="space-y-2">
-                  <p className="text-lg font-semibold text-gray-600">Google Maps Placeholder</p>
-                  <p className="text-sm text-muted-foreground max-w-md">
-                    Zodra het bedrijfsadres bekend is, kan hier een Google Maps iframe worden toegevoegd met de exacte locatie.
-                  </p>
-                  <div className="bg-yellow-100 p-3 rounded text-xs text-left max-w-xl mx-auto">
-                    <p className="font-semibold mb-1">📍 Google Maps Integratie:</p>
-                    <p className="text-muted-foreground">
-                      1. Ga naar Google Maps<br />
-                      2. Zoek je adres<br />
-                      3. Klik op "Delen" → "Kaart insluiten"<br />
-                      4. Kopieer de iframe HTML<br />
-                      5. Vervang dit placeholder met de iframe
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
       </main>
     </div>
   )
