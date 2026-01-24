@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 import { ArrowLeft, CheckCircle, AlertTriangle, Upload, Phone, Camera, FileText } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -74,6 +75,12 @@ export default function WatTeDoennaNaOngevalblogPost() {
 
       <div className="min-h-screen bg-white">
         <main className="container mx-auto px-4 py-8 max-w-4xl">
+          {/* Breadcrumbs */}
+          <Breadcrumbs items={[
+            { label: "Blog", href: "/blog" },
+            { label: "Wat Te Doen Na Ongeval" }
+          ]} />
+
           <Link href="/blog" className="inline-flex items-center gap-2 text-primary hover:underline mb-6">
             <ArrowLeft className="h-4 w-4" />
             Terug naar Knowledge Base

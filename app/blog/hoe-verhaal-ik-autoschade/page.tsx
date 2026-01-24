@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 import { CheckCircle, AlertTriangle, ArrowLeft, FileText, Upload } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -20,6 +21,12 @@ export default function BlogPost() {
   return (
     <div className="min-h-screen bg-white">
       <article className="container mx-auto px-4 py-8 max-w-4xl">
+        {/* Breadcrumbs */}
+        <Breadcrumbs items={[
+          { label: "Blog", href: "/blog" },
+          { label: "Hoe verhaal ik autoschade" }
+        ]} />
+
         {/* Back button */}
         <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-8">
           <ArrowLeft className="h-4 w-4" />
