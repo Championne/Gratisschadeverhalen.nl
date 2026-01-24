@@ -139,7 +139,7 @@ export function SiteFooter() {
               <li className="flex items-start gap-2 text-muted-foreground">
                 <Clock className="h-4 w-4 flex-shrink-0 mt-0.5" />
                 <span>
-                  ma - za<br />
+                  Maandag - Zaterdag<br />
                   09:00 - 17:30
                 </span>
               </li>
