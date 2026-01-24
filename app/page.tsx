@@ -338,13 +338,6 @@ export default function HomePage() {
               {/* Grote Upload CTA Card - Hele card is klikbaar */}
               <Link href="/claim-indienen" className="block group max-w-2xl mx-auto">
                 <Card className="border-2 border-primary shadow-2xl bg-gradient-to-br from-primary/5 to-white cursor-pointer hover:shadow-3xl hover:scale-[1.02] transition-all duration-200 active:scale-[0.99]">
-                  {/* Urgency Badge */}
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="bg-red-500 text-white px-6 py-1 rounded-full text-sm font-bold shadow-lg animate-pulse">
-                      ⚡ Start binnen 2 minuten
-                    </div>
-                  </div>
-                  
                   <CardHeader className="text-center pb-4 pt-8">
                     <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                       <Upload className="h-8 w-8 text-primary" />
