@@ -381,9 +381,20 @@ export default function HomePage() {
                 </Card>
               </Link>
 
-              <p className="text-center mt-8 text-sm text-muted-foreground">
-                U betaalt niets • Tegenpartij betaalt alles • 100% gratis
-              </p>
+              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-8 text-sm text-muted-foreground">
+                <span className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                  <span>U betaalt niets</span>
+                </span>
+                <span className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                  <span>Tegenpartij betaalt alles</span>
+                </span>
+                <span className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                  <span>100% gratis</span>
+                </span>
+              </div>
             </div>
           </div>
         </section>
