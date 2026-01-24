@@ -11,16 +11,16 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between px-4">
+      <div className="container flex h-28 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image 
             src="/logo.png" 
             alt="Autoschadebureau.nl Logo" 
-            width={220}
-            height={60}
+            width={360}
+            height={100}
             priority
-            className="h-14 w-auto"
+            className="h-24 w-auto"
           />
         </Link>
 
