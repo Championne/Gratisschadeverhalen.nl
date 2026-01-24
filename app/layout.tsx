@@ -1,12 +1,12 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import Script from "next/script"
 import "./globals.css"
 import { Toaster } from "@/components/ui/sonner"
 import { CookieConsent } from "@/components/cookie-consent"
 import { ConditionalLayout } from "@/components/conditional-layout"
 import { StructuredData } from "@/components/structured-data"
 import { GoogleAnalytics, MicrosoftClarity } from "@/components/analytics"
+import { BotpressChat } from "@/components/botpress-chat"
 
 // Font Awesome config
 import { config } from "@fortawesome/fontawesome-svg-core"
@@ -104,24 +104,7 @@ export default function RootLayout({
         <CookieConsent />
         
         {/* Botpress Chatbot */}
-        <Script 
-          src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"
-          strategy="afterInteractive"
-        />
-        <Script id="botpress-init" strategy="lazyOnload">
-          {`
-            (function() {
-              var checkBotpress = setInterval(function() {
-                if (window.botpress) {
-                  clearInterval(checkBotpress);
-                  window.botpress.init({
-                    configUrl: "https://files.bpcontent.cloud/2026/01/24/16/20260124164752-PSUJJVBF.json"
-                  });
-                }
-              }, 100);
-            })();
-          `}
-        </Script>
+        <BotpressChat />
       </body>
     </html>
   )
