@@ -39,7 +39,7 @@ export function SiteHeader() {
             FAQ
           </Link>
           <Link href="/blog" className="text-sm font-medium transition-colors hover:text-primary">
-            Blog & Tips
+            Blog
           </Link>
           <Link href="/over-ons" className="text-sm font-medium transition-colors hover:text-primary">
             Over Ons
@@ -105,7 +105,7 @@ export function SiteHeader() {
               className="text-sm font-medium px-4 py-2 hover:bg-accent rounded-md transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Blog & Tips
+              Blog
             </Link>
             <Link 
               href="/over-ons" 

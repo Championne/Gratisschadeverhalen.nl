@@ -70,7 +70,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">
-                  Blog & Tips
+                  Blog
                 </Link>
               </li>
               <li>
