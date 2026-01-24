@@ -239,25 +239,19 @@ export default function OverOnsPage() {
                 <div className="bg-white border-2 border-purple-300 rounded-lg p-6 hover:border-purple-400 transition-all hover:shadow-lg">
                   <p className="font-semibold text-lg mb-4 text-muted-foreground">🤝 Partner voor Letselschade</p>
                   
-                  {/* Unitas Logo */}
-                  <div className="flex items-center justify-center gap-3 mb-4">
+                  {/* Unitas Logo - Centered and Enlarged */}
+                  <div className="flex flex-col items-center gap-4 mb-4">
                     <img 
                       src="/unitas-letselschade-logo.png" 
                       alt="Unitas Letselschade" 
-                      className="w-16 h-16 object-contain flex-shrink-0"
+                      className="w-32 h-32 object-contain"
                     />
-                    <div>
-                      <p className="font-bold text-xl text-purple-900 group-hover:text-purple-700 transition-colors">
-                        Unitas Letselschade
-                      </p>
-                    </div>
+                    <p className="text-sm text-center text-muted-foreground">
+                      Gespecialiseerd in letselschade claims met jarenlange ervaring
+                    </p>
                   </div>
                   
-                  <p className="text-sm text-muted-foreground">
-                    Gespecialiseerd in letselschade claims met jarenlange ervaring
-                  </p>
-                  
-                  <p className="text-primary font-medium mt-3 group-hover:underline">
+                  <p className="text-primary font-medium text-center group-hover:underline">
                     Bezoek website →
                   </p>
                 </div>
