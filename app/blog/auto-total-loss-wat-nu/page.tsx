@@ -93,7 +93,7 @@ export default function TotalLossAutoPage() {
               <CardContent className="p-4">
                 <h4 className="font-bold mb-2">💰 Economische Total Loss</h4>
                 <p className="text-sm text-muted-foreground mb-2">
-                  Reparatie is <strong>technisch mogelijk maar te duur</strong> (meestal > 60-70% van dagwaarde).
+                  Reparatie is <strong>technisch mogelijk maar te duur</strong> (meestal &gt; 60-70% van dagwaarde).
                 </p>
                 <p className="text-xs">
                   <strong>Voorbeeld:</strong> Auto van €8.000 met €6.000 schade = economisch total loss
