@@ -304,21 +304,62 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
-      {/* Hero Section met Grote Upload CTA */}
-        <section className="bg-gradient-to-br from-blue-50 via-white to-green-50 pt-8 pb-12 md:pt-10 md:pb-16">
+      {/* Hero Section */}
+        <section className="bg-gradient-to-br from-blue-50 via-white to-green-50 pt-12 pb-16 md:pt-16 md:pb-20">
           <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-5xl mx-auto text-center">
               {/* Hoofdtitel */}
-              <div className="text-center mb-8">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight">
-                  Gratis Uw <span className="text-primary">Autoschade Verhalen</span> – Upload Direct Uw Schadeformulier
-                </h1>
-                <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-4xl mx-auto">
-                  Aangereden? Wij verhalen uw voertuigschade op de tegenpartij. 
-                  Wij regelen alles – van aansprakelijkheidsbrief tot uitbetaling.
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8 leading-tight">
+                De verhaalservice voor uw voertuig- en letselschade
+              </h1>
+              
+              {/* Subtitel */}
+              <p className="text-xl md:text-2xl text-muted-foreground mb-6 max-w-4xl mx-auto">
+                <strong className="text-foreground">Autoschadebureau.nl</strong> is een laagdrempelige juridische dienstverlener. Wij verhalen de{" "}
+                <strong className="text-foreground">voertuigschade</strong> en{" "}
+                <a href="https://unitasletselschade.nl" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">
+                  letselschade
+                </a>{" "}
+                op de tegenpartij.
+              </p>
+
+              <p className="text-lg md:text-xl text-muted-foreground mb-8">
+                Van advies en aansprakelijk stellen tot en met een juridische procedure.
+              </p>
+
+              {/* Letselschade Banner */}
+              <div className="bg-purple-50 border-2 border-purple-200 rounded-lg p-6 mb-10 max-w-3xl mx-auto">
+                <p className="text-base md:text-lg text-purple-900">
+                  <strong>Letselschade?</strong> Wij detecteren automatisch letsel en verwijzen u door naar onze gespecialiseerde partner{" "}
+                  <a href="https://unitasletselschade.nl" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-bold">
+                    Unitas Letselschade
+                  </a>{" "}
+                  voor optimale begeleiding.
                 </p>
               </div>
 
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Link href="/claim-indienen">
+                  <Button size="lg" className="text-lg px-8 py-6 h-auto">
+                    <Upload className="mr-2 h-5 w-5" />
+                    Start Uw Claim
+                  </Button>
+                </Link>
+                <Link href="/over-ons">
+                  <Button size="lg" variant="outline" className="text-lg px-8 py-6 h-auto">
+                    Meer Info
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      {/* Upload CTA Section */}
+        <section className="bg-gray-50 py-12 md:py-16">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
               {/* Grote Upload CTA Card - Hele card is klikbaar */}
               <Link href="/claim-indienen" className="block group max-w-2xl mx-auto">
                 <Card className="border-2 border-primary shadow-2xl bg-gradient-to-br from-primary/5 to-white cursor-pointer hover:shadow-3xl hover:scale-[1.02] transition-all duration-200 active:scale-[0.99]">
