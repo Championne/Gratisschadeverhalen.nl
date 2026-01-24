@@ -232,7 +232,7 @@ export default function UtrechtPage() {
                   </Button>
                 </Link>
                 <Link href="tel:0850605357">
-                  <Button size="lg" variant="outline" className="text-lg px-8 border-white text-white hover:bg-white/10">
+                  <Button size="lg" className="text-lg px-8 bg-white text-primary hover:bg-gray-100">
                     <Phone className="mr-2 h-5 w-5" />
                     085 060 5357
                   </Button>
