@@ -19,7 +19,7 @@ export function SiteFooter() {
               </div>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Gratis autoschade verhalen op de WA-verzekeraar van de tegenpartij. 
+              Gratis autoschade verhalen tegenpartij. 
               U betaalt niets - alle kosten worden door de tegenpartij vergoed.
             </p>
           </div>
