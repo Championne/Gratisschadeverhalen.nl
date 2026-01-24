@@ -7,6 +7,8 @@ import { ConditionalLayout } from "@/components/conditional-layout"
 import { StructuredData } from "@/components/structured-data"
 import { GoogleAnalytics, MicrosoftClarity } from "@/components/analytics"
 import { BotpressChat } from "@/components/botpress-chat"
+import { ExitIntentPopup } from "@/components/exit-intent-popup"
+import { MobileStickyCTA } from "@/components/mobile-sticky-cta"
 
 // Font Awesome config
 import { config } from "@fortawesome/fontawesome-svg-core"
@@ -105,6 +107,10 @@ export default function RootLayout({
         
         {/* Botpress Chatbot */}
         <BotpressChat />
+        
+        {/* Conversion Optimization */}
+        <ExitIntentPopup />
+        <MobileStickyCTA />
       </body>
     </html>
   )
