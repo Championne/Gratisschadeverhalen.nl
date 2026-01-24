@@ -678,12 +678,6 @@ export default function HomePage() {
                 </Card>
               </div>
 
-              {/* Review Platform Note */}
-              <div className="text-center mt-8">
-                <p className="text-sm text-muted-foreground">
-                  Reviews worden verzameld via TrustPilot • Geverifieerde klanten
-                </p>
-              </div>
             </div>
           </div>
         </section>
