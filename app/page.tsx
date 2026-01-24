@@ -1436,7 +1436,7 @@ export default function HomePage() {
 
         {/* Final CTA Section */}
         <section className="py-12 bg-gradient-to-r from-primary to-blue-700 text-white">
-          <div className="container mx-auto px-4 text-center">
+          <div className="container mx-auto px-6 sm:px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Klaar om uw autoschade gratis te verhalen?
             </h2>
@@ -1446,11 +1446,11 @@ export default function HomePage() {
             <p className="text-lg mb-8 opacity-90">
               Snelle expertise • Geen risico
             </p>
-            <Link href="/claim-indienen" className="inline-block w-full sm:w-auto">
-              <Button size="lg" variant="secondary" className="text-base sm:text-lg px-6 sm:px-10 h-14 shadow-xl hover:shadow-2xl transition-all w-full sm:w-auto">
+            <Link href="/claim-indienen" className="inline-block w-full sm:w-auto px-4 sm:px-0">
+              <Button size="lg" variant="secondary" className="text-base sm:text-lg px-4 sm:px-10 h-14 shadow-xl hover:shadow-2xl transition-all w-full sm:w-auto">
                 <Upload className="mr-2 h-5 w-5 flex-shrink-0" />
                 <span className="hidden sm:inline">Start Nu – Upload Schadeformulier</span>
-                <span className="sm:hidden">Start Nu – Upload</span>
+                <span className="sm:hidden">Start Nu</span>
                 <ChevronRight className="ml-2 h-5 w-5 flex-shrink-0" />
               </Button>
             </Link>
