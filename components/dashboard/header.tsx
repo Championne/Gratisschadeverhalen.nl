@@ -1,6 +1,6 @@
 "use client"
 
-import { Car, LogOut, User, Plus } from "lucide-react"
+import { Car, LogOut, User, Plus, FileText, Shield } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import {
