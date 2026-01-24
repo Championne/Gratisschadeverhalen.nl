@@ -111,30 +111,6 @@ export function SiteFooter() {
                 </Link>
               </li>
             </ul>
-            <div className="pt-4 border-t border-gray-200">
-              <h4 className="font-semibold text-sm uppercase tracking-wider mb-3">Partner</h4>
-              <p className="text-xs text-muted-foreground mb-3">Partner voor Letselschade</p>
-              <a 
-                href="https://www.unitasletselschade.nl" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block group"
-              >
-                <div className="bg-white border-2 border-purple-100 rounded-lg p-4 hover:border-purple-300 transition-all hover:shadow-md">
-                  {/* Unitas Letselschade Logo - Centered */}
-                  <div className="flex flex-col items-center gap-3">
-                    <img 
-                      src="/unitas-letselschade-logo.png" 
-                      alt="Unitas Letselschade" 
-                      className="w-24 h-24 object-contain"
-                    />
-                    <p className="text-xs text-center text-muted-foreground leading-relaxed">
-                      Gespecialiseerd in letselschade claims met jarenlange ervaring
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
           </div>
 
           {/* Contact */}
