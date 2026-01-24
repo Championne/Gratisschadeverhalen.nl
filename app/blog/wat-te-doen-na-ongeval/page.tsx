@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/breadcrumbs"
+import { ChecklistDownload } from "@/components/checklist-download"
 import { ArrowLeft, CheckCircle, AlertTriangle, Upload, Phone, Camera, FileText } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -611,6 +612,28 @@ export default function WatTeDoennaNaOngevalblogPost() {
                 </p>
               </CardContent>
             </Card>
+
+            {/* DOWNLOADABLE CHECKLIST */}
+            <div className="my-12">
+              <ChecklistDownload
+                title="Download: Complete Ongeval Checklist"
+                description="Print deze checklist en bewaar in uw handschoenenkastje. Zo bent u voorbereid bij een ongeval."
+                checklistItems={[
+                  "1. Zorg voor veiligheid - Waarschuwingsdriehoek en veiligheidsvest",
+                  "2. Bel 112 bij gewonden of grote materiële schade",
+                  "3. Maak foto's van alle voertuigen, schade en situatie",
+                  "4. Wissel gegevens uit met tegenpartij (naam, kenteken, verzekeraar)",
+                  "5. Zoek getuigen en noteer contactgegevens",
+                  "6. Vul Europees Schadeformulier in (NIET tekenen bij twijfel)",
+                  "7. Doe GEEN schuldbekentenis ('sorry' = schuld erkennen)",
+                  "8. Bel politie bij vluchtmisdrijf of alcoholvermoeden",
+                  "9. Noteer exacte tijd, datum en locatie ongeval",
+                  "10. Maak aantekeningen over ongevalsverloop",
+                  "11. Upload alles binnen 24 uur naar Autoschadebureau.nl",
+                  "12. Bewaar alle documenten en bonnetjes (sleepkosten, etc.)"
+                ]}
+              />
+            </div>
 
             <div className="mt-12 pt-8 border-t">
               <h3 className="text-xl font-bold mb-4">📚 Gerelateerde Artikelen</h3>
