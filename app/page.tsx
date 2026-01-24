@@ -1420,6 +1420,151 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Handige Gidsen Section - Internal Linking */}
+        <section className="py-12 bg-gray-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-10">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  Handige gidsen over autoschade verhalen
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                  Alles wat u moet weten over het claimen en verhalen van autoschade
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Guide 1 */}
+                <Link href="/blog/hoe-verhaal-ik-autoschade" className="group">
+                  <Card className="h-full hover:shadow-lg hover:border-primary transition-all">
+                    <CardHeader>
+                      <FileText className="h-8 w-8 text-primary mb-2" />
+                      <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                        Hoe verhaal ik autoschade?
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        Complete stapsgewijze uitleg voor het verhalen van uw autoschade op de tegenpartij.
+                      </p>
+                      <p className="text-sm text-primary mt-2 font-medium group-hover:underline">
+                        Lees meer →
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
+
+                {/* Guide 2 */}
+                <Link href="/blog/europees-schadeformulier-invullen" className="group">
+                  <Card className="h-full hover:shadow-lg hover:border-primary transition-all">
+                    <CardHeader>
+                      <FileText className="h-8 w-8 text-primary mb-2" />
+                      <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                        Europees Schadeformulier invullen
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        Stap voor stap uitleg met voorbeelden voor het correct invullen van het schadeformulier.
+                      </p>
+                      <p className="text-sm text-primary mt-2 font-medium group-hover:underline">
+                        Lees meer →
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
+
+                {/* Guide 3 */}
+                <Link href="/blog/wat-te-doen-na-ongeval" className="group">
+                  <Card className="h-full hover:shadow-lg hover:border-primary transition-all">
+                    <CardHeader>
+                      <FileText className="h-8 w-8 text-primary mb-2" />
+                      <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                        Wat te doen na een ongeval?
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        Directe checklist en actie-items na een auto-ongeval. Download gratis checklist.
+                      </p>
+                      <p className="text-sm text-primary mt-2 font-medium group-hover:underline">
+                        Lees meer →
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
+
+                {/* Guide 4 */}
+                <Link href="/blog/wa-verzekering-tegenpartij-claimen" className="group">
+                  <Card className="h-full hover:shadow-lg hover:border-primary transition-all">
+                    <CardHeader>
+                      <FileText className="h-8 w-8 text-primary mb-2" />
+                      <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                        WA-verzekering tegenpartij claimen
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        Hoe u schade claimt bij de WA-verzekeraar van de tegenpartij. Inclusief tips.
+                      </p>
+                      <p className="text-sm text-primary mt-2 font-medium group-hover:underline">
+                        Lees meer →
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
+
+                {/* Guide 5 */}
+                <Link href="/blog/auto-total-loss-wat-nu" className="group">
+                  <Card className="h-full hover:shadow-lg hover:border-primary transition-all">
+                    <CardHeader>
+                      <FileText className="h-8 w-8 text-primary mb-2" />
+                      <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                        Auto total loss - Wat nu?
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        Complete uitleg over total loss regelingen en dagwaarde-uitkering bij autoschade.
+                      </p>
+                      <p className="text-sm text-primary mt-2 font-medium group-hover:underline">
+                        Lees meer →
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
+
+                {/* Guide 6 */}
+                <Link href="/blog/aansprakelijkheidsbrief-schrijven" className="group">
+                  <Card className="h-full hover:shadow-lg hover:border-primary transition-all">
+                    <CardHeader>
+                      <FileText className="h-8 w-8 text-primary mb-2" />
+                      <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                        Aansprakelijkheidsbrief schrijven
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-muted-foreground">
+                        Voorbeeldbrief en template voor het sturen van een aansprakelijkheidsbrief.
+                      </p>
+                      <p className="text-sm text-primary mt-2 font-medium group-hover:underline">
+                        Lees meer →
+                      </p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </div>
+
+              <div className="text-center mt-8">
+                <Link href="/veelgestelde-vragen" className="inline-flex items-center text-primary hover:underline font-medium">
+                  Bekijk alle veelgestelde vragen
+                  <ChevronRight className="ml-1 h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Final CTA Section */}
         <section className="py-10 md:py-12 bg-gradient-to-r from-primary to-blue-700 text-white">
           <div className="container mx-auto px-6 sm:px-4 text-center">
