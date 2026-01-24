@@ -26,11 +26,11 @@ export function SiteFooter() {
     <footer className="border-t bg-gray-50">
       <div className="container mx-auto px-4 py-10 md:py-12">
         
-        {/* Main Grid - 4 columns on desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        {/* Main Grid - 4 columns on desktop with justify-between */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_auto_auto_auto] gap-8 lg:gap-16">
           
           {/* Column 1: Brand & Description */}
-          <div className="space-y-4">
+          <div className="space-y-4 lg:max-w-xs">
             <Link href="/" className="inline-block">
               <span className="text-xl font-bold text-primary hover:text-primary/80 transition-colors">
                 Autoschadebureau.nl
@@ -111,30 +111,30 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          {/* Column 4: Contact & Juridisch */}
-          <div className="space-y-6">
+          {/* Column 4: Contact & Juridisch - Right aligned */}
+          <div className="space-y-6 lg:text-right">
             {/* Contact */}
             <div className="space-y-4">
               <h3 className="font-semibold text-sm uppercase tracking-wider text-foreground">Contact</h3>
               <ul className="space-y-2.5 text-sm">
-                <li className="flex items-center gap-2.5 text-muted-foreground">
-                  <Mail className="h-4 w-4 flex-shrink-0 text-primary/70" />
+                <li className="flex items-center gap-2.5 text-muted-foreground lg:justify-end">
+                  <Mail className="h-4 w-4 flex-shrink-0 text-primary/70 lg:order-2" />
                   <a href="mailto:info@autoschadebureau.nl" className="hover:text-primary transition-colors">
                     info@autoschadebureau.nl
                   </a>
                 </li>
-                <li className="flex items-center gap-2.5 text-muted-foreground">
-                  <Phone className="h-4 w-4 flex-shrink-0 text-primary/70" />
+                <li className="flex items-center gap-2.5 text-muted-foreground lg:justify-end">
+                  <Phone className="h-4 w-4 flex-shrink-0 text-primary/70 lg:order-2" />
                   <a href="tel:0850605357" className="hover:text-primary transition-colors">
                     085 060 5357
                   </a>
                 </li>
-                <li className="flex items-start gap-2.5 text-muted-foreground">
-                  <MapPin className="h-4 w-4 flex-shrink-0 mt-0.5 text-primary/70" />
+                <li className="flex items-start gap-2.5 text-muted-foreground lg:justify-end">
+                  <MapPin className="h-4 w-4 flex-shrink-0 mt-0.5 text-primary/70 lg:order-2" />
                   <span>Einsteinlaan 28, 2289 CC Rijswijk</span>
                 </li>
-                <li className="flex items-start gap-2.5 text-muted-foreground">
-                  <Clock className="h-4 w-4 flex-shrink-0 mt-0.5 text-primary/70" />
+                <li className="flex items-start gap-2.5 text-muted-foreground lg:justify-end">
+                  <Clock className="h-4 w-4 flex-shrink-0 mt-0.5 text-primary/70 lg:order-2" />
                   <span>Ma - Za: 09:00 - 17:30</span>
                 </li>
               </ul>
