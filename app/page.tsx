@@ -695,84 +695,6 @@ export default function HomePage() {
                 </p>
               </div>
 
-              {/* Veelgestelde vragen - Uitklapbaar */}
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold text-center mb-6">Veelgestelde vragen</h3>
-                <div className="space-y-3 max-w-3xl mx-auto">
-                  {/* Vraag 1: WA-verzekering */}
-                  <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                      <span className="font-semibold text-lg pr-4">Heeft u alleen WA-verzekering?</span>
-                      <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </summary>
-                    <div className="px-5 pb-5 space-y-3">
-                      <p className="text-muted-foreground">
-                        Dan doet <strong>uw eigen verzekeraar helemaal niets</strong> voor uw schade als een ander u aanrijdt.
-                      </p>
-                      <ul className="text-sm space-y-2 text-muted-foreground">
-                        <li className="flex items-start gap-2">
-                          <span className="text-gray-400 mt-0.5">•</span>
-                          <span>U moet zelf contact opnemen met de tegenpartij-verzekeraar</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-gray-400 mt-0.5">•</span>
-                          <span>U moet zelf een aansprakelijkheidsbrief schrijven</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-gray-400 mt-0.5">•</span>
-                          <span>U moet zelf onderhandelen over de schadevergoeding</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-gray-400 mt-0.5">•</span>
-                          <span>Of u betaalt de reparatie zelf uit eigen zak</span>
-                        </li>
-                      </ul>
-                      <p className="text-sm font-semibold text-green-700 bg-green-50 border border-green-200 rounded-lg p-3">
-                        ✅ <strong>Wij regelen dit alles gratis voor u!</strong> U hoeft niets zelf te doen.
-                      </p>
-                    </div>
-                  </details>
-
-                  {/* Vraag 2: Beperkt Casco / Allrisk */}
-                  <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                    <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                      <span className="font-semibold text-lg pr-4">Heeft u beperkt casco of allrisk?</span>
-                      <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </summary>
-                    <div className="px-5 pb-5 space-y-3">
-                      <p className="text-muted-foreground">
-                        Uw verzekeraar schiet WEL voor, maar dat heeft <strong>vervelende nadelen</strong>:
-                      </p>
-                      <ul className="text-sm space-y-2 text-muted-foreground">
-                        <li className="flex items-start gap-2">
-                          <span className="text-red-500 mt-0.5">✗</span>
-                          <span><strong>Eigen risico betalen</strong> (€300-€1000+)</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-red-500 mt-0.5">✗</span>
-                          <span><strong>Premie stijgt volgend jaar</strong> (schadevrije jaren kwijt)</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-red-500 mt-0.5">✗</span>
-                          <span><strong>Lange wachttijd</strong> op terugbetaling eigen risico (maanden)</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-red-500 mt-0.5">✗</span>
-                          <span><strong>Vaak laten ze het liggen:</strong> "Verhaal het zelf maar"</span>
-                        </li>
-                      </ul>
-                      <p className="text-sm font-semibold text-green-700 bg-green-50 border border-green-200 rounded-lg p-3">
-                        ✅ <strong>Wij verhalen direct bij de tegenpartij!</strong> Geen eigen risico, geen premieverhoging.
-                      </p>
-                    </div>
-                  </details>
-                </div>
-              </div>
-
               {/* Voordelen samenvatting */}
               <Card className="border-2 border-primary bg-gradient-to-br from-primary/5 to-white">
                 <CardHeader className="text-center pb-4">
@@ -1146,6 +1068,78 @@ export default function HomePage() {
                   <p className="text-muted-foreground">
                     Ja, 100% gratis. De WA-verzekeraar van de tegenpartij betaalt ALLE kosten, inclusief onze kosten. 
                     U betaalt dus letterlijk niets – geen voorschot, geen verborgen kosten, geen percentage. Alles wordt door de tegenpartij vergoed.
+                  </p>
+                </div>
+              </details>
+
+              {/* FAQ - WA-verzekering */}
+              <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
+                  <span className="font-semibold text-lg pr-4">Heeft u alleen WA-verzekering?</span>
+                  <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-5 space-y-3">
+                  <p className="text-muted-foreground">
+                    Dan doet <strong>uw eigen verzekeraar helemaal niets</strong> voor uw schade als een ander u aanrijdt.
+                  </p>
+                  <ul className="text-sm space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <span className="text-gray-400 mt-0.5">•</span>
+                      <span>U moet zelf contact opnemen met de tegenpartij-verzekeraar</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-gray-400 mt-0.5">•</span>
+                      <span>U moet zelf een aansprakelijkheidsbrief schrijven</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-gray-400 mt-0.5">•</span>
+                      <span>U moet zelf onderhandelen over de schadevergoeding</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-gray-400 mt-0.5">•</span>
+                      <span>Of u betaalt de reparatie zelf uit eigen zak</span>
+                    </li>
+                  </ul>
+                  <p className="text-sm font-semibold text-green-700 bg-green-50 border border-green-200 rounded-lg p-3">
+                    ✅ <strong>Wij regelen dit alles gratis voor u!</strong> U hoeft niets zelf te doen.
+                  </p>
+                </div>
+              </details>
+
+              {/* FAQ - Beperkt Casco / Allrisk */}
+              <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
+                  <span className="font-semibold text-lg pr-4">Heeft u beperkt casco of allrisk?</span>
+                  <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div className="px-5 pb-5 space-y-3">
+                  <p className="text-muted-foreground">
+                    Uw verzekeraar schiet WEL voor, maar dat heeft <strong>vervelende nadelen</strong>:
+                  </p>
+                  <ul className="text-sm space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-500 mt-0.5">✗</span>
+                      <span><strong>Eigen risico betalen</strong> (€300-€1000+)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-500 mt-0.5">✗</span>
+                      <span><strong>Premie stijgt volgend jaar</strong> (schadevrije jaren kwijt)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-500 mt-0.5">✗</span>
+                      <span><strong>Lange wachttijd</strong> op terugbetaling eigen risico (maanden)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-red-500 mt-0.5">✗</span>
+                      <span><strong>Vaak laten ze het liggen:</strong> "Verhaal het zelf maar"</span>
+                    </li>
+                  </ul>
+                  <p className="text-sm font-semibold text-green-700 bg-green-50 border border-green-200 rounded-lg p-3">
+                    ✅ <strong>Wij verhalen direct bij de tegenpartij!</strong> Geen eigen risico, geen premieverhoging.
                   </p>
                 </div>
               </details>
