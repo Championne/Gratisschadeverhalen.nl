@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import { Shield, ArrowLeft, Target, Heart, Users, TrendingUp, CheckCircle, Award } from "lucide-react"
+import { Shield, ArrowLeft, Target, Heart, Users, TrendingUp, CheckCircle, Award, Car } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 

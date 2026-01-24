@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Shield, Clock, Euro, FileText, Upload, ChevronRight, Star } from "lucide-react"
+import { CheckCircle, Shield, Clock, Euro, FileText, Upload, ChevronRight, Star, Car } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Autoschade Verhalen | Gratis Voertuigschade Claimen - Zonder Eigen Risico",

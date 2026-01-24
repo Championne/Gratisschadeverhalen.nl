@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Shield, Menu, X } from "lucide-react"
+import { Car, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function SiteHeader() {
@@ -13,10 +13,13 @@ export function SiteHeader() {
       <div className="container flex h-14 items-center justify-between pl-8 pr-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <Shield className="h-7 w-7 text-primary" />
-          <div className="flex flex-col leading-tight text-left">
-            <span className="text-lg font-bold">Autoschade</span>
-            <span className="text-lg font-bold">Bureau.nl</span>
+          <Car className="h-7 w-7 text-primary" />
+          <div className="flex items-center gap-1.5">
+            <div className="flex flex-col leading-none">
+              <span className="text-lg font-bold leading-tight">Autoschade</span>
+              <span className="text-lg font-bold leading-tight">Bureau</span>
+            </div>
+            <span className="text-lg font-bold text-primary self-center">.nl</span>
           </div>
         </Link>
 
