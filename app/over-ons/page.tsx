@@ -1,5 +1,6 @@
 import { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import { Shield, ArrowLeft, Target, Heart, Users, TrendingUp, Award, Car } from "lucide-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
@@ -244,9 +245,11 @@ export default function OverOnsPage() {
                   
                   {/* Unitas Logo - Centered and Enlarged */}
                   <div className="flex flex-col items-center gap-4 mb-4">
-                    <img 
+                    <Image 
                       src="/unitas-letselschade-logo.png" 
                       alt="Unitas Letselschade" 
+                      width={128}
+                      height={128}
                       className="w-32 h-32 object-contain"
                     />
                     <p className="text-sm text-center text-muted-foreground">
