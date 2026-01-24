@@ -88,6 +88,30 @@ const faqSchema = {
         "@type": "Answer",
         "text": "Wij onderzoeken de aansprakelijkheid aan de hand van het schadeformulier, foto's, getuigenverklaringen en eventueel politierapporten. In geval van betwisting onderhandelen wij namens u met de verzekeraar."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Wat is waardevermindering en krijg ik dat vergoed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Waardevermindering is het verschil in waarde van uw auto vóór en na het ongeval, ook na reparatie. Bij nieuwere auto's (< 3 jaar) of auto's met lage km-stand kunt u dit vaak claimen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Moet ik naar een specifieke garage voor de reparatie?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nee, u bent vrij om zelf een garage te kiezen. De verzekeraar mag u niet verplichten naar een specifieke garage te gaan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kan ik ook bedrijfsvoertuig schade claimen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, ook schade aan bedrijfsvoertuigen, bestelwagens of lease-auto's kunnen wij verhalen. Bij lease-auto's stemmen wij af met de leasemaatschappij."
+      }
     }
   ]
 }
@@ -215,6 +239,50 @@ const faqs: FAQItem[] = [
     category: "Specifieke Situaties",
     question: "Kan ik een huurauto krijgen tijdens het schade verhaal?",
     answer: "Ja, u heeft recht op een vervangend vervoer als uw auto niet rijdbaar is. Wij helpen u een huurauto te regelen en verhalen deze kosten op de WA-verzekeraar van de tegenpartij.",
+  },
+  {
+    category: "Specifieke Situaties",
+    question: "Wat als ik geen Europees Schadeformulier heb?",
+    answer: "Geen probleem! Het schadeformulier is handig maar niet verplicht. U kunt uw claim ook indienen met het kenteken van de tegenpartij, foto's van de schade en een beschrijving van het ongeval. Wij zoeken de verzekeraar op via het kenteken.",
+  },
+  {
+    category: "Specifieke Situaties",
+    question: "Kan ik ook bedrijfsvoertuig schade claimen?",
+    answer: "Ja, ook schade aan bedrijfsvoertuigen, bestelwagens of lease-auto's kunnen wij verhalen. Bij lease-auto's stemmen wij af met de leasemaatschappij. BTW-plichtige bedrijven kunnen vaak ook de BTW terugkrijgen.",
+  },
+  {
+    category: "Specifieke Situaties",
+    question: "Wat als de tegenpartij in het buitenland woont?",
+    answer: "Ook bij buitenlandse tegenpartijen kunnen wij helpen. Binnen de EU gelden dezelfde regels. Wij schakelen indien nodig internationale partners in. Dit kan wel iets langer duren (8-12 weken).",
+  },
+
+  // Extra Kosten & Vergoedingen
+  {
+    category: "Kosten & Betaling",
+    question: "Wat is waardevermindering en krijg ik dat vergoed?",
+    answer: "Waardevermindering is het verschil in waarde van uw auto vóór en na het ongeval, ook na reparatie. Bij nieuwere auto's (< 3 jaar) of auto's met lage km-stand kunt u dit vaak claimen. Wij beoordelen of dit in uw geval mogelijk is.",
+  },
+  {
+    category: "Kosten & Betaling",
+    question: "Krijg ik ook reiskosten en andere bijkomende kosten vergoed?",
+    answer: "Ja! Naast de reparatiekosten kunt u ook bijkomende kosten claimen: reiskosten naar de garage, expertisekosten, stallingskosten, en zelfs gederfde inkomsten (bij beroepsgebruik). Wij nemen alle schadeposten mee in de claim.",
+  },
+  {
+    category: "Kosten & Betaling",
+    question: "Kan ik ook stilstandschade claimen?",
+    answer: "Ja, als u uw auto beroepsmatig gebruikt (taxi, koerier, vertegenwoordiger) kunt u gederfde inkomsten claimen voor de dagen dat uw auto in reparatie is. U moet dit wel kunnen onderbouwen met bijvoorbeeld omzetgegevens.",
+  },
+
+  // Proces
+  {
+    category: "Proces & Tijdlijn",
+    question: "Moet ik naar een specifieke garage voor de reparatie?",
+    answer: "Nee, u bent vrij om zelf een garage te kiezen. De verzekeraar mag u niet verplichten naar een specifieke garage te gaan. Wij raden wel aan om eerst de expertise af te wachten voordat u laat repareren.",
+  },
+  {
+    category: "Proces & Tijdlijn",
+    question: "Hoe snel moet ik de schade melden na het ongeval?",
+    answer: "Zo snel mogelijk, bij voorkeur binnen 1-2 weken. Hoewel de wettelijke verjaringstermijn 5 jaar is, wordt bewijs moeilijker naarmate de tijd verstrijkt. Foto's vervagen, getuigen vergeten details. Start daarom snel!",
   },
 ]
 
