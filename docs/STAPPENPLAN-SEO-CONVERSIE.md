@@ -81,24 +81,23 @@ verification: {
 
 ## Fase 2: Quick Wins (Deze Week)
 
-### 2.1 ⬜ WhatsApp Button toevoegen
+### 2.1 ⬜ AI Chatbot installeren (Botpress)
 **Prioriteit:** HOOG  
 **Impact:** +15-25% meer leads (NL markt)  
 **Geschatte tijd:** 45 min
 
 **Actie:**
-- [ ] WhatsApp floating button component maken
-- [ ] Tonen op mobile onderaan scherm
-- [ ] Link: `https://wa.me/31850605357?text=Ik%20wil%20mijn%20autoschade%20verhalen`
-- [ ] Tracking event toevoegen
+- [ ] Maak Botpress account aan op botpress.com
+- [ ] Configureer chatbot met website content
+- [ ] Kopieer embed code
+- [ ] Installeer widget in layout.tsx
 
 **Plaatsing:**
-- Fixed rechtsonder (mobile)
-- Naast telefoon in header (desktop)
+- Fixed rechtsonder op alle pagina's
 
 ---
 
-### 2.2 ⬜ Internal Linking Blog Posts
+### 2.2 ✅ Internal Linking Blog Posts
 **Prioriteit:** HOOG  
 **Impact:** Betere SEO juice distributie  
 **Geschatte tijd:** 1-2 uur
@@ -147,7 +146,7 @@ verification: {
 
 ---
 
-### 2.4 ⬜ Structured Data areaServed uitbreiden
+### 2.4 ✅ Structured Data areaServed uitbreiden
 **Prioriteit:** MEDIUM  
 **Impact:** Lokale SEO versterking  
 **Geschatte tijd:** 15 min
@@ -360,13 +359,13 @@ Stap 3: Verstuur
 
 | Fase | Taken | Voltooid | Status |
 |------|-------|----------|--------|
-| 1. Kritiek | 4 | 3 | 🟡 75% |
-| 2. Quick Wins | 4 | 0 | ⬜ |
+| 1. Kritiek | 4 | 4 | ✅ 100% |
+| 2. Quick Wins | 4 | 2 | 🟡 50% |
 | 3. Conversie | 4 | 0 | ⬜ |
 | 4. Content | 3 | 0 | ⬜ |
 | 5. Performance | 3 | 0 | ⬜ |
 | 6. Trust | 3 | 0 | ⬜ |
-| **TOTAAL** | **21** | **4** | **19%** |
+| **TOTAAL** | **21** | **6** | **29%** |
 
 ---
 

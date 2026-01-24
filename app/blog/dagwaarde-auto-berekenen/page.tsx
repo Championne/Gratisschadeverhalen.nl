@@ -224,6 +224,28 @@ export default function BlogPost() {
             </div>
           </section>
 
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">Gerelateerde artikelen</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              <Link href="/blog/auto-total-loss-wat-nu" className="block p-4 border rounded-lg hover:border-primary transition-colors">
+                <h4 className="font-bold mb-2">Auto total loss - wat nu?</h4>
+                <p className="text-sm text-muted-foreground">Wat te doen als uw auto total loss wordt verklaard.</p>
+              </Link>
+              <Link href="/blog/expertiserapport-controleren" className="block p-4 border rounded-lg hover:border-primary transition-colors">
+                <h4 className="font-bold mb-2">Expertiserapport controleren</h4>
+                <p className="text-sm text-muted-foreground">Waar moet u op letten bij het expertiserapport?</p>
+              </Link>
+              <Link href="/blog/schade-parkeerplaats-supermarkt" className="block p-4 border rounded-lg hover:border-primary transition-colors">
+                <h4 className="font-bold mb-2">Schade op parkeerplaats supermarkt</h4>
+                <p className="text-sm text-muted-foreground">Wat te doen bij parkeerschade?</p>
+              </Link>
+              <Link href="/blog/hoe-verhaal-ik-autoschade" className="block p-4 border rounded-lg hover:border-primary transition-colors">
+                <h4 className="font-bold mb-2">Hoe verhaal ik autoschade?</h4>
+                <p className="text-sm text-muted-foreground">Complete gids voor het schade verhalen proces.</p>
+              </Link>
+            </div>
+          </section>
+
         </div>
 
         {/* CTA */}

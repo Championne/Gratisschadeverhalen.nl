@@ -69,6 +69,46 @@ export function StructuredData() {
       },
       {
         '@type': 'City',
+        name: 'Tilburg',
+      },
+      {
+        '@type': 'City',
+        name: 'Groningen',
+      },
+      {
+        '@type': 'City',
+        name: 'Almere',
+      },
+      {
+        '@type': 'City',
+        name: 'Breda',
+      },
+      {
+        '@type': 'City',
+        name: 'Nijmegen',
+      },
+      {
+        '@type': 'City',
+        name: 'Arnhem',
+      },
+      {
+        '@type': 'City',
+        name: 'Haarlem',
+      },
+      {
+        '@type': 'City',
+        name: 'Zaanstad',
+      },
+      {
+        '@type': 'City',
+        name: 'Apeldoorn',
+      },
+      {
+        '@type': 'City',
+        name: 'Amersfoort',
+      },
+      {
+        '@type': 'City',
         name: 'Rijswijk',
       },
     ],

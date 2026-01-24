@@ -211,6 +211,28 @@ export default function BlogPost() {
             </div>
           </section>
 
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">Gerelateerde artikelen</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              <Link href="/blog/schade-openstaand-portier" className="block p-4 border rounded-lg hover:border-primary transition-colors">
+                <h4 className="font-bold mb-2">Schade door openstaand portier</h4>
+                <p className="text-sm text-muted-foreground">Wie is aansprakelijk bij portierschade?</p>
+              </Link>
+              <Link href="/blog/autoschade-door-fietser" className="block p-4 border rounded-lg hover:border-primary transition-colors">
+                <h4 className="font-bold mb-2">Autoschade door fietser</h4>
+                <p className="text-sm text-muted-foreground">Wanneer is een fietser aansprakelijk?</p>
+              </Link>
+              <Link href="/blog/dagwaarde-auto-berekenen" className="block p-4 border rounded-lg hover:border-primary transition-colors">
+                <h4 className="font-bold mb-2">Dagwaarde auto berekenen</h4>
+                <p className="text-sm text-muted-foreground">Hoe bepaalt u de waarde van uw auto?</p>
+              </Link>
+              <Link href="/blog/europees-schadeformulier-invullen" className="block p-4 border rounded-lg hover:border-primary transition-colors">
+                <h4 className="font-bold mb-2">Europees Schadeformulier invullen</h4>
+                <p className="text-sm text-muted-foreground">Stap-voor-stap uitleg voor het correct invullen.</p>
+              </Link>
+            </div>
+          </section>
+
         </div>
 
         <Card className="bg-gradient-to-r from-primary to-blue-700 text-white mt-12">

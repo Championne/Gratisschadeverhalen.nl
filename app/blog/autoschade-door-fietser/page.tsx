@@ -198,6 +198,28 @@ export default function BlogPost() {
             </p>
           </section>
 
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6">Gerelateerde artikelen</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              <Link href="/blog/schade-openstaand-portier" className="block p-4 border rounded-lg hover:border-primary transition-colors">
+                <h4 className="font-bold mb-2">Schade door openstaand portier</h4>
+                <p className="text-sm text-muted-foreground">Wie is aansprakelijk bij portierschade?</p>
+              </Link>
+              <Link href="/blog/schade-parkeerplaats-supermarkt" className="block p-4 border rounded-lg hover:border-primary transition-colors">
+                <h4 className="font-bold mb-2">Schade op parkeerplaats supermarkt</h4>
+                <p className="text-sm text-muted-foreground">Wat te doen bij parkeerschade en wie is aansprakelijk?</p>
+              </Link>
+              <Link href="/blog/wat-te-doen-na-ongeval" className="block p-4 border rounded-lg hover:border-primary transition-colors">
+                <h4 className="font-bold mb-2">Wat te doen na een ongeval?</h4>
+                <p className="text-sm text-muted-foreground">Checklist met alle stappen die u moet nemen.</p>
+              </Link>
+              <Link href="/blog/wa-verzekering-tegenpartij-claimen" className="block p-4 border rounded-lg hover:border-primary transition-colors">
+                <h4 className="font-bold mb-2">WA-verzekering tegenpartij claimen</h4>
+                <p className="text-sm text-muted-foreground">Hoe claimt u schade bij de verzekeraar van de ander?</p>
+              </Link>
+            </div>
+          </section>
+
         </div>
 
         <Card className="bg-gradient-to-r from-primary to-blue-700 text-white mt-12">
