@@ -1,9 +1,13 @@
 import { Metadata } from "next"
 import { redirect } from "next/navigation"
+import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 import { AdminClaimsTable } from "@/components/admin/claims-table"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Mail, AlertCircle } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Admin Dashboard",
@@ -67,9 +71,17 @@ export default async function AdminDashboardPage() {
   const inBehandeling = claims?.filter(c => c.status === 'in_behandeling').length || 0
   const afgerond = claims?.filter(c => c.status === 'afgerond').length || 0
 
+  // Fetch unmatched email count
+  const { count: unmatchedEmailCount } = await supabaseAdmin
+    .from('inbound_emails')
+    .select('*', { count: 'exact', head: true })
+    .is('claim_id', null)
+    .is('admin_reviewed', null)
+    .or('is_spam.is.null,is_spam.eq.false')
+
   // Debug logging
   console.log('[Admin Dashboard] Total claims fetched:', totalClaims)
-  console.log('[Admin Dashboard] First claim sample:', claims?.[0])
+  console.log('[Admin Dashboard] Unmatched emails:', unmatchedEmailCount)
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -79,6 +91,31 @@ export default async function AdminDashboardPage() {
           Beheer alle claims en bekijk statistieken
         </p>
       </div>
+
+      {/* Email Alert Banner */}
+      {(unmatchedEmailCount || 0) > 0 && (
+        <div className="mb-6 p-4 bg-orange-50 border border-orange-200 rounded-lg flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-orange-100 rounded-full">
+              <Mail className="h-5 w-5 text-orange-600" />
+            </div>
+            <div>
+              <p className="font-medium text-orange-900">
+                {unmatchedEmailCount} ongematchte email{unmatchedEmailCount === 1 ? '' : 's'}
+              </p>
+              <p className="text-sm text-orange-700">
+                Emails die niet automatisch aan een claim gekoppeld konden worden
+              </p>
+            </div>
+          </div>
+          <Link href="/dashboard/admin/emails">
+            <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-100">
+              <Mail className="h-4 w-4 mr-2" />
+              Bekijken
+            </Button>
+          </Link>
+        </div>
+      )}
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
