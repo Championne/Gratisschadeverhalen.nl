@@ -258,8 +258,8 @@ const blogPosts = [
     featured: false,
   },
   {
-    slug: "taxatierapport-beoordelen",
-    title: "Taxatierapport beoordelen: waar moet u op letten?",
+    slug: "expertiserapport-beoordelen",
+    title: "Expertiserapport beoordelen: waar moet u op letten?",
     excerpt: "Taxateur is langs geweest? Leer hoe u het rapport kritisch beoordeelt en wanneer u bezwaar moet maken tegen de schadeberekening.",
     category: "Handleiding",
     readTime: "8 min",

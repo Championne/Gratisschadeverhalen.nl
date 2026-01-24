@@ -1087,7 +1087,7 @@ export default function HomePage() {
                   </p>
                   <p className="text-sm text-muted-foreground mb-4">
                     <strong>Onze aanpak:</strong> Wij hebben direct contact gezocht met de WA-verzekeraar van de tegenpartij, 
-                    een taxatierapport aangevraagd, en aansprakelijkheid vastgesteld.
+                    een expertiserapport aangevraagd, en aansprakelijkheid vastgesteld.
                   </p>
                   <p className="text-sm font-semibold text-green-700">
                     Resultaat: Volledige vergoeding van € 2.850 binnen 5 weken. Mevrouw Dekker betaalde helemaal niets.

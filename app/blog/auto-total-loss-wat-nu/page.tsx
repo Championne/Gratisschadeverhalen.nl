@@ -361,7 +361,7 @@ export default function TotalLossAutoPage() {
               <div>
                 <h3 className="text-xl font-semibold mb-2">Verzekeraar Stelt Dagwaarde Vast</h3>
                 <p className="text-muted-foreground text-sm mb-2">
-                  Taxateur berekent dagwaarde o.b.v. marktprijzen. U ontvangt <strong>taxatierapport</strong> met:
+                  Taxateur berekent dagwaarde o.b.v. marktprijzen. U ontvangt <strong>expertiserapport</strong> met:
                 </p>
                 <ul className="text-sm space-y-1 ml-4">
                   <li>• Dagwaarde berekening</li>
@@ -377,7 +377,7 @@ export default function TotalLossAutoPage() {
               <div>
                 <h3 className="text-xl font-semibold mb-2">U Beslist: Akkoord of Bezwaar?</h3>
                 <p className="text-muted-foreground text-sm mb-2">
-                  Controleer het taxatierapport zorgvuldig:
+                  Controleer het expertiserapport zorgvuldig:
                 </p>
                 <Card className="bg-blue-50 border-blue-200">
                   <CardContent className="p-3">
@@ -439,7 +439,7 @@ export default function TotalLossAutoPage() {
                   Verzekeraars bieden vaak 10-20% te weinig aan in eerste instantie ("neem het of laat het").
                 </p>
                 <p className="text-xs text-green-700">
-                  <strong>✅ Beter:</strong> Vraag altijd taxatierapport + referenties. Vergelijk zelf op Marktplaats. 
+                  <strong>✅ Beter:</strong> Vraag altijd expertiserapport + referenties. Vergelijk zelf op Marktplaats. 
                   Onderhandel indien te laag.
                 </p>
               </CardContent>
