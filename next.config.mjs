@@ -1,21 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Bundle analyzer (run with: ANALYZE=true npm run build)
-  ...(process.env.ANALYZE === 'true' && {
-    webpack: (config, { isServer }) => {
-      if (!isServer) {
-        const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-        config.plugins.push(
-          new BundleAnalyzerPlugin({
-            analyzerMode: 'static',
-            reportFilename: './analyze/client.html',
-            openAnalyzer: false,
-          })
-        )
-      }
-      return config
-    },
-  }),
 
   // Image optimization
   images: {

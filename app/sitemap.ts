@@ -32,7 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/autoschade-verhalen-amersfoort',
   ]
 
-  // Blog posts
+  // Blog posts (alleen bestaande pagina's)
   const blogPosts = [
     '/blog/hoe-verhaal-ik-autoschade',
     '/blog/europees-schadeformulier-invullen',
@@ -47,6 +47,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/schade-openstaand-portier',
     '/blog/autoschade-door-fietser',
     '/blog/schade-parkeerplaats-supermarkt',
+    // Nieuwe artikelen januari 2026
+    '/blog/achterop-gereden-worden',
+    '/blog/eigen-risico-terugvragen',
+    '/blog/leaseauto-schade-door-ander',
+    '/blog/wat-doet-schade-expert',
+    '/blog/verzekeraar-betaalt-te-weinig',
+    '/blog/hagelschade-stormschade-auto',
+    '/blog/goede-fotos-autoschade',
   ]
 
   const staticSitemap = staticPages.map((route) => ({

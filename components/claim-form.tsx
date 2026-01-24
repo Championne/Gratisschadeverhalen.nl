@@ -13,6 +13,7 @@ import { FileUpload } from "@/components/file-upload"
 import { VoiceInput } from "@/components/voice-input"
 import { OCRUpload } from "@/components/ocr-upload"
 import { trackConversion, trackEvent } from "@/components/analytics"
+import { PhotoGuideAccordion } from "@/components/photo-guide"
 
 interface ClaimFormData {
   naam: string
@@ -524,6 +525,9 @@ export function ClaimForm() {
               <CardDescription>Upload foto&apos;s van de beschadigde auto</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
+              {/* Foto Handleiding Accordion */}
+              <PhotoGuideAccordion />
+              
               <div className="space-y-2">
                 <Label>Foto&apos;s van de Schade (optioneel)</Label>
                 <FileUpload

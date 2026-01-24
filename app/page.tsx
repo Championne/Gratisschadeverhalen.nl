@@ -6,6 +6,7 @@ import { CheckCircle, Shield, Clock, Euro, FileText, Upload, ChevronRight, Star,
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 import { HowToSchema, ReviewSchema } from "@/components/schema/howto-review-schema"
+import { PhotoGuideTeaser } from "@/components/photo-guide"
 
 export const metadata: Metadata = {
   title: "Autoschade Verhalen | Gratis Voertuigschade Claimen - Zonder Eigen Risico",
@@ -539,6 +540,9 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Foto Tips Teaser */}
+        <PhotoGuideTeaser />
 
         {/* Trust Badges Section */}
         <section className="py-10 md:py-12 bg-white border-y">

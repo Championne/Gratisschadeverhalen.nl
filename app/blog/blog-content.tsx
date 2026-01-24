@@ -375,6 +375,15 @@ const blogPosts = [
     date: "24 januari 2026",
     featured: false,
   },
+  {
+    slug: "goede-fotos-autoschade",
+    title: "Hoe Maak Je de Beste Foto's voor Je Autoschade Claim?",
+    excerpt: "Leer welke foto's je moet maken na een auto-ongeluk voor de snelste schadeafhandeling. Complete 10-stappen handleiding met praktische tips.",
+    category: "Handleiding",
+    readTime: "8 min",
+    date: "24 januari 2026",
+    featured: true,
+  },
 ]
 
 const categories = ["Alle", "Handleiding", "Praktisch", "Verzekeringen", "Juridisch", "Financieel", "Rechten"]
