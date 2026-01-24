@@ -1,17 +1,14 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import dynamic from "next/dynamic"
 import "./globals.css"
 import { Toaster } from "@/components/ui/sonner"
+import { CookieConsent } from "@/components/cookie-consent"
 import { ConditionalLayout } from "@/components/conditional-layout"
 import { StructuredData } from "@/components/structured-data"
 import { GoogleAnalytics, MicrosoftClarity } from "@/components/analytics"
-
-// Dynamic imports for non-critical components (improves initial load)
-const CookieConsent = dynamic(() => import("@/components/cookie-consent").then(mod => mod.CookieConsent), { ssr: false })
-const BotpressChat = dynamic(() => import("@/components/botpress-chat").then(mod => mod.BotpressChat), { ssr: false })
-const ExitIntentPopup = dynamic(() => import("@/components/exit-intent-popup").then(mod => mod.ExitIntentPopup), { ssr: false })
-const MobileStickyCTA = dynamic(() => import("@/components/mobile-sticky-cta").then(mod => mod.MobileStickyCTA), { ssr: false })
+import { BotpressChat } from "@/components/botpress-chat"
+import { ExitIntentPopup } from "@/components/exit-intent-popup"
+import { MobileStickyCTA } from "@/components/mobile-sticky-cta"
 
 // Font Awesome config
 import { config } from "@fortawesome/fontawesome-svg-core"
