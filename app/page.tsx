@@ -337,21 +337,6 @@ export default function HomePage() {
                   voor optimale begeleiding.
                 </p>
               </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Link href="/claim-indienen">
-                  <Button size="lg" className="text-lg px-8 py-6 h-auto">
-                    <Upload className="mr-2 h-5 w-5" />
-                    Start Uw Claim
-                  </Button>
-                </Link>
-                <Link href="/over-ons">
-                  <Button size="lg" variant="outline" className="text-lg px-8 py-6 h-auto">
-                    Meer Info
-                  </Button>
-                </Link>
-              </div>
             </div>
           </div>
         </section>
