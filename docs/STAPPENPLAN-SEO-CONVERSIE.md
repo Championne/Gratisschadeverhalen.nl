@@ -7,7 +7,7 @@
 
 ## Fase 1: Kritieke Fixes (Direct - Vandaag)
 
-### 1.1 ❌ OG-Image aanmaken
+### 1.1 ✅ OG-Image aanmaken
 **Prioriteit:** KRITIEK  
 **Impact:** Social shares werken niet zonder  
 **Geschatte tijd:** 30 min
@@ -68,7 +68,7 @@ verification: {
 
 ---
 
-### 1.4 ❌ HowTo Schema images verwijderen
+### 1.4 ✅ HowTo Schema images verwijderen
 **Prioriteit:** HOOG  
 **Impact:** Schema validatie fouten in GSC  
 **Geschatte tijd:** 5 min
@@ -366,7 +366,7 @@ Stap 3: Verstuur
 | 4. Content | 3 | 0 | ⬜ |
 | 5. Performance | 3 | 0 | ⬜ |
 | 6. Trust | 3 | 0 | ⬜ |
-| **TOTAAL** | **21** | **3** | **14%** |
+| **TOTAAL** | **21** | **4** | **19%** |
 
 ---
 
