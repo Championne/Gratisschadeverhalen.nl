@@ -149,11 +149,11 @@ export function SiteFooter() {
 
         {/* Bottom Bar */}
         <div className="mt-8 pt-6 border-t border-gray-200">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-center md:text-left">
-            <p className="text-sm text-muted-foreground w-full md:w-auto">
+          <div className="flex flex-col md:flex-row justify-start items-start md:items-center gap-4 md:gap-8 text-center md:text-left">
+            <p className="text-sm text-muted-foreground">
               &copy; {currentYear} Autoschadebureau.nl. Alle rechten voorbehouden.
             </p>
-            <p className="text-xs text-muted-foreground w-full md:w-auto">
+            <p className="text-xs text-muted-foreground">
               <span className="font-medium">Populaire zoektermen:</span> autoschade verhalen • voertuigschade verhalen • gratis autoschade verhalen • WA schade verhalen
             </p>
           </div>
