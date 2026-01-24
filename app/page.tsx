@@ -317,20 +317,6 @@ export default function HomePage() {
                   Aangereden? Wij verhalen uw voertuigschade op de tegenpartij. 
                   Wij regelen alles – van aansprakelijkheidsbrief tot uitbetaling.
                 </p>
-                <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground flex-wrap">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
-                    <span>100% Gratis</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
-                    <span>U betaalt niets</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-green-600" />
-                    <span>Gemiddeld 6 weken</span>
-                  </div>
-                </div>
               </div>
 
               {/* Grote Upload CTA Card - Hele card is klikbaar */}
