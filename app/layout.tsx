@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import Script from "next/script"
 import "./globals.css"
 import { Toaster } from "@/components/ui/sonner"
 import { CookieConsent } from "@/components/cookie-consent"
@@ -101,6 +102,16 @@ export default function RootLayout({
         </ConditionalLayout>
         <Toaster richColors position="top-center" />
         <CookieConsent />
+        
+        {/* Botpress Chatbot */}
+        <Script 
+          src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"
+          strategy="lazyOnload"
+        />
+        <Script 
+          src="https://files.bpcontent.cloud/2026/01/24/16/20260124164752-PSUJJVBF.json"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   )
