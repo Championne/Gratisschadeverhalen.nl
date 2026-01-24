@@ -66,6 +66,11 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link href="/veelgestelde-vragen" className="text-muted-foreground hover:text-primary transition-colors">
+                  Veelgestelde Vragen
+                </Link>
+              </li>
+              <li>
                 <Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">
                   Blog & Tips
                 </Link>

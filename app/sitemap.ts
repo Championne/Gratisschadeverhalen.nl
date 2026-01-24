@@ -8,6 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/diensten',
     '/claim-indienen',
+    '/veelgestelde-vragen',
+    '/blog',
     '/over-ons',
     '/contact',
     '/privacy',
@@ -17,7 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return staticPages.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: route === '' ? 'weekly' : 'monthly' as 'weekly' | 'monthly',
-    priority: route === '' ? 1.0 : route === '/claim-indienen' ? 0.9 : route === '/diensten' ? 0.8 : 0.7,
+    changeFrequency: route === '' ? 'weekly' : route === '/blog' ? 'weekly' : 'monthly' as 'weekly' | 'monthly',
+    priority: route === '' ? 1.0 
+      : route === '/claim-indienen' ? 0.9 
+      : route === '/diensten' ? 0.8 
+      : route === '/veelgestelde-vragen' ? 0.8
+      : route === '/blog' ? 0.7
+      : 0.6,
   }))
 }

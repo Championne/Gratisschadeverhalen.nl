@@ -26,6 +26,9 @@ export function SiteHeader() {
           <Link href="/claim-indienen" className="text-sm font-medium transition-colors hover:text-primary">
             Claim Indienen
           </Link>
+          <Link href="/veelgestelde-vragen" className="text-sm font-medium transition-colors hover:text-primary">
+            FAQ
+          </Link>
           <Link href="/blog" className="text-sm font-medium transition-colors hover:text-primary">
             Blog & Tips
           </Link>
