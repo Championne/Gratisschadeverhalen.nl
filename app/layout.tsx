@@ -106,12 +106,22 @@ export default function RootLayout({
         {/* Botpress Chatbot */}
         <Script 
           src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
-        <Script 
-          src="https://files.bpcontent.cloud/2026/01/24/16/20260124164752-PSUJJVBF.json"
-          strategy="lazyOnload"
-        />
+        <Script id="botpress-init" strategy="lazyOnload">
+          {`
+            (function() {
+              var checkBotpress = setInterval(function() {
+                if (window.botpress) {
+                  clearInterval(checkBotpress);
+                  window.botpress.init({
+                    configUrl: "https://files.bpcontent.cloud/2026/01/24/16/20260124164752-PSUJJVBF.json"
+                  });
+                }
+              }, 100);
+            })();
+          `}
+        </Script>
       </body>
     </html>
   )
