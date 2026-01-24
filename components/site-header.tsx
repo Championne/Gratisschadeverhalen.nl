@@ -10,7 +10,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center justify-between pl-8">
+      <div className="container flex h-14 items-center justify-between pl-8 pr-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Shield className="h-7 w-7 text-primary" />
@@ -52,7 +52,7 @@ export function SiteHeader() {
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden p-2"
+          className="md:hidden p-2 -mr-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
