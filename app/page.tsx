@@ -418,22 +418,7 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                {/* USP 2: Claim online volgen */}
-                <div className="text-center">
-                  <div className="relative mb-6">
-                    <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
-                      <div className="absolute inset-0 bg-blue-700/20 rounded-full transform rotate-45"></div>
-                      <FileText className="h-16 w-16 text-white relative z-10" strokeWidth={2.5} />
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">Uw claim online volgen</h3>
-                  <p className="text-muted-foreground">
-                    Volg de voortgang 24/7 in uw persoonlijke dashboard. 
-                    Alle documenten, berichten en updates direct inzichtelijk.
-                  </p>
-                </div>
-
-                {/* USP 3: Snelle expertise */}
+                {/* USP 2: Snelle expertise */}
                 <div className="text-center">
                   <div className="relative mb-6">
                     <div className="w-32 h-32 mx-auto bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-lg">
@@ -445,6 +430,21 @@ export default function HomePage() {
                   <p className="text-muted-foreground">
                     Professionele beoordeling binnen 24 uur. Gemiddeld binnen 
                     6 weken volledig afgehandeld door ervaren specialisten.
+                  </p>
+                </div>
+
+                {/* USP 3: Claim online volgen */}
+                <div className="text-center">
+                  <div className="relative mb-6">
+                    <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                      <div className="absolute inset-0 bg-blue-700/20 rounded-full transform rotate-45"></div>
+                      <FileText className="h-16 w-16 text-white relative z-10" strokeWidth={2.5} />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Uw claim online volgen</h3>
+                  <p className="text-muted-foreground">
+                    Volg de voortgang 24/7 in uw persoonlijke dashboard. 
+                    Alle documenten, berichten en updates direct inzichtelijk.
                   </p>
                 </div>
               </div>
