@@ -26,11 +26,11 @@ export function SiteFooter() {
     <footer className="border-t bg-gray-50">
       <div className="container mx-auto px-4 py-10 md:py-12">
         
-        {/* Main Grid - 4 columns on desktop with justify-between */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_auto_auto_auto] gap-8 lg:gap-16">
+        {/* Main Grid - 4 equal columns on desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           
           {/* Column 1: Brand & Description */}
-          <div className="space-y-4 lg:max-w-xs">
+          <div className="space-y-4">
             <Link href="/" className="inline-block">
               <span className="text-xl font-bold text-primary hover:text-primary/80 transition-colors">
                 Autoschadebureau.nl

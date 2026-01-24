@@ -158,7 +158,7 @@ verification: {
 
 ## Fase 3: Conversie Optimalisatie (Week 2)
 
-### 3.1 ⬜ Claim Form Simplificeren
+### 3.1 ⏭️ Claim Form Simplificeren (Overgeslagen)
 **Prioriteit:** HOOG  
 **Impact:** -30% form abandonment  
 **Geschatte tijd:** 3-4 uur
@@ -189,7 +189,7 @@ Stap 3: Verstuur
 
 ---
 
-### 3.2 ⬜ Social Proof Sticky Bar
+### 3.2 ⏭️ Social Proof Sticky Bar (Overgeslagen - eerder verwijderd)
 **Prioriteit:** MEDIUM  
 **Impact:** +Trust, +Conversie  
 **Geschatte tijd:** 1 uur
@@ -201,7 +201,7 @@ Stap 3: Verstuur
 
 ---
 
-### 3.3 ⬜ Exit Intent Popup
+### 3.3 ✅ Exit Intent Popup
 **Prioriteit:** MEDIUM  
 **Impact:** Rescue bouncing visitors  
 **Geschatte tijd:** 2 uur
@@ -214,7 +214,7 @@ Stap 3: Verstuur
 
 ---
 
-### 3.4 ⬜ Mobile Sticky CTA Bar
+### 3.4 ✅ Mobile Sticky CTA Bar
 **Prioriteit:** MEDIUM  
 **Impact:** Meer clicks op mobile  
 **Geschatte tijd:** 45 min
@@ -361,7 +361,7 @@ Stap 3: Verstuur
 |------|-------|----------|--------|
 | 1. Kritiek | 4 | 4 | ✅ 100% |
 | 2. Quick Wins | 4 | 4 | ✅ 100% |
-| 3. Conversie | 4 | 0 | ⬜ |
+| 3. Conversie | 4 | 2 | 🟡 50% |
 | 4. Content | 3 | 0 | ⬜ |
 | 5. Performance | 3 | 0 | ⬜ |
 | 6. Trust | 3 | 0 | ⬜ |
