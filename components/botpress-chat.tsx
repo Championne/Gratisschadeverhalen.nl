@@ -2,46 +2,26 @@
 
 import { useEffect } from "react"
 
-declare global {
-  interface Window {
-    botpress?: {
-      init: (config: { configUrl: string }) => void
-    }
-  }
-}
-
 export function BotpressChat() {
   useEffect(() => {
-    // Check if script already exists
-    if (document.getElementById("botpress-webchat-script")) {
+    // Check if scripts already exist
+    if (document.getElementById("botpress-inject-script")) {
       return
     }
 
-    // Load the Botpress script (v3.3 - latest version)
-    const script = document.createElement("script")
-    script.id = "botpress-webchat-script"
-    script.src = "https://cdn.botpress.cloud/webchat/v3.3/inject.js"
-    script.async = true
-    
-    script.onload = () => {
-      // Wait a bit for botpress to initialize
-      setTimeout(() => {
-        if (window.botpress) {
-          window.botpress.init({
-            configUrl: "https://files.bpcontent.cloud/2026/01/24/16/20260124164752-PSUJJVBF.json"
-          })
-        } else {
-          console.error("Botpress not available after script load")
-        }
-      }, 100)
-    }
+    // Load the Botpress inject script (v3.5)
+    const injectScript = document.createElement("script")
+    injectScript.id = "botpress-inject-script"
+    injectScript.src = "https://cdn.botpress.cloud/webchat/v3.5/inject.js"
+    document.body.appendChild(injectScript)
 
-    script.onerror = () => {
-      console.error("Failed to load Botpress script")
-    }
-    
-    document.body.appendChild(script)
-    
+    // Load the Botpress config script
+    const configScript = document.createElement("script")
+    configScript.id = "botpress-config-script"
+    configScript.src = "https://files.bpcontent.cloud/2026/01/24/16/20260124164751-DSHY3PJP.js"
+    configScript.defer = true
+    document.body.appendChild(configScript)
+
     return () => {
       // Don't remove on unmount to prevent re-loading issues
     }
