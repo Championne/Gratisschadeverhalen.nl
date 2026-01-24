@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Shield, Clock, Euro, FileText, Upload, ChevronRight, Star, Car } from "lucide-react"
+import { HowToSchema, ReviewSchema } from "@/components/schema/howto-review-schema"
 
 export const metadata: Metadata = {
   title: "Autoschade Verhalen | Gratis Voertuigschade Claimen - Zonder Eigen Risico",
@@ -1445,6 +1446,9 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Schema Markup for SEO */}
+        <HowToSchema />
+        <ReviewSchema />
       
     </>
   )

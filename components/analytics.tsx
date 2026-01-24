@@ -53,13 +53,87 @@ export const trackEvent = (eventName: string, eventParams?: Record<string, any>)
   if (typeof window !== 'undefined' && (window as any).gtag) {
     (window as any).gtag('event', eventName, eventParams)
   }
+  
+  // Also track in Clarity if available
+  if (typeof window !== 'undefined' && (window as any).clarity) {
+    (window as any).clarity('set', eventName, eventParams)
+  }
 }
 
-export const trackConversion = (conversionType: 'claim_submitted' | 'form_started' | 'document_uploaded') => {
+// Main Conversion Events
+export const trackConversion = (
+  conversionType: 
+    | 'claim_submitted' 
+    | 'claim_form_started' 
+    | 'document_uploaded'
+    | 'contact_form_submitted'
+    | 'phone_clicked'
+    | 'email_clicked'
+    | 'checklist_downloaded'
+    | 'blog_read_completed'
+    | 'cta_clicked'
+) => {
   trackEvent(conversionType, {
     event_category: 'conversion',
     event_label: conversionType,
+    value: 1,
+    timestamp: new Date().toISOString()
+  })
+}
+
+// User Engagement Events
+export const trackEngagement = (
+  engagementType:
+    | 'scroll_depth_50'
+    | 'scroll_depth_75'
+    | 'scroll_depth_100'
+    | 'time_on_page_30s'
+    | 'time_on_page_60s'
+    | 'time_on_page_120s'
+    | 'video_play'
+    | 'faq_opened'
+    | 'testimonial_viewed'
+) => {
+  trackEvent('engagement', {
+    event_category: 'engagement',
+    event_label: engagementType,
     value: 1
+  })
+}
+
+// Navigation Events
+export const trackNavigation = (
+  destination: string,
+  source: 'header' | 'footer' | 'cta' | 'inline_link' | 'breadcrumb'
+) => {
+  trackEvent('navigation', {
+    event_category: 'navigation',
+    destination,
+    source,
+  })
+}
+
+// Lead Quality Events
+export const trackLeadQuality = (
+  quality: 'hot' | 'warm' | 'cold',
+  reason: string
+) => {
+  trackEvent('lead_quality', {
+    event_category: 'lead_scoring',
+    quality,
+    reason
+  })
+}
+
+// Error Tracking
+export const trackError = (
+  errorType: 'form_validation' | 'api_error' | '404' | 'upload_failed',
+  errorMessage?: string
+) => {
+  trackEvent('error', {
+    event_category: 'error',
+    error_type: errorType,
+    error_message: errorMessage
   })
 }
 
