@@ -1,11 +1,9 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { headers } from "next/headers"
 import "./globals.css"
 import { Toaster } from "@/components/ui/sonner"
 import { CookieConsent } from "@/components/cookie-consent"
-import { SiteHeader } from "@/components/site-header"
-import { SiteFooter } from "@/components/site-footer"
+import { ConditionalLayout } from "@/components/conditional-layout"
 import { StructuredData } from "@/components/structured-data"
 import { GoogleAnalytics, MicrosoftClarity } from "@/components/analytics"
 
@@ -80,17 +78,11 @@ export const metadata: Metadata = {
   }
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const headersList = await headers()
-  const pathname = headersList.get("x-pathname") || ""
-  
-  // Don't show SiteHeader/Footer on dashboard pages (they have their own DashboardHeader)
-  const isDashboard = pathname.startsWith("/dashboard")
-
   return (
     <html lang="nl" suppressHydrationWarning>
       <head>
@@ -99,11 +91,9 @@ export default async function RootLayout({
         <MicrosoftClarity />
       </head>
       <body className={inter.className}>
-        {!isDashboard && <SiteHeader />}
-        <main className={isDashboard ? "" : "min-h-screen"}>
+        <ConditionalLayout>
           {children}
-        </main>
-        {!isDashboard && <SiteFooter />}
+        </ConditionalLayout>
         <Toaster richColors position="top-center" />
         <CookieConsent />
       </body>
