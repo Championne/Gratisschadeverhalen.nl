@@ -12,13 +12,13 @@ export function SiteFooter() {
           {/* Logo & Description */}
           <div className="space-y-3 lg:col-span-1 xl:col-span-1">
             <Link href="/" className="flex items-center gap-2">
-              <Car className="h-6 w-6 text-primary" />
-              <div className="flex items-center gap-1.5">
+              <Car className="h-8 w-8 text-primary" />
+              <div className="flex items-center gap-2">
                 <div className="flex flex-col leading-none">
                   <span className="text-base font-bold leading-tight">Autoschade</span>
                   <span className="text-base font-bold leading-tight">Bureau</span>
                 </div>
-                <span className="text-base font-bold text-primary self-center">.nl</span>
+                <span className="text-xl font-bold text-primary self-center">.nl</span>
               </div>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">

@@ -13,14 +13,14 @@ export default function LoginPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2 mb-6">
-            <Car className="h-10 w-10 text-primary" />
-            <div className="flex items-center gap-1.5">
+          <Link href="/" className="inline-flex items-center gap-3 mb-6">
+            <Car className="h-12 w-12 text-primary" />
+            <div className="flex items-center gap-2">
               <div className="flex flex-col leading-none">
                 <span className="text-xl font-bold leading-tight">Autoschade</span>
                 <span className="text-xl font-bold leading-tight">Bureau</span>
               </div>
-              <span className="text-xl font-bold text-primary self-center">.nl</span>
+              <span className="text-2xl font-bold text-primary self-center">.nl</span>
             </div>
           </Link>
           <h1 className="text-3xl font-bold mb-2">Welkom terug</h1>

@@ -12,14 +12,14 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center justify-between pl-8 pr-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <Car className="h-7 w-7 text-primary" />
-          <div className="flex items-center gap-1.5">
+        <Link href="/" className="flex items-center gap-3">
+          <Car className="h-10 w-10 text-primary" />
+          <div className="flex items-center gap-2">
             <div className="flex flex-col leading-none">
               <span className="text-lg font-bold leading-tight">Autoschade</span>
               <span className="text-lg font-bold leading-tight">Bureau</span>
             </div>
-            <span className="text-lg font-bold text-primary self-center">.nl</span>
+            <span className="text-2xl font-bold text-primary self-center">.nl</span>
           </div>
         </Link>
 
