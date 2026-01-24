@@ -819,3 +819,280 @@ export function adminEmailReviewNeeded(data: {
     `,
   }
 }
+
+/**
+ * Email naar claimer: Heranalyse voltooid (nieuwe documenten verwerkt)
+ */
+export function claimReanalyzedEmail(data: {
+  naam: string
+  claimId: string
+  reason: string
+  newStatus: string
+  damageEstimate?: string
+  expertNeeded: boolean
+}) {
+  const statusLabels: Record<string, string> = {
+    nieuw: 'Nieuw',
+    in_behandeling: 'In Behandeling',
+    letselschade_gedetecteerd: 'Letselschade Gedetecteerd',
+    escalated: 'Wordt Bekeken',
+    aansprakelijkheidsbrief_verzonden: 'Brief Verzonden',
+    in_onderhandeling: 'In Onderhandeling',
+    afgerond: 'Afgerond',
+  }
+
+  return {
+    subject: `🔄 Uw documenten zijn verwerkt - ${statusLabels[data.newStatus] || data.newStatus}`,
+    html: `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documenten Verwerkt</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 30px; text-align: center; border-radius: 10px; }
+    .content { background: #f9f9f9; padding: 30px; margin-top: 20px; border-radius: 10px; }
+    .highlight { background: #e0f2fe; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #0ea5e9; }
+    .estimate-box { background: #fef3c7; padding: 20px; border-radius: 8px; margin: 20px 0; border: 2px solid #f59e0b; text-align: center; }
+    .button { display: inline-block; background: #10b981; color: white !important; padding: 12px 30px; text-decoration: none; border-radius: 5px; margin: 20px 0; }
+    .footer { text-align: center; color: #666; font-size: 12px; margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; }
+    .status-badge { display: inline-block; background: #10b981; color: white; padding: 5px 15px; border-radius: 15px; font-size: 14px; }
+    .info-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e5e7eb; }
+    .info-label { color: #6b7280; }
+    .info-value { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🔄 Documenten Verwerkt!</h1>
+    <p style="margin: 10px 0 0 0; opacity: 0.9;">Uw nieuwe documenten zijn geanalyseerd</p>
+  </div>
+  
+  <div class="content">
+    <p>Beste ${data.naam},</p>
+    
+    <p>
+      Goed nieuws! De documenten die u heeft toegevoegd zijn door ons AI-systeem verwerkt en 
+      uw dossier is bijgewerkt.
+    </p>
+
+    <div class="highlight">
+      <strong>📋 Update Details:</strong><br>
+      • Reden: ${data.reason}<br>
+      • Nieuwe status: <span class="status-badge">${statusLabels[data.newStatus] || data.newStatus}</span>
+    </div>
+
+    ${data.damageEstimate ? `
+    <div class="estimate-box">
+      <strong style="font-size: 16px;">💰 Geschatte Schade</strong>
+      <p style="font-size: 24px; font-weight: bold; color: #d97706; margin: 10px 0;">
+        ${data.damageEstimate}
+      </p>
+      <p style="font-size: 12px; color: #92400e; margin: 0;">
+        Dit is een indicatieve schatting op basis van de aangeleverde foto's
+      </p>
+    </div>
+    ` : ''}
+
+    ${data.expertNeeded ? `
+    <div class="highlight" style="background: #fef3c7; border-color: #f59e0b;">
+      <strong>🔍 Expert Taxatie Vereist</strong>
+      <p style="margin: 5px 0 0 0;">
+        Op basis van onze analyse is een fysieke inspectie door een schade-expert nodig 
+        voor een definitieve schadebepaling. Wij regelen dit voor u.
+      </p>
+    </div>
+    ` : ''}
+
+    <h3>⏭️ Volgende Stappen</h3>
+    <p>
+      Wij gaan nu door met de behandeling van uw claim. U ontvangt automatisch updates 
+      zodra er nieuwe ontwikkelingen zijn.
+    </p>
+
+    <div style="text-align: center;">
+      <a href="${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.autoschadebureau.nl'}/dashboard" class="button">
+        Bekijk Uw Dossier
+      </a>
+    </div>
+
+    <p>
+      Vragen? Neem contact op via info@autoschadebureau.nl of bel 085 060 5357.
+    </p>
+
+    <p>
+      Met vriendelijke groet,<br>
+      <strong>Team Autoschadebureau.nl</strong>
+    </p>
+  </div>
+  
+  <div class="footer">
+    <p>Autoschadebureau.nl | 100% Gratis | Tegenpartij Betaalt</p>
+    <p>Referentie: ${data.claimId.substring(0, 8).toUpperCase()}</p>
+  </div>
+</body>
+</html>
+    `,
+  }
+}
+
+/**
+ * Email naar claimer: Auto-reply verzonden naar verzekeraar
+ */
+export function autoReplySentNotification(data: {
+  naam: string
+  claimId: string
+  verzekeraarName: string
+  replyType: string
+  replySummary: string
+}) {
+  const replyTypeLabels: Record<string, string> = {
+    acknowledgment: 'Ontvangstbevestiging',
+    information_request: 'Reactie op Informatieverzoek',
+    settlement_offer: 'Reactie op Schikkingsvoorstel',
+  }
+
+  return {
+    subject: `📧 Automatische reactie verzonden naar ${data.verzekeraarName}`,
+    html: `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto-Reply Verzonden</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; padding: 30px; text-align: center; border-radius: 10px; }
+    .content { background: #f9f9f9; padding: 30px; margin-top: 20px; border-radius: 10px; }
+    .reply-box { background: white; padding: 20px; border-radius: 8px; margin: 20px 0; border: 1px solid #e5e7eb; }
+    .footer { text-align: center; color: #666; font-size: 12px; margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>📧 Reactie Verzonden</h1>
+    <p style="margin: 10px 0 0 0; opacity: 0.9;">Wij hebben automatisch gereageerd namens u</p>
+  </div>
+  
+  <div class="content">
+    <p>Beste ${data.naam},</p>
+    
+    <p>
+      Wij hebben zojuist automatisch gereageerd op een bericht van <strong>${data.verzekeraarName}</strong> 
+      namens u.
+    </p>
+
+    <div class="reply-box">
+      <strong>📋 Type reactie:</strong> ${replyTypeLabels[data.replyType] || data.replyType}
+      <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 15px 0;">
+      <strong>Samenvatting:</strong>
+      <p style="color: #4b5563; margin: 10px 0 0 0;">${data.replySummary}</p>
+    </div>
+
+    <p>
+      U hoeft niets te doen - wij handelen dit automatisch voor u af. Mocht er een reactie 
+      komen die uw aandacht vereist, dan informeren wij u direct.
+    </p>
+
+    <p>
+      Met vriendelijke groet,<br>
+      <strong>Team Autoschadebureau.nl</strong>
+    </p>
+  </div>
+  
+  <div class="footer">
+    <p>Autoschadebureau.nl | 100% Gratis | Tegenpartij Betaalt</p>
+    <p>Referentie: ${data.claimId.substring(0, 8).toUpperCase()}</p>
+  </div>
+</body>
+</html>
+    `,
+  }
+}
+
+/**
+ * Email naar admin: Escalatie door complexe betwisting
+ */
+export function adminComplexDisputeEmail(data: {
+  claimId: string
+  claimerName: string
+  claimerEmail: string
+  verzekeraarName: string
+  emailType: string
+  reason: string
+  summary: string
+  suggestedActions: string[]
+  dashboardUrl: string
+}) {
+  return {
+    subject: `🚨 ESCALATIE: Complexe betwisting - ${data.verzekeraarName}`,
+    html: `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: #dc2626; color: white; padding: 20px; border-radius: 10px; }
+    .content { background: #f9f9f9; padding: 20px; margin-top: 20px; border-radius: 10px; }
+    .alert-box { background: #fef2f2; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #dc2626; }
+    .action-list { background: white; padding: 15px; border-radius: 8px; margin: 15px 0; }
+    .button { display: inline-block; background: #dc2626; color: white !important; padding: 12px 30px; text-decoration: none; border-radius: 5px; margin: 20px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+    th { text-align: left; padding: 8px; background: #f4f4f4; }
+    td { padding: 8px; border-bottom: 1px solid #ddd; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🚨 ESCALATIE VEREIST</h1>
+    <p style="margin: 10px 0 0 0;">Complexe betwisting - Automatische verwerking niet mogelijk</p>
+  </div>
+  
+  <div class="content">
+    <div class="alert-box">
+      <strong>⚠️ Reden escalatie:</strong>
+      <p style="margin: 5px 0 0 0;">${data.reason}</p>
+    </div>
+
+    <table>
+      <tr>
+        <th>Claim ID</th>
+        <td>${data.claimId}</td>
+      </tr>
+      <tr>
+        <th>Klant</th>
+        <td>${data.claimerName} (${data.claimerEmail})</td>
+      </tr>
+      <tr>
+        <th>Verzekeraar</th>
+        <td>${data.verzekeraarName}</td>
+      </tr>
+      <tr>
+        <th>Email Type</th>
+        <td><strong style="color: #dc2626;">${data.emailType}</strong></td>
+      </tr>
+    </table>
+
+    <h3>📝 AI Samenvatting</h3>
+    <p style="background: white; padding: 15px; border-radius: 8px;">${data.summary}</p>
+
+    <div class="action-list">
+      <strong>📋 Aanbevolen Acties:</strong>
+      <ul style="margin: 10px 0 0 0; padding-left: 20px;">
+        ${data.suggestedActions.map(a => `<li>${a}</li>`).join('')}
+      </ul>
+    </div>
+
+    <div style="text-align: center;">
+      <a href="${data.dashboardUrl}" class="button">Bekijk in Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>
+    `,
+  }
+}
