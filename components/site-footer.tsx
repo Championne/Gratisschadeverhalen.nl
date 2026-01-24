@@ -120,23 +120,18 @@ export function SiteFooter() {
                 rel="noopener noreferrer"
                 className="block group"
               >
-                <div className="bg-white border-2 border-purple-100 rounded-lg p-3 hover:border-purple-300 transition-all hover:shadow-md">
-                  {/* Unitas Letselschade Logo */}
-                  <div className="flex items-center gap-3 mb-2">
+                <div className="bg-white border-2 border-purple-100 rounded-lg p-4 hover:border-purple-300 transition-all hover:shadow-md">
+                  {/* Unitas Letselschade Logo - Centered */}
+                  <div className="flex flex-col items-center gap-3">
                     <img 
                       src="/unitas-letselschade-logo.png" 
                       alt="Unitas Letselschade" 
-                      className="w-10 h-10 object-contain flex-shrink-0"
+                      className="w-24 h-24 object-contain"
                     />
-                    <div>
-                      <p className="font-bold text-sm text-purple-900 group-hover:text-purple-700 transition-colors">
-                        Unitas Letselschade
-                      </p>
-                    </div>
+                    <p className="text-xs text-center text-muted-foreground leading-relaxed">
+                      Gespecialiseerd in letselschade claims met jarenlange ervaring
+                    </p>
                   </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    Gespecialiseerd in letselschade claims met jarenlange ervaring
-                  </p>
                 </div>
               </a>
             </div>
