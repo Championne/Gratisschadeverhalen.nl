@@ -81,7 +81,7 @@ verification: {
 
 ## Fase 2: Quick Wins (Deze Week)
 
-### 2.1 ⬜ AI Chatbot installeren (Botpress)
+### 2.1 ✅ AI Chatbot installeren (Botpress)
 **Prioriteit:** HOOG  
 **Impact:** +15-25% meer leads (NL markt)  
 **Geschatte tijd:** 45 min
@@ -365,7 +365,7 @@ Stap 3: Verstuur
 | 4. Content | 3 | 0 | ⬜ |
 | 5. Performance | 3 | 0 | ⬜ |
 | 6. Trust | 3 | 0 | ⬜ |
-| **TOTAAL** | **21** | **6** | **29%** |
+| **TOTAAL** | **21** | **7** | **33%** |
 
 ---
 
