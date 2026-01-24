@@ -14,7 +14,7 @@ export function SiteHeader() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Shield className="h-7 w-7 text-primary" />
-          <div className="flex flex-col leading-tight text-center">
+          <div className="flex flex-col leading-tight text-left">
             <span className="text-lg font-bold">Autoschade</span>
             <span className="text-lg font-bold">Bureau.nl</span>
           </div>
