@@ -33,7 +33,7 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
   return (
     <header className="border-b bg-white sticky top-0 z-40">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/dashboard" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <Car className="h-10 w-10 text-primary" />
           <div className="flex items-center gap-2">
             <div className="flex flex-col leading-none">
