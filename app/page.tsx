@@ -1520,12 +1520,6 @@ export default function HomePage() {
                 </Link>
               </div>
 
-              <div className="text-center mt-8">
-                <Link href="/veelgestelde-vragen" className="inline-flex items-center text-primary hover:underline font-medium">
-                  Bekijk alle veelgestelde vragen
-                  <ChevronRight className="ml-1 h-4 w-4" />
-                </Link>
-              </div>
             </div>
           </div>
         </section>
