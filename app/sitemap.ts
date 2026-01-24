@@ -44,6 +44,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/schade-verhalen-zonder-formulier',
     '/blog/dagwaarde-auto-berekenen',
     '/blog/vervangend-vervoer-autoschade',
+    '/blog/schade-openstaand-portier',
+    '/blog/autoschade-door-fietser',
+    '/blog/schade-parkeerplaats-supermarkt',
   ]
 
   const staticSitemap = staticPages.map((route) => ({

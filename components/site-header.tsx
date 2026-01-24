@@ -7,9 +7,18 @@ import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { trackConversion } from "@/components/analytics"
 
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const handlePhoneClick = () => {
+    trackConversion('phone_clicked')
+  }
+
+  const handleEmailClick = () => {
+    trackConversion('email_clicked')
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background">
@@ -19,6 +28,7 @@ export function SiteHeader() {
           <a 
             href="tel:0850605357" 
             className="flex items-center gap-2 hover:text-white/80 transition-colors font-medium"
+            onClick={handlePhoneClick}
           >
             <FontAwesomeIcon icon={faPhone} className="h-4 w-4" />
             085 060 5357
@@ -26,6 +36,7 @@ export function SiteHeader() {
           <a 
             href="mailto:info@autoschadebureau.nl" 
             className="flex items-center gap-2 hover:text-white/80 transition-colors"
+            onClick={handleEmailClick}
           >
             <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4" />
             info@autoschadebureau.nl

@@ -293,6 +293,33 @@ const blogPosts = [
     date: "24 januari 2026",
     featured: false,
   },
+  {
+    slug: "schade-openstaand-portier",
+    title: "Schade Door Openstaand Autoportier: Wie Betaalt?",
+    excerpt: "Iemand opent zijn portier net op het moment dat u langsrijdt. Of uw portier wordt geraakt. Wie is aansprakelijk?",
+    category: "Praktisch",
+    readTime: "5 min",
+    date: "24 januari 2026",
+    featured: false,
+  },
+  {
+    slug: "autoschade-door-fietser",
+    title: "Autoschade Door Fietser: Kunt U Dit Verhalen?",
+    excerpt: "Schade aan uw auto veroorzaakt door een fietser? Ontdek wanneer u de schade kunt verhalen en hoe dit werkt.",
+    category: "Praktisch",
+    readTime: "6 min",
+    date: "24 januari 2026",
+    featured: false,
+  },
+  {
+    slug: "schade-parkeerplaats-supermarkt",
+    title: "Schade op de Parkeerplaats van de Supermarkt",
+    excerpt: "U komt terug van boodschappen en ontdekt een deuk. Wie is aansprakelijk en wat kunt u doen?",
+    category: "Praktisch",
+    readTime: "5 min",
+    date: "24 januari 2026",
+    featured: false,
+  },
 ]
 
 const categories = ["Alle", "Handleiding", "Praktisch", "Verzekeringen", "Juridisch", "Financieel", "Rechten"]

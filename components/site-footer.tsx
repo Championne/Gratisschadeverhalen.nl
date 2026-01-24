@@ -108,6 +108,28 @@ export function SiteFooter() {
             </ul>
           </div>
 
+          {/* Regio's */}
+          <div className="space-y-3 md:col-span-2 lg:col-span-4 xl:col-span-5">
+            <h3 className="font-semibold text-sm uppercase tracking-wider">Autoschade verhalen in uw regio</h3>
+            <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+              <Link href="/autoschade-verhalen-amsterdam" className="text-muted-foreground hover:text-primary transition-colors">Amsterdam</Link>
+              <Link href="/autoschade-verhalen-rotterdam" className="text-muted-foreground hover:text-primary transition-colors">Rotterdam</Link>
+              <Link href="/autoschade-verhalen-den-haag" className="text-muted-foreground hover:text-primary transition-colors">Den Haag</Link>
+              <Link href="/autoschade-verhalen-utrecht" className="text-muted-foreground hover:text-primary transition-colors">Utrecht</Link>
+              <Link href="/autoschade-verhalen-eindhoven" className="text-muted-foreground hover:text-primary transition-colors">Eindhoven</Link>
+              <Link href="/autoschade-verhalen-tilburg" className="text-muted-foreground hover:text-primary transition-colors">Tilburg</Link>
+              <Link href="/autoschade-verhalen-groningen" className="text-muted-foreground hover:text-primary transition-colors">Groningen</Link>
+              <Link href="/autoschade-verhalen-almere" className="text-muted-foreground hover:text-primary transition-colors">Almere</Link>
+              <Link href="/autoschade-verhalen-breda" className="text-muted-foreground hover:text-primary transition-colors">Breda</Link>
+              <Link href="/autoschade-verhalen-nijmegen" className="text-muted-foreground hover:text-primary transition-colors">Nijmegen</Link>
+              <Link href="/autoschade-verhalen-arnhem" className="text-muted-foreground hover:text-primary transition-colors">Arnhem</Link>
+              <Link href="/autoschade-verhalen-haarlem" className="text-muted-foreground hover:text-primary transition-colors">Haarlem</Link>
+              <Link href="/autoschade-verhalen-zaanstad" className="text-muted-foreground hover:text-primary transition-colors">Zaanstad</Link>
+              <Link href="/autoschade-verhalen-apeldoorn" className="text-muted-foreground hover:text-primary transition-colors">Apeldoorn</Link>
+              <Link href="/autoschade-verhalen-amersfoort" className="text-muted-foreground hover:text-primary transition-colors">Amersfoort</Link>
+            </div>
+          </div>
+
           {/* Contact */}
           <div className="space-y-3">
             <h3 className="font-semibold text-sm uppercase tracking-wider">Contact</h3>
