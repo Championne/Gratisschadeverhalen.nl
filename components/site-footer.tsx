@@ -159,12 +159,12 @@ export function SiteFooter() {
           </div>
         </div>
 
-        {/* Regio's Section - Full width */}
+        {/* Regio's Section - Full width with justified spacing */}
         <div className="mt-10 pt-8 border-t border-gray-200">
           <h3 className="font-semibold text-sm uppercase tracking-wider text-foreground mb-4">
             Autoschade verhalen in uw regio
           </h3>
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 text-sm">
+          <div className="flex flex-wrap justify-between gap-y-2 text-sm">
             {regions.map((region, index) => (
               <span key={region.href} className="inline-flex items-center">
                 <Link 
@@ -174,7 +174,7 @@ export function SiteFooter() {
                   {region.name}
                 </Link>
                 {index < regions.length - 1 && (
-                  <span className="ml-2 text-gray-300">•</span>
+                  <span className="ml-3 text-gray-300">•</span>
                 )}
               </span>
             ))}
