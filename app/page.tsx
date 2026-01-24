@@ -1543,16 +1543,11 @@ export default function HomePage() {
               Snelle expertise • Geen risico
             </p>
             <Link href="/claim-indienen" className="inline-block w-full sm:w-auto px-4 sm:px-0">
-              <Button size="lg" variant="secondary" className="text-base sm:text-lg px-4 sm:px-10 h-14 shadow-xl hover:shadow-2xl transition-all w-full sm:w-auto">
-                <Upload className="mr-2 h-5 w-5 flex-shrink-0" />
-                <span className="hidden sm:inline">Start Nu – Upload Schadeformulier</span>
-                <span className="sm:hidden">Start Nu</span>
+              <Button size="lg" variant="secondary" className="text-base sm:text-lg px-6 sm:px-10 h-14 shadow-xl hover:shadow-2xl transition-all w-full sm:w-auto">
+                Schade melden
                 <ChevronRight className="ml-2 h-5 w-5 flex-shrink-0" />
               </Button>
             </Link>
-            <p className="mt-6 text-sm opacity-80">
-              Geen Europees Schadeformulier? Ook dan kunt u uw autoschade claimen – vul gewoon handmatig in
-            </p>
           </div>
         </section>
 
