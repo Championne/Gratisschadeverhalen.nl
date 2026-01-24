@@ -1,5 +1,4 @@
 import Link from "next/link"
-import Image from "next/image"
 import { Mail, Phone, MapPin, Clock } from "lucide-react"
 
 export function SiteFooter() {
@@ -10,16 +9,12 @@ export function SiteFooter() {
       <div className="container mx-auto px-4 py-8 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-8 lg:gap-10">
           
-          {/* Logo & Description */}
+          {/* Title & Description */}
           <div className="space-y-3 lg:col-span-1 xl:col-span-1">
             <Link href="/" className="inline-block">
-              <Image 
-                src="/logo.png" 
-                alt="Autoschadebureau.nl Logo" 
-                width={160}
-                height={45}
-                className="h-10 w-auto"
-              />
+              <span className="text-xl font-bold text-primary hover:text-primary/80 transition-colors">
+                Autoschadebureau.nl
+              </span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Gratis autoschade verhalen tegenpartij. 
