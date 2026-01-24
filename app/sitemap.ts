@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/auto-total-loss-wat-nu',
     '/blog/aansprakelijkheidsbrief-schrijven',
     '/blog/wa-verzekering-tegenpartij-claimen',
+    '/blog/expertiserapport-controleren',
   ]
 
   const staticSitemap = staticPages.map((route) => ({
