@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, CheckCircle, AlertTriangle, Upload, Phone, Camera } from "lucide-react"
+import { ArrowLeft, CheckCircle, AlertTriangle, Upload, Phone, Camera, FileText } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Wat Te Doen Na Een Auto-Ongeval? Complete Checklist 2025",
