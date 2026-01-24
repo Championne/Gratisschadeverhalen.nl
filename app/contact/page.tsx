@@ -96,10 +96,10 @@ export default function ContactPage() {
                   <div>
                     <p className="font-semibold">Telefoon</p>
                     <a 
-                      href="tel:0850607905" 
+                      href="tel:0850605357" 
                       className="text-primary hover:underline"
                     >
-                      085 060 7905
+                      085 060 5357
                     </a>
                   </div>
                 </div>

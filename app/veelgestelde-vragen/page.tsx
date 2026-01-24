@@ -358,10 +358,10 @@ export default function VeelgesteldeVragenPage() {
                     Stel uw vraag
                   </Button>
                 </Link>
-                <a href="tel:0850607905">
+                <a href="tel:0850605357">
                   <Button size="lg" variant="outline" className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/20">
                     <Phone className="mr-2 h-5 w-5" />
-                    085 060 7905
+                    085 060 5357
                   </Button>
                 </a>
               </div>

@@ -415,7 +415,7 @@ export function AuditLogViewer({ claimId }: AuditLogViewerProps) {
                                   <ul className="text-sm text-muted-foreground space-y-1 pl-4">
                                     <li className="list-disc">Een medewerker bekijkt jouw claim persoonlijk</li>
                                     <li className="list-disc">We nemen binnen <strong>2 werkdagen</strong> contact met je op</li>
-                                    <li className="list-disc">Je kunt ons altijd bellen op <strong className="text-primary">085 060 7905</strong></li>
+                                    <li className="list-disc">Je kunt ons altijd bellen op <strong className="text-primary">085 060 5357</strong></li>
                                   </ul>
                                 </div>
                               </div>

@@ -544,7 +544,7 @@ export default function WatTeDoennaNaOngevalblogPost() {
               <Card className="bg-blue-50">
                 <CardContent className="p-4">
                   <p className="font-bold text-lg mb-1">📞 Autoschadebureau.nl</p>
-                  <p className="text-sm text-muted-foreground">085 060 7905 (Gratis schade verhalen)</p>
+                  <p className="text-sm text-muted-foreground">085 060 5357 (Gratis schade verhalen)</p>
                 </CardContent>
               </Card>
 

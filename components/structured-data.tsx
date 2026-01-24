@@ -10,7 +10,7 @@ export function StructuredData() {
     image: 'https://www.autoschadebureau.nl/og-image.jpg',
     logo: 'https://www.autoschadebureau.nl/logo.png',
     url: 'https://www.autoschadebureau.nl',
-    telephone: '+31850607905',
+    telephone: '+31850605357',
     email: 'info@autoschadebureau.nl',
     priceRange: 'Gratis',
     paymentAccepted: 'No Cure No Pay',
@@ -177,7 +177,7 @@ export function StructuredData() {
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+31850607905',
+      telephone: '+31850605357',
       contactType: 'customer service',
       areaServed: 'NL',
       availableLanguage: ['Dutch'],
@@ -192,7 +192,7 @@ export function StructuredData() {
     image: 'https://www.autoschadebureau.nl/og-image.jpg',
     '@id': 'https://www.autoschadebureau.nl/#service',
     url: 'https://www.autoschadebureau.nl',
-    telephone: '+31850607905',
+    telephone: '+31850605357',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Einsteinlaan 28',

@@ -165,10 +165,10 @@ export default function EindhovenPage() {
                     Schade Melden
                   </Button>
                 </Link>
-                <Link href="tel:0850607905">
+                <Link href="tel:0850605357">
                   <Button size="lg" variant="outline" className="text-lg px-8 border-white text-white hover:bg-white/10">
                     <Phone className="mr-2 h-5 w-5" />
-                    085 060 7905
+                    085 060 5357
                   </Button>
                 </Link>
               </div>
