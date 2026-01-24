@@ -12,6 +12,7 @@ import { submitClaim } from "@/app/actions/submit-claim"
 import { FileUpload } from "@/components/file-upload"
 import { VoiceInput } from "@/components/voice-input"
 import { OCRUpload } from "@/components/ocr-upload"
+import { trackConversion, trackEvent } from "@/components/analytics"
 
 interface ClaimFormData {
   naam: string
@@ -56,6 +57,13 @@ export function ClaimForm() {
     console.log('OCR Data ontvangen:', data)
     setOcrData(data)
     setOcrCompleted(true)
+    
+    // Track OCR upload success
+    trackEvent('ocr_upload_success', {
+      has_date: !!data.datum,
+      has_kenteken: !!data.kenteken_tegenpartij,
+      has_verzekeraar: !!data.verzekeraar
+    })
     
     // Apply OCR data to form (overschrijft alles)
     const updates: Partial<ClaimFormData> = {}
@@ -180,6 +188,12 @@ export function ClaimForm() {
     
     if (!validateForm()) return
 
+    // Track form submission start
+    trackEvent('claim_form_start', {
+      used_ocr: ocrCompleted,
+      has_photos: fotos.length > 0
+    })
+
     setIsSubmitting(true)
 
     try {
@@ -211,6 +225,14 @@ export function ClaimForm() {
         throw new Error(result.error || 'Submission failed')
       }
 
+      // Track successful conversion!
+      trackConversion('claim_submitted')
+      trackEvent('claim_submitted', {
+        claim_id: result.claimId,
+        used_ocr: ocrCompleted,
+        has_photos: fotos.length > 0
+      })
+
       // Success! (lazy load confetti)
       import('canvas-confetti').then((module) => {
         const confetti = module.default
@@ -233,6 +255,12 @@ export function ClaimForm() {
     } catch (error: any) {
       console.error("Error submitting claim:", error)
       toast.dismiss("ai-processing")
+      
+      // Track failed submission
+      trackEvent('claim_submission_failed', {
+        error: error.message
+      })
+      
       toast.error("❌ Er ging iets mis", {
         description: error.message || "Probeer het later opnieuw of neem contact met ons op."
       })

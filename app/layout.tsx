@@ -7,6 +7,7 @@ import { CookieConsent } from "@/components/cookie-consent"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { StructuredData } from "@/components/structured-data"
+import { GoogleAnalytics, MicrosoftClarity } from "@/components/analytics"
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -94,6 +95,8 @@ export default async function RootLayout({
     <html lang="nl" suppressHydrationWarning>
       <head>
         <StructuredData />
+        <GoogleAnalytics />
+        <MicrosoftClarity />
       </head>
       <body className={inter.className}>
         {!isDashboard && <SiteHeader />}
