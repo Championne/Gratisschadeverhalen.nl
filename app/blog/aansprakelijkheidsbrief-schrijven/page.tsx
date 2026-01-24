@@ -3,7 +3,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/breadcrumbs"
-import { ArrowLeft, CheckCircle, AlertTriangle, Upload, FileText, Download } from "lucide-react"
+import { ArrowLeft, AlertTriangle, Upload, FileText, Download } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
 export const metadata: Metadata = {
   title: "Aansprakelijkheidsbrief Schrijven: Gratis Template + Uitleg 2025",

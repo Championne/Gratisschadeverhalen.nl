@@ -2,7 +2,9 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, CheckCircle, AlertTriangle, Upload, Phone } from "lucide-react"
+import { ArrowLeft, AlertTriangle, Upload, Phone } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
 export const metadata: Metadata = {
   title: "WA Verzekering Tegenpartij Claimen: Complete Gids 2025",
@@ -187,7 +189,7 @@ export default function WAVerzekeringClaimenPage() {
                 <h3 className="text-xl font-semibold mb-2">Wacht Op Reactie Verzekeraar</h3>
                 <p className="text-muted-foreground mb-2">De WA-verzekeraar heeft <strong>4 weken</strong> de tijd om te reageren:</p>
                 <ul className="text-sm space-y-2 ml-4">
-                  <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" /><strong>Akkoord:</strong> Ze accepteren aansprakelijkheid en starten schadevergoeding</li>
+                  <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" /><strong>Akkoord:</strong> Ze accepteren aansprakelijkheid en starten schadevergoeding</li>
                   <li><AlertTriangle className="inline h-4 w-4 text-yellow-600 mr-2" /><strong>Gedeeltelijk akkoord:</strong> Bijv. 70/30 schuld verdeling</li>
                   <li><AlertTriangle className="inline h-4 w-4 text-red-600 mr-2" /><strong>Afwijzing:</strong> Ze ontkennen aansprakelijkheid (juridische stappen nodig)</li>
                 </ul>

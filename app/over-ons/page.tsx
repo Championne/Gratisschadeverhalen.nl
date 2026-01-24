@@ -1,6 +1,8 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import { Shield, ArrowLeft, Target, Heart, Users, TrendingUp, CheckCircle, Award, Car } from "lucide-react"
+import { Shield, ArrowLeft, Target, Heart, Users, TrendingUp, Award, Car } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -50,7 +52,7 @@ export default function OverOnsPage() {
             <Card>
               <CardHeader>
                 <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
-                  <CheckCircle className="h-6 w-6 text-green-600" />
+                  <FontAwesomeIcon icon={faCircleCheck} className="h-6 w-6 text-green-600" />
                 </div>
                 <CardTitle>100% Gratis</CardTitle>
               </CardHeader>
@@ -172,7 +174,7 @@ export default function OverOnsPage() {
             <Card className="border-l-4 border-l-green-500">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-green-600" />
+                  <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600" />
                   Eerlijkheid
                 </CardTitle>
               </CardHeader>

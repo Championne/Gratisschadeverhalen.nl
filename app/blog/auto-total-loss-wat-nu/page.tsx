@@ -3,7 +3,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/breadcrumbs"
-import { ArrowLeft, CheckCircle, AlertTriangle, Upload, Calculator } from "lucide-react"
+import { ArrowLeft, AlertTriangle, Upload, Calculator } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
 export const metadata: Metadata = {
   title: "Auto Total Loss Na Ongeval: Complete Gids 2025 | Wat Nu?",
@@ -122,7 +124,7 @@ export default function TotalLossAutoPage() {
               
               <div className="space-y-3 text-sm">
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-semibold">Merk, Model & Uitvoering</p>
                     <p className="text-muted-foreground text-xs">Premium merken behouden waarde beter dan budget merken</p>
@@ -130,7 +132,7 @@ export default function TotalLossAutoPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-semibold">Kilometerstand</p>
                     <p className="text-muted-foreground text-xs">Lagere km-stand = hogere waarde (gemiddeld €0,10-€0,20 per km verschil)</p>
@@ -138,7 +140,7 @@ export default function TotalLossAutoPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-semibold">Bouwjaar & Leeftijd</p>
                     <p className="text-muted-foreground text-xs">Auto's verliezen 15-20% waarde per jaar (eerste jaren sneller)</p>
@@ -146,7 +148,7 @@ export default function TotalLossAutoPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-semibold">Onderhoudsstaat</p>
                     <p className="text-muted-foreground text-xs">Recent onderhoud, nieuwe APK, onderhoudsboekje aanwezig = hogere waarde</p>
@@ -154,7 +156,7 @@ export default function TotalLossAutoPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-semibold">Opties & Accessoires</p>
                     <p className="text-muted-foreground text-xs">Leder, navigatie, trekhaak, xenon = waardeverhogend</p>
@@ -162,7 +164,7 @@ export default function TotalLossAutoPage() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-semibold">Marktprijzen</p>
                     <p className="text-muted-foreground text-xs">Vergelijkbare auto's op AutoTrack, Marktplaats, AutoScout24</p>

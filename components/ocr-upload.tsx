@@ -3,7 +3,9 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Upload, FileText, Loader2, CheckCircle, XCircle } from "lucide-react"
+import { Upload, FileText, Loader2, XCircle } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 import { toast } from "sonner"
 
 interface OCRUploadProps {
@@ -178,7 +180,7 @@ export function OCRUpload({ onOCRComplete }: OCRUploadProps) {
               {isProcessing ? (
                 <Loader2 className="h-5 w-5 text-blue-600 animate-spin" />
               ) : (
-                <CheckCircle className="h-5 w-5 text-green-600" />
+                <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600" />
               )}
             </div>
 

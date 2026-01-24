@@ -1,6 +1,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { CheckCircle, Home, FileText } from "lucide-react"
+import { Home, FileText } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
 
@@ -42,7 +44,7 @@ export default async function ClaimSuccessPage({
     <div className="container mx-auto px-4 py-16 max-w-3xl">
       <div className="text-center mb-8">
         <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
-          <CheckCircle className="h-10 w-10 text-green-600" />
+          <FontAwesomeIcon icon={faCircleCheck} className="h-10 w-10 text-green-600" />
         </div>
         <h1 className="text-4xl font-bold mb-2">Claim Succesvol Ingediend!</h1>
         <p className="text-xl text-muted-foreground">

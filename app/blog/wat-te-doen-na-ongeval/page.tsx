@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import { ChecklistDownload } from "@/components/checklist-download"
-import { ArrowLeft, CheckCircle, AlertTriangle, Upload, Phone, Camera, FileText } from "lucide-react"
+import { ArrowLeft, AlertTriangle, Upload, Phone, Camera, FileText } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
 export const metadata: Metadata = {
   title: "Wat Te Doen Na Een Auto-Ongeval? Complete Checklist 2025",
@@ -155,9 +157,9 @@ export default function WatTeDoennaNaOngevalblogPost() {
               </h3>
               <p className="text-sm mb-3">Check direct of iemand gewond is:</p>
               <ul className="text-sm space-y-2 ml-6">
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" /><strong>Uzelf:</strong> Voelt u pijn? Zelfs lichte hoofdpijn kan whiplash zijn</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" /><strong>Passagiers:</strong> Vraag actief "Voel je je goed?"</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" /><strong>Tegenpartij:</strong> Check ook of zij gewond zijn</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" /><strong>Uzelf:</strong> Voelt u pijn? Zelfs lichte hoofdpijn kan whiplash zijn</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" /><strong>Passagiers:</strong> Vraag actief "Voel je je goed?"</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" /><strong>Tegenpartij:</strong> Check ook of zij gewond zijn</li>
               </ul>
               <Card className="mt-4 bg-red-50 border-red-200">
                 <CardContent className="p-3">
@@ -175,10 +177,10 @@ export default function WatTeDoennaNaOngevalblogPost() {
               </h3>
               <p className="text-sm mb-3">Voorkom vervolgongevallen:</p>
               <ul className="text-sm space-y-2 ml-6">
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" /><strong>Alarmlichten:</strong> Beide auto's alarmlichten aan</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" /><strong>Waarschuwingsdriehoek:</strong> Plaats 30-50 meter voor het ongeval (op snelweg: 100 meter)</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" /><strong>Hesje:</strong> Trek fluohesje aan voordat u uitstapt (verplicht in auto!)</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" /><strong>Veilige plaats:</strong> Ga achter de vangrail staan op snelwegen</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" /><strong>Alarmlichten:</strong> Beide auto's alarmlichten aan</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" /><strong>Waarschuwingsdriehoek:</strong> Plaats 30-50 meter voor het ongeval (op snelweg: 100 meter)</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" /><strong>Hesje:</strong> Trek fluohesje aan voordat u uitstapt (verplicht in auto!)</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" /><strong>Veilige plaats:</strong> Ga achter de vangrail staan op snelwegen</li>
               </ul>
             </div>
 
@@ -216,10 +218,10 @@ export default function WatTeDoennaNaOngevalblogPost() {
                 <strong>Dit is het BELANGRIJKSTE document!</strong> Het Europees Schadeformulier bepaalt grotendeels wie aansprakelijk is.
               </p>
               <ul className="text-sm space-y-2 ml-6 mb-4">
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Vul het ter plaatse in, SAMEN met de tegenpartij</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Neem de tijd - haast leidt tot fouten</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Teken geen schuld toe ("sorry", "mijn fout")</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Controleer alle gegevens VOORDAT u tekent</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Vul het ter plaatse in, SAMEN met de tegenpartij</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Neem de tijd - haast leidt tot fouten</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Teken geen schuld toe ("sorry", "mijn fout")</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Controleer alle gegevens VOORDAT u tekent</li>
               </ul>
               <Link href="/blog/europees-schadeformulier-invullen">
                 <Button variant="outline" size="sm" className="w-full">
@@ -362,10 +364,10 @@ export default function WatTeDoennaNaOngevalblogPost() {
               </h3>
               <p className="text-sm mb-3">Zijn er getuigen? Hun verklaring kan doorslaggevend zijn!</p>
               <ul className="text-sm space-y-2 ml-6">
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Vraag naam, adres, telefoonnummer</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Laat hen kort opschrijven wat ze zagen</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Vraag of ze willen verklaren bij verzekeraar (niet verplicht)</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Ook passagiers zijn getuigen (wel minder objectief)</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Vraag naam, adres, telefoonnummer</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Laat hen kort opschrijven wat ze zagen</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Vraag of ze willen verklaren bij verzekeraar (niet verplicht)</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Ook passagiers zijn getuigen (wel minder objectief)</li>
               </ul>
             </div>
 
@@ -434,10 +436,10 @@ export default function WatTeDoennaNaOngevalblogPost() {
                 <strong>Waarom zo snel?</strong> Hoe sneller u start, hoe beter. Bewijs kan vervagen en verzekeraar moet binnen redelijke termijn geïnformeerd worden.
               </p>
               <ul className="text-sm space-y-2 ml-6 mb-4">
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Upload foto/scan van Europees Schadeformulier</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Upload alle foto's van de schade</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Wij lezen formulier automatisch in via OCR</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Binnen 24 uur start uw schadespecialist</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Upload foto/scan van Europees Schadeformulier</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Upload alle foto's van de schade</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Wij lezen formulier automatisch in via OCR</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Binnen 24 uur start uw schadespecialist</li>
               </ul>
               <Link href="/claim-indienen">
                 <Button className="w-full" size="lg">

@@ -4,7 +4,9 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Download, CheckCircle, Mail } from "lucide-react"
+import { Download, Mail } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 import { toast } from "sonner"
 
 interface ChecklistDownloadProps {
@@ -168,7 +170,7 @@ export function ChecklistDownload({ title, description, checklistItems }: Checkl
           <ul className="space-y-2">
             {checklistItems.slice(0, 5).map((item, index) => (
               <li key={index} className="flex items-start gap-2 text-sm">
-                <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
                 <span>{item}</span>
               </li>
             ))}

@@ -1,6 +1,8 @@
 "use client"
 
-import { AlertTriangle, CheckCircle } from "lucide-react"
+import { AlertTriangle } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 import { Badge } from "@/components/ui/badge"
 
 interface EscalationBadgeProps {
@@ -41,7 +43,7 @@ export function EscalationBadge({
       >
         {isResolved ? (
           <>
-            <CheckCircle className="h-3 w-3 mr-1" />
+            <FontAwesomeIcon icon={faCircleCheck} className="h-3 w-3 mr-1" />
             Escalatie Opgelost
           </>
         ) : (

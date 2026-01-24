@@ -633,7 +633,7 @@ export default function HomePage() {
 
                 {/* Badge 2: SSL Beveiligd */}
                 <div className="text-center p-4 rounded-lg bg-gray-50">
-                  <CheckCircle className="h-10 w-10 mx-auto mb-2 text-blue-600" />
+                  <FontAwesomeIcon icon={faCircleCheck} className="h-10 w-10 mx-auto mb-2 text-blue-600" />
                   <p className="font-semibold text-sm">SSL Beveiligd</p>
                   <p className="text-xs text-muted-foreground">256-bit Encryptie</p>
                 </div>
@@ -861,7 +861,7 @@ export default function HomePage() {
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
                     <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
-                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold mb-1">Geen eigen risico</p>
                         <p className="text-sm text-muted-foreground">
@@ -871,7 +871,7 @@ export default function HomePage() {
                     </div>
 
                     <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
-                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold mb-1">Geen premieverhoging</p>
                         <p className="text-sm text-muted-foreground">
@@ -881,7 +881,7 @@ export default function HomePage() {
                     </div>
 
                     <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
-                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold mb-1">Sneller uitbetaald</p>
                         <p className="text-sm text-muted-foreground">
@@ -891,7 +891,7 @@ export default function HomePage() {
                     </div>
 
                     <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
-                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold mb-1">Volledig gratis</p>
                         <p className="text-sm text-muted-foreground">
@@ -901,7 +901,7 @@ export default function HomePage() {
                     </div>
 
                     <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
-                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold mb-1">Professioneel voor u geregeld</p>
                         <p className="text-sm text-muted-foreground">
@@ -911,7 +911,7 @@ export default function HomePage() {
                     </div>
 
                     <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
-                      <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
                       <div>
                         <p className="font-semibold mb-1">U hoeft niets zelf te doen</p>
                         <p className="text-sm text-muted-foreground">
@@ -1160,7 +1160,7 @@ export default function HomePage() {
 
                 <Card>
                   <CardHeader>
-                    <CheckCircle className="h-10 w-10 text-primary mb-2" />
+                    <FontAwesomeIcon icon={faCircleCheck} className="h-10 w-10 text-primary mb-2" />
                     <CardTitle>U betaalt niets</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -1270,19 +1270,19 @@ export default function HomePage() {
                     <p className="font-semibold text-green-900 mb-2">✅ Onze aanpak: Direct verhalen bij de tegenpartij</p>
                     <ul className="text-sm text-green-800 space-y-1 ml-4">
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                        <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
                         <span><strong>Geen eigen risico</strong> – tegenpartij betaalt alles</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                        <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
                         <span><strong>Geen premieverhoging</strong> – uw verzekering blijft onaangetast</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                        <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
                         <span><strong>Sneller uitbetaald</strong> – gemiddeld binnen 6 weken</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                        <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
                         <span><strong>Volledig gratis</strong> – u betaalt niets, tegenpartij betaalt alles</span>
                       </li>
                     </ul>

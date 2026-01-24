@@ -3,7 +3,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/breadcrumbs"
-import { ArrowLeft, CheckCircle, AlertTriangle, Upload, FileText } from "lucide-react"
+import { ArrowLeft, AlertTriangle, Upload, FileText } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
 export const metadata: Metadata = {
   title: "Europees Schadeformulier Invullen: Complete Gids 2025",
@@ -171,8 +173,8 @@ export default function EuropeesSchadeformulierPage() {
             <div className="bg-blue-50 p-6 rounded-lg my-6">
               <h4 className="font-bold mb-3">Veld 1: Datum en Tijdstip</h4>
               <ul className="space-y-2 text-sm">
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Datum: DD-MM-JJJJ formaat</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Tijd: Uur:Minuten (bijv. 14:30)</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Datum: DD-MM-JJJJ formaat</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Tijd: Uur:Minuten (bijv. 14:30)</li>
                 <li><strong>Tip:</strong> Check uw telefoon voor de exacte tijd als u twijfelt</li>
               </ul>
             </div>
@@ -180,8 +182,8 @@ export default function EuropeesSchadeformulierPage() {
             <div className="bg-blue-50 p-6 rounded-lg my-6">
               <h4 className="font-bold mb-3">Veld 2: Plaats</h4>
               <ul className="space-y-2 text-sm">
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Straatnaam + huisnummer (of "ter hoogte van...")</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Postcode en plaatsnaam</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Straatnaam + huisnummer (of "ter hoogte van...")</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Postcode en plaatsnaam</li>
                 <li><strong>Tip:</strong> Gebruik Google Maps voor de exacte locatie als u twijfelt</li>
               </ul>
             </div>
@@ -206,8 +208,8 @@ export default function EuropeesSchadeformulierPage() {
             <div className="bg-blue-50 p-6 rounded-lg my-6">
               <h4 className="font-bold mb-3">Veld 5: Getuigen</h4>
               <ul className="space-y-2 text-sm">
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Naam + adres van getuigen</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Telefoonnummer (indien mogelijk)</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Naam + adres van getuigen</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Telefoonnummer (indien mogelijk)</li>
                 <li><strong>Tip:</strong> Ook passagiers kunnen getuige zijn, maar onafhankelijke getuigen wegen zwaarder</li>
               </ul>
             </div>
@@ -216,10 +218,10 @@ export default function EuropeesSchadeformulierPage() {
               <h4 className="font-bold mb-3">Veld 6: Verzekeringsnemer Voertuig A/B</h4>
               <p className="text-sm mb-2">Vul <strong>uw eigen gegevens</strong> in op uw kant (links of rechts):</p>
               <ul className="space-y-2 text-sm">
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Achternaam + voornaam verzekeringsnemer</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Adres, postcode, plaats</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Land (meestal: Nederland)</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Telefoonnummer of email</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Achternaam + voornaam verzekeringsnemer</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Adres, postcode, plaats</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Land (meestal: Nederland)</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Telefoonnummer of email</li>
                 <li><strong>Let op:</strong> Dit is de eigenaar van de verzekering, niet altijd de bestuurder!</li>
               </ul>
             </div>
@@ -229,9 +231,9 @@ export default function EuropeesSchadeformulierPage() {
             <div className="bg-blue-50 p-6 rounded-lg my-6">
               <h4 className="font-bold mb-3">Veld 7: Voertuig</h4>
               <ul className="space-y-2 text-sm">
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Merk (bijv. Volkswagen, Toyota, BMW)</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Type (bijv. Golf, Aygo, 3-Serie)</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" /><strong>Kenteken</strong> (zeer belangrijk - controleer 2x!)</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Merk (bijv. Volkswagen, Toyota, BMW)</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Type (bijv. Golf, Aygo, 3-Serie)</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" /><strong>Kenteken</strong> (zeer belangrijk - controleer 2x!)</li>
                 <li><strong>Tip:</strong> Check het kenteken van de tegenpartij goed - een fout kenteken maakt verhalen bijna onmogelijk</li>
               </ul>
             </div>
@@ -239,9 +241,9 @@ export default function EuropeesSchadeformulierPage() {
             <div className="bg-blue-50 p-6 rounded-lg my-6">
               <h4 className="font-bold mb-3">Veld 8: Verzekeringsmaatschappij</h4>
               <ul className="space-y-2 text-sm">
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Naam verzekeraar (bijv. Aegon, Allianz, Nationale Nederlanden)</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Polisnummer (staat op uw verzekeringspas)</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Groene kaart nummer (alleen bij buitenlandse ongevallen)</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Naam verzekeraar (bijv. Aegon, Allianz, Nationale Nederlanden)</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Polisnummer (staat op uw verzekeringspas)</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Groene kaart nummer (alleen bij buitenlandse ongevallen)</li>
                 <li><strong>Tip:</strong> Maak een foto van de verzekeringspas van de tegenpartij met uw telefoon</li>
               </ul>
             </div>
@@ -252,11 +254,11 @@ export default function EuropeesSchadeformulierPage() {
               <h4 className="font-bold mb-3">Veld 9: Bestuurder</h4>
               <p className="text-sm mb-2">Als u zelf reed: vul hier uw gegevens in. Bij andere bestuurder:</p>
               <ul className="space-y-2 text-sm">
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Naam bestuurder</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Geboortedatum</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Adres</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Rijbewijsnummer</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Categorie rijbewijs (bijv. B voor auto)</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Naam bestuurder</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Geboortedatum</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Adres</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Rijbewijsnummer</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Categorie rijbewijs (bijv. B voor auto)</li>
               </ul>
             </div>
 
@@ -344,11 +346,11 @@ export default function EuropeesSchadeformulierPage() {
               <p className="text-sm mb-3">Teken een <strong>eenvoudige, duidelijke schets</strong>:</p>
               
               <ul className="space-y-2 text-sm">
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Teken de weg(en) met straatnamen</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Geef rijrichting aan met pijlen</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Teken beide auto's op het moment van botsing</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Markeer verkeersborden (voorrang, stoplicht, etc.)</li>
-                <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Gebruik A en B voor de voertuigen</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Teken de weg(en) met straatnamen</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Geef rijrichting aan met pijlen</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Teken beide auto's op het moment van botsing</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Markeer verkeersborden (voorrang, stoplicht, etc.)</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Gebruik A en B voor de voertuigen</li>
               </ul>
 
               <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded">
@@ -383,9 +385,9 @@ export default function EuropeesSchadeformulierPage() {
               <CardContent className="p-6">
                 <h4 className="font-bold mb-3">Beide partijen tekenen!</h4>
                 <ul className="space-y-2 text-sm">
-                  <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />U tekent op uw kant (A of B)</li>
-                  <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Tegenpartij tekent op hun kant</li>
-                  <li><CheckCircle className="inline h-4 w-4 text-green-600 mr-2" />Beide handtekeningen zijn zichtbaar op beide exemplaren (doordruk)</li>
+                  <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />U tekent op uw kant (A of B)</li>
+                  <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Tegenpartij tekent op hun kant</li>
+                  <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Beide handtekeningen zijn zichtbaar op beide exemplaren (doordruk)</li>
                 </ul>
                 <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded">
                   <p className="text-sm font-semibold text-red-900">⚠️ Belangrijk!</p>

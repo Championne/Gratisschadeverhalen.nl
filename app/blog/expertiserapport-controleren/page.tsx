@@ -3,7 +3,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/breadcrumbs"
-import { AlertTriangle, CheckCircle, ArrowLeft, FileText, Upload, Eye, Calculator, Phone } from "lucide-react"
+import { AlertTriangle, ArrowLeft, FileText, Upload, Eye, Calculator, Phone } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
 export const metadata: Metadata = {
   title: "Expertiserapport Controleren: 7 Cruciale Punten om op te Letten (2026)",
@@ -87,19 +89,19 @@ export default function ExpertiserapportControlerenPage() {
             </p>
             <ul className="space-y-2 text-muted-foreground">
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-1" />
+                <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0 mt-1" />
                 <span>De omvang en aard van de schade</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-1" />
+                <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0 mt-1" />
                 <span>De reparatiekosten (arbeidsloon + onderdelen)</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-1" />
+                <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0 mt-1" />
                 <span>Eventuele waardevermindering na reparatie</span>
               </li>
               <li className="flex items-start gap-2">
-                <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-1" />
+                <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0 mt-1" />
                 <span>Bij total loss: de dagwaarde van het voertuig</span>
               </li>
             </ul>
@@ -269,7 +271,7 @@ export default function ExpertiserapportControlerenPage() {
                 </p>
                 <div className="grid gap-3 my-4">
                   <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold">Vervangend vervoer</p>
                       <p className="text-sm text-muted-foreground">
@@ -278,7 +280,7 @@ export default function ExpertiserapportControlerenPage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold">Berging & opslag</p>
                       <p className="text-sm text-muted-foreground">
@@ -287,7 +289,7 @@ export default function ExpertiserapportControlerenPage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold">Waardevermindering</p>
                       <p className="text-sm text-muted-foreground">
@@ -296,7 +298,7 @@ export default function ExpertiserapportControlerenPage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold">Expertise-kosten</p>
                       <p className="text-sm text-muted-foreground">
@@ -358,27 +360,27 @@ export default function ExpertiserapportControlerenPage() {
                   <p className="font-semibold mb-3">✅ Controleer deze gegevens:</p>
                   <div className="grid md:grid-cols-2 gap-2 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-600" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600" />
                       <span>Kenteken en chassisnummer</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-600" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600" />
                       <span>Merk, model en uitvoering</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-600" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600" />
                       <span>Bouwjaar en datum eerste toelating</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-600" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600" />
                       <span>Kilometerstand op moment expertise</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-600" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600" />
                       <span>Brandstoftype en motorinhoud</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-600" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600" />
                       <span>Kleur en laksoort</span>
                     </div>
                   </div>

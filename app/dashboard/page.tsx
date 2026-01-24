@@ -3,7 +3,9 @@ import { redirect } from "next/navigation"
 import { DashboardHeader } from "@/components/dashboard/header"
 import { ClaimsList } from "@/components/dashboard/claims-list"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { FileText, Clock, CheckCircle, XCircle, AlertCircle } from "lucide-react"
+import { FileText, Clock, XCircle, AlertCircle } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
 type ClaimStatus = 'nieuw' | 'in_behandeling' | 'wacht_op_info' | 'aansprakelijkheidsbrief_verzonden' | 
   'in_onderhandeling' | 'afgerond' | 'geweigerd' | 'geannuleerd' | 'escalated'
@@ -116,7 +118,7 @@ export default async function DashboardPage() {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium">Afgerond</CardTitle>
-                <CheckCircle className="h-4 w-4 text-green-500" />
+                <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-500" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{stats.afgerond}</div>

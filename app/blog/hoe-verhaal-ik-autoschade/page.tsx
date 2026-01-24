@@ -3,7 +3,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/breadcrumbs"
-import { CheckCircle, AlertTriangle, ArrowLeft, FileText, Upload } from "lucide-react"
+import { AlertTriangle, ArrowLeft, FileText, Upload } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
 export const metadata: Metadata = {
   title: "Hoe verhaal ik autoschade op de tegenpartij? Complete gids 2026",
@@ -91,7 +93,7 @@ ing</a>
             
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-6">
               <h3 className="font-bold mb-3 flex items-center gap-2">
-                <CheckCircle className="h-5 w-5 text-green-600" />
+                <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600" />
                 U kunt verhalen bij:
               </h3>
               <ul className="space-y-2 text-muted-foreground">
@@ -475,27 +477,27 @@ ing</a>
                   <h3 className="text-xl font-bold mb-3">✨ Waarom Autoschadebureau.nl?</h3>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
                       <span><strong>U betaalt niets</strong> – tegenpartij betaalt alles</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
                       <span><strong>Gemiddeld 23% hogere uitbetaling</strong> dan zelfstandig claimen</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
                       <span><strong>OCR technologie</strong> – upload foto schadeformulier, wij doen de rest</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
                       <span><strong>Realtime dashboard</strong> – volg uw claim 24/7 online</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
                       <span><strong>Snelle expertise</strong> – direct starten met uw claim</span>
                     </li>
                     <li className="flex items-start gap-3">
-                      <CheckCircle className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
                       <span><strong>Jarenlange ervaring</strong> met verzekeraars en juridische procedures</span>
                     </li>
                   </ul>

@@ -2,7 +2,9 @@ import { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ChevronDown, MessageCircle, Phone, Mail, ArrowRight, CheckCircle } from "lucide-react"
+import { ChevronDown, MessageCircle, Phone, Mail, ArrowRight } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
 export const metadata: Metadata = {
   title: "Veelgestelde Vragen | Autoschade Verhalen - Gratis & Vrijblijvend",
@@ -242,15 +244,15 @@ export default function VeelgesteldeVragenPage() {
           {/* Quick Stats */}
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5 text-green-600" />
+              <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600" />
               <span>U betaalt niets</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5 text-green-600" />
+              <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600" />
               <span>Snelle expertise</span>
             </div>
             <div className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5 text-green-600" />
+              <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600" />
               <span>Geen invloed op uw premie</span>
             </div>
           </div>
