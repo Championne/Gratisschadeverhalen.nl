@@ -366,10 +366,11 @@ export default function HomePage() {
                       </ul>
                     </div>
                     
-                    <Button size="lg" className="w-full text-lg h-14 text-white shadow-lg group-hover:shadow-xl transition-all pointer-events-none">
-                      <Upload className="mr-2 h-5 w-5" />
-                      Start Nu – Gratis Autoschade Verhalen
-                      <ChevronRight className="ml-2 h-5 w-5" />
+                    <Button size="lg" className="w-full text-base sm:text-lg h-14 text-white shadow-lg group-hover:shadow-xl transition-all pointer-events-none">
+                      <Upload className="mr-2 h-5 w-5 flex-shrink-0" />
+                      <span className="hidden sm:inline">Start Nu – Gratis Autoschade Verhalen</span>
+                      <span className="sm:hidden">Start Nu – Gratis</span>
+                      <ChevronRight className="ml-2 h-5 w-5 flex-shrink-0" />
                     </Button>
 
                     <p className="text-center text-xs text-muted-foreground">
@@ -628,11 +629,10 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* CTA */}
               <div className="text-center mt-12">
-                <Link href="/claim-indienen">
-                  <Button size="lg" className="text-lg px-10 py-6 shadow-xl hover:shadow-2xl transition-all">
-                    <Upload className="mr-2 h-5 w-5" />
+                <Link href="/claim-indienen" className="inline-block w-full sm:w-auto">
+                  <Button size="lg" className="text-base sm:text-lg px-6 sm:px-10 py-6 shadow-xl hover:shadow-2xl transition-all w-full sm:w-auto">
+                    <Upload className="mr-2 h-5 w-5 flex-shrink-0" />
                     Start Nu – Klaar in 2 Minuten
                   </Button>
                 </Link>
@@ -956,10 +956,11 @@ export default function HomePage() {
                   </div>
 
                   <div className="mt-8 text-center">
-                    <Link href="/claim-indienen">
-                      <Button size="lg" className="text-lg px-8">
-                        <Upload className="mr-2 h-5 w-5" />
-                        Start Nu – Verhaal Uw Autoschade Gratis
+                    <Link href="/claim-indienen" className="block">
+                      <Button size="lg" className="text-base md:text-lg px-6 md:px-8 w-full md:w-auto">
+                        <Upload className="mr-2 h-5 w-5 flex-shrink-0" />
+                        <span className="hidden sm:inline">Start Nu – Verhaal Uw Autoschade Gratis</span>
+                        <span className="sm:hidden">Start Nu – Claim Gratis</span>
                       </Button>
                     </Link>
                   </div>
@@ -1153,10 +1154,11 @@ export default function HomePage() {
             </div>
 
             <div className="text-center mt-8">
-              <Link href="/claim-indienen">
-                <Button size="lg" className="text-lg px-8">
-                  <Upload className="mr-2 h-5 w-5" />
-                  Start uw autoschade claim nu
+              <Link href="/claim-indienen" className="inline-block w-full sm:w-auto">
+                <Button size="lg" className="text-base sm:text-lg px-6 sm:px-8 w-full sm:w-auto">
+                  <Upload className="mr-2 h-5 w-5 flex-shrink-0" />
+                  <span className="hidden sm:inline">Start uw autoschade claim nu</span>
+                  <span className="sm:hidden">Start uw claim nu</span>
                 </Button>
               </Link>
             </div>
@@ -1469,11 +1471,12 @@ export default function HomePage() {
             <p className="text-lg mb-8 opacity-90">
               100% Gratis • U betaalt niets • Gemiddeld 6 weken • Geen risico
             </p>
-            <Link href="/claim-indienen">
-              <Button size="lg" variant="secondary" className="text-lg px-10 h-14 shadow-xl hover:shadow-2xl transition-all">
-                <Upload className="mr-2 h-5 w-5" />
-                Start Nu – Upload Schadeformulier
-                <ChevronRight className="ml-2 h-5 w-5" />
+            <Link href="/claim-indienen" className="inline-block w-full sm:w-auto">
+              <Button size="lg" variant="secondary" className="text-base sm:text-lg px-6 sm:px-10 h-14 shadow-xl hover:shadow-2xl transition-all w-full sm:w-auto">
+                <Upload className="mr-2 h-5 w-5 flex-shrink-0" />
+                <span className="hidden sm:inline">Start Nu – Upload Schadeformulier</span>
+                <span className="sm:hidden">Start Nu – Upload</span>
+                <ChevronRight className="ml-2 h-5 w-5 flex-shrink-0" />
               </Button>
             </Link>
             <p className="mt-6 text-sm opacity-80">
