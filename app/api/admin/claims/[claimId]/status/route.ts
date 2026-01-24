@@ -1,13 +1,19 @@
 import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
 
+// Status changes die AI heranalyse triggeren
+const REANALYSIS_TRIGGER_STATUSES = [
+  'in_behandeling', // Terug naar behandeling = heranalyse
+  'nieuw',          // Reset = heranalyse
+]
+
 export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ claimId: string }> }
 ) {
   try {
     const { claimId } = await params
-    const { status, note } = await request.json()
+    const { status, note, triggerReanalysis } = await request.json()
 
     // Use regular client for auth check
     const supabase = await createClient()
@@ -43,14 +49,27 @@ export async function PATCH(
       .single()
 
     const oldStatus = existingClaim?.status || 'unknown'
+    
+    // Bepaal of reanalyse nodig is
+    const shouldTriggerReanalysis = triggerReanalysis || (
+      REANALYSIS_TRIGGER_STATUSES.includes(status) && 
+      oldStatus !== status
+    )
 
-    // Update claim status
+    // Update claim status - voeg reanalysis flag toe indien nodig
+    const updateData: any = { 
+      status,
+      updated_at: new Date().toISOString()
+    }
+
+    if (shouldTriggerReanalysis) {
+      updateData.reanalysis_needed = true
+      updateData.reanalysis_reason = `Status change: ${oldStatus} → ${status}${note ? ` (${note})` : ''}`
+    }
+
     const { data: claim, error: updateError } = await supabaseAdmin
       .from("claims")
-      .update({ 
-        status,
-        updated_at: new Date().toISOString()
-      })
+      .update(updateData)
       .eq("id", claimId)
       .select()
       .single()
@@ -77,7 +96,8 @@ export async function PATCH(
         details: {
           old_status: oldStatus,
           new_status: status,
-          note: note || null
+          note: note || null,
+          triggered_reanalysis: shouldTriggerReanalysis,
         },
         severity: 'info',
         ip_address: request.headers.get('x-forwarded-for') || null
@@ -108,9 +128,40 @@ export async function PATCH(
       }
     }
 
+    // Trigger AI reanalyse indien nodig
+    let reanalysisResult = null
+    if (shouldTriggerReanalysis && process.env.ENABLE_AUTO_REANALYSIS === 'true') {
+      console.log('🔄 Triggering AI reanalysis due to status change...')
+      console.log('   Status change:', oldStatus, '→', status)
+      
+      try {
+        // Fire and forget - don't wait for reanalysis to complete
+        fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/agent/reanalyze`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            claimId,
+            reason: `Status wijziging: ${oldStatus} → ${status}`,
+            triggeredBy: performedBy,
+            includePhotos: true,
+          }),
+        }).then(res => res.json()).then(result => {
+          console.log('✅ Reanalysis triggered successfully')
+        }).catch(err => {
+          console.error('⚠️ Reanalysis trigger failed:', err)
+        })
+        
+        reanalysisResult = { triggered: true }
+      } catch (reanalysisError) {
+        console.error('Error triggering reanalysis:', reanalysisError)
+        reanalysisResult = { triggered: false, error: 'Failed to trigger' }
+      }
+    }
+
     return NextResponse.json({ 
       success: true,
-      claim 
+      claim,
+      aiReanalysis: reanalysisResult,
     })
 
   } catch (error) {

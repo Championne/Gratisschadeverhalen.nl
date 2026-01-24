@@ -4,6 +4,8 @@ import { formatDate } from "@/lib/utils"
 import { Calendar, MapPin, Car, FileText, User, Shield } from "lucide-react"
 import { EscalationBadge } from "./escalation-badge"
 import { AuditLogViewer } from "./audit-log-viewer"
+import { ClaimEditUser } from "./claim-edit-user"
+import { DocumentUpload } from "./document-upload"
 
 interface Claim {
   id: string
@@ -254,6 +256,12 @@ export function ClaimDetail({ claim }: ClaimDetailProps) {
           )}
         </CardContent>
       </Card>
+
+      {/* Gegevens Aanvullen */}
+      <ClaimEditUser claim={claim} />
+
+      {/* Extra Documenten Uploaden */}
+      <DocumentUpload claimId={claim.id} />
 
       {/* Audit Trail (Juridische Traceerbaarheid) */}
       <AuditLogViewer claimId={claim.id} />
