@@ -26,7 +26,14 @@ const nextConfig = {
 
   // Experimental features for better performance
   experimental: {
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    optimizePackageImports: [
+      'lucide-react', 
+      '@radix-ui/react-icons',
+      '@fortawesome/free-solid-svg-icons',
+      '@fortawesome/react-fontawesome',
+      'framer-motion',
+      'date-fns',
+    ],
   },
 
   // Production optimizations

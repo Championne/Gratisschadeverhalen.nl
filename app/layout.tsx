@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/sonner"
 import { CookieConsent } from "@/components/cookie-consent"
 import { ConditionalLayout } from "@/components/conditional-layout"
 import { StructuredData } from "@/components/structured-data"
-import { GoogleAnalytics, MicrosoftClarity } from "@/components/analytics"
+import { GoogleAnalytics, MicrosoftClarity, PreconnectHints } from "@/components/analytics"
 import { BotpressChat } from "@/components/botpress-chat"
 import { ExitIntentPopup } from "@/components/exit-intent-popup"
 import { MobileStickyCTA } from "@/components/mobile-sticky-cta"
@@ -95,8 +95,7 @@ export default function RootLayout({
     <html lang="nl" suppressHydrationWarning>
       <head>
         <StructuredData />
-        <GoogleAnalytics />
-        <MicrosoftClarity />
+        <PreconnectHints />
       </head>
       <body className={inter.className}>
         <ConditionalLayout>
@@ -105,7 +104,11 @@ export default function RootLayout({
         <Toaster richColors position="top-center" />
         <CookieConsent />
         
-        {/* Botpress Chatbot */}
+        {/* Analytics - loads after interactive */}
+        <GoogleAnalytics />
+        <MicrosoftClarity />
+        
+        {/* Botpress Chatbot - loads after 3s delay */}
         <BotpressChat />
         
         {/* Conversion Optimization */}

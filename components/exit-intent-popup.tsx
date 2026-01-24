@@ -31,8 +31,15 @@ export function ExitIntentPopup() {
     }
 
     // Only add listener after a delay (don't show immediately)
+    // Use requestIdleCallback to not block main thread
     const timeout = setTimeout(() => {
-      document.addEventListener("mouseleave", handleMouseLeave)
+      if ("requestIdleCallback" in window) {
+        (window as any).requestIdleCallback(() => {
+          document.addEventListener("mouseleave", handleMouseLeave, { passive: true })
+        })
+      } else {
+        document.addEventListener("mouseleave", handleMouseLeave, { passive: true })
+      }
     }, 5000)
 
     return () => {

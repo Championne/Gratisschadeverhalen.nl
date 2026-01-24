@@ -1,17 +1,19 @@
-// Google Analytics 4 Component
-// Note: Replace YOUR_GA4_MEASUREMENT_ID with your actual GA4 ID (format: G-XXXXXXXXXX)
+// Google Analytics 4 Component with performance optimization
+// Uses Next.js Script component with afterInteractive strategy
+import Script from "next/script"
 
 export function GoogleAnalytics() {
   const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-XXXXXXXXXX'
   
   return (
     <>
-      <script
-        async
+      <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        strategy="afterInteractive"
       />
-      <script
+      <Script
         id="google-analytics"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
@@ -27,14 +29,14 @@ export function GoogleAnalytics() {
   )
 }
 
-// Microsoft Clarity (Free Heatmaps & Session Recordings)
+// Microsoft Clarity with lazyOnload strategy (lowest priority)
 export function MicrosoftClarity() {
   const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID || 'XXXXXXXXXX'
   
   return (
-    <script
+    <Script
       id="microsoft-clarity"
-      type="text/javascript"
+      strategy="lazyOnload"
       dangerouslySetInnerHTML={{
         __html: `
           (function(c,l,a,r,i,t,y){
@@ -45,6 +47,25 @@ export function MicrosoftClarity() {
         `,
       }}
     />
+  )
+}
+
+// Preconnect hints for faster external resource loading
+export function PreconnectHints() {
+  return (
+    <>
+      {/* Google Analytics & Tag Manager */}
+      <link rel="preconnect" href="https://www.googletagmanager.com" />
+      <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+      <link rel="preconnect" href="https://www.google-analytics.com" />
+      
+      {/* Microsoft Clarity */}
+      <link rel="dns-prefetch" href="https://www.clarity.ms" />
+      
+      {/* Botpress Chat */}
+      <link rel="dns-prefetch" href="https://cdn.botpress.cloud" />
+      <link rel="dns-prefetch" href="https://files.bpcontent.cloud" />
+    </>
   )
 }
 
