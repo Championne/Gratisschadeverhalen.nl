@@ -10,7 +10,7 @@ export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background">
       <div className="container mx-auto flex h-28 items-center justify-between pl-4 pr-12 lg:pr-20 xl:pr-28">
         {/* Logo */}
         <Link href="/" className="flex items-center">
