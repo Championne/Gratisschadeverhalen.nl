@@ -20,6 +20,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/autoschade-verhalen-den-haag',
     '/autoschade-verhalen-utrecht',
     '/autoschade-verhalen-eindhoven',
+    '/autoschade-verhalen-tilburg',
+    '/autoschade-verhalen-groningen',
+    '/autoschade-verhalen-almere',
+    '/autoschade-verhalen-breda',
+    '/autoschade-verhalen-nijmegen',
+    '/autoschade-verhalen-arnhem',
+    '/autoschade-verhalen-haarlem',
+    '/autoschade-verhalen-zaanstad',
+    '/autoschade-verhalen-apeldoorn',
+    '/autoschade-verhalen-amersfoort',
   ]
 
   // Blog posts
