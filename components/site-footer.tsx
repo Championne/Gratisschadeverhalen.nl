@@ -26,11 +26,11 @@ export function SiteFooter() {
     <footer className="border-t bg-gray-50">
       <div className="container mx-auto px-4 py-10 md:py-12">
         
-        {/* Main Grid - 4 equal columns with consistent spacing */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-x-16">
+        {/* Main Footer Content - Flexbox for even distribution */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:flex lg:justify-between lg:gap-8">
           
           {/* Column 1: Brand & Description */}
-          <div className="space-y-4">
+          <div className="space-y-4 lg:w-56 lg:flex-shrink-0">
             <Link href="/" className="inline-block">
               <span className="text-xl font-bold text-primary hover:text-primary/80 transition-colors">
                 Autoschadebureau.nl
@@ -43,7 +43,7 @@ export function SiteFooter() {
           </div>
 
           {/* Column 2: Diensten */}
-          <div className="space-y-4">
+          <div className="space-y-4 lg:flex-shrink-0">
             <h3 className="font-semibold text-sm uppercase tracking-wider text-foreground">Diensten</h3>
             <ul className="space-y-2.5 text-sm">
               <li>
@@ -75,7 +75,7 @@ export function SiteFooter() {
           </div>
 
           {/* Column 3: Informatie */}
-          <div className="space-y-4">
+          <div className="space-y-4 lg:flex-shrink-0">
             <h3 className="font-semibold text-sm uppercase tracking-wider text-foreground">Informatie</h3>
             <ul className="space-y-2.5 text-sm">
               <li>
@@ -112,7 +112,7 @@ export function SiteFooter() {
           </div>
 
           {/* Column 4: Contact & Juridisch - Right aligned */}
-          <div className="space-y-6 lg:text-right">
+          <div className="space-y-6 lg:text-right lg:flex-shrink-0">
             {/* Contact */}
             <div className="space-y-4">
               <h3 className="font-semibold text-sm uppercase tracking-wider text-foreground">Contact</h3>
