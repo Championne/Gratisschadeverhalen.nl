@@ -118,11 +118,13 @@ export function SiteFooter() {
                 className="block group"
               >
                 <div className="bg-white border-2 border-purple-100 rounded-lg p-3 hover:border-purple-300 transition-all hover:shadow-md">
-                  {/* Unitas Letselschade Logo Placeholder */}
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold text-sm">U</span>
-                    </div>
+                  {/* Unitas Letselschade Logo */}
+                  <div className="flex items-center gap-3 mb-2">
+                    <img 
+                      src="/unitas-letselschade-logo.png" 
+                      alt="Unitas Letselschade" 
+                      className="w-10 h-10 object-contain flex-shrink-0"
+                    />
                     <div>
                       <p className="font-bold text-sm text-purple-900 group-hover:text-purple-700 transition-colors">
                         Unitas Letselschade

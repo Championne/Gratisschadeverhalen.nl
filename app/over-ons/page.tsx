@@ -241,9 +241,11 @@ export default function OverOnsPage() {
                   
                   {/* Unitas Logo */}
                   <div className="flex items-center justify-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold text-xl">U</span>
-                    </div>
+                    <img 
+                      src="/unitas-letselschade-logo.png" 
+                      alt="Unitas Letselschade" 
+                      className="w-16 h-16 object-contain flex-shrink-0"
+                    />
                     <div>
                       <p className="font-bold text-xl text-purple-900 group-hover:text-purple-700 transition-colors">
                         Unitas Letselschade
