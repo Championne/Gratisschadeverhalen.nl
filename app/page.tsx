@@ -401,10 +401,9 @@ export default function HomePage() {
               <div className="grid md:grid-cols-3 gap-6 md:gap-8">
                 {/* USP 1: Tegenpartij betaalt */}
                 <div className="text-center">
-                  <div className="relative mb-6">
+                  <div className="mb-6">
                     <div className="w-32 h-32 mx-auto bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center shadow-lg">
-                      <div className="absolute inset-0 bg-yellow-600/20 rounded-full transform rotate-45"></div>
-                      <Euro className="h-16 w-16 text-white relative z-10" strokeWidth={2.5} />
+                      <Euro className="h-16 w-16 text-white" strokeWidth={2.5} />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold mb-3">Tegenpartij betaalt alles</h3>
@@ -415,10 +414,9 @@ export default function HomePage() {
 
                 {/* USP 2: Snelle expertise */}
                 <div className="text-center">
-                  <div className="relative mb-6">
+                  <div className="mb-6">
                     <div className="w-32 h-32 mx-auto bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-lg">
-                      <div className="absolute inset-0 bg-green-700/20 rounded-full transform rotate-45"></div>
-                      <Clock className="h-16 w-16 text-white relative z-10" strokeWidth={2.5} />
+                      <Clock className="h-16 w-16 text-white" strokeWidth={2.5} />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold mb-3">Snelle expertise</h3>
@@ -430,10 +428,9 @@ export default function HomePage() {
 
                 {/* USP 3: Claim online volgen */}
                 <div className="text-center">
-                  <div className="relative mb-6">
+                  <div className="mb-6">
                     <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
-                      <div className="absolute inset-0 bg-blue-700/20 rounded-full transform rotate-45"></div>
-                      <FileText className="h-16 w-16 text-white relative z-10" strokeWidth={2.5} />
+                      <FileText className="h-16 w-16 text-white" strokeWidth={2.5} />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold mb-3">Uw claim online volgen</h3>
