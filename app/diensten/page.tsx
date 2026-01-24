@@ -34,9 +34,9 @@ export default function DienstenPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 via-white to-green-50 pt-16 pb-12">
+      <section className="bg-gradient-to-br from-blue-50 via-white to-green-50 py-10">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-5xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Onze Diensten
             </h1>
@@ -62,9 +62,9 @@ export default function DienstenPage() {
       </section>
 
       {/* Main Services Grid */}
-      <section className="py-16 bg-white">
+      <section className="py-10 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Wat wij voor u doen
@@ -310,7 +310,7 @@ export default function DienstenPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-gradient-to-b from-blue-50 to-white">
+      <section className="py-10 bg-gradient-to-b from-blue-50 to-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
@@ -367,9 +367,9 @@ export default function DienstenPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
+      <section className="py-10 bg-primary text-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Klaar om uw autoschade te verhalen?
             </h2>
@@ -394,9 +394,9 @@ export default function DienstenPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-white">
+      <section className="py-10 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Veelgestelde Vragen

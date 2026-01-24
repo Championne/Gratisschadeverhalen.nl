@@ -230,7 +230,8 @@ export default function VeelgesteldeVragenPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <main className="container mx-auto px-4 py-12 max-w-5xl">
+      <main className="container mx-auto px-4 py-8">
+        <div className="max-w-5xl mx-auto">
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -418,6 +419,7 @@ export default function VeelgesteldeVragenPage() {
             </Card>
           </Link>
         </section>
+        </div>
       </main>
     </div>
   )

@@ -14,7 +14,8 @@ export const metadata: Metadata = {
 export default function OverOnsPage() {
   return (
     <div className="min-h-screen bg-white">
-      <main className="container mx-auto px-4 py-8 max-w-6xl">
+      <main className="container mx-auto px-4 py-8">
+        <div className="max-w-5xl mx-auto">
         {/* Hero Section */}
         <div className="text-center mb-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Over Autoschadebureau.nl</h1>
@@ -305,6 +306,7 @@ export default function OverOnsPage() {
             </CardContent>
           </Card>
         </section>
+        </div>
       </main>
     </div>
   )
