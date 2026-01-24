@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "nl_NL",
-    url: "https://autoschadebureau.nl",
+    url: "https://www.autoschadebureau.nl",
     siteName: "Autoschadebureau.nl - Autoschade Verhalen Zonder Eigen Risico",
     title: "Autoschade Verhalen | Zonder Eigen Risico, Zonder Premieverhoging",
     description: "Verhaal uw autoschade direct bij de tegenpartij - zonder eigen risico, zonder premieverhoging. Ook met eigen verzekering voordelig! Upload schadeformulier en wij regelen alles gratis.",
@@ -76,10 +76,10 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "verification_token",
+    google: "4711ef4432d27e30",
   },
   alternates: {
-    canonical: "https://autoschadebureau.nl"
+    canonical: "https://www.autoschadebureau.nl"
   }
 }
 

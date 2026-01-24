@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Autoschade Verhalen | Zonder Eigen Risico, Zonder Premieverhoging - Gratis",
     description: "Verhaal uw autoschade direct bij de tegenpartij - zonder eigen risico, zonder premieverhoging. Ook met eigen verzekering voordelig! Upload schadeformulier en wij regelen alles gratis.",
-    url: "https://autoschadebureau.nl",
+    url: "https://www.autoschadebureau.nl",
     type: "website",
     locale: "nl_NL",
   },
@@ -58,7 +58,7 @@ const jsonLd = {
     // Service
     {
       "@type": "Service",
-      "@id": "https://autoschadebureau.nl/#service",
+      "@id": "https://www.autoschadebureau.nl/#service",
       "serviceType": "Autoschade Verhalen",
       "name": "Gratis Autoschade en Voertuigschade Verhalen",
       "description": "Professionele afhandeling van autoschade en voertuigschade claims tegen de tegenpartij. Upload uw Europees Schadeformulier en wij regelen alles gratis.",
@@ -78,29 +78,25 @@ const jsonLd = {
           "@type": "HowToStep",
           "position": 1,
           "name": "Upload uw Europees Schadeformulier",
-          "text": "Upload een foto of scan van uw ingevulde Europees Schadeformulier. Ons OCR-systeem leest automatisch de gegevens in en vult het formulier voor u in. U hoeft alleen te controleren of alles klopt.",
-          "image": "https://autoschadebureau.nl/step1.jpg"
+          "text": "Upload een foto of scan van uw ingevulde Europees Schadeformulier. Ons OCR-systeem leest automatisch de gegevens in en vult het formulier voor u in. U hoeft alleen te controleren of alles klopt."
         },
         {
           "@type": "HowToStep",
           "position": 2,
           "name": "Controleer en voltooi uw gegevens",
-          "text": "Check de automatisch ingevulde velden, voeg foto's van de schade toe, en vul eventuele ontbrekende informatie aan.",
-          "image": "https://autoschadebureau.nl/step2.jpg"
+          "text": "Check de automatisch ingevulde velden, voeg foto's van de schade toe, en vul eventuele ontbrekende informatie aan."
         },
         {
           "@type": "HowToStep",
           "position": 3,
           "name": "Wij nemen het over",
-          "text": "Binnen 24 uur beoordelen wij uw autoschade claim, stellen een professionele aansprakelijkheidsbrief op, en sturen deze naar de WA-verzekeraar van de tegenpartij.",
-          "image": "https://autoschadebureau.nl/step3.jpg"
+          "text": "Binnen 24 uur beoordelen wij uw autoschade claim, stellen een professionele aansprakelijkheidsbrief op, en sturen deze naar de WA-verzekeraar van de tegenpartij."
         },
         {
           "@type": "HowToStep",
           "position": 4,
           "name": "Ontvang uw schadevergoeding",
-          "text": "Wij onderhandelen voor u met de verzekeraar tot volledige vergoeding. Gemiddeld binnen 6 weken ontvangt u de uitbetaling. Volledig gratis - u betaalt alleen bij succes.",
-          "image": "https://autoschadebureau.nl/step4.jpg"
+          "text": "Wij onderhandelen voor u met de verzekeraar tot volledige vergoeding. Gemiddeld binnen 6 weken ontvangt u de uitbetaling. Volledig gratis - u betaalt alleen bij succes."
         }
       ],
       "totalTime": "PT6W"
@@ -108,7 +104,7 @@ const jsonLd = {
     // Aggregate Rating Schema (voor testimonials/reviews)
     {
       "@type": "LocalBusiness",
-      "@id": "https://autoschadebureau.nl/#rating",
+      "@id": "https://www.autoschadebureau.nl/#rating",
       "name": "Autoschadebureau.nl",
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -182,21 +178,21 @@ const jsonLd = {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://autoschadebureau.nl"
+          "item": "https://www.autoschadebureau.nl"
         }
       ]
     },
     // WebSite with SearchAction
     {
       "@type": "WebSite",
-      "@id": "https://autoschadebureau.nl/#website",
-      "url": "https://autoschadebureau.nl",
+      "@id": "https://www.autoschadebureau.nl/#website",
+      "url": "https://www.autoschadebureau.nl",
       "name": "Autoschadebureau.nl",
       "potentialAction": {
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://autoschadebureau.nl/blog?q={search_term_string}"
+          "urlTemplate": "https://www.autoschadebureau.nl/blog?q={search_term_string}"
         },
         "query-input": "required name=search_term_string"
       }
@@ -204,7 +200,7 @@ const jsonLd = {
     // FAQ Schema
     {
       "@type": "FAQPage",
-      "@id": "https://autoschadebureau.nl/#faq",
+      "@id": "https://www.autoschadebureau.nl/#faq",
       "mainEntity": [
         {
           "@type": "Question",
