@@ -1,0 +1,15 @@
+# Autoschadebureau.nl - Robots.txt
+# Toestaan dat alle zoekmachines de website crawlen
+
+User-agent: *
+Allow: /
+
+# Sitemap locatie
+Sitemap: https://www.autoschadebureau.nl/sitemap.xml
+
+# Blokkeer admin en dashboard voor zoekmachines
+Disallow: /dashboard/
+Disallow: /api/
+
+# Crawl-delay (optioneel, alleen als server overbelast raakt)
+# Crawl-delay: 1

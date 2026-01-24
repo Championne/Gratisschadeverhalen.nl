@@ -16,7 +16,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/algemene-voorwaarden',
   ]
 
-  return staticPages.map((route) => ({
+  // Blog posts
+  const blogPosts = [
+    '/blog/hoe-verhaal-ik-autoschade',
+    '/blog/europees-schadeformulier-invullen',
+    '/blog/wat-te-doen-na-ongeval',
+    '/blog/auto-total-loss-wat-nu',
+    '/blog/aansprakelijkheidsbrief-schrijven',
+    '/blog/wa-verzekering-tegenpartij-claimen',
+  ]
+
+  const staticSitemap = staticPages.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: route === '' ? 'weekly' : route === '/blog' ? 'weekly' : 'monthly' as 'weekly' | 'monthly',
@@ -27,4 +37,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       : route === '/blog' ? 0.7
       : 0.6,
   }))
+
+  const blogSitemap = blogPosts.map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as 'monthly',
+    priority: 0.6,
+  }))
+
+  return [...staticSitemap, ...blogSitemap]
 }
