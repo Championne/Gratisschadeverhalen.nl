@@ -283,9 +283,10 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-blue-50">
-      <main className="container mx-auto px-4 py-8 max-w-7xl">
+      <main className="container mx-auto px-4 py-8">
+        <div className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Autoschade Knowledge Base
           </h1>
@@ -296,7 +297,7 @@ export default function BlogPage() {
         </div>
 
         {/* Categories Filter - NOW INTERACTIVE */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
           {categories.map((cat) => (
             <Button
               key={cat}
@@ -454,6 +455,7 @@ export default function BlogPage() {
             </CardContent>
           </Card>
         </section>
+        </div>
       </main>
     </div>
   )
