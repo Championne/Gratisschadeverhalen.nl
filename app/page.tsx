@@ -337,6 +337,16 @@ export default function HomePage() {
         <section className="bg-gray-50 py-10 md:py-14">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
+              {/* Section Title */}
+              <div className="text-center mb-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+                  Direct uw schade melden
+                </h2>
+                <p className="mt-3 text-lg text-muted-foreground">
+                  Start vandaag nog met het verhalen van uw autoschade
+                </p>
+              </div>
+
               {/* Grote Upload CTA Card - Hele card is klikbaar */}
               <Link href="/claim-indienen" className="block group max-w-2xl mx-auto">
                 <Card className="border-2 border-primary shadow-2xl bg-gradient-to-br from-primary/5 to-white cursor-pointer hover:shadow-3xl hover:scale-[1.02] transition-all duration-200 active:scale-[0.99]">
