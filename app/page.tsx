@@ -378,21 +378,10 @@ export default function HomePage() {
                       Upload hier uw Europees Schadeformulier
                     </CardTitle>
                     <CardDescription className="text-base">
-                      <strong>Scan of maak een foto?</strong> Wij lezen het automatisch in met OCR. 
-                      U hoeft alleen nog te controleren en aan te vullen.
+                      Maak een foto of scan en wij lezen het automatisch in.
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm">
-                      <p className="text-blue-900 font-medium mb-2">✨ Zo simpel werkt het:</p>
-                      <ul className="space-y-1 text-blue-800">
-                        <li>1. Upload foto/scan van uw schadeformulier</li>
-                        <li>2. Wij vullen automatisch alle velden in (kentekens, datum, etc.)</li>
-                        <li>3. U controleert en vult eventueel aan</li>
-                        <li>4. Klaar! Wij starten direct uw autoschade claim</li>
-                      </ul>
-                    </div>
-                    
                     <Button size="lg" className="w-full text-base sm:text-lg h-14 text-white shadow-lg group-hover:shadow-xl transition-all pointer-events-none">
                       <Upload className="mr-2 h-5 w-5 flex-shrink-0" />
                       <span className="hidden sm:inline">Start Nu – Gratis Autoschade Verhalen</span>
