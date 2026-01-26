@@ -113,7 +113,6 @@ export async function estimateDamage(input: DamageEstimateInput): Promise<Damage
           ],
         },
       ],
-      maxTokens: 2000,
     })
     
     console.log('✅ Vision analysis completed')

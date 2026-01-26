@@ -159,7 +159,6 @@ Geef antwoord in JSON:
           ],
         },
       ],
-      maxTokens: 500,
     })
     const jsonMatch = text.match(/\{[\s\S]*\}/)
     
