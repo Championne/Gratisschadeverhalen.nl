@@ -144,7 +144,7 @@ export async function analyzeClaimFull(input: ClaimAnalysisInput): Promise<Claim
   const shouldEscalate = !canAutoProcess && (
     !input.verzekeraar_tegenpartij ||
     textAnalysis.liability_percentage < 50 ||
-    (damageEstimate && damageEstimate.damage_severity === 'total_loss')
+    damageEstimate?.damage_severity === 'total_loss'
   )
   
   // Bepaal status
