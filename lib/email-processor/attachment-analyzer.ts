@@ -8,7 +8,7 @@
  */
 
 import { anthropic } from '@ai-sdk/anthropic'
-import { generateText, CoreMessage } from 'ai'
+import { generateText } from 'ai'
 import { createServiceClient } from '@/lib/supabase/service'
 import { put } from '@vercel/blob'
 import { logAuditAction } from '@/lib/audit/logger'
@@ -158,7 +158,7 @@ Geef antwoord in JSON:
             { type: 'text', text: prompt },
           ],
         },
-      ] as CoreMessage[],
+      ],
       maxTokens: 500,
     })
     const jsonMatch = text.match(/\{[\s\S]*\}/)

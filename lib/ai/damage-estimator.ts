@@ -10,7 +10,7 @@
  */
 
 import { anthropic } from '@ai-sdk/anthropic'
-import { generateText, CoreMessage } from 'ai'
+import { generateText } from 'ai'
 
 export interface DamageEstimateInput {
   photoUrls: string[]          // URLs van schade foto's
@@ -112,7 +112,7 @@ export async function estimateDamage(input: DamageEstimateInput): Promise<Damage
             },
           ],
         },
-      ] as CoreMessage[],
+      ],
       maxTokens: 2000,
     })
     
