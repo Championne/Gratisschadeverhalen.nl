@@ -9,9 +9,8 @@
  * - Gedetailleerde analyse
  */
 
-import Anthropic from '@anthropic-ai/sdk'
-
-const anthropic = new Anthropic()
+import { anthropic } from '@ai-sdk/anthropic'
+import { generateText, CoreMessage } from 'ai'
 
 export interface DamageEstimateInput {
   photoUrls: string[]          // URLs van schade foto's
@@ -62,18 +61,15 @@ export async function estimateDamage(input: DamageEstimateInput): Promise<Damage
   console.log('🔍 Starting AI damage estimation...')
   console.log('   Photos to analyze:', input.photoUrls?.length || input.photoBase64?.length || 0)
   
-  // Bouw image content voor Claude
-  const imageContent: any[] = []
+  // Bouw image content voor AI SDK
+  const imageContent: Array<{ type: 'image'; image: URL | string }> = []
   
   // Via URL
   if (input.photoUrls && input.photoUrls.length > 0) {
     for (const url of input.photoUrls.slice(0, 5)) { // Max 5 foto's
       imageContent.push({
         type: 'image',
-        source: {
-          type: 'url',
-          url: url,
-        },
+        image: new URL(url),
       })
     }
   }
@@ -81,21 +77,14 @@ export async function estimateDamage(input: DamageEstimateInput): Promise<Damage
   // Via Base64
   if (input.photoBase64 && input.photoBase64.length > 0) {
     for (const base64 of input.photoBase64.slice(0, 5)) {
-      // Detecteer media type
-      let mediaType = 'image/jpeg'
-      if (base64.startsWith('data:image/png')) mediaType = 'image/png'
-      else if (base64.startsWith('data:image/webp')) mediaType = 'image/webp'
-      
-      // Strip data URI prefix if present
-      const cleanBase64 = base64.replace(/^data:image\/\w+;base64,/, '')
+      // Strip data URI prefix if present, keep as data URL for AI SDK
+      const dataUrl = base64.startsWith('data:') 
+        ? base64 
+        : `data:image/jpeg;base64,${base64}`
       
       imageContent.push({
         type: 'image',
-        source: {
-          type: 'base64',
-          media_type: mediaType,
-          data: cleanBase64,
-        },
+        image: dataUrl,
       })
     }
   }
@@ -110,9 +99,8 @@ export async function estimateDamage(input: DamageEstimateInput): Promise<Damage
   const prompt = buildDamageEstimationPrompt(input)
   
   try {
-    const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 2000,
+    const { text: responseText } = await generateText({
+      model: anthropic('claude-sonnet-4-20250514'),
       messages: [
         {
           role: 'user',
@@ -124,10 +112,10 @@ export async function estimateDamage(input: DamageEstimateInput): Promise<Damage
             },
           ],
         },
-      ],
+      ] as CoreMessage[],
+      maxTokens: 2000,
     })
     
-    const responseText = response.content[0].type === 'text' ? response.content[0].text : ''
     console.log('✅ Vision analysis completed')
     
     // Parse response
