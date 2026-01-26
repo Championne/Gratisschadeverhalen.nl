@@ -262,7 +262,7 @@ async function processEmailAsync(emailId: string, emailData: any) {
           summary: analysis.summary_nl,
           detected_references: analysis.detected_claim_references,
           detected_license_plates: analysis.detected_license_plates,
-          match_candidates: matchResult.all_matches?.slice(0, 3).map((m: any) => ({
+          match_candidates: matchResult.matches?.slice(0, 3).map((m: any) => ({
             claim_id: m.claim_id,
             confidence: m.confidence,
             reason: m.match_reason,
