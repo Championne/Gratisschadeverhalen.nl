@@ -7,12 +7,11 @@
  * - Triggert heranalyse indien relevant
  */
 
-import Anthropic from '@anthropic-ai/sdk'
+import { anthropic } from '@ai-sdk/anthropic'
+import { generateText, CoreMessage } from 'ai'
 import { createServiceClient } from '@/lib/supabase/service'
 import { put } from '@vercel/blob'
 import { logAuditAction } from '@/lib/audit/logger'
-
-const anthropic = new Anthropic()
 
 export interface AttachmentData {
   filename: string
@@ -144,28 +143,24 @@ Geef antwoord in JSON:
 `.trim()
 
   try {
-    const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 500,
+    const imageDataUrl = `data:${attachment.content_type};base64,${attachment.content}`
+    
+    const { text } = await generateText({
+      model: anthropic('claude-sonnet-4-20250514'),
       messages: [
         {
           role: 'user',
           content: [
             {
               type: 'image',
-              source: {
-                type: 'base64',
-                media_type: attachment.content_type as any,
-                data: attachment.content,
-              },
+              image: imageDataUrl,
             },
             { type: 'text', text: prompt },
           ],
         },
-      ],
+      ] as CoreMessage[],
+      maxTokens: 500,
     })
-
-    const text = response.content[0].type === 'text' ? response.content[0].text : ''
     const jsonMatch = text.match(/\{[\s\S]*\}/)
     
     if (!jsonMatch) throw new Error('No JSON in response')
