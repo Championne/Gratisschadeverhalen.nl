@@ -310,7 +310,7 @@ export default function HomePage() {
             <div className="max-w-5xl mx-auto text-center">
               {/* Hoofdtitel */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8 leading-tight">
-                De verhaalservice voor uw voertuig- en letselschade
+                Gratis Autoschade Verhalen op de Tegenpartij
               </h1>
               
               {/* Subtitel */}
