@@ -84,10 +84,6 @@ export function PhotoGuideTeaser() {
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full mb-4">
-              <Camera className="h-4 w-4" />
-              <span className="font-medium text-sm">Foto Tips</span>
-            </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-3">
               Maak deze foto's voor de snelste afhandeling
             </h2>

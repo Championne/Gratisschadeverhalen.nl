@@ -42,7 +42,7 @@ export default function DienstenPage() {
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               Wij regelen van A tot Z uw autoschade verhaal op de tegenpartij. 
-              Volledig digitaal, transparant en 100% gratis voor u.
+              Snelle expertise, volledig digitaal en 100% gratis voor u.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/claim-indienen">

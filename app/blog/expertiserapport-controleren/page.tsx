@@ -9,7 +9,7 @@ import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
 export const metadata: Metadata = {
   title: "Expertiserapport Controleren: 7 Cruciale Punten om op te Letten (2026)",
-  description: "Hoe controleer je een expertiserapport bij autoschade? 7 essentiële punten die u moet checken voordat u akkoord gaat. Expert tips voor maximale schadevergoeding.",
+  description: "Hoe controleert u een expertiserapport bij autoschade? 7 essentiële punten die u moet checken voordat u akkoord gaat. Expert tips voor maximale schadevergoeding.",
   keywords: [
     "expertiserapport controleren",
     "expertise autoschade",

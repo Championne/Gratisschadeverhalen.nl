@@ -111,15 +111,15 @@ export function ClaimsList({ claims: initialClaims }: ClaimsListProps) {
   if (claims.length === 0) {
     return (
       <Card>
-        <CardContent className="flex flex-col items-center justify-center py-12">
-          <div className="text-center space-y-4">
+        <CardContent className="flex flex-col items-start md:items-center justify-center py-8 md:py-12 px-4">
+          <div className="text-left md:text-center space-y-4">
             <div className="rounded-full bg-muted p-4 inline-block">
               <Plus className="h-8 w-8 text-muted-foreground" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-2">Nog geen claims</h3>
-              <p className="text-muted-foreground mb-4">
-                Je hebt nog geen schade claims ingediend.
+              <h3 className="text-lg font-semibold mb-2 text-left md:text-center">Nog geen claims</h3>
+              <p className="text-muted-foreground mb-4 text-left md:text-center">
+                U heeft nog geen schade claims ingediend.
               </p>
               <Link href="/claim-indienen">
                 <Button>
@@ -135,7 +135,7 @@ export function ClaimsList({ claims: initialClaims }: ClaimsListProps) {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 md:space-y-4">
       {claims.map((claim) => (
         <Link 
           key={claim.id} 
@@ -143,10 +143,10 @@ export function ClaimsList({ claims: initialClaims }: ClaimsListProps) {
           className="block group"
         >
           <Card className="cursor-pointer hover:shadow-lg hover:scale-[1.01] transition-all duration-200 active:scale-[0.99]">
-            <CardHeader>
-              <div className="flex items-start justify-between">
+            <CardHeader className="px-4 pt-4 pb-2 md:px-6 md:pt-6 md:pb-2">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
                 <div className="space-y-1 flex items-center gap-2 pointer-events-none">
-                  <CardTitle className="text-lg">
+                  <CardTitle className="text-base md:text-lg text-left">
                     Claim #{claim.id.substring(0, 8)}
                   </CardTitle>
                   <EscalationBadgeCompact 
@@ -154,34 +154,34 @@ export function ClaimsList({ claims: initialClaims }: ClaimsListProps) {
                     escalatieReden={claim.escalatie_reden}
                   />
                 </div>
-                <div className="flex items-center gap-2 pointer-events-none">
-                  <CardDescription className="text-right mr-3">
+                <div className="flex flex-wrap items-center gap-2 pointer-events-none">
+                  <CardDescription className="text-left md:text-right text-xs md:text-sm">
                     Ingediend op {formatDate(claim.created_at)}
                   </CardDescription>
-                  <Badge variant={getStatusBadgeVariant(claim.status)}>
+                  <Badge variant={getStatusBadgeVariant(claim.status)} className="text-xs">
                     {getStatusLabel(claim.status)}
                   </Badge>
                 </div>
               </div>
             </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-3 gap-4 mb-4 pointer-events-none">
-                <div>
-                  <p className="text-sm text-muted-foreground">Naam</p>
-                  <p className="font-medium">{claim.naam}</p>
+            <CardContent className="px-4 pb-4 md:px-6 md:pb-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-3 md:mb-4 pointer-events-none">
+                <div className="text-left">
+                  <p className="text-xs md:text-sm text-muted-foreground">Naam</p>
+                  <p className="font-medium text-sm md:text-base">{claim.naam}</p>
                 </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Kenteken Tegenpartij</p>
-                  <p className="font-medium">{claim.kenteken_tegenpartij}</p>
+                <div className="text-left">
+                  <p className="text-xs md:text-sm text-muted-foreground">Kenteken Tegenpartij</p>
+                  <p className="font-medium text-sm md:text-base">{claim.kenteken_tegenpartij}</p>
                 </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Datum Ongeval</p>
-                  <p className="font-medium">{formatDate(claim.datum_ongeval)}</p>
+                <div className="text-left">
+                  <p className="text-xs md:text-sm text-muted-foreground">Datum Ongeval</p>
+                  <p className="font-medium text-sm md:text-base">{formatDate(claim.datum_ongeval)}</p>
                 </div>
               </div>
               <div className="flex gap-2">
-                <Button variant="outline" size="sm" className="pointer-events-none">
-                  <Eye className="mr-2 h-4 w-4" />
+                <Button variant="outline" size="sm" className="pointer-events-none text-xs md:text-sm">
+                  <Eye className="mr-2 h-3 w-3 md:h-4 md:w-4" />
                   Details Bekijken
                 </Button>
               </div>

@@ -6,7 +6,7 @@ import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { faPhone } from "@fortawesome/free-solid-svg-icons"
 import { trackConversion } from "@/components/analytics"
 
 export function SiteHeader() {
@@ -16,51 +16,26 @@ export function SiteHeader() {
     trackConversion('phone_clicked')
   }
 
-  const handleEmailClick = () => {
-    trackConversion('email_clicked')
-  }
-
   return (
     <header className="sticky top-0 z-50 w-full bg-background">
-      {/* Contact Bar */}
-      <div className="bg-primary text-white">
-        <div className="container mx-auto px-4 py-2 flex flex-col sm:flex-row items-center justify-center sm:justify-end gap-2 sm:gap-6 text-sm">
-          <a 
-            href="tel:0850605357" 
-            className="flex items-center gap-2 hover:text-white/80 transition-colors font-medium"
-            onClick={handlePhoneClick}
-          >
-            <FontAwesomeIcon icon={faPhone} className="h-4 w-4" />
-            085 060 5357
-          </a>
-          <a 
-            href="mailto:info@autoschadebureau.nl" 
-            className="flex items-center gap-2 hover:text-white/80 transition-colors"
-            onClick={handleEmailClick}
-          >
-            <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4" />
-            info@autoschadebureau.nl
-          </a>
-        </div>
-      </div>
-
       {/* Main Header */}
       <div className="border-b">
-        <div className="container mx-auto flex h-24 items-center justify-between px-4">
+        {/* Desktop Header */}
+        <div className="container mx-auto hidden lg:flex h-20 items-center justify-between px-4">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image 
               src="/logo.png" 
               alt="Autoschadebureau.nl Logo" 
-              width={320}
-              height={90}
+              width={280}
+              height={80}
               priority
-              className="h-20 w-auto"
+              className="h-16 w-auto"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="flex items-center gap-5">
             <Link href="/" className="text-sm font-medium transition-colors hover:text-primary">
               Home
             </Link>
@@ -71,7 +46,7 @@ export function SiteHeader() {
               Claim Indienen
             </Link>
             <Link href="/veelgestelde-vragen" className="text-sm font-medium transition-colors hover:text-primary">
-              FAQ
+              Vragen
             </Link>
             <Link href="/blog" className="text-sm font-medium transition-colors hover:text-primary">
               Blog
@@ -82,16 +57,55 @@ export function SiteHeader() {
             <Link href="/contact" className="text-sm font-medium transition-colors hover:text-primary">
               Contact
             </Link>
+            
+            {/* Divider */}
+            <div className="h-6 w-px bg-border" />
+            
+            {/* Phone */}
+            <a 
+              href="tel:0850605357" 
+              className="flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+              onClick={handlePhoneClick}
+            >
+              <FontAwesomeIcon icon={faPhone} className="h-3.5 w-3.5" />
+              085 060 5357
+            </a>
+            
             <Link href="/dashboard">
               <Button variant="default" size="sm">
                 Mijn Dossier
               </Button>
             </Link>
           </nav>
+        </div>
 
-          {/* Mobile Menu Button */}
+        {/* Mobile Header: Phone Left | Logo Center | Menu Right */}
+        <div className="container mx-auto flex lg:hidden h-16 items-center justify-between px-4">
+          {/* Phone Icon - Left */}
+          <a 
+            href="tel:0850605357" 
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors"
+            onClick={handlePhoneClick}
+            aria-label="Bel ons"
+          >
+            <FontAwesomeIcon icon={faPhone} className="h-4 w-4" />
+          </a>
+
+          {/* Logo - Center */}
+          <Link href="/" className="flex items-center absolute left-1/2 transform -translate-x-1/2">
+            <Image 
+              src="/logo.png" 
+              alt="Autoschadebureau.nl Logo" 
+              width={200}
+              height={56}
+              priority
+              className="h-12 w-auto"
+            />
+          </Link>
+
+          {/* Mobile Menu Button - Right */}
           <button 
-            className="md:hidden p-2 -mr-2"
+            className="p-2 -mr-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -106,7 +120,7 @@ export function SiteHeader() {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t bg-background">
+        <div className="lg:hidden border-t bg-background">
           <nav className="container py-4 flex flex-col space-y-3">
             <Link 
               href="/" 
@@ -134,7 +148,7 @@ export function SiteHeader() {
               className="text-sm font-medium px-4 py-2 hover:bg-accent rounded-md transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-              FAQ
+              Vragen
             </Link>
             <Link 
               href="/blog" 
@@ -157,6 +171,19 @@ export function SiteHeader() {
             >
               Contact
             </Link>
+            
+            {/* Phone Info Mobile */}
+            <div className="border-t pt-3 mt-2 px-4">
+              <a 
+                href="tel:0850605357" 
+                className="flex items-center gap-2 text-sm font-medium text-primary"
+                onClick={handlePhoneClick}
+              >
+                <FontAwesomeIcon icon={faPhone} className="h-4 w-4" />
+                085 060 5357
+              </a>
+            </div>
+            
             <Link 
               href="/dashboard"
               className="px-4 py-2"

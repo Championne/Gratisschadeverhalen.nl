@@ -10,7 +10,7 @@ import { PhotoGuideTeaser } from "@/components/photo-guide"
 
 export const metadata: Metadata = {
   title: "Autoschade Verhalen | Gratis Voertuigschade Claimen - Zonder Eigen Risico",
-  description: "Verhaal uw autoschade direct bij de tegenpartij - zonder eigen risico, zonder premieverhoging. Upload uw schadeformulier en wij regelen alles gratis. Ook met eigen verzekering voordelig!",
+  description: "Verhaal uw autoschade direct bij de tegenpartij. Snelle expertise, zonder eigen risico, zonder premieverhoging. Upload uw schadeformulier - 100% gratis!",
   keywords: [
     "autoschade verhalen", 
     "voertuigschade verhalen", 
@@ -305,16 +305,16 @@ export default function HomePage() {
       />
       
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-50 via-white to-green-50 pt-8 pb-12 md:pt-12 md:pb-16">
+        <section className="bg-gradient-to-br from-blue-50 via-white to-green-50 pt-4 pb-6 md:pt-12 md:pb-16">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto text-center">
               {/* Hoofdtitel */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8 leading-tight">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-8 leading-tight">
                 Gratis Autoschade Verhalen op de Tegenpartij
               </h1>
               
               {/* Subtitel */}
-              <p className="text-xl md:text-2xl text-muted-foreground mb-6 max-w-4xl mx-auto">
+              <p className="text-lg md:text-2xl text-muted-foreground mb-3 md:mb-6 max-w-4xl mx-auto">
                 <strong className="text-foreground">Autoschadebureau.nl</strong> is een laagdrempelige juridische dienstverlener. Wij verhalen de{" "}
                 <strong className="text-foreground">voertuigschade</strong> en{" "}
                 <a href="https://unitasletselschade.nl" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">
@@ -323,7 +323,7 @@ export default function HomePage() {
                 op de tegenpartij.
               </p>
 
-              <p className="text-lg md:text-xl text-muted-foreground mb-4">
+              <p className="text-base md:text-xl text-muted-foreground mb-2 md:mb-4">
                 Van advies en aansprakelijk stellen tot en met een juridische procedure.
               </p>
             </div>
@@ -331,11 +331,11 @@ export default function HomePage() {
         </section>
 
       {/* Upload CTA Section */}
-        <section className="bg-gray-50 py-12 md:py-16">
+        <section className="bg-gray-50 py-6 md:py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               {/* Section Title */}
-              <div className="text-center mb-8">
+              <div className="text-center mb-4 md:mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
                   Direct uw schade melden
                 </h2>
@@ -351,12 +351,9 @@ export default function HomePage() {
                     <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                       <Upload className="h-8 w-8 text-primary" />
                     </div>
-                    <CardTitle className="text-2xl md:text-3xl mb-2">
+                    <CardTitle className="text-2xl md:text-3xl">
                       Upload hier uw Europees Schadeformulier
                     </CardTitle>
-                    <CardDescription className="text-base">
-                      Maak een foto of scan en wij lezen het automatisch in.
-                    </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <Button size="lg" className="w-full text-base sm:text-lg h-14 text-white shadow-lg group-hover:shadow-xl transition-all pointer-events-none">
@@ -373,7 +370,7 @@ export default function HomePage() {
                 </Card>
               </Link>
 
-              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-8 text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mt-4 md:mt-8 text-sm text-muted-foreground">
                 <span className="flex items-center gap-2">
                   <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0" />
                   <span>U betaalt niets</span>
@@ -392,10 +389,10 @@ export default function HomePage() {
         </section>
 
         {/* USP Section - 3 Key Benefits */}
-        <section className="py-10 md:py-12 bg-white border-y">
+        <section className="py-6 md:py-12 bg-white border-y">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
-              <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+              <div className="grid md:grid-cols-3 gap-4 md:gap-8">
                 {/* USP 1: Tegenpartij betaalt */}
                 <div className="text-center">
                   <div className="mb-6">
@@ -443,11 +440,11 @@ export default function HomePage() {
 
 
         {/* HOE WERKT HET - 4 Stappen Proces */}
-        <section className="py-10 md:py-12 bg-gradient-to-b from-blue-50 to-white">
+        <section className="py-6 md:py-12 bg-gradient-to-b from-blue-50 to-white">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               {/* Header */}
-              <div className="text-center mb-8">
+              <div className="text-center mb-4 md:mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold mb-3">
                   Zo werkt het
                 </h2>
@@ -457,19 +454,19 @@ export default function HomePage() {
               </div>
 
               {/* 4 Stappen */}
-              <div className="grid md:grid-cols-4 gap-8 relative">
+              <div className="grid md:grid-cols-4 gap-4 md:gap-8 relative">
                 {/* Connecting Line (desktop only) */}
-                <div className="hidden md:block absolute top-12 left-0 right-0 h-1 bg-gradient-to-r from-primary via-blue-400 to-green-500" style={{ top: '48px', zIndex: 0 }}></div>
+                <div className="hidden md:block absolute top-12 left-0 right-0 h-1 bg-primary" style={{ top: '48px', zIndex: 0 }}></div>
 
                 {/* Step 1 */}
                 <div className="relative z-10">
                   <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-primary text-white flex items-center justify-center text-3xl font-bold shadow-lg">
+                    <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-3 md:mb-4 rounded-full bg-primary text-white flex items-center justify-center text-2xl md:text-3xl font-bold shadow-lg">
                       1
                     </div>
-                    <div className="bg-white rounded-lg p-6 shadow-md border-2 border-primary/20 min-h-[180px]">
-                      <h3 className="font-bold text-lg mb-2">Upload Formulier</h3>
-                      <p className="text-sm text-muted-foreground">
+                    <div className="bg-white rounded-lg p-4 md:p-6 shadow-md border-2 border-primary/20 min-h-[140px] md:min-h-[180px]">
+                      <h3 className="font-bold text-base md:text-lg mb-1 md:mb-2">Upload Formulier</h3>
+                      <p className="text-xs md:text-sm text-muted-foreground">
                         Maak foto van uw Europees Schadeformulier en upload. 
                         OCR leest automatisch alle gegevens.
                       </p>
@@ -480,12 +477,12 @@ export default function HomePage() {
                 {/* Step 2 */}
                 <div className="relative z-10">
                   <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-blue-500 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
+                    <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-3 md:mb-4 rounded-full bg-primary text-white flex items-center justify-center text-2xl md:text-3xl font-bold shadow-lg">
                       2
                     </div>
-                    <div className="bg-white rounded-lg p-6 shadow-md border-2 border-blue-200 min-h-[180px]">
-                      <h3 className="font-bold text-lg mb-2">Controleer & Verstuur</h3>
-                      <p className="text-sm text-muted-foreground">
+                    <div className="bg-white rounded-lg p-4 md:p-6 shadow-md border-2 border-primary/20 min-h-[140px] md:min-h-[180px]">
+                      <h3 className="font-bold text-base md:text-lg mb-1 md:mb-2">Controleer & Verstuur</h3>
+                      <p className="text-xs md:text-sm text-muted-foreground">
                         Check de ingevulde gegevens, voeg eventueel foto's toe 
                         en verstuur. Klaar in 2 minuten!
                       </p>
@@ -496,12 +493,12 @@ export default function HomePage() {
                 {/* Step 3 */}
                 <div className="relative z-10">
                   <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-orange-500 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
+                    <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-3 md:mb-4 rounded-full bg-primary text-white flex items-center justify-center text-2xl md:text-3xl font-bold shadow-lg">
                       3
                     </div>
-                    <div className="bg-white rounded-lg p-6 shadow-md border-2 border-orange-200 min-h-[180px]">
-                      <h3 className="font-bold text-lg mb-2">Wij Regelen Alles</h3>
-                      <p className="text-sm text-muted-foreground">
+                    <div className="bg-white rounded-lg p-4 md:p-6 shadow-md border-2 border-primary/20 min-h-[140px] md:min-h-[180px]">
+                      <h3 className="font-bold text-base md:text-lg mb-1 md:mb-2">Wij Regelen Alles</h3>
+                      <p className="text-xs md:text-sm text-muted-foreground">
                         Binnen 24 uur beoordelen we uw claim. Wij sturen 
                         aansprakelijkheidsbrief en onderhandelen.
                       </p>
@@ -512,12 +509,12 @@ export default function HomePage() {
                 {/* Step 4 */}
                 <div className="relative z-10">
                   <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-green-500 text-white flex items-center justify-center text-3xl font-bold shadow-lg">
+                    <div className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-3 md:mb-4 rounded-full bg-primary text-white flex items-center justify-center text-2xl md:text-3xl font-bold shadow-lg">
                       4
                     </div>
-                    <div className="bg-white rounded-lg p-6 shadow-md border-2 border-green-200 min-h-[180px]">
-                      <h3 className="font-bold text-lg mb-2">Uitbetaling</h3>
-                      <p className="text-sm text-muted-foreground">
+                    <div className="bg-white rounded-lg p-4 md:p-6 shadow-md border-2 border-primary/20 min-h-[140px] md:min-h-[180px]">
+                      <h3 className="font-bold text-base md:text-lg mb-1 md:mb-2">Uitbetaling</h3>
+                      <p className="text-xs md:text-sm text-muted-foreground">
                         Gemiddeld binnen 6 weken ontvangt u de volledige 
                         schadevergoeding. Wij houden u op de hoogte.
                       </p>
@@ -530,163 +527,25 @@ export default function HomePage() {
                 <Link href="/claim-indienen" className="inline-block w-full sm:w-auto">
                   <Button size="lg" className="text-base sm:text-lg px-6 sm:px-10 py-6 shadow-xl hover:shadow-2xl transition-all w-full sm:w-auto">
                     <Upload className="mr-2 h-5 w-5 flex-shrink-0" />
-                    Start Nu – Klaar in 2 Minuten
+                    Direct Schade Melden
                   </Button>
                 </Link>
-                <p className="text-sm text-muted-foreground mt-3">
-                  ⚡ Binnen 24 uur krijgt u al een eerste beoordeling
-                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Foto Tips Teaser */}
-        <PhotoGuideTeaser />
+        {/* Foto Tips Teaser - Hidden on mobile to reduce scroll */}
+        <div className="hidden md:block">
+          <PhotoGuideTeaser />
+        </div>
 
-        {/* Trust Badges Section */}
-        <section className="py-10 md:py-12 bg-white border-y">
-          <div className="container mx-auto px-4">
-            <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-8">
-                <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-4">
-                  Vertrouwd door duizenden Nederlanders
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
-                {/* Badge 1: 100% Veilig */}
-                <div className="text-center p-4 rounded-lg bg-gray-50">
-                  <Shield className="h-10 w-10 mx-auto mb-2 text-green-600" />
-                  <p className="font-semibold text-sm">100% Veilig</p>
-                  <p className="text-xs text-muted-foreground">AVG Compliant</p>
-                </div>
-
-                {/* Badge 2: SSL Beveiligd */}
-                <div className="text-center p-4 rounded-lg bg-gray-50">
-                  <FontAwesomeIcon icon={faCircleCheck} className="h-10 w-10 mx-auto mb-2 text-blue-600" />
-                  <p className="font-semibold text-sm">SSL Beveiligd</p>
-                  <p className="text-xs text-muted-foreground">256-bit Encryptie</p>
-                </div>
-
-                {/* Badge 3: 100% Gratis */}
-                <div className="text-center p-4 rounded-lg bg-gray-50">
-                  <Euro className="h-10 w-10 mx-auto mb-2 text-yellow-600" />
-                  <p className="font-semibold text-sm">100% Gratis</p>
-                  <p className="text-xs text-muted-foreground">U betaalt niets</p>
-                </div>
-
-                {/* Badge 4: Nederlandse Service */}
-                <div className="text-center p-4 rounded-lg bg-gray-50">
-                  <Star className="h-10 w-10 mx-auto mb-2 text-orange-600" />
-                  <p className="font-semibold text-sm">NL Service</p>
-                  <p className="text-xs text-muted-foreground">Altijd Bereikbaar</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section className="py-10 md:py-12 bg-gradient-to-b from-white to-blue-50">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              {/* Header */}
-              <div className="text-center mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold mb-3">
-                  Wat onze klanten zeggen
-                </h2>
-                <p className="text-xl text-muted-foreground">
-                  Meer dan 1.000+ tevreden klanten gingen u voor
-                </p>
-              </div>
-
-              {/* Testimonials Grid */}
-              <div className="grid md:grid-cols-3 gap-6">
-                {/* Testimonial 1 */}
-                <Card className="border-2">
-                  <CardContent className="pt-6">
-                    <div className="flex mb-4">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                    <p className="text-muted-foreground mb-4 italic">
-                      "Super snel en makkelijk! Foto gemaakt van mijn schadeformulier, 
-                      geüpload, en binnen 5 weken had ik €2.350 op mijn rekening. 
-                      Helemaal niets voor hoeven betalen!"
-                    </p>
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-600">
-                        SM
-                      </div>
-                      <div>
-                        <p className="font-semibold">Sophie M.</p>
-                        <p className="text-sm text-muted-foreground">Amsterdam</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Testimonial 2 */}
-                <Card className="border-2 border-primary">
-                  <CardContent className="pt-6">
-                    <div className="flex mb-4">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                    <p className="text-muted-foreground mb-4 italic">
-                      "Eindelijk een partij die het voor je regelt zonder gedoe. 
-                      Dashboard werkt perfect, je ziet precies wat er gebeurt. 
-                      Professionele aanpak!"
-                    </p>
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-600">
-                        TR
-                      </div>
-                      <div>
-                        <p className="font-semibold">Thijs R.</p>
-                        <p className="text-sm text-muted-foreground">Rotterdam</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Testimonial 3 */}
-                <Card className="border-2">
-                  <CardContent className="pt-6">
-                    <div className="flex mb-4">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                    <p className="text-muted-foreground mb-4 italic">
-                      "Via mijn eigen verzekering had ik €500 eigen risico moeten betalen. 
-                      Nu kreeg ik €1.850 vergoed zonder iets te betalen. Echt een aanrader!"
-                    </p>
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center font-bold text-purple-600">
-                        NB
-                      </div>
-                      <div>
-                        <p className="font-semibold">Noor B.</p>
-                        <p className="text-sm text-muted-foreground">Utrecht</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-
-            </div>
-          </div>
-        </section>
 
         {/* Waarom zelf verhalen via ons - NIEUWE SECTIE */}
-        <section className="py-10 md:py-12 bg-gradient-to-b from-white to-blue-50">
+        <section className="py-6 md:py-12 bg-gradient-to-b from-white to-blue-50">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-8">
+              <div className="text-center mb-4 md:mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
                   Waarom uw autoschade via ons verhalen?
                 </h2>
@@ -699,67 +558,67 @@ export default function HomePage() {
               <Card className="border-2 border-primary bg-gradient-to-br from-primary/5 to-white">
                 <CardHeader className="text-center pb-4">
                   <CardTitle className="text-2xl md:text-3xl">
-                    Uw voordelen: Direct verhalen bij de tegenpartij
+                    Wij regelen alles, u ontvangt de volledige vergoeding
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-                    <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
-                      <FontAwesomeIcon icon={faCircleCheck} className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <div className="flex items-start gap-3 bg-white rounded-lg p-3 md:p-4 border">
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 md:h-6 md:w-6 text-green-600 flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="font-semibold mb-1">Geen eigen risico</p>
-                        <p className="text-sm text-muted-foreground">
-                          De WA-verzekeraar van de tegenpartij betaalt alles. U betaalt niks uit eigen zak.
+                        <p className="font-semibold text-sm md:text-base">Geen eigen risico</p>
+                        <p className="hidden md:block text-sm text-muted-foreground">
+                          De WA-verzekeraar van de tegenpartij betaalt alles.
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
-                      <FontAwesomeIcon icon={faCircleCheck} className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <div className="flex items-start gap-3 bg-white rounded-lg p-3 md:p-4 border">
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 md:h-6 md:w-6 text-green-600 flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="font-semibold mb-1">Geen premieverhoging</p>
-                        <p className="text-sm text-muted-foreground">
-                          Uw eigen verzekering wordt niet gebruikt. Schadevrije jaren blijven behouden.
+                        <p className="font-semibold text-sm md:text-base">Geen premieverhoging</p>
+                        <p className="hidden md:block text-sm text-muted-foreground">
+                          Schadevrije jaren blijven behouden.
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
-                      <FontAwesomeIcon icon={faCircleCheck} className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <div className="flex items-start gap-3 bg-white rounded-lg p-3 md:p-4 border">
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 md:h-6 md:w-6 text-green-600 flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="font-semibold mb-1">Sneller uitbetaald</p>
-                        <p className="text-sm text-muted-foreground">
-                          Direct onderhandelen met tegenpartij. Geen wachten op regres van uw eigen verzekeraar.
+                        <p className="font-semibold text-sm md:text-base">Sneller uitbetaald</p>
+                        <p className="hidden md:block text-sm text-muted-foreground">
+                          Direct onderhandelen met tegenpartij.
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
-                      <FontAwesomeIcon icon={faCircleCheck} className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <div className="flex items-start gap-3 bg-white rounded-lg p-3 md:p-4 border">
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 md:h-6 md:w-6 text-green-600 flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="font-semibold mb-1">Volledig gratis</p>
-                        <p className="text-sm text-muted-foreground">
-                          U betaalt niets. De WA-verzekeraar van de tegenpartij vergoedt ALLE kosten, inclusief onze kosten.
+                        <p className="font-semibold text-sm md:text-base">Volledig gratis</p>
+                        <p className="hidden md:block text-sm text-muted-foreground">
+                          U betaalt niets, alle kosten door tegenpartij.
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
-                      <FontAwesomeIcon icon={faCircleCheck} className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <div className="flex items-start gap-3 bg-white rounded-lg p-3 md:p-4 border">
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 md:h-6 md:w-6 text-green-600 flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="font-semibold mb-1">Professioneel voor u geregeld</p>
-                        <p className="text-sm text-muted-foreground">
-                          Wij schrijven de aansprakelijkheidsbrief, onderhandelen, en dreigen indien nodig met juridische stappen.
+                        <p className="font-semibold text-sm md:text-base">Professioneel geregeld</p>
+                        <p className="hidden md:block text-sm text-muted-foreground">
+                          Wij onderhandelen en regelen alles.
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-3 bg-white rounded-lg p-4 border">
-                      <FontAwesomeIcon icon={faCircleCheck} className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                    <div className="flex items-start gap-3 bg-white rounded-lg p-3 md:p-4 border">
+                      <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 md:h-6 md:w-6 text-green-600 flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="font-semibold mb-1">U hoeft niets zelf te doen</p>
-                        <p className="text-sm text-muted-foreground">
-                          Geen contact met verzekeraars, geen gedoe. Upload schadeformulier en wij regelen de rest.
+                        <p className="font-semibold text-sm md:text-base">U hoeft niets te doen</p>
+                        <p className="hidden md:block text-sm text-muted-foreground">
+                          Upload schadeformulier en klaar.
                         </p>
                       </div>
                     </div>
@@ -780,107 +639,19 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Hoe werkt het Section */}
-        <section id="hoe-werkt-het" className="py-10 md:py-12 bg-white">
+        {/* Succesverhalen & Testimonials Section */}
+        <section id="voorbeelden" className="py-6 md:py-12 bg-gradient-to-b from-gray-50 to-white">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-10">
+            <div className="text-center mb-4 md:mb-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Zo verhalen wij uw autoschade in 4 stappen
+                Wat onze klanten zeggen
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Van schademelding tot uitbetaling: wij regelen uw volledige voertuigschade claim tegen de tegenpartij
+                837 tevreden klanten gingen u voor – bekijk hun succesverhalen
               </p>
             </div>
 
-            <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-              {/* Stap 1 */}
-              <Card className="border-2 hover:border-primary transition-colors">
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold">
-                      1
-                    </div>
-                    <div>
-                      <CardTitle className="text-xl mb-2">Upload schadeformulier of vul handmatig in</CardTitle>
-                      <CardDescription>
-                        Upload een foto van uw Europees Schadeformulier en ons OCR-systeem vult automatisch 80% van de velden in. 
-                        Of vul alles handmatig in – hoe u wilt. Voeg foto's van uw autoschade toe en een korte omschrijving.
-                      </CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-              </Card>
-
-              {/* Stap 2 */}
-              <Card className="border-2 hover:border-primary transition-colors">
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold">
-                      2
-                    </div>
-                    <div>
-                      <CardTitle className="text-xl mb-2">Wij beoordelen en nemen contact op</CardTitle>
-                      <CardDescription>
-                        Binnen 24 uur bekijken wij uw voertuigschade claim. We stellen een professionele aansprakelijkheidsbrief op 
-                        en sturen deze direct naar de WA-verzekeraar van de tegenpartij. U krijgt toegang tot uw persoonlijke dashboard.
-                      </CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-              </Card>
-
-              {/* Stap 3 */}
-              <Card className="border-2 hover:border-primary transition-colors">
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold">
-                      3
-                    </div>
-                    <div>
-                      <CardTitle className="text-xl mb-2">Wij onderhandelen voor u</CardTitle>
-                      <CardDescription>
-                        Onze ervaren schadebehandelaars onderhandelen met de verzekeraar tot u de volledige vergoeding voor uw autoschade ontvangt. 
-                        U volgt alles real-time in uw dashboard. Wij houden u op de hoogte van elke ontwikkeling.
-                      </CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-              </Card>
-
-              {/* Stap 4 */}
-              <Card className="border-2 hover:border-primary transition-colors">
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold">
-                      4
-                    </div>
-                    <div>
-                      <CardTitle className="text-xl mb-2">Uitbetaling schadevergoeding</CardTitle>
-                      <CardDescription>
-                        Zodra de verzekeraar akkoord gaat, ontvangt u de volledige schadevergoeding direct op uw rekening. 
-                        Gemiddeld binnen 6 weken volledig afgehandeld. Volledig gratis – alle kosten worden door de tegenpartij betaald.
-                      </CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* Voorbeeldcases Section */}
-        <section id="voorbeelden" className="py-10 md:py-12 bg-gradient-to-b from-gray-50 to-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Succesverhalen: Autoschade verhalen in de praktijk
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Echte voorbeelden van hoe wij voertuigschade claims succesvol hebben afgehandeld
-              </p>
-            </div>
-
-            <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+            <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-4 md:gap-8">
               {/* Case 1 */}
               <Card className="h-full">
                 <CardHeader>
@@ -908,8 +679,8 @@ export default function HomePage() {
                 </CardContent>
               </Card>
 
-              {/* Case 2 */}
-              <Card className="h-full">
+              {/* Case 2 - Hidden on mobile */}
+              <Card className="h-full hidden md:block">
                 <CardHeader>
                   <div className="flex items-center gap-2 mb-3">
                     <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
@@ -935,8 +706,8 @@ export default function HomePage() {
                 </CardContent>
               </Card>
 
-              {/* Case 3 */}
-              <Card className="h-full">
+              {/* Case 3 - Hidden on mobile */}
+              <Card className="h-full hidden md:block">
                 <CardHeader>
                   <div className="flex items-center gap-2 mb-3">
                     <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
@@ -963,6 +734,28 @@ export default function HomePage() {
               </Card>
             </div>
 
+            {/* Korte testimonials - Hidden on mobile */}
+            <div className="hidden md:grid max-w-4xl mx-auto mt-8 md:grid-cols-3 gap-4">
+              <div className="bg-white rounded-lg p-4 border text-center">
+                <p className="text-sm text-muted-foreground italic mb-3">
+                  "Super snel en makkelijk! Binnen 5 weken €2.350 op mijn rekening."
+                </p>
+                <p className="text-sm font-semibold">Sophie M. – Amsterdam</p>
+              </div>
+              <div className="bg-white rounded-lg p-4 border text-center">
+                <p className="text-sm text-muted-foreground italic mb-3">
+                  "Eindelijk een partij die het regelt zonder gedoe. Professionele aanpak!"
+                </p>
+                <p className="text-sm font-semibold">Thijs R. – Rotterdam</p>
+              </div>
+              <div className="bg-white rounded-lg p-4 border text-center">
+                <p className="text-sm text-muted-foreground italic mb-3">
+                  "Via eigen verzekering €500 eigen risico. Nu €1.850 zonder te betalen!"
+                </p>
+                <p className="text-sm font-semibold">Noor B. – Utrecht</p>
+              </div>
+            </div>
+
             <div className="text-center mt-8">
               <Link href="/claim-indienen" className="inline-block w-full sm:w-auto">
                 <Button size="lg" className="text-base sm:text-lg px-6 sm:px-8 w-full sm:w-auto">
@@ -975,419 +768,106 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Waarom gratis Section */}
-        <section className="py-10 md:py-12 bg-white">
+        {/* Top 5 FAQ Section */}
+        <section id="faq" className="py-6 md:py-12 bg-white">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Waarom is autoschade verhalen bij ons gratis?
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  De <strong>WA-verzekeraar van de tegenpartij</strong> betaalt ALLE kosten. Dit betekent:
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <Card>
-                  <CardHeader>
-                    <Euro className="h-10 w-10 text-primary mb-2" />
-                    <CardTitle>Tegenpartij betaalt alles</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">
-                      De WA-verzekeraar van de schuldige partij betaalt de volledige schadevergoeding én onze kosten. 
-                      U betaalt dus nooit iets – niet vooraf, en ook niet achteraf.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <FontAwesomeIcon icon={faCircleCheck} className="h-10 w-10 text-primary mb-2" />
-                    <CardTitle>U betaalt niets</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">
-                      De WA-verzekeraar van de tegenpartij betaalt ALLE kosten, inclusief onze kosten. 
-                      U hoeft dus letterlijk niets te betalen – geen voorschot, geen percentage, helemaal niets.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <Shield className="h-10 w-10 text-primary mb-2" />
-                    <CardTitle>Volledige transparantie</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">
-                      U volgt uw claim 24/7 online en ziet alle updates direct in uw dashboard. 
-                      Geen verrassingen, alle kosten worden door de tegenpartij betaald.
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <Clock className="h-10 w-10 text-primary mb-2" />
-                    <CardTitle>Wij nemen alle risico</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">
-                      Als de verzekeraar niet betaalt of er komt geen akkoord, hebben wij al uren werk verricht zonder dat u iets betaalt. 
-                      Dat risico nemen wij volledig voor onze rekening.
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Uitgebreide FAQ Section */}
-        <section id="faq" className="py-10 md:py-12 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold mb-3">Veelgestelde vragen over autoschade verhalen</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Alles wat u moet weten over het gratis verhalen van uw voertuigschade
-              </p>
+            <div className="text-center mb-4 md:mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold">Veelgestelde vragen</h2>
             </div>
 
-            <div className="max-w-4xl mx-auto space-y-3">
+            <div className="max-w-4xl mx-auto space-y-2 md:space-y-3">
               {/* FAQ 1 */}
               <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                  <span className="font-semibold text-lg pr-4">Kan ik echt gratis mijn autoschade verhalen?</span>
+                <summary className="flex items-center justify-between p-3 md:p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
+                  <span className="font-semibold text-base md:text-lg pr-4">Kan ik echt gratis mijn autoschade verhalen?</span>
                   <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>
-                <div className="px-5 pb-5">
-                  <p className="text-muted-foreground">
+                <div className="px-3 pb-3 md:px-5 md:pb-5">
+                  <p className="text-muted-foreground text-sm md:text-base">
                     Ja, 100% gratis. De WA-verzekeraar van de tegenpartij betaalt ALLE kosten, inclusief onze kosten. 
-                    U betaalt dus letterlijk niets – geen voorschot, geen verborgen kosten, geen percentage. Alles wordt door de tegenpartij vergoed.
+                    U betaalt dus letterlijk niets – geen voorschot, geen verborgen kosten, geen percentage.
                   </p>
                 </div>
               </details>
 
-              {/* FAQ - WA-verzekering */}
+              {/* FAQ 2 */}
               <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                  <span className="font-semibold text-lg pr-4">Heeft u alleen WA-verzekering?</span>
+                <summary className="flex items-center justify-between p-3 md:p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
+                  <span className="font-semibold text-base md:text-lg pr-4">Hoe lang duurt het verhalen van autoschade?</span>
                   <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>
-                <div className="px-5 pb-5 space-y-3">
-                  <p className="text-muted-foreground">
-                    Dan doet <strong>uw eigen verzekeraar helemaal niets</strong> voor uw schade als een ander u aanrijdt.
-                  </p>
-                  <ul className="text-sm space-y-2 text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <span className="text-gray-400 mt-0.5">•</span>
-                      <span>U moet zelf contact opnemen met de tegenpartij-verzekeraar</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-gray-400 mt-0.5">•</span>
-                      <span>U moet zelf een aansprakelijkheidsbrief schrijven</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-gray-400 mt-0.5">•</span>
-                      <span>U moet zelf onderhandelen over de schadevergoeding</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-gray-400 mt-0.5">•</span>
-                      <span>Of u betaalt de reparatie zelf uit eigen zak</span>
-                    </li>
-                  </ul>
-                  <p className="text-sm font-semibold text-green-700 bg-green-50 border border-green-200 rounded-lg p-3">
-                    ✅ <strong>Wij regelen dit alles gratis voor u!</strong> U hoeft niets zelf te doen.
-                  </p>
-                </div>
-              </details>
-
-              {/* FAQ - Beperkt Casco / Allrisk */}
-              <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                  <span className="font-semibold text-lg pr-4">Heeft u beperkt casco of allrisk?</span>
-                  <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-5 pb-5 space-y-3">
-                  <p className="text-muted-foreground">
-                    Uw verzekeraar schiet WEL voor, maar dat heeft <strong>vervelende nadelen</strong>:
-                  </p>
-                  <ul className="text-sm space-y-2 text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-500 mt-0.5">✗</span>
-                      <span><strong>Eigen risico betalen</strong> (€300-€1000+)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-500 mt-0.5">✗</span>
-                      <span><strong>Premie stijgt volgend jaar</strong> (schadevrije jaren kwijt)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-500 mt-0.5">✗</span>
-                      <span><strong>Lange wachttijd</strong> op terugbetaling eigen risico (maanden)</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-500 mt-0.5">✗</span>
-                      <span><strong>Vaak laten ze het liggen:</strong> "Verhaal het zelf maar"</span>
-                    </li>
-                  </ul>
-                  <p className="text-sm font-semibold text-green-700 bg-green-50 border border-green-200 rounded-lg p-3">
-                    ✅ <strong>Wij verhalen direct bij de tegenpartij!</strong> Geen eigen risico, geen premieverhoging.
-                  </p>
-                </div>
-              </details>
-
-              {/* FAQ 2 - Verzekering vraag */}
-              <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                  <span className="font-semibold text-lg pr-4">Wordt mijn autoschade niet gewoon door mijn eigen verzekeraar verhaald?</span>
-                  <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-5 pb-5 space-y-4">
-                  <p className="text-muted-foreground">
-                    Dit is een veelgestelde vraag! Het antwoord hangt af van uw type verzekering:
-                  </p>
-                  
-                  <div className="bg-orange-50 border-l-4 border-orange-500 p-4 rounded">
-                    <p className="font-semibold text-orange-900 mb-2">📋 Alleen WA-verzekering?</p>
-                    <p className="text-sm text-orange-800">
-                      Dan doet <strong>uw eigen verzekeraar helemaal niets</strong> voor schade die een ander u heeft aangedaan. 
-                      WA dekt alleen schade die u aan anderen veroorzaakt. U moet zelf verhalen bij de tegenpartij – of via ons (gratis).
-                    </p>
-                  </div>
-
-                  <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
-                    <p className="font-semibold text-blue-900 mb-2">💰 Beperkt casco of allrisk?</p>
-                    <p className="text-sm text-blue-800 mb-2">
-                      Uw verzekeraar schiet WEL voor, maar met vervelende nadelen:
-                    </p>
-                    <ul className="text-sm text-blue-800 space-y-1 ml-4">
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-0.5">✗</span>
-                        <span>U betaalt <strong>eigen risico</strong> (€300-€1000+)</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-0.5">✗</span>
-                        <span>Uw <strong>premie stijgt volgend jaar</strong> (schadevrije jaren kwijt)</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-0.5">✗</span>
-                        <span><strong>Lange wachttijd</strong> op terugbetaling eigen risico (soms maanden)</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-600 mt-0.5">✗</span>
-                        <span>Vaak zeggen ze: <strong>"Verhaal het zelf maar bij de tegenpartij"</strong></span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded">
-                    <p className="font-semibold text-green-900 mb-2">✅ Onze aanpak: Direct verhalen bij de tegenpartij</p>
-                    <ul className="text-sm text-green-800 space-y-1 ml-4">
-                      <li className="flex items-start gap-2">
-                        <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                        <span><strong>Geen eigen risico</strong> – tegenpartij betaalt alles</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                        <span><strong>Geen premieverhoging</strong> – uw verzekering blijft onaangetast</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                        <span><strong>Sneller uitbetaald</strong> – gemiddeld binnen 6 weken</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                        <span><strong>Volledig gratis</strong> – u betaalt niets, tegenpartij betaalt alles</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <p className="text-sm font-medium text-primary">
-                    💡 Conclusie: Ook met een eigen verzekering is onze dienst vaak voordeliger, sneller en zonder risico!
+                <div className="px-3 pb-3 md:px-5 md:pb-5">
+                  <p className="text-muted-foreground text-sm md:text-base">
+                    Gemiddeld 4-8 weken. Binnen 24 uur beoordelen we uw claim en starten we contact met de verzekeraar. 
+                    De meeste claims zijn binnen 6 weken afgerond.
                   </p>
                 </div>
               </details>
 
               {/* FAQ 3 */}
               <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                  <span className="font-semibold text-lg pr-4">Hoe werkt de upload van het Europees Schadeformulier?</span>
+                <summary className="flex items-center justify-between p-3 md:p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
+                  <span className="font-semibold text-base md:text-lg pr-4">Gaat mijn premie omhoog als ik via jullie verhaal?</span>
                   <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>
-                <div className="px-5 pb-5">
-                  <p className="text-muted-foreground">
-                    Upload simpelweg een foto of scan van uw ingevulde Europees Schadeformulier. Ons slimme OCR-systeem (Optical Character Recognition) 
-                    leest automatisch alle gegevens uit – zoals kentekens, datum, locatie, en beschrijving – en vult het online formulier voor u in. 
-                    U hoeft alleen te controleren of alles klopt en eventueel aan te vullen. Dit bespaart u veel tijd bij het indienen van uw voertuigschade claim.
+                <div className="px-3 pb-3 md:px-5 md:pb-5">
+                  <p className="text-muted-foreground text-sm md:text-base">
+                    Nee! Omdat wij de schade verhalen op de WA-verzekeraar van de TEGENPARTIJ, heeft dit geen invloed op uw eigen verzekering of premie. 
+                    Uw schadevrije jaren blijven intact.
                   </p>
                 </div>
               </details>
 
               {/* FAQ 4 */}
               <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                  <span className="font-semibold text-lg pr-4">Wat is het verschil tussen autoschade en voertuigschade?</span>
+                <summary className="flex items-center justify-between p-3 md:p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
+                  <span className="font-semibold text-base md:text-lg pr-4">Moet ik zelf contact opnemen met de verzekeraar?</span>
                   <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>
-                <div className="px-5 pb-5">
-                  <p className="text-muted-foreground">
-                    Er is geen verschil – beide termen betekenen hetzelfde: materiële schade aan uw voertuig na een ongeval waarbij de tegenpartij aansprakelijk is. 
-                    Wij gebruiken zowel 'autoschade' als 'voertuigschade' omdat beide termen veel worden gezocht door mensen die hun schade willen verhalen. 
-                    Onze dienst werkt voor alle soorten voertuigen: auto's, motoren, scooters, bestelauto's, en zelfs fietsen.
+                <div className="px-3 pb-3 md:px-5 md:pb-5">
+                  <p className="text-muted-foreground text-sm md:text-base">
+                    Nee, wij doen dat voor u! Zodra u uw claim indient, sturen wij een professionele aansprakelijkheidsbrief naar de WA-verzekeraar van de tegenpartij en onderhandelen namens u.
                   </p>
                 </div>
               </details>
 
               {/* FAQ 5 */}
               <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                  <span className="font-semibold text-lg pr-4">Hoe lang duurt het om mijn voertuigschade vergoed te krijgen?</span>
+                <summary className="flex items-center justify-between p-3 md:p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
+                  <span className="font-semibold text-base md:text-lg pr-4">Moet ik het Europees Schadeformulier hebben?</span>
                   <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>
-                <div className="px-5 pb-5">
-                  <p className="text-muted-foreground">
-                    Gemiddeld duurt een autoschade claim <strong>4 tot 8 weken</strong> van start tot uitbetaling. Binnen 2 weken ontvangt u meestal 
-                    een eerste reactie van de WA-verzekeraar van de tegenpartij. De exacte duur hangt af van de complexiteit van uw schade, de hoogte 
-                    van het bedrag, en de medewerking van de tegenpartij. Simpele claims met duidelijke aansprakelijkheid gaan vaak sneller.
+                <div className="px-3 pb-3 md:px-5 md:pb-5">
+                  <p className="text-muted-foreground text-sm md:text-base">
+                    Het helpt enorm, maar het is niet verplicht. U kunt ook claimen met alleen het kenteken van de tegenpartij, foto's van de schade en een beschrijving van het ongeval.
                   </p>
                 </div>
               </details>
 
-              {/* FAQ 6 */}
-              <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                  <span className="font-semibold text-lg pr-4">Wat heb ik nodig om mijn autoschade te kunnen verhalen?</span>
-                  <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-5 pb-5">
-                  <p className="text-muted-foreground mb-3">
-                    Voor een succesvolle voertuigschade claim heeft u minimaal het volgende nodig:
-                  </p>
-                  <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                    <li><strong>Kenteken tegenpartij:</strong> Essentieel om de verzekeraar te achterhalen</li>
-                    <li><strong>Foto's van de schade:</strong> Zo veel mogelijk, van verschillende hoeken</li>
-                    <li><strong>Europees Schadeformulier:</strong> Bij voorkeur ingevuld en ondertekend door beide partijen</li>
-                    <li><strong>Datum en locatie:</strong> Wanneer en waar vond het ongeval plaats?</li>
-                    <li><strong>Korte beschrijving:</strong> Wat gebeurde er precies?</li>
-                    <li><strong>Uw contactgegevens:</strong> Zodat wij u op de hoogte kunnen houden</li>
-                  </ul>
-                  <p className="text-muted-foreground mt-3">
-                    Geen schadeformulier? Geen probleem – wij kunnen ook zonder werken, zolang u het kenteken en foto's heeft.
-                  </p>
-                </div>
-              </details>
-
-              {/* FAQ 7 */}
-              <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                  <span className="font-semibold text-lg pr-4">Werkt dit ook voor motorschade of schade aan andere voertuigen?</span>
-                  <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-5 pb-5">
-                  <p className="text-muted-foreground">
-                    Ja! Onze dienst werkt voor <strong>alle soorten voertuigschade</strong>: personenauto's, motoren, scooters, brommers, bestelauto's, 
-                    campers, en zelfs fietsen. Zolang de tegenpartij aansprakelijk is voor het ongeval en een WA-verzekering heeft, kunnen wij uw schade verhalen. 
-                    Het maakt niet uit of u een kleine deuk of total loss heeft – elke claim behandelen we met dezelfde zorg.
-                  </p>
-                </div>
-              </details>
-
-              {/* FAQ 8 */}
-              <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                  <span className="font-semibold text-lg pr-4">Wat als ik ook lichamelijke klachten heb na het ongeval?</span>
-                  <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-5 pb-5">
-                  <p className="text-muted-foreground">
-                    Ons platform richt zich specifiek op <strong>materiële schade</strong> aan uw voertuig (autoschade/voertuigschade). 
-                    Bij lichamelijke klachten zoals whiplash, hoofdpijn, rugklachten, of andere letselschade verwijzen wij u door naar onze 
-                    gespecialiseerde partner <a href="https://www.unitasletselschade.nl" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">Unitas Letselschade</a>. 
-                    Zij hebben ruime ervaring met letselschadeclaims en kunnen u helpen met het verhalen van uw persoonlijke schade.
-                  </p>
-                </div>
-              </details>
-
-              {/* FAQ 9 */}
-              <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                  <span className="font-semibold text-lg pr-4">Kan ik mijn autoschade claim volgen?</span>
-                  <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-5 pb-5">
-                  <p className="text-muted-foreground">
-                    Absoluut! Zodra u uw voertuigschade claim heeft ingediend, krijgt u automatisch toegang tot uw persoonlijke online dashboard. 
-                    Daar ziet u real-time de status van uw claim, alle communicatie met de verzekeraar, geüploade documenten, en wanneer u uitbetaling kunt verwachten. 
-                    U ontvangt ook email notificaties bij belangrijke updates. Zo bent u altijd volledig op de hoogte van de voortgang van uw autoschade claim.
-                  </p>
-                </div>
-              </details>
-
-              {/* FAQ 10 */}
-              <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                  <span className="font-semibold text-lg pr-4">Wat als de verzekeraar van de tegenpartij weigert te betalen?</span>
-                  <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-5 pb-5">
-                  <p className="text-muted-foreground">
-                    Wij hebben ruime ervaring met weigerende of traag reagerende verzekeraars. Als een verzekeraar initieel weigert uw voertuigschade te vergoeden, 
-                    onderzoeken wij de zaak grondig en bouwen een sterker dossier. Indien nodig schakelen we een gespecialiseerde advocaat in voor juridische stappen. 
-                    In <strong>95% van de gevallen</strong> komen we uiteindelijk tot een schikking. U betaalt altijd niets – alle kosten worden door de WA-verzekeraar van de tegenpartij betaald.
-                  </p>
-                </div>
-              </details>
-
-              {/* FAQ 11 */}
-              <details className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
-                <summary className="flex items-center justify-between p-5 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                  <span className="font-semibold text-lg pr-4">Moet ik zelf nog contact hebben met de WA-verzekeraar?</span>
-                  <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <div className="px-5 pb-5">
-                  <p className="text-muted-foreground">
-                    Nee, dat hoeft absoluut niet en raden we zelfs af. Zodra u uw autoschade claim bij ons indient, nemen <strong>wij alle communicatie</strong> 
-                    met de WA-verzekeraar van de tegenpartij voor onze rekening. Wij sturen de aansprakelijkheidsbrief, beantwoorden vragen van de verzekeraar, 
-                    onderhandelen over de schadevergoeding, en zorgen voor uitbetaling. U hoeft alleen uw claim in te dienen en verder niets meer te doen. 
-                    Wij houden u via uw dashboard op de hoogte van alle ontwikkelingen.
-                  </p>
-                </div>
-              </details>
+              {/* Button to full FAQ page */}
+              <div className="text-center pt-4">
+                <Link href="/veelgestelde-vragen">
+                  <Button variant="outline" size="lg">
+                    Bekijk alle veelgestelde vragen
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
 
-
         {/* Final CTA Section */}
-        <section className="py-10 md:py-12 bg-gradient-to-r from-primary to-blue-700 text-white">
+        <section className="py-6 md:py-12 bg-gradient-to-r from-primary to-blue-700 text-white">
           <div className="container mx-auto px-6 sm:px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Klaar om uw autoschade gratis te verhalen?

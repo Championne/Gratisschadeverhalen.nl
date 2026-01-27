@@ -31,7 +31,6 @@ interface ClaimFormData {
 export function ClaimForm() {
   const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [currentStep, setCurrentStep] = useState<1 | 2>(1)
   const [ocrCompleted, setOcrCompleted] = useState(false)
   const [formData, setFormData] = useState<ClaimFormData>({
     naam: "",
@@ -118,17 +117,9 @@ export function ClaimForm() {
     
     console.log('Updates die toegepast worden:', updates)
     setFormData(prev => ({ ...prev, ...updates }))
-    setCurrentStep(2) // Ga naar stap 2
 
     toast.success("🔍 OCR voltooid!", {
-      description: "Vul nu de ontbrekende velden aan"
-    })
-  }
-  
-  const handleSkipOCR = () => {
-    setCurrentStep(2)
-    toast.info("OCR overgeslagen", {
-      description: "Vul alle velden handmatig in"
+      description: "Gegevens zijn automatisch ingevuld. Controleer en vul aan."
     })
   }
 
@@ -199,7 +190,7 @@ export function ClaimForm() {
 
     try {
       // Show AI processing toast
-      toast.loading("🤖 AI Agent verwerkt je claim...", {
+      toast.loading("🤖 AI Agent verwerkt uw claim...", {
         id: "ai-processing",
         description: "Dit duurt ongeveer 5-10 seconden"
       })
@@ -245,7 +236,7 @@ export function ClaimForm() {
       })
 
       toast.success("✅ Claim succesvol ingediend!", {
-        description: "Onze AI agent heeft je claim geanalyseerd. Check je email voor updates!"
+        description: "Onze AI agent heeft uw claim geanalyseerd. Check uw email voor updates!"
       })
 
       // Redirect naar success page
@@ -271,88 +262,40 @@ export function ClaimForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-8">
-      {/* Progress Bar - Top */}
-      <div className="pb-8">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold transition-all shadow-lg ${
-              currentStep === 1 ? 'bg-blue-600 text-white scale-110' : 'bg-green-600 text-white'
-            }`}>
-              {currentStep === 1 ? '1' : '✓'}
-            </div>
-            <div>
-              <p className={`font-semibold ${currentStep === 1 ? 'text-blue-600' : 'text-green-600'}`}>
-                Stap 1
-              </p>
-              <p className="text-sm text-gray-600">Upload Formulier</p>
-            </div>
-          </div>
-
-          {/* Animated Progress Line */}
-          <div className="flex-1 mx-6 h-3 bg-gray-200 rounded-full overflow-hidden shadow-inner">
-            <div className={`h-full bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 transition-all duration-1000 ease-in-out ${
-              currentStep === 2 ? 'w-full' : 'w-0'
-            }`}></div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <div>
-              <p className={`font-semibold text-right ${currentStep === 2 ? 'text-blue-600' : 'text-gray-400'}`}>
-                Stap 2
-              </p>
-              <p className="text-sm text-gray-600 text-right">Controleer Gegevens</p>
-            </div>
-            <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold transition-all shadow-lg ${
-              currentStep === 2 ? 'bg-blue-600 text-white scale-110' : 'bg-gray-300 text-gray-500'
-            }`}>
-              2
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* STAP 1: OCR Upload */}
-      {currentStep === 1 && (
-        <div className="space-y-4">
+    <form onSubmit={handleSubmit} noValidate className="space-y-6">
+      {/* OCR Upload Section */}
+      <Card className="border-2 border-primary/30 bg-primary/5">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-lg">Heeft u een Europees Schadeformulier?</CardTitle>
+          <CardDescription>Upload het formulier en wij vullen automatisch de gegevens in</CardDescription>
+        </CardHeader>
+        <CardContent>
           <OCRUpload onOCRComplete={handleOCRComplete} />
-          
-          <Button 
-            type="button" 
-            variant="secondary" 
-            onClick={handleSkipOCR}
-            className="w-full bg-gray-200 hover:bg-gray-300 text-gray-700"
-          >
-            Overslaan en handmatig invullen
-          </Button>
-        </div>
+        </CardContent>
+      </Card>
+
+      {/* OCR Success Message */}
+      {ocrCompleted && (
+        <Card className="border-green-200 bg-green-50">
+          <CardContent className="pt-6">
+            <div className="flex items-start gap-3">
+              <div className="text-green-600">✓</div>
+              <div className="flex-1">
+                <p className="font-semibold text-green-900">Formulier verwerkt!</p>
+                <p className="text-sm text-green-700">
+                  Gegevens zijn automatisch ingevuld. Controleer en vul ontbrekende velden aan.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       )}
 
-      {/* STAP 2: Formulier Velden */}
-      {currentStep === 2 && (
-        <>
-          {/* OCR Resultaat Info */}
-          {ocrCompleted && (
-            <Card className="border-green-200 bg-green-50">
-              <CardContent className="pt-6">
-                <div className="flex items-start gap-3">
-                  <div className="text-green-600">✓</div>
-                  <div className="flex-1">
-                    <p className="font-semibold text-green-900">OCR Voltooid!</p>
-                    <p className="text-sm text-green-700">
-                      Controleer de gegevens en vul eventuele <span className="text-orange-600 font-semibold">verplichte velden (*)</span> aan. Alleen polisnummer is optioneel.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          )}
-
-          {/* Persoonlijke Gegevens */}
-          <Card>
+      {/* Persoonlijke Gegevens */}
+      <Card>
             <CardHeader>
-              <CardTitle>Jouw Gegevens</CardTitle>
-              <CardDescription>Vul je contactgegevens in</CardDescription>
+              <CardTitle>Uw Gegevens</CardTitle>
+              <CardDescription>Vul uw contactgegevens in</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
@@ -543,33 +486,31 @@ export function ClaimForm() {
             </CardContent>
           </Card>
 
-          {/* AI Processing Info */}
-          <Card className="border-blue-200 bg-blue-50">
-            <CardContent className="pt-6">
-              <div className="flex items-start gap-3">
-                <div className="text-blue-600">🤖</div>
-                <div>
-                  <p className="font-semibold text-blue-900">AI Agent Verwerking</p>
-                  <p className="text-sm text-blue-700">
-                    Na het indienen analyseert onze AI agent automatisch je claim op letselschade, 
-                    aansprakelijkheid en vervolgstappen. Je ontvangt direct een email met de resultaten.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+      {/* AI Processing Info */}
+      <Card className="border-blue-200 bg-blue-50">
+        <CardContent className="pt-6">
+          <div className="flex items-start gap-3">
+            <div className="text-blue-600">🤖</div>
+            <div>
+              <p className="font-semibold text-blue-900">AI Agent Verwerking</p>
+              <p className="text-sm text-blue-700">
+                Na het indienen analyseert onze AI agent automatisch uw claim op letselschade, 
+                aansprakelijkheid en vervolgstappen. U ontvangt direct een email met de resultaten.
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
-          {/* Submit Button */}
-          <Button 
-            type="submit" 
-            disabled={isSubmitting}
-            className="w-full"
-            size="lg"
-          >
-            {isSubmitting ? "Claim wordt ingediend..." : "Claim Indienen"}
-          </Button>
-        </>
-      )}
+      {/* Submit Button */}
+      <Button 
+        type="submit" 
+        disabled={isSubmitting}
+        className="w-full"
+        size="lg"
+      >
+        {isSubmitting ? "Claim wordt ingediend..." : "Claim Indienen"}
+      </Button>
     </form>
   )
 }

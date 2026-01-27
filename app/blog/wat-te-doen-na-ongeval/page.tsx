@@ -158,7 +158,7 @@ export default function WatTeDoennaNaOngevalblogPost() {
               <p className="text-sm mb-3">Check direct of iemand gewond is:</p>
               <ul className="text-sm space-y-2 ml-6">
                 <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" /><strong>Uzelf:</strong> Voelt u pijn? Zelfs lichte hoofdpijn kan whiplash zijn</li>
-                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" /><strong>Passagiers:</strong> Vraag actief "Voel je je goed?"</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" /><strong>Passagiers:</strong> Vraag actief "Voelt u zich goed?"</li>
                 <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" /><strong>Tegenpartij:</strong> Check ook of zij gewond zijn</li>
               </ul>
               <Card className="mt-4 bg-red-50 border-red-200">

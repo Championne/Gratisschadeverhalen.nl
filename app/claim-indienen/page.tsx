@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
   title: "Autoschade Claim Indienen | Gratis Schade Verhalen op Tegenpartij",
-  description: "Dien uw autoschade claim gratis en snel in bij Gratisschadeverhalen.nl. Wij verhalen kosteloos uw voertuigschade op de WA-verzekeraar van de tegenpartij. Begin nu!",
+  description: "Dien uw autoschade claim gratis in. Snelle expertise, wij verhalen kosteloos uw voertuigschade op de WA-verzekeraar van de tegenpartij. Begin nu!",
   keywords: [
     "autoschade claim indienen",
     "gratis schade claimen",
@@ -29,7 +29,7 @@ export default function ClaimIndienenPage() {
               Start Nu: Gratis Autoschade Claim Indienen bij Tegenpartij
             </h1>
             <p className="text-lg text-muted-foreground">
-              Vul onderstaand formulier in en wij nemen binnen 24 uur contact met je op.
+              Vul onderstaand formulier in en wij nemen binnen 24 uur contact met u op.
               <br />
               <strong className="text-primary">Snelle expertise, u betaalt niets.</strong>
             </p>

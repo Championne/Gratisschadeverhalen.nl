@@ -8,8 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
 export const metadata: Metadata = {
-  title: "Hoe Maak Je de Beste Foto's voor Je Autoschade Claim? | Complete Gids",
-  description: "Leer welke foto's je moet maken na een auto-ongeluk voor de snelste schadeafhandeling. 10 stappen handleiding met praktische tips voor je autoschade claim.",
+  title: "Hoe Maakt U de Beste Foto's voor Uw Autoschade Claim? | Complete Gids",
+  description: "Leer welke foto's u moet maken na een auto-ongeluk voor de snelste schadeafhandeling. 10 stappen handleiding met praktische tips voor uw autoschade claim.",
   keywords: [
     "foto's autoschade",
     "autoschade foto's maken",
@@ -28,8 +28,8 @@ const combinedSchema = {
   "@graph": [
     {
       "@type": "HowTo",
-      "name": "Hoe maak je de beste foto's voor je autoschade claim?",
-      "description": "Complete handleiding voor het maken van effectieve foto's na een auto-ongeluk. Deze foto's versnellen je schadeclaim en verhogen de kans op volledige vergoeding.",
+      "name": "Hoe maakt u de beste foto's voor uw autoschade claim?",
+      "description": "Complete handleiding voor het maken van effectieve foto's na een auto-ongeluk. Deze foto's versnellen uw schadeclaim en verhogen de kans op volledige vergoeding.",
       "totalTime": "PT10M",
       "estimatedCost": {
         "@type": "MonetaryAmount",
@@ -64,8 +64,8 @@ const combinedSchema = {
         {
           "@type": "HowToStep",
           "position": 3,
-          "name": "Close-ups van schade aan je auto",
-          "text": "Maak gedetailleerde foto's van alle schade aan je eigen voertuig. Fotografeer elke deuk, kras en kapot onderdeel apart."
+          "name": "Close-ups van schade aan uw auto",
+          "text": "Maak gedetailleerde foto's van alle schade aan uw eigen voertuig. Fotografeer elke deuk, kras en kapot onderdeel apart."
         },
         {
           "@type": "HowToStep",
@@ -101,13 +101,13 @@ const combinedSchema = {
           "@type": "HowToStep",
           "position": 9,
           "name": "Europees schadeformulier fotograferen",
-          "text": "Maak een duidelijke foto van het ingevulde Europees schadeformulier voordat je het opstuurt."
+          "text": "Maak een duidelijke foto van het ingevulde Europees schadeformulier voordat u het opstuurt."
         },
         {
           "@type": "HowToStep",
           "position": 10,
-          "name": "Upload naar je schadeclaim",
-          "text": "Upload alle foto's bij je schadeclaim via autoschadebureau.nl voor de snelste afhandeling."
+          "name": "Upload naar uw schadeclaim",
+          "text": "Upload alle foto's bij uw schadeclaim via autoschadebureau.nl voor de snelste afhandeling."
         }
       ]
     },
@@ -127,7 +127,7 @@ const combinedSchema = {
           "name": "Kan ik ook video maken in plaats van foto's?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ja, video kan nuttig zijn als aanvulling. Loop langzaam rond beide voertuigen en zoom in op de schade. Houd de video kort (30-60 seconden) en stabiel. Foto's blijven echter het belangrijkst voor de claim."
+            "text": "Ja, video kan nuttig zijn als aanvulling. Loop langzaam rond beide voertuigen en zoom in op de schade. Houd de video kort (30-60 seconden) en stabiel. Foto's blijven echter het belangrijkst voor uw claim."
           }
         },
         {
@@ -135,7 +135,7 @@ const combinedSchema = {
           "name": "Wat als het donker is wanneer het ongeval gebeurt?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Gebruik de flitser van je telefoon en maak meerdere foto's. Zet je auto koplampen aan voor extra verlichting. Als de foto's te donker zijn, probeer de volgende ochtend nog extra foto's te maken van de schade."
+            "text": "Gebruik de flitser van uw telefoon en maak meerdere foto's. Zet uw auto koplampen aan voor extra verlichting. Als de foto's te donker zijn, probeer de volgende ochtend nog extra foto's te maken van de schade."
           }
         },
         {
@@ -143,7 +143,7 @@ const combinedSchema = {
           "name": "Moet ik foto's maken als de politie ter plaatse komt?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ja, absoluut! De politie maakt geen foto's voor je verzekeringsclaim. Hun proces-verbaal is nuttig, maar eigen foto's zijn essentieel voor je schadeclaim bij de verzekeraar."
+            "text": "Ja, absoluut! De politie maakt geen foto's voor uw verzekeringsclaim. Hun proces-verbaal is nuttig, maar eigen foto's zijn essentieel voor uw schadeclaim bij de verzekeraar."
           }
         },
         {
@@ -151,7 +151,7 @@ const combinedSchema = {
           "name": "Mag ik foto's maken van de tegenpartij en zijn auto?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ja, je mag foto's maken van voertuigen en kentekens op de openbare weg. Dit geldt als documentatie van het ongeval. Maak geen close-up foto's van personen zonder toestemming."
+            "text": "Ja, u mag foto's maken van voertuigen en kentekens op de openbare weg. Dit geldt als documentatie van het ongeval. Maak geen close-up foto's van personen zonder toestemming."
           }
         },
         {
@@ -159,7 +159,7 @@ const combinedSchema = {
           "name": "Wat als ik vergeten ben foto's te maken op de plek van het ongeval?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Maak alsnog zo snel mogelijk foto's van de schade aan je auto. Ga eventueel terug naar de locatie voor overzichtsfoto's. Een schadeclaim zonder foto's is lastiger maar niet onmogelijk."
+            "text": "Maak alsnog zo snel mogelijk foto's van de schade aan uw auto. Ga eventueel terug naar de locatie voor overzichtsfoto's. Een schadeclaim zonder foto's is lastiger maar niet onmogelijk."
           }
         },
         {
@@ -207,12 +207,12 @@ export default function BlogPost() {
             <span>24 januari 2026</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            Hoe Maak Je de Beste Foto's voor Je Autoschade Claim?
+            Hoe Maakt U de Beste Foto's voor Uw Autoschade Claim?
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed">
             Na een auto-ongeluk is het maken van goede foto's essentieel voor een snelle en 
             succesvolle schadeclaim. In deze handleiding leggen we precies uit welke foto's 
-            je nodig hebt en hoe je ze het beste maakt.
+            u nodig heeft en hoe u ze het beste maakt.
           </p>
         </header>
 
@@ -245,7 +245,7 @@ export default function BlogPost() {
             <p className="text-muted-foreground leading-relaxed mb-6">
               Bij het verhalen van <Link href="/" className="text-primary hover:underline font-medium">autoschade</Link> of{" "}
               <strong>voertuigschade</strong> spelen foto's een cruciale rol. Ze vormen vaak het belangrijkste 
-              bewijs voor je claim. Zonder goede foto's kan de verzekeraar van de tegenpartij:
+              bewijs voor uw claim. Zonder goede foto's kan de verzekeraar van de tegenpartij:
             </p>
 
             <ul className="space-y-3 text-muted-foreground mb-6">
@@ -270,8 +270,8 @@ export default function BlogPost() {
             <div className="bg-green-50 border-l-4 border-green-500 p-6 my-6">
               <h3 className="font-bold mb-2 text-green-900">Het goede nieuws</h3>
               <p className="text-green-800">
-                Met complete foto-documentatie verloopt je claim gemiddeld <strong>2-3 weken sneller</strong>. 
-                Ons OCR-systeem kan bovendien gegevens automatisch uitlezen als je ook het{" "}
+                Met complete foto-documentatie verloopt uw claim gemiddeld <strong>2-3 weken sneller</strong>. 
+                Ons OCR-systeem kan bovendien gegevens automatisch uitlezen als u ook het{" "}
                 <Link href="/blog/europees-schadeformulier-invullen" className="text-green-700 hover:underline font-medium">
                   Europees schadeformulier
                 </Link> fotografeert.
@@ -281,10 +281,10 @@ export default function BlogPost() {
 
           {/* 10 Stappen Handleiding */}
           <section className="mb-12">
-            <h2 className="text-3xl font-bold mb-6">10 Stappen: Welke Foto's Moet Je Maken?</h2>
+            <h2 className="text-3xl font-bold mb-6">10 Stappen: Welke Foto's Moet U Maken?</h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Volg deze handleiding direct na het ongeval. Je hebt alleen je smartphone nodig. 
-              Maak liever te veel dan te weinig foto's - je kunt ze altijd nog weggooien.
+              Volg deze handleiding direct na het ongeval. U heeft alleen uw smartphone nodig. 
+              Maak liever te veel dan te weinig foto's - u kunt ze altijd nog weggooien.
             </p>
 
             <div className="space-y-6">
@@ -340,7 +340,7 @@ export default function BlogPost() {
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
                     <Camera className="h-5 w-5 text-orange-600" />
-                    <h3 className="font-bold text-lg">Close-ups van schade aan jouw auto</h3>
+                    <h3 className="font-bold text-lg">Close-ups van schade aan uw auto</h3>
                   </div>
                   <p className="text-muted-foreground mb-2">
                     Ga dichtbij staan en maak gedetailleerde foto's van alle schade. Fotografeer elke 
@@ -367,7 +367,7 @@ export default function BlogPost() {
                   <p className="text-muted-foreground mb-2">
                     Leg ook de schade aan de andere auto vast. Dit voorkomt later discussie over 
                     wat er precies is gebeurd en bewijst de impact. Als de tegenpartij bezwaar maakt, 
-                    kun je de foto ook vanaf de openbare weg maken.
+                    kunt u de foto ook vanaf de openbare weg maken.
                   </p>
                 </div>
               </div>
@@ -385,7 +385,7 @@ export default function BlogPost() {
                   <p className="text-muted-foreground mb-2">
                     Dit is essentieel! Met het kenteken kunnen wij de verzekeraar van de tegenpartij 
                     achterhalen. Zorg dat alle letters en cijfers scherp en leesbaar zijn. Maak ook 
-                    een foto van je eigen kenteken voor de volledigheid.
+                    een foto van uw eigen kenteken voor de volledigheid.
                   </p>
                   <p className="text-sm bg-green-50 text-green-700 px-3 py-2 rounded inline-flex items-center gap-2">
                     <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4" />
@@ -407,7 +407,7 @@ export default function BlogPost() {
                   <p className="text-muted-foreground mb-2">
                     Zijn er remsporen op de weg? Glasscherven? Afgebroken onderdelen? Fotografeer alles. 
                     Dit kan helpen bij het reconstrueren van het ongeval en de snelheid bepalen. 
-                    Leg een voorwerp (je schoen bijvoorbeeld) ernaast voor schaalreferentie.
+                    Leg een voorwerp (uw schoen bijvoorbeeld) ernaast voor schaalreferentie.
                   </p>
                 </div>
               </div>
@@ -459,12 +459,12 @@ export default function BlogPost() {
                     <h3 className="font-bold text-lg">Het Europees schadeformulier</h3>
                   </div>
                   <p className="text-muted-foreground mb-2">
-                    Heb je samen met de tegenpartij het Europees schadeformulier ingevuld? Maak een 
-                    duidelijke foto voordat je het opstuurt. Ons{" "}
+                    Heeft u samen met de tegenpartij het Europees schadeformulier ingevuld? Maak een 
+                    duidelijke foto voordat u het opstuurt. Ons{" "}
                     <Link href="/claim-indienen" className="text-primary hover:underline font-medium">
                       OCR-systeem
                     </Link>{" "}
-                    kan de gegevens automatisch uitlezen, wat je veel typ-werk bespaart.
+                    kan de gegevens automatisch uitlezen, wat u veel typ-werk bespaart.
                   </p>
                 </div>
               </div>
@@ -477,15 +477,15 @@ export default function BlogPost() {
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
                     <Upload className="h-5 w-5 text-primary" />
-                    <h3 className="font-bold text-lg">Upload alles bij je claim</h3>
+                    <h3 className="font-bold text-lg">Upload alles bij uw claim</h3>
                   </div>
                   <p className="text-muted-foreground mb-3">
                     Klaar met fotograferen? Upload alle foto's direct bij het{" "}
                     <Link href="/claim-indienen" className="text-primary hover:underline font-medium">
-                      indienen van je claim
+                      indienen van uw claim
                     </Link>. 
                     Wij analyseren de foto's, stellen de aansprakelijkheidsbrief op, en verhalen 
-                    je <strong>autoschade</strong> volledig gratis bij de tegenpartij.
+                    uw <strong>autoschade</strong> volledig gratis bij de tegenpartij.
                   </p>
                   <Link href="/claim-indienen">
                     <Button className="mt-2">
@@ -522,7 +522,7 @@ export default function BlogPost() {
                   </h3>
                   <p className="text-sm text-muted-foreground">
                     Fotografeer ook de parkeervakken, eventuele camera's in de buurt, en noteer 
-                    de tijd. Als de dader weg is: maak een briefje met je gegevens voor getuigen.
+                    de tijd. Als de dader weg is: maak een briefje met uw gegevens voor getuigen.
                   </p>
                 </CardContent>
               </Card>
@@ -533,7 +533,7 @@ export default function BlogPost() {
                     🛣️ Ongeval op de snelweg
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    Veiligheid eerst! Zet je gevarendriehoek neer en ga achter de vangrail staan. 
+                    Veiligheid eerst! Zet uw gevarendriehoek neer en ga achter de vangrail staan. 
                     Maak foto's alleen als het veilig kan. Hectometerpaaltjes zijn handig voor locatie.
                   </p>
                 </CardContent>
@@ -545,7 +545,7 @@ export default function BlogPost() {
                     🌧️ Slecht weer
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    Bescherm je telefoon tegen regen. Bij mist of sneeuw: laat de omstandigheden 
+                    Bescherm uw telefoon tegen regen. Bij mist of sneeuw: laat de omstandigheden 
                     duidelijk zien op de foto. De staat van het wegdek kan relevant zijn.
                   </p>
                 </CardContent>
@@ -567,7 +567,7 @@ export default function BlogPost() {
                   <p className="text-muted-foreground">
                     Maak minimaal 5-10 foto's. Dit omvat: overzicht locatie, beide voertuigen, 
                     close-ups van alle schade, kenteken tegenpartij, en relevante verkeersborden. 
-                    Meer foto's is altijd beter dan te weinig - je kunt ze later altijd nog weggooien.
+                    Meer foto's is altijd beter dan te weinig - u kunt ze later altijd nog weggooien.
                   </p>
                 </div>
               </details>
@@ -593,7 +593,7 @@ export default function BlogPost() {
                 </summary>
                 <div className="px-5 pb-5">
                   <p className="text-muted-foreground">
-                    Gebruik de flitser van je telefoon en maak meerdere foto's. Zet je auto 
+                    Gebruik de flitser van uw telefoon en maak meerdere foto's. Zet uw auto 
                     koplampen aan voor extra verlichting. Als de foto's te donker zijn, 
                     probeer de volgende ochtend nog extra foto's te maken van de schade.
                   </p>
@@ -607,8 +607,8 @@ export default function BlogPost() {
                 </summary>
                 <div className="px-5 pb-5">
                   <p className="text-muted-foreground">
-                    Ja, absoluut! De politie maakt geen foto's voor jouw verzekeringsclaim. 
-                    Hun proces-verbaal is nuttig, maar eigen foto's zijn essentieel voor je 
+                    Ja, absoluut! De politie maakt geen foto's voor uw verzekeringsclaim. 
+                    Hun proces-verbaal is nuttig, maar eigen foto's zijn essentieel voor uw 
                     schadeclaim bij de verzekeraar van de tegenpartij.
                   </p>
                 </div>
@@ -621,7 +621,7 @@ export default function BlogPost() {
                 </summary>
                 <div className="px-5 pb-5">
                   <p className="text-muted-foreground">
-                    Je mag foto's maken van voertuigen en kentekens op de openbare weg. Dit geldt 
+                    U mag foto's maken van voertuigen en kentekens op de openbare weg. Dit geldt 
                     als documentatie van het ongeval. Maak geen close-up foto's van personen 
                     zonder hun toestemming.
                   </p>
@@ -635,9 +635,9 @@ export default function BlogPost() {
                 </summary>
                 <div className="px-5 pb-5">
                   <p className="text-muted-foreground">
-                    Maak alsnog zo snel mogelijk foto's van de schade aan je auto. Ga eventueel 
+                    Maak alsnog zo snel mogelijk foto's van de schade aan uw auto. Ga eventueel 
                     terug naar de locatie voor overzichtsfoto's. Een schadeclaim zonder foto's 
-                    is lastiger maar niet onmogelijk - wij helpen je graag.
+                    is lastiger maar niet onmogelijk - wij helpen u graag.
                   </p>
                 </div>
               </details>
@@ -688,10 +688,10 @@ export default function BlogPost() {
           <CardContent className="py-8 text-center">
             <Camera className="h-12 w-12 mx-auto mb-4 opacity-90" />
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Foto's gemaakt? Dien nu je claim in!
+              Foto's gemaakt? Dien nu uw claim in!
             </h2>
             <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-              Upload je foto's en schadeformulier. Wij verhalen je autoschade volledig gratis 
+              Upload uw foto's en schadeformulier. Wij verhalen uw autoschade volledig gratis 
               bij de tegenpartij. Gemiddeld binnen 6 weken uitbetaald.
             </p>
             <Link href="/claim-indienen">

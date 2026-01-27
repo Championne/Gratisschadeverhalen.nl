@@ -87,50 +87,50 @@ export default async function DashboardPage() {
       <div className="min-h-screen bg-gray-50">
         <DashboardHeader user={user} />
 
-        <main className="container mx-auto px-4 py-8">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">Mijn Claims</h1>
-            <p className="text-muted-foreground">
-              Overzicht van al je schade claims
+        <main className="container mx-auto px-4 py-4 md:py-8">
+          <div className="mb-4 md:mb-8">
+            <h1 className="text-2xl md:text-3xl font-bold mb-1 md:mb-2 text-left">Mijn Claims</h1>
+            <p className="text-muted-foreground text-sm md:text-base text-left">
+              Overzicht van al uw schade claims
             </p>
           </div>
 
           {/* Stats Cards */}
-          <div className="grid md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-4 md:mb-8">
             <Card>
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">Totaal Claims</CardTitle>
+              <CardHeader className="flex flex-row items-center justify-between pb-2 px-4 pt-4 md:px-6 md:pt-6">
+                <CardTitle className="text-xs md:text-sm font-medium text-left">Totaal Claims</CardTitle>
                 <FileText className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">{stats.total}</div>
+              <CardContent className="px-4 pb-4 md:px-6 md:pb-6">
+                <div className="text-xl md:text-2xl font-bold text-left">{stats.total}</div>
               </CardContent>
             </Card>
             <Card>
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">In Behandeling</CardTitle>
+              <CardHeader className="flex flex-row items-center justify-between pb-2 px-4 pt-4 md:px-6 md:pt-6">
+                <CardTitle className="text-xs md:text-sm font-medium text-left">In Behandeling</CardTitle>
                 <Clock className="h-4 w-4 text-blue-500" />
               </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">{stats.in_behandeling}</div>
+              <CardContent className="px-4 pb-4 md:px-6 md:pb-6">
+                <div className="text-xl md:text-2xl font-bold text-left">{stats.in_behandeling}</div>
               </CardContent>
             </Card>
             <Card>
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">Afgerond</CardTitle>
+              <CardHeader className="flex flex-row items-center justify-between pb-2 px-4 pt-4 md:px-6 md:pt-6">
+                <CardTitle className="text-xs md:text-sm font-medium text-left">Afgerond</CardTitle>
                 <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-500" />
               </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">{stats.afgerond}</div>
+              <CardContent className="px-4 pb-4 md:px-6 md:pb-6">
+                <div className="text-xl md:text-2xl font-bold text-left">{stats.afgerond}</div>
               </CardContent>
             </Card>
             <Card>
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">Geweigerd</CardTitle>
+              <CardHeader className="flex flex-row items-center justify-between pb-2 px-4 pt-4 md:px-6 md:pt-6">
+                <CardTitle className="text-xs md:text-sm font-medium text-left">Geweigerd</CardTitle>
                 <XCircle className="h-4 w-4 text-red-500" />
               </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">{stats.geweigerd}</div>
+              <CardContent className="px-4 pb-4 md:px-6 md:pb-6">
+                <div className="text-xl md:text-2xl font-bold text-left">{stats.geweigerd}</div>
               </CardContent>
             </Card>
           </div>

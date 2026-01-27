@@ -9,6 +9,15 @@ import { Calendar, Clock, ArrowRight, FileText } from "lucide-react"
 // Blog posts data - UITGEBREID
 const blogPosts = [
   {
+    slug: "wat-is-expertise-rapport",
+    title: "Wat is een Expertise Rapport? Alles over Autoschade Taxatie",
+    excerpt: "Wat is een expertise rapport bij autoschade? Leer wat erin staat, wie het opstelt, wanneer het nodig is en hoe het uw schadevergoeding bepaalt.",
+    category: "Expertise",
+    readTime: "8 min",
+    date: "27 januari 2026",
+    featured: true,
+  },
+  {
     slug: "hoe-verhaal-ik-autoschade",
     title: "Hoe verhaal ik autoschade op de tegenpartij? Complete gids 2026",
     excerpt: "Stap-voor-stap uitleg voor het verhalen van uw autoschade. Van ongeval tot uitbetaling - alles wat u moet weten over het claimen bij de WA-verzekeraar van de tegenpartij.",
@@ -377,8 +386,8 @@ const blogPosts = [
   },
   {
     slug: "goede-fotos-autoschade",
-    title: "Hoe Maak Je de Beste Foto's voor Je Autoschade Claim?",
-    excerpt: "Leer welke foto's je moet maken na een auto-ongeluk voor de snelste schadeafhandeling. Complete 10-stappen handleiding met praktische tips.",
+    title: "Hoe Maakt U de Beste Foto's voor Uw Autoschade Claim?",
+    excerpt: "Leer welke foto's u moet maken na een auto-ongeluk voor de snelste schadeafhandeling. Complete 10-stappen handleiding met praktische tips.",
     category: "Handleiding",
     readTime: "8 min",
     date: "24 januari 2026",
@@ -446,7 +455,7 @@ export function BlogContent() {
         {featuredPosts.length > 0 && (
           <section className="mb-16">
             <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <span className="bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded">FEATURED</span>
+              <span className="bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded">UITGELICHT</span>
               Meest gelezen artikelen
             </h2>
             <div className="grid md:grid-cols-3 gap-6">

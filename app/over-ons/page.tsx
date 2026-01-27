@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export const metadata: Metadata = {
   title: "Over Ons",
-  description: "Over Autoschadebureau.nl - Gratis autoschade verhalen, u betaalt niets",
+  description: "Over Autoschadebureau.nl - Snelle expertise bij autoschade verhalen. Gratis, u betaalt niets.",
 }
 
 export default function OverOnsPage() {
@@ -21,8 +21,7 @@ export default function OverOnsPage() {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Over Autoschadebureau.nl</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Wij maken het verhalen van autoschade <strong>eenvoudig, snel en volledig gratis</strong>. 
-            Upload uw schadeformulier en wij regelen de rest – u betaalt niets.
+            Wij maken het verhalen van autoschade <strong>eenvoudig, snel en volledig gratis</strong>.
           </p>
         </div>
 
@@ -71,12 +70,12 @@ export default function OverOnsPage() {
                 <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
                   <TrendingUp className="h-6 w-6 text-blue-600" />
                 </div>
-                <CardTitle>Slimme Technologie</CardTitle>
+                <CardTitle>Snelle Expertise</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Upload een foto van uw Europees Schadeformulier en ons <strong>OCR-systeem leest automatisch alle gegevens in</strong>. 
-                  U hoeft alleen te controleren en aan te vullen. Binnen minuten bent u klaar.
+                  <strong>Snelle expertise</strong> door ons OCR-systeem dat automatisch uw schadeformulier uitleest. 
+                  Binnen minuten bent u klaar en starten wij direct met de afhandeling.
                 </p>
               </CardContent>
             </Card>
@@ -220,54 +219,30 @@ export default function OverOnsPage() {
           </div>
         </section>
 
-        {/* Partner Samenwerking */}
+        {/* Partner Letselschade */}
         <section className="mb-12">
-          <Card className="bg-purple-50/50 border-purple-200 border-2">
-            <CardHeader className="text-center">
-              <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-purple-100 flex items-center justify-center">
-                <Users className="h-8 w-8 text-purple-600" />
-              </div>
-              <CardTitle className="text-2xl">Samenwerking met Specialisten</CardTitle>
-            </CardHeader>
-            <CardContent className="text-center max-w-3xl mx-auto">
-              <p className="text-muted-foreground mb-6">
-                Wij focussen op <strong>materiële schade aan voertuigen</strong> (autoschade/voertuigschade). 
-                Voor <strong>letselschade</strong> (whiplash, hoofdpijn, etc.) werken wij samen met gespecialiseerde partners:
-              </p>
-              <a 
-                href="https://www.unitasletselschade.nl" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block group"
-              >
-                <div className="bg-white border-2 border-purple-300 rounded-lg p-6 hover:border-purple-400 transition-all hover:shadow-lg">
-                  <p className="font-semibold text-lg mb-4 text-muted-foreground">🤝 Partner voor Letselschade</p>
-                  
-                  {/* Unitas Logo - Centered and Enlarged */}
-                  <div className="flex flex-col items-center gap-4 mb-4">
-                    <Image 
-                      src="/unitas-letselschade-logo.png" 
-                      alt="Unitas Letselschade" 
-                      width={128}
-                      height={128}
-                      className="w-32 h-32 object-contain"
-                    />
-                    <p className="text-sm text-center text-muted-foreground">
-                      Gespecialiseerd in letselschade claims met jarenlange ervaring
-                    </p>
-                  </div>
-                  
-                  <p className="text-primary font-medium text-center group-hover:underline">
-                    Bezoek website →
-                  </p>
-                </div>
-              </a>
-              <p className="text-sm text-muted-foreground mt-6">
-                💡 <strong>Automatische doorverwijzing:</strong> Ons systeem herkent automatisch letselschade-indicaties 
-                (zoals "pijn", "whiplash", "hoofdpijn") en informeert u over de mogelijkheid van letselschade verhaal.
-              </p>
-            </CardContent>
-          </Card>
+          <h2 className="text-2xl font-bold text-center mb-6">Onze Partner voor Letselschade</h2>
+          <a 
+            href="https://www.unitasletselschade.nl" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block max-w-md mx-auto group"
+          >
+            <Card className="bg-white border border-gray-200 hover:border-primary hover:shadow-xl transition-all duration-300">
+              <CardContent className="py-8 px-6 text-center">
+                <Image 
+                  src="/unitas-letselschade-logo.png" 
+                  alt="Unitas Letselschade" 
+                  width={200}
+                  height={200}
+                  className="w-48 h-auto mx-auto mb-4 object-contain"
+                />
+                <p className="text-primary font-medium group-hover:underline">
+                  Bezoek website →
+                </p>
+              </CardContent>
+            </Card>
+          </a>
         </section>
 
         {/* Team Section (Optioneel) */}
@@ -289,26 +264,6 @@ export default function OverOnsPage() {
           </Card>
         </section>
 
-        {/* CTA Section */}
-        <section>
-          <Card className="bg-gradient-to-br from-primary to-blue-600 text-white border-0">
-            <CardContent className="text-center py-12">
-              <h2 className="text-3xl font-bold mb-4">Klaar om uw autoschade te verhalen?</h2>
-              <p className="text-xl mb-8 text-blue-50">
-                Upload nu uw schadeformulier en wij regelen de rest – 100% gratis!
-              </p>
-              <Link href="/claim-indienen">
-                <Button size="lg" variant="secondary" className="text-lg px-8">
-                  <Shield className="mr-2 h-5 w-5" />
-                  Start Nu – Gratis Claim Indienen
-                </Button>
-              </Link>
-              <p className="text-sm text-blue-100 mt-4">
-                U betaalt niets • Tegenpartij betaalt alles • 100% gratis
-              </p>
-            </CardContent>
-          </Card>
-        </section>
         </div>
       </main>
     </div>

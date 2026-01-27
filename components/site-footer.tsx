@@ -37,8 +37,8 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Gratis autoschade verhalen tegenpartij. 
-              U betaalt niets - alle kosten worden door de tegenpartij vergoed.
+              Gratis autoschade verhalen op de tegenpartij. 
+              Snelle expertise, u betaalt niets.
             </p>
           </div>
 
@@ -54,16 +54,6 @@ export function SiteFooter() {
               <li>
                 <Link href="/claim-indienen" className="text-muted-foreground hover:text-primary transition-colors">
                   Claim Indienen
-                </Link>
-              </li>
-              <li>
-                <Link href="/diensten#ocr" className="text-muted-foreground hover:text-primary transition-colors">
-                  OCR Verwerking
-                </Link>
-              </li>
-              <li>
-                <Link href="/diensten#tracking" className="text-muted-foreground hover:text-primary transition-colors">
-                  Online Tracking
                 </Link>
               </li>
               <li>
@@ -135,7 +125,7 @@ export function SiteFooter() {
                 </li>
                 <li className="flex items-start gap-2.5 text-muted-foreground">
                   <Clock className="h-4 w-4 flex-shrink-0 mt-0.5 text-primary/70" />
-                  <span>Ma - Za: 09:00 - 17:30</span>
+                  <span>Maandag - Zaterdag: 09:00 - 17:30</span>
                 </li>
               </ul>
             </div>
@@ -189,8 +179,8 @@ export function SiteFooter() {
             </p>
             <p className="text-xs text-muted-foreground">
               <span className="font-medium">Populaire zoektermen:</span>{" "}
-              <span className="hidden sm:inline">autoschade verhalen • voertuigschade verhalen • gratis autoschade verhalen • WA schade verhalen</span>
-              <span className="sm:hidden">autoschade verhalen • gratis schade verhalen</span>
+              <span className="hidden sm:inline">autoschade verhalen • snelle expertise • gratis autoschade verhalen • WA schade verhalen</span>
+              <span className="sm:hidden">autoschade verhalen • snelle expertise</span>
             </p>
           </div>
         </div>

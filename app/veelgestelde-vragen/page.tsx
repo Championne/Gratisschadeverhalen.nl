@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
 export const metadata: Metadata = {
-  title: "Veelgestelde Vragen | Autoschade Verhalen - Gratis & Vrijblijvend",
+  title: "Veelgestelde Vragen",
   description: "Alle antwoorden op uw vragen over autoschade verhalen. Wat kost het? Hoe lang duurt het? Wat als tegenpartij niet betaalt? U betaalt niets - snelle expertise.",
   keywords: [
     "veelgestelde vragen autoschade",
@@ -287,9 +287,6 @@ const faqs: FAQItem[] = [
 ]
 
 export default function VeelgesteldeVragenPage() {
-  // Group FAQs by category
-  const categories = Array.from(new Set(faqs.map(f => f.category)))
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* JSON-LD Schema */}
@@ -299,194 +296,49 @@ export default function VeelgesteldeVragenPage() {
       />
 
       <main className="container mx-auto px-4 py-8">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto">
         {/* Hero Section */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold">
             Veelgestelde Vragen
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Alle antwoorden op uw vragen over gratis autoschade verhalen. Staat uw vraag er niet bij? 
-            Neem gerust contact met ons op!
-          </p>
-          
-          {/* Quick Stats */}
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600" />
-              <span>U betaalt niets</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600" />
-              <span>Snelle expertise</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600" />
-              <span>Geen invloed op uw premie</span>
-            </div>
-          </div>
         </div>
 
-        {/* Categories Navigation */}
-        <div className="mb-12">
-          <Card className="bg-blue-50/50 border-blue-200">
-            <CardHeader>
-              <CardTitle className="text-lg">📑 Categorieën</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {categories.map((category) => (
-                  <a
-                    key={category}
-                    href={`#${category.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="flex items-center justify-between p-3 bg-white border border-blue-200 rounded-lg hover:border-blue-400 hover:shadow-md transition-all"
-                  >
-                    <span className="font-medium text-sm">{category}</span>
-                    <ChevronDown className="h-4 w-4 text-blue-600" />
-                  </a>
-                ))}
+        {/* All FAQs */}
+        <div className="space-y-3">
+          {faqs.map((faq, index) => (
+            <details key={index} className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+              <summary className="flex items-center justify-between p-4 cursor-pointer list-none hover:bg-gray-50 transition-colors">
+                <span className="font-semibold text-base pr-4">{faq.question}</span>
+                <ChevronDown className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" />
+              </summary>
+              <div className="px-4 pb-4">
+                <p className="text-muted-foreground leading-relaxed">
+                  {faq.answer}
+                </p>
+                
+                {faq.relatedLinks && faq.relatedLinks.length > 0 && (
+                  <div className="mt-3 pt-3 border-t border-gray-200">
+                    <div className="flex flex-wrap gap-2">
+                      {faq.relatedLinks.map((link, i) => (
+                        <Link 
+                          key={i} 
+                          href={link.href}
+                          className="text-sm text-primary hover:underline flex items-center gap-1"
+                        >
+                          {link.text}
+                          <ArrowRight className="h-3 w-3" />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-            </CardContent>
-          </Card>
+            </details>
+          ))}
         </div>
 
-        {/* FAQ Sections by Category */}
-        {categories.map((category) => {
-          const categoryFaqs = faqs.filter(f => f.category === category)
-          
-          return (
-            <section 
-              key={category} 
-              id={category.toLowerCase().replace(/\s+/g, '-')}
-              className="mb-12 scroll-mt-24"
-            >
-              <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                <span className="text-primary">{category}</span>
-                <span className="text-sm font-normal text-muted-foreground">
-                  ({categoryFaqs.length} vragen)
-                </span>
-              </h2>
 
-              <div className="space-y-4">
-                {categoryFaqs.map((faq, index) => (
-                  <Card key={index} className="border-l-4 border-l-primary hover:shadow-lg transition-shadow">
-                    <CardHeader>
-                      <CardTitle className="text-lg flex items-start gap-3">
-                        <span className="text-primary font-bold text-xl">Q</span>
-                        <span>{faq.question}</span>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex items-start gap-3 mb-4">
-                        <span className="text-green-600 font-bold text-xl">A</span>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {faq.answer}
-                        </p>
-                      </div>
-                      
-                      {faq.relatedLinks && faq.relatedLinks.length > 0 && (
-                        <div className="mt-4 pt-4 border-t border-gray-200">
-                          <p className="text-sm font-semibold mb-2">📎 Gerelateerd:</p>
-                          <div className="flex flex-wrap gap-2">
-                            {faq.relatedLinks.map((link, i) => (
-                              <Link 
-                                key={i} 
-                                href={link.href}
-                                className="text-sm text-primary hover:underline flex items-center gap-1"
-                              >
-                                {link.text}
-                                <ArrowRight className="h-3 w-3" />
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </section>
-          )
-        })}
-
-        {/* Still Have Questions CTA */}
-        <section className="mt-16">
-          <Card className="bg-gradient-to-br from-primary to-blue-600 text-white border-0">
-            <CardContent className="text-center py-12">
-              <MessageCircle className="h-16 w-16 mx-auto mb-6 opacity-90" />
-              <h2 className="text-3xl font-bold mb-4">Staat uw vraag er niet bij?</h2>
-              <p className="text-xl mb-8 text-blue-50">
-                Geen probleem! Neem contact met ons op en we helpen u graag verder.
-              </p>
-              
-              <div className="flex flex-wrap justify-center gap-4">
-                <Link href="/contact">
-                  <Button size="lg" variant="secondary" className="text-lg px-8">
-                    <Mail className="mr-2 h-5 w-5" />
-                    Stel uw vraag
-                  </Button>
-                </Link>
-                <a href="tel:0850605357">
-                  <Button size="lg" variant="outline" className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white/20">
-                    <Phone className="mr-2 h-5 w-5" />
-                    085 060 5357
-                  </Button>
-                </a>
-              </div>
-
-              <p className="text-sm text-blue-100 mt-6">
-                Of start direct met uw gratis claim →
-              </p>
-              <Link href="/claim-indienen">
-                <Button size="lg" variant="secondary" className="mt-3">
-                  Gratis Claim Indienen
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* Quick Links */}
-        <section className="mt-12 grid md:grid-cols-3 gap-6">
-          <Link href="/diensten">
-            <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
-              <CardHeader>
-                <CardTitle className="text-lg">📋 Onze Diensten</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Bekijk alle diensten die wij aanbieden voor autoschade verhalen
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Link href="/over-ons">
-            <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
-              <CardHeader>
-                <CardTitle className="text-lg">🏢 Over Ons</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Leer meer over wie wij zijn en hoe wij werken
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Link href="/blog">
-            <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
-              <CardHeader>
-                <CardTitle className="text-lg">📚 Knowledge Base</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Handige artikelen en tips over autoschade verhalen
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-        </section>
         </div>
       </main>
     </div>

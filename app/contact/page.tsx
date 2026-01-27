@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Neem contact op met Autoschadebureau.nl voor vragen over uw autoschade claim",
+  description: "Neem contact op met Autoschadebureau.nl voor snelle expertise bij uw autoschade claim. Gratis advies!",
 }
 
 export default function ContactPage() {
@@ -72,10 +72,6 @@ export default function ContactPage() {
                   <Mail className="mr-2 h-4 w-4" />
                   Verstuur Bericht
                 </Button>
-
-                <p className="text-xs text-muted-foreground text-center">
-                  Door dit formulier te versturen gaat u akkoord met ons <Link href="/privacy" className="text-primary hover:underline">privacybeleid</Link>.
-                </p>
               </form>
             </CardContent>
           </Card>
