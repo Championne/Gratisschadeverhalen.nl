@@ -45,58 +45,6 @@ export default function OverOnsPage() {
           </Card>
         </section>
 
-        {/* Waarom Wij? */}
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-center mb-12">Waarom Autoschadebureau.nl?</h2>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card>
-              <CardHeader>
-                <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
-                  <FontAwesomeIcon icon={faCircleCheck} className="h-6 w-6 text-green-600" />
-                </div>
-                <CardTitle>100% Gratis</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  U betaalt <strong>letterlijk niets</strong>. De WA-verzekeraar van de tegenpartij betaalt alle kosten, 
-                  inclusief onze kosten. Transparant en eerlijk.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
-                  <TrendingUp className="h-6 w-6 text-blue-600" />
-                </div>
-                <CardTitle>Snelle Expertise</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  <strong>Snelle expertise</strong> door ons OCR-systeem dat automatisch uw schadeformulier uitleest. 
-                  Binnen minuten bent u klaar en starten wij direct met de afhandeling.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center mb-4">
-                  <Heart className="h-6 w-6 text-purple-600" />
-                </div>
-                <CardTitle>Persoonlijke Aanpak</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Elke claim wordt <strong>persoonlijk beoordeeld</strong> en afgehandeld. 
-                  U krijgt een dedicated contactpersoon en kunt altijd de status van uw claim volgen via uw dashboard.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
         {/* Hoe het werkt - Kort */}
         <section className="mb-12">
           <Card className="bg-gradient-to-br from-blue-50 to-white border-2">
