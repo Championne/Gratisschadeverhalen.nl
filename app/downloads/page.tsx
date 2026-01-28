@@ -203,11 +203,7 @@ export default function DownloadsPage() {
                                 </p>
                               </div>
                               <div className="flex-shrink-0">
-                                {doc.comingSoon ? (
-                                  <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">
-                                    Binnenkort
-                                  </span>
-                                ) : doc.isLink ? (
+                                {doc.isLink ? (
                                   <Link href={doc.url}>
                                     <Button variant="outline" size="sm">
                                       Bekijken
