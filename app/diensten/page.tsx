@@ -40,23 +40,10 @@ export default function DienstenPage() {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Onze Diensten
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-xl text-muted-foreground">
               Wij regelen van A tot Z uw autoschade verhaal op de tegenpartij. 
               Snelle expertise, volledig digitaal en 100% gratis voor u.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="/claim-indienen">
-                <Button size="lg" className="text-lg">
-                  Start Nu - Claim Indienen
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button size="lg" variant="outline" className="text-lg">
-                  Neem Contact Op
-                </Button>
-              </Link>
-            </div>
           </div>
         </div>
       </section>
@@ -366,99 +353,6 @@ export default function DienstenPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-10 bg-primary text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Klaar om uw autoschade te verhalen?
-            </h2>
-            <p className="text-xl mb-8 opacity-90">
-              Upload uw schadeformulier en wij starten direct met uw claim. 100% gratis en zonder risico.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link href="/claim-indienen">
-                <Button size="lg" variant="secondary" className="text-lg">
-                  Start Nu - Claim Indienen
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button size="lg" variant="outline" className="text-lg bg-transparent border-white text-white hover:bg-white hover:text-primary">
-                  Eerst Vragen Stellen
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-10 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Veelgestelde Vragen
-              </h2>
-            </div>
-
-            <div className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Welke diensten bieden jullie NIET aan?</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    Wij richten ons specifiek op het verhalen van voertuigschade (materiële schade). 
-                    Voor letselschade verwijzen wij door naar onze partner Unitas Letselschade, die gespecialiseerd is in persoonlijk letsel. 
-                    Wij bieden geen directe rechtsbijstand of medische diensten aan.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Hoe snel kan ik starten?</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    Direct! Upload een foto van uw Europees Schadeformulier, of vul handmatig in. 
-                    Onze OCR-technologie verwerkt het formulier binnen enkele seconden. 
-                    Binnen 24 uur beoordeelt uw autoschadespecialist uw claim en starten we de communicatie met de verzekeraar.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Wat als ik geen schadeformulier heb?</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    Geen probleem! U kunt ook handmatig een claim indienen. 
-                    Zolang u het kenteken van de tegenpartij heeft, kunnen wij de claim starten. 
-                    Wel adviseren wij altijd om een Europees Schadeformulier in te vullen bij een ongeval.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Werken jullie samen met garages?</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    Ja, wij werken samen met een netwerk van gecertificeerde taxateurs en garages. 
-                    U bent vrij om zelf een garage te kiezen, of wij kunnen u doorverwijzen naar een betrouwbare partner. 
-                    De verzekeraar vergoedt de reparatiekosten rechtstreeks of via ons.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
