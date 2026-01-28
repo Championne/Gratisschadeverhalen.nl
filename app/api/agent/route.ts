@@ -159,7 +159,11 @@ FORMAT ANTWOORD PRECIES ALS:
       })
 
       // Verstuur escalatie email naar admin
-      const adminEmail = process.env.RESEND_ADMIN_EMAIL || claim.email // TODO: Replace with real admin email
+      const adminEmail = process.env.RESEND_ADMIN_EMAIL || process.env.AGENT_ADMIN_EMAIL
+      if (!adminEmail) {
+        console.error('❌ CRITICAL: No admin email configured (RESEND_ADMIN_EMAIL or AGENT_ADMIN_EMAIL)')
+        throw new Error('Admin email not configured - cannot send escalation notification')
+      }
       let emailSuccess = false
       let emailError = null
       
@@ -317,9 +321,13 @@ FORMAT ANTWOORD PRECIES ALS:
     if (!shouldEscalate) {
       let adminEmailSuccess = false
       let adminEmailError = null
-      const adminEmail = process.env.RESEND_ADMIN_EMAIL || claim.email // TODO: Replace with real admin email
+      const adminEmail = process.env.RESEND_ADMIN_EMAIL || process.env.AGENT_ADMIN_EMAIL
+      if (!adminEmail) {
+        console.error('⚠️ No admin email configured - skipping admin notification')
+      }
       
       try {
+        if (!adminEmail) throw new Error('No admin email configured')
         const adminEmailTemplate = adminNewClaimEmail({
           naam: claim.naam,
           email: claim.email,
