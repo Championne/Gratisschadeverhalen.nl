@@ -102,7 +102,7 @@ export default function OverOnsPage() {
 
         {/* Partner Letselschade */}
         <section className="mb-12">
-          <h2 className="text-2xl font-bold text-center mb-6">Onze Partner voor Letselschade</h2>
+          <h2 className="text-3xl font-bold text-center mb-6">Onze Partner voor Letselschade</h2>
           <a 
             href="https://www.unitasletselschade.nl" 
             target="_blank" 
