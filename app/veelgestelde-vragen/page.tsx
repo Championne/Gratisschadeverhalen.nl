@@ -78,7 +78,7 @@ const faqSchema = {
       "name": "Moet ik het Europees Schadeformulier hebben ingevuld?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Het helpt enorm, maar het is niet verplicht. Als u het formulier heeft, kunt u het uploaden en wij vullen automatisch de gegevens in via OCR. Zonder formulier kunt u de gegevens ook handmatig invoeren."
+        "text": "Het helpt enorm, maar het is niet verplicht. Als u het formulier heeft, kunt u het uploaden en wij vullen automatisch de gegevens in. Zonder formulier kunt u de gegevens ook handmatig invoeren."
       }
     },
     {
@@ -168,12 +168,12 @@ const faqs: FAQItem[] = [
   {
     category: "Technisch & Formulieren",
     question: "Moet ik het Europees Schadeformulier hebben ingevuld?",
-    answer: "Het helpt enorm, maar het is niet verplicht. Als u het formulier heeft, kunt u het uploaden en wij vullen automatisch de gegevens in via OCR-technologie. Zonder formulier kunt u de gegevens ook handmatig invoeren.",
+    answer: "Het helpt enorm, maar het is niet verplicht. Als u het formulier heeft, kunt u het uploaden en wij vullen automatisch de gegevens in. Zonder formulier kunt u de gegevens ook handmatig invoeren.",
   },
   {
     category: "Technisch & Formulieren",
-    question: "Hoe werkt de OCR-upload?",
-    answer: "U maakt een foto of scan van het Europees Schadeformulier en uploadt deze. Onze AI-technologie leest automatisch alle gegevens uit (kentekens, data, handtekeningen) en vult deze in. U hoeft alleen te controleren en eventueel aan te vullen.",
+    question: "Hoe werkt het automatisch inlezen van mijn schadeformulier?",
+    answer: "U maakt een foto of scan van het Europees Schadeformulier en uploadt deze. Ons systeem leest automatisch alle gegevens uit (kentekens, data, handtekeningen) en vult deze in. U hoeft alleen te controleren en eventueel aan te vullen.",
   },
   {
     category: "Technisch & Formulieren",

@@ -40,7 +40,7 @@ export function StructuredData() {
       'https://www.linkedin.com/company/autoschadebureau',
       'https://www.facebook.com/autoschadebureau',
     ],
-    description: 'Gratis autoschade en voertuigschade verhalen op de WA-verzekeraar van de tegenpartij. Geen voorschot, u betaalt niets. Automatische OCR-verwerking van het Europees Schadeformulier.',
+    description: 'Gratis autoschade en voertuigschade verhalen op de WA-verzekeraar van de tegenpartij. Geen voorschot, u betaalt niets. Automatische verwerking van het Europees Schadeformulier.',
     slogan: 'De verhaalservice voor uw voertuig- en letselschade',
     areaServed: [
       {
@@ -181,7 +181,7 @@ export function StructuredData() {
     '@id': 'https://www.autoschadebureau.nl/#website',
     name: 'Autoschadebureau.nl',
     url: 'https://www.autoschadebureau.nl',
-    description: 'Gratis autoschade en voertuigschade verhalen met automatische OCR-verwerking',
+    description: 'Gratis autoschade en voertuigschade verhalen met automatische formulierverwerking',
     publisher: {
       '@type': 'Organization',
       '@id': 'https://www.autoschadebureau.nl/#organization',

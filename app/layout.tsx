@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     default: "Autoschade Verhalen | Gratis Voertuigschade Claimen - U Betaalt Niets",
     template: "%s | Autoschadebureau.nl"
   },
-  description: "Upload uw Europees Schadeformulier en verhaal uw autoschade gratis op de tegenpartij. Automatische OCR-verwerking, u betaalt niets. Wij regelen uw voertuigschade van A tot Z. Gemiddeld binnen 6 weken uitbetaald.",
+  description: "Upload uw Europees Schadeformulier en verhaal uw autoschade gratis op de tegenpartij. Automatische formulierverwerking, u betaalt niets. Wij regelen uw voertuigschade van A tot Z. Gemiddeld binnen 6 weken uitbetaald.",
   keywords: [
     "autoschade verhalen",
     "voertuigschade verhalen", 

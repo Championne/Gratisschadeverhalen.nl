@@ -438,7 +438,7 @@ export default function WatTeDoennaNaOngevalblogPost() {
               <ul className="text-sm space-y-2 ml-6 mb-4">
                 <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Upload foto/scan van Europees Schadeformulier</li>
                 <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Upload alle foto's van de schade</li>
-                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Wij lezen formulier automatisch in via OCR</li>
+                <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Wij lezen uw formulier automatisch in</li>
                 <li><FontAwesomeIcon icon={faCircleCheck} className="inline h-4 w-4 text-green-600 mr-2" />Binnen 24 uur start uw schadespecialist</li>
               </ul>
               <Link href="/claim-indienen">

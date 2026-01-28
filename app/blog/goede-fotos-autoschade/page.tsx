@@ -271,7 +271,7 @@ export default function BlogPost() {
               <h3 className="font-bold mb-2 text-green-900">Het goede nieuws</h3>
               <p className="text-green-800">
                 Met complete foto-documentatie verloopt uw claim gemiddeld <strong>2-3 weken sneller</strong>. 
-                Ons OCR-systeem kan bovendien gegevens automatisch uitlezen als u ook het{" "}
+                Ons systeem kan bovendien gegevens automatisch uitlezen als u ook het{" "}
                 <Link href="/blog/europees-schadeformulier-invullen" className="text-green-700 hover:underline font-medium">
                   Europees schadeformulier
                 </Link> fotografeert.
@@ -462,7 +462,7 @@ export default function BlogPost() {
                     Heeft u samen met de tegenpartij het Europees schadeformulier ingevuld? Maak een 
                     duidelijke foto voordat u het opstuurt. Ons{" "}
                     <Link href="/claim-indienen" className="text-primary hover:underline font-medium">
-                      OCR-systeem
+                      Automatisch inlezen
                     </Link>{" "}
                     kan de gegevens automatisch uitlezen, wat u veel typ-werk bespaart.
                   </p>

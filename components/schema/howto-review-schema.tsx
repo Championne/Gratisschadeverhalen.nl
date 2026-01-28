@@ -34,7 +34,7 @@ export function HowToSchema() {
       {
         '@type': 'HowToStep',
         name: 'Upload uw Europees Schadeformulier',
-        text: 'Upload een foto of scan van uw ingevulde Europees Schadeformulier. Onze OCR-technologie leest automatisch alle gegevens in.',
+        text: 'Upload een foto of scan van uw ingevulde Europees Schadeformulier. Ons systeem leest automatisch alle gegevens in.',
         image: 'https://www.autoschadebureau.nl/step-1.jpg',
         url: 'https://www.autoschadebureau.nl#upload',
       },

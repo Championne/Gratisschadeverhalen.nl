@@ -95,7 +95,7 @@ export default function EuropeesSchadeformulierPage() {
                 <div className="flex-1">
                   <h3 className="font-bold text-lg mb-2">💡 Al ingevuld? Upload direct!</h3>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Ons OCR-systeem leest het formulier automatisch in. U hoeft het niet handmatig over te typen.
+                    Ons systeem leest het formulier automatisch in. U hoeft het niet handmatig over te typen.
                   </p>
                   <Link href="/claim-indienen">
                     <Button>
@@ -529,7 +529,7 @@ export default function EuropeesSchadeformulierPage() {
                   Formulier Ingevuld? Start Nu Uw Claim!
                 </h3>
                 <p className="text-muted-foreground mb-6">
-                  Upload uw Europees Schadeformulier en wij lezen het automatisch in via OCR. 
+                  Upload uw Europees Schadeformulier en wij lezen het automatisch in. 
                   Binnen 24 uur start uw autoschadespecialist met uw claim.
                 </p>
                 <Link href="/claim-indienen">

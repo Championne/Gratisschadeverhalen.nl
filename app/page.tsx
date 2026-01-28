@@ -79,7 +79,7 @@ const jsonLd = {
           "@type": "HowToStep",
           "position": 1,
           "name": "Upload uw Europees Schadeformulier",
-          "text": "Upload een foto of scan van uw ingevulde Europees Schadeformulier. Ons OCR-systeem leest automatisch de gegevens in en vult het formulier voor u in. U hoeft alleen te controleren of alles klopt."
+          "text": "Upload een foto of scan van uw ingevulde Europees Schadeformulier. Ons systeem leest automatisch de gegevens in en vult het formulier voor u in. U hoeft alleen te controleren of alles klopt."
         },
         {
           "@type": "HowToStep",
@@ -160,7 +160,7 @@ const jsonLd = {
         "name": "Noor B."
       },
       "datePublished": "2025-01-08",
-      "reviewBody": "Ik dacht dat schade verhalen ingewikkeld was, maar deze site maakte het super makkelijk. OCR werkte perfect!",
+      "reviewBody": "Ik dacht dat schade verhalen ingewikkeld was, maar deze site maakte het super makkelijk. Het automatisch inlezen werkte perfect!",
       "reviewRating": {
         "@type": "Rating",
         "ratingValue": "5",
@@ -224,7 +224,7 @@ const jsonLd = {
           "name": "Hoe werkt de upload van het Europees Schadeformulier?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Upload simpelweg een foto of scan van uw ingevulde Europees Schadeformulier. Ons slimme OCR-systeem leest automatisch alle gegevens uit (zoals kentekens, datum, locatie) en vult het online formulier voor u in. U hoeft alleen te controleren of alles klopt en eventueel aan te vullen."
+            "text": "Upload simpelweg een foto of scan van uw ingevulde Europees Schadeformulier. Ons slimme systeem leest automatisch alle gegevens uit (zoals kentekens, datum, locatie) en vult het online formulier voor u in. U hoeft alleen te controleren of alles klopt en eventueel aan te vullen."
           }
         },
         {
@@ -468,7 +468,7 @@ export default function HomePage() {
                       <h3 className="font-bold text-base md:text-lg mb-1 md:mb-2">Upload Formulier</h3>
                       <p className="text-xs md:text-sm text-muted-foreground">
                         Maak foto van uw Europees Schadeformulier en upload. 
-                        OCR leest automatisch alle gegevens.
+                        Wij lezen automatisch alle gegevens in.
                       </p>
                     </div>
                   </div>

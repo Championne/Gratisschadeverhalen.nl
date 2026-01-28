@@ -72,7 +72,7 @@ export default function OverOnsPage() {
                   </div>
                   <h3 className="font-semibold mb-2">Automatisch Invullen</h3>
                   <p className="text-sm text-muted-foreground">
-                    OCR vult automatisch alle velden in, u controleert
+                    Ons systeem vult automatisch alle velden in, u controleert
                   </p>
                 </div>
 

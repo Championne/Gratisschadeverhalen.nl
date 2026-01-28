@@ -230,7 +230,7 @@ ing</a>
             </p>
 
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
-              <h3 className="font-bold mb-4">✨ Innovatie: OCR Upload bij Autoschadebureau.nl</h3>
+              <h3 className="font-bold mb-4">✨ Innovatie: Automatisch Inlezen bij Autoschadebureau.nl</h3>
               <p className="text-muted-foreground mb-4">
                 Bij ons kunt u simpelweg een <strong>foto of scan van uw schadeformulier 
                 uploaden</strong>. Ons geavanceerde OCR-systeem leest automatisch alle 
@@ -486,7 +486,7 @@ ing</a>
                     </li>
                     <li className="flex items-start gap-3">
                       <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
-                      <span><strong>OCR technologie</strong> – upload foto schadeformulier, wij doen de rest</span>
+                      <span><strong>Automatisch inlezen</strong> – upload foto schadeformulier, wij doen de rest</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />
