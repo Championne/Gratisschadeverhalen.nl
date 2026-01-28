@@ -93,13 +93,13 @@ export default function DienstenPage() {
                 </CardContent>
               </Card>
 
-              {/* Dienst 2: OCR Schadeformulier Verwerking */}
+              {/* Dienst 2: Automatische Inlezing Schadeformulier */}
               <Card className="border-2">
                 <CardHeader>
                   <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-4">
                     <Camera className="h-8 w-8 text-blue-600" />
                   </div>
-                  <CardTitle className="text-2xl">OCR Formulier Verwerking</CardTitle>
+                  <CardTitle className="text-2xl">Automatische Inlezing Schadeformulier</CardTitle>
                   <CardDescription className="text-base">
                     Maak een foto van uw Europees Schadeformulier - wij lezen het automatisch in
                   </CardDescription>
@@ -112,7 +112,7 @@ export default function DienstenPage() {
                     </li>
                     <li className="flex items-start gap-3">
                       <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm">AI-gestuurde verwerking van handgeschreven tekst</span>
+                      <span className="text-sm">Slimme verwerking van handgeschreven tekst</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
@@ -204,22 +204,22 @@ export default function DienstenPage() {
                 </CardContent>
               </Card>
 
-              {/* Dienst 5: Letselschade Detectie */}
+              {/* Dienst 5: Letselschade Doorverwijzing */}
               <Card className="border-2">
                 <CardHeader>
                   <div className="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center mb-4">
                     <UserCheck className="h-8 w-8 text-purple-600" />
                   </div>
-                  <CardTitle className="text-2xl">Letselschade Detectie</CardTitle>
+                  <CardTitle className="text-2xl">Letselschade Doorverwijzing</CardTitle>
                   <CardDescription className="text-base">
-                    AI-detectie van mogelijke letselschade en doorverwijzing naar gespecialiseerde partners
+                    Bij lichamelijke klachten verwijzen wij u door naar gespecialiseerde partners
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3">
                     <li className="flex items-start gap-3">
                       <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm">Automatische scan op letselschade signalen</span>
+                      <span className="text-sm">Wij signaleren mogelijke letselschade in uw dossier</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
