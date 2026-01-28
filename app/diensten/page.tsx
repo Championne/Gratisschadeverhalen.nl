@@ -33,31 +33,17 @@ export const metadata: Metadata = {
 export default function DienstenPage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
+      {/* Onze Diensten Section */}
       <section className="bg-gradient-to-br from-blue-50 via-white to-green-50 py-10">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Onze Diensten
-            </h1>
-            <p className="text-xl text-muted-foreground">
-              Wij regelen van A tot Z uw autoschade verhaal op de tegenpartij. 
-              Snelle expertise, volledig digitaal en 100% gratis voor u.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Services Grid */}
-      <section className="py-10 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Wat wij voor u doen
-              </h2>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                Onze Diensten
+              </h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Van schadeformulier uploaden tot uitbetaling – wij nemen alles uit handen
+                Wij regelen van A tot Z uw autoschade verhaal op de tegenpartij. 
+                Snelle expertise, volledig digitaal en 100% gratis voor u.
               </p>
             </div>
 
