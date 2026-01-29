@@ -1,7 +1,9 @@
 import { createClient } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
+import { Suspense } from "react"
 import { DashboardHeader } from "@/components/dashboard/header"
 import { ClaimsList } from "@/components/dashboard/claims-list"
+import { UnauthorizedAlert } from "@/components/dashboard/unauthorized-alert"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { FileText, Clock, XCircle, AlertCircle } from "lucide-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -86,6 +88,11 @@ export default async function DashboardPage() {
     return (
       <div className="min-h-screen bg-gray-50">
         <DashboardHeader user={user} />
+        
+        {/* Show toast if redirected from admin with unauthorized error */}
+        <Suspense fallback={null}>
+          <UnauthorizedAlert />
+        </Suspense>
 
         <main className="container mx-auto px-4 py-4 md:py-8">
           <div className="mb-4 md:mb-8">

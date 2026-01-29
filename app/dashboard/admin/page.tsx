@@ -2,12 +2,13 @@ import { Metadata } from "next"
 import { redirect } from "next/navigation"
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
+import { isAdmin } from "@/lib/auth/admin"
 import { AdminClaimsTable } from "@/components/admin/claims-table"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Mail, AlertCircle } from "lucide-react"
+import { Mail, AlertCircle, ShieldAlert } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Admin Dashboard",
@@ -28,8 +29,11 @@ export default async function AdminDashboardPage() {
     redirect("/login")
   }
 
-  // TODO: Add admin role check when role system is implemented
-  // For now, any authenticated user can access admin
+  // 🔒 SECURITY: Verify user has admin privileges
+  if (!isAdmin(user)) {
+    console.log(`🚫 Admin page access denied for: ${user.email}`)
+    redirect("/dashboard?error=unauthorized")
+  }
 
   // Use service role for admin operations (bypasses RLS)
   const { createClient: createServiceClient } = await import('@supabase/supabase-js')

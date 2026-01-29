@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
+import { isAdmin } from "@/lib/auth/admin"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { UnmatchedEmailsClient } from "./client"
@@ -22,6 +23,12 @@ export default async function AdminEmailsPage() {
 
   if (!user) {
     redirect("/login")
+  }
+
+  // 🔒 SECURITY: Verify user has admin privileges
+  if (!isAdmin(user)) {
+    console.log(`🚫 Admin emails page access denied for: ${user.email}`)
+    redirect("/dashboard?error=unauthorized")
   }
 
   // Use service role for admin operations

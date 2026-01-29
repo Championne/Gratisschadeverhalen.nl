@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase/server"
+import { isAdmin } from "@/lib/auth/admin"
 
 // Status changes die AI heranalyse triggeren
 const REANALYSIS_TRIGGER_STATUSES = [
@@ -26,7 +27,14 @@ export async function PATCH(
       )
     }
 
-    // TODO: Add admin role check when implemented
+    // 🔒 SECURITY: Verify user has admin privileges
+    if (!isAdmin(user)) {
+      console.log(`🚫 Admin API access denied for: ${user.email}`)
+      return NextResponse.json(
+        { error: "Forbidden", message: "Admin access required" },
+        { status: 403 }
+      )
+    }
 
     // Use service role for admin operations (bypasses RLS)
     const { createClient: createServiceClient } = await import('@supabase/supabase-js')
