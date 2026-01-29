@@ -88,7 +88,7 @@ Als u schade oploopt, is het cruciaal om zoveel mogelijk bewijs te verzamelen:
 3.  **Noteer exacte locatie:** Noteer de straatnaam, huisnummers, hectometerpaaltjes of andere herkenningspunten.
 4.  **Getuigen:** Zijn er getuigen? Noteer hun contactgegevens.
 5.  **Meld de situatie:** Bij een ernstig gebrek aan de weg kunt u dit melden bij de betreffende wegbeheerder (gemeente, provincie, Rijkswaterstaat). Dit dient tevens als bewijs dat de wegbeheerder op de hoogte is gesteld.
-6.  **Raadpleeg direct Gratisschadeverhalen.nl:** Voordat u stappen onderneemt met uw verzekering of een aansprakelijkstelling indient, is het raadzaam om professioneel advies in te winnen.
+6.  **Raadpleeg direct Gratisschadeverhalen.nl:** Voordat u stappen onderneemt met uw verzekering of een aansprakelijkstelling indient, is het raadzaam om professioneel advies in te winnen. Voor meer informatie over het correct afhandelen van schadeclaims kunt u ook onze [Europees Schadeformulier gids](/knowledge-base/landing-pages/europees-schadeformulier-gids.md) raadplegen. Bent u een zakelijke partner, dan vindt u relevante informatie op onze [Intermediairs pagina](/gratisschadeverhalen/content/pages/intermediairs.md).
 
 ## Hoe Gratisschadeverhalen.nl U Kan Helpen
 

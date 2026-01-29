@@ -8,7 +8,7 @@ Hieronder vindt u een overzicht van de documenten die u gratis kunt downloaden e
 
 ### 1. Europees Schadeformulier (Leeg PDF)
 
-*   **Beschrijving:** Een universeel schadeformulier dat in heel Europa wordt gebruikt. Essentieel om na een aanrijding samen met de tegenpartij in te vullen.
+*   **Beschrijving:** Een universeel schadeformulier dat in heel Europa wordt gebruikt. Essentieel om na een aanrijding samen met de tegenpartij in te vullen. Voor gedetailleerde instructies over het invullen, raadpleeg onze [Europees Schadeformulier gids](/knowledge-base/landing-pages/europees-schadeformulier-gids.md).
 *   **Gebruikssituatie:** Direct na elk auto-ongeluk, ongeacht de ernst van de schade, om de feiten en toedracht vast te leggen. Onmisbaar voor de verzekeraar.
 *   **Download:** [Download Europees Schadeformulier (PDF)](/assets/downloads/europees-schadeformulier-leeg.pdf) *(Link wordt actief zodra PDF is geüpload)*
 

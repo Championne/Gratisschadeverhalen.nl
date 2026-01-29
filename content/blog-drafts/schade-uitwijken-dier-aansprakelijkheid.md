@@ -82,7 +82,7 @@ Het is van groot belang om de polisvoorwaarden van uw autoverzekering goed te co
 
 Schade door uitwijken voor een dier is – zoals uiteengezet – een juridisch ingewikkelde kwestie. De juiste bewijsvoering, de interpretatie van wetgeving en de onderhandelingen met verzekeraars kunnen een stressvolle en tijdrovende aangelegenheid zijn. Precies hierin ligt de kracht van Gratisschadeverhalen.nl.
 
-Wij begrijpen de nuances en de haken en ogen van schadeclaims. Ons team van deskundigen staat klaar om u te ontzorgen:
+Wij begrijpen de nuances en de haken en ogen van schadeclaims. Voor meer algemene informatie over schadeclaims, raadpleeg onze [Waarborgfonds Motorverkeer gids](/knowledge-base/landing-pages/waarborgfonds-motorverkeer-gids.md) en bezoek onze [Downloads](/gratisschadeverhalen/content/pages/downloads.md) pagina voor handige documenten. Ons team van deskundigen staat klaar om u te ontzorgen:
 *   **Gratis Juridisch Advies:** Wij beoordelen uw situatie en geven u helder inzicht in uw rechten en mogelijkheden.
 *   **Volledige Schadeafhandeling:** Van het verzamelen van bewijsmateriaal tot de communicatie met de tegenpartij (indien van toepassing) en verzekeraars; wij nemen het gehele proces uit handen.
 *   **Onderhandeling met Verzekeraars:** Wij zorgen ervoor dat u de schadevergoeding krijgt waar u recht op heeft, zonder dat u zich hoeft te verdiepen in complexe polisvoorwaarden.
