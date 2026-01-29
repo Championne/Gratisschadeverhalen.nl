@@ -19,11 +19,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export const metadata: Metadata = {
   title: "Onze Diensten - Autoschade Verhalen | Autoschadebureau.nl",
-  description: "Alle diensten van Autoschadebureau.nl: autoschade verhalen, automatische schadeformulier verwerking, online claim tracking, expertise organisatie en meer. Volledig gratis.",
+  description: "Wij verhalen uw autoschade gratis op de tegenpartij. Volledige ontzorging: van schademelding tot uitbetaling. U betaalt niets, wij regelen alles.",
   keywords: [
     "autoschade verhalen diensten",
-    "schadeformulier automatisch inlezen",
-    "online claim tracking",
+    "gratis autoschade verhalen",
+    "schade claimen tegenpartij",
     "WA schade verhalen",
     "autoschade expertise",
     "gratis schadeafhandeling"
