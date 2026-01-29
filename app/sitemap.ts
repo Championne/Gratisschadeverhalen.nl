@@ -10,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/claim-indienen',
     '/veelgestelde-vragen',
     '/blog',
+    '/downloads',
+    '/intermediairs',
     '/over-ons',
     '/contact',
     '/privacy',
