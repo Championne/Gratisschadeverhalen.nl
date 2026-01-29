@@ -51,14 +51,6 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      "name": "Wat als de tegenpartij geen WA-verzekering heeft?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Als de tegenpartij geen WA-verzekering heeft, kunt u een claim indienen bij het Waarborgfonds Motorverkeer. Wij helpen u hierbij en begeleiden het proces."
-      }
-    },
-    {
-      "@type": "Question",
       "name": "Kan ik zonder advocaat autoschade verhalen?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -186,11 +178,6 @@ const faqs: FAQItem[] = [
     category: "Verzekeringen & Aansprakelijkheid",
     question: "Gaat mijn premie omhoog als ik via jullie verhaal?",
     answer: "Nee! Omdat wij de schade verhalen op de WA-verzekeraar van de TEGENPARTIJ, heeft dit geen invloed op uw eigen verzekering of premie. Uw schadevrije jaren blijven intact. U hoeft uw eigen verzekering niet eens te informeren.",
-  },
-  {
-    category: "Verzekeringen & Aansprakelijkheid",
-    question: "Wat als de tegenpartij geen WA-verzekering heeft?",
-    answer: "Als de tegenpartij geen WA-verzekering heeft (onverzekerd rijden is illegaal in Nederland), kunt u een claim indienen bij het Waarborgfonds Motorverkeer. Wij helpen u hierbij en begeleiden het proces.",
   },
   {
     category: "Verzekeringen & Aansprakelijkheid",

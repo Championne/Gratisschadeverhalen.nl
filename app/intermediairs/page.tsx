@@ -14,7 +14,7 @@ const benefits = [
   {
     icon: Shield,
     title: "100% Kosteloos voor uw Cliënt",
-    description: "Onze kosten worden direct verhaald op de aansprakelijke partij of het Waarborgfonds Motorverkeer. Geen eigen risico, geen kosten voor u of uw cliënt."
+    description: "Onze kosten worden direct verhaald op de WA-verzekeraar van de aansprakelijke partij. Geen eigen risico, geen kosten voor u of uw cliënt."
   },
   {
     icon: Clock,
@@ -24,7 +24,7 @@ const benefits = [
   {
     icon: CheckCircle,
     title: "Expertise in Materiële Autoschade",
-    description: "Wij zijn gespecialiseerd in complexe schadedossiers: onbekende daders, schade in het buitenland en schade door gladheid of slecht wegdek."
+    description: "Wij zijn gespecialiseerd in autoschade waarbij de tegenpartij aansprakelijk is: aanrijdingen, parkeerschade, kop-staartbotsingen en meer."
   },
   {
     icon: Users,
