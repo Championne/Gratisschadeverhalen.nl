@@ -166,7 +166,8 @@ export default function BlogPost() {
           <p>
             In zeldzame gevallen heeft de tegenpartij geen geldige WA-verzekering. Dan kunt u een 
             claim indienen bij het <strong>Waarborgfonds Motorverkeer</strong>. Dit fonds vergoedt 
-            schade veroorzaakt door onverzekerde of onbekende motorrijtuigen.
+            schade veroorzaakt door onverzekerde of onbekende motorrijtuigen. Let op: dit is een 
+            complexe procedure. Wij richten ons op claims waarbij de tegenpartij een bekende verzekeraar heeft.
           </p>
 
           <h2>Conclusie</h2>

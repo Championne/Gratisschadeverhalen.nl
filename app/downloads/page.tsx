@@ -1,148 +1,55 @@
 import { Metadata } from "next"
 import Link from "next/link"
-import { FileText, Download, ExternalLink, FileCheck, ClipboardList, Car, Users, Shield, PenLine, Globe, AlertTriangle } from "lucide-react"
+import { FileText, Download, ClipboardList, Users, Mail, FileCheck, Phone, ArrowRight, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export const metadata: Metadata = {
-  title: "Downloads | Formulieren & Documenten",
-  description: "Download alle formulieren voor uw autoschade claim. Europees Schadeformulier, getuigenverklaring, aansprakelijkstelling. Snelle expertise bij Autoschadebureau.nl.",
+  title: "Downloads | Handige Formulieren & Checklists Autoschade",
+  description: "Download gratis het Europees Schadeformulier, auto-ongeval checklist, getuigenverklaring template en meer voor uw materiële autoschade claim.",
+  keywords: ["Europees schadeformulier downloaden", "checklist auto-ongeval", "getuigenverklaring", "aansprakelijkheidsbrief", "verzekeraar contactgegevens", "autoschade formulieren"],
 }
 
-const documents = [
+const downloads = [
   {
-    category: "Schadeformulieren",
-    items: [
-      {
-        title: "Europees Schadeformulier",
-        description: "Het officiële Europees Aanrijdingsformulier. Vul dit in na een aanrijding samen met de tegenpartij.",
-        icon: FileText,
-        type: "PDF",
-        url: "https://www.rijksoverheid.nl/binaries/rijksoverheid/documenten/formulieren/2016/07/01/europees-schadeformulier/europees-schadeformulier.pdf",
-        external: true,
-      },
-      {
-        title: "Oprijverklaring / Schuldbekentenis",
-        description: "Formulier waarmee de veroorzaker schriftelijk erkent aansprakelijk te zijn voor de schade.",
-        icon: FileCheck,
-        type: "Formulier",
-        url: "/oprijverklaring",
-        external: false,
-        isLink: true,
-      },
-    ],
+    icon: FileText,
+    title: "Europees Schadeformulier (Leeg PDF)",
+    description: "Een universeel schadeformulier dat in heel Europa wordt gebruikt. Essentieel om na een aanrijding samen met de tegenpartij in te vullen.",
+    usage: "Direct na elk auto-ongeluk, ongeacht de ernst van de schade, om de feiten en toedracht vast te leggen.",
+    filename: "europees-schadeformulier-leeg.pdf",
+    available: true,
   },
   {
-    category: "Getuigenverklaringen",
-    items: [
-      {
-        title: "Getuigenverklaring (Nederlands)",
-        description: "Standaard formulier voor het vastleggen van een getuigenverklaring. Print of sla op als PDF.",
-        icon: Users,
-        type: "Formulier",
-        url: "/getuigenverklaring",
-        external: false,
-        isLink: true,
-      },
-      {
-        title: "Witness Statement (English)",
-        description: "Standard form for recording a witness statement in English. Print or save as PDF.",
-        icon: Globe,
-        type: "Form",
-        url: "/witness-statement",
-        external: false,
-        isLink: true,
-      },
-    ],
+    icon: ClipboardList,
+    title: "Checklist na Auto-ongeval",
+    description: "Een praktische checklist met alle stappen die u moet volgen direct na een auto-ongeval. Van veiligheidsmaatregelen tot het verzamelen van bewijs.",
+    usage: "Houd deze checklist in uw dashboardkastje. Gebruik deze als leidraad direct na een ongeval.",
+    filename: "checklist-auto-ongeval.pdf",
+    available: false,
   },
   {
-    category: "Voorbeeldbrieven",
-    items: [
-      {
-        title: "Voorbeeldbrief Aansprakelijkstelling",
-        description: "Voorbeeldbrief om de tegenpartij of verzekeraar aansprakelijk te stellen voor de schade.",
-        icon: PenLine,
-        type: "Brief",
-        url: "/aansprakelijkstelling",
-        external: false,
-        isLink: true,
-      },
-    ],
+    icon: Users,
+    title: "Getuigenverklaring Template",
+    description: "Een gestandaardiseerd template voor getuigen om hun waarnemingen van het ongeval gedetailleerd vast te leggen.",
+    usage: "Te gebruiken wanneer er getuigen aanwezig waren bij het ongeval. Laat hen dit formulier zo snel mogelijk invullen.",
+    filename: "getuigenverklaring-template.pdf",
+    available: false,
   },
   {
-    category: "Waarborgfonds Motorverkeer",
-    items: [
-      {
-        title: "Waarborgfonds Schadeformulier",
-        description: "Schadeformulier voor claims bij het Waarborgfonds (bij onverzekerde/onbekende tegenpartij).",
-        icon: AlertTriangle,
-        type: "PDF",
-        url: "https://www.wbf.nl/wp-content/uploads/2020/01/Schadeformulier-motorrijtuigen.pdf",
-        external: true,
-      },
-      {
-        title: "Waarborgfonds Getuigenverklaring",
-        description: "Speciale getuigenverklaring voor claims bij het Waarborgfonds Motorverkeer.",
-        icon: Users,
-        type: "PDF",
-        url: "https://www.wbf.nl/wp-content/uploads/2020/01/Getuigenverklaring.pdf",
-        external: true,
-      },
-      {
-        title: "Brochure Waarborgfonds",
-        description: "Informatie over het Waarborgfonds voor schade door onverzekerde of onbekende voertuigen.",
-        icon: FileText,
-        type: "PDF",
-        url: "https://www.wbf.nl/wp-content/uploads/2020/01/Brochure-Waarborgfonds.pdf",
-        external: true,
-      },
-    ],
+    icon: Mail,
+    title: "Aansprakelijkheidsbrief Template",
+    description: "Een professionele template voor een brief waarin u de aansprakelijke partij formeel aansprakelijk stelt voor de geleden materiële schade.",
+    usage: "Wanneer de aansprakelijke partij bekend is, maar de schadeafhandeling stagneert.",
+    filename: "aansprakelijkheidsbrief-template.pdf",
+    available: false,
   },
   {
-    category: "Handleidingen & Tips",
-    items: [
-      {
-        title: "Checklist Na Aanrijding",
-        description: "Wat te doen direct na een auto-ongeluk? Deze checklist helpt u niets te vergeten.",
-        icon: ClipboardList,
-        type: "Artikel",
-        url: "/blog/wat-te-doen-na-ongeval",
-        external: false,
-        isLink: true,
-      },
-      {
-        title: "Foto Tips bij Schade",
-        description: "Welke foto's moet u maken van de schade? Tips voor de beste documentatie.",
-        icon: Car,
-        type: "Artikel",
-        url: "/blog/goede-fotos-autoschade",
-        external: false,
-        isLink: true,
-      },
-    ],
-  },
-  {
-    category: "Juridische Documenten",
-    items: [
-      {
-        title: "Algemene Voorwaarden",
-        description: "Onze algemene voorwaarden voor het verhalen van autoschade.",
-        icon: Shield,
-        type: "Pagina",
-        url: "/algemene-voorwaarden",
-        external: false,
-        isLink: true,
-      },
-      {
-        title: "Privacybeleid",
-        description: "Hoe wij omgaan met uw persoonsgegevens conform de AVG.",
-        icon: Shield,
-        type: "Pagina",
-        url: "/privacy",
-        external: false,
-        isLink: true,
-      },
-    ],
+    icon: Phone,
+    title: "Overzicht Verzekeraar Contactgegevens",
+    description: "Een handig overzicht van de contactgegevens van de belangrijkste autoverzekeraars in Nederland voor het melden van schade.",
+    usage: "Handig om bij de hand te hebben voor snelle communicatie met uw eigen verzekeraar na een ongeval.",
+    filename: "overzicht-verzekeraar-contact.pdf",
+    available: false,
   },
 ]
 
@@ -150,108 +57,88 @@ export default function DownloadsPage() {
   return (
     <div className="min-h-screen bg-white">
       <main className="container mx-auto px-4 py-8">
-        <div className="max-w-4xl mx-auto">
-          
+        <div className="max-w-5xl mx-auto">
           {/* Hero Section */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">Downloads</h1>
-            <p className="text-xl text-muted-foreground">
-              Alle formulieren en documenten die u nodig heeft voor uw autoschade claim
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <Download className="h-4 w-4" />
+              Gratis Downloads
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Handige Documenten voor Uw Autoschade Claim
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Download gratis formulieren, checklists en templates om u te ondersteunen bij elke stap van het schadeverhaalproces.
             </p>
           </div>
 
-          {/* Belangrijke tip */}
-          <Card className="mb-8 border-primary/30 bg-primary/5">
-            <CardContent className="pt-6">
-              <div className="flex items-start gap-4">
-                <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <FileText className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-1">Tip: Upload uw schadeformulier</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Heeft u al een ingevuld Europees Schadeformulier? Upload het direct via onze{" "}
-                    <Link href="/claim-indienen" className="text-primary hover:underline font-medium">
-                      claim indienen pagina
-                    </Link>
-                    . Ons systeem leest automatisch alle gegevens uit.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Document Categories */}
-          <div className="space-y-8">
-            {documents.map((category) => (
-              <section key={category.category}>
-                <h2 className="text-xl font-bold mb-4">{category.category}</h2>
-                <div className="grid gap-4">
-                  {category.items.map((doc) => (
-                    <Card key={doc.title} className="hover:shadow-md transition-shadow">
-                      <CardContent className="p-4">
-                        <div className="flex items-start gap-4">
-                          <div className="h-12 w-12 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
-                            <doc.icon className="h-6 w-6 text-gray-600" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-start justify-between gap-4">
-                              <div>
-                                <h3 className="font-semibold">{doc.title}</h3>
-                                <p className="text-sm text-muted-foreground mt-1">
-                                  {doc.description}
-                                </p>
-                              </div>
-                              <div className="flex-shrink-0">
-                                {doc.isLink ? (
-                                  <Link href={doc.url}>
-                                    <Button variant="outline" size="sm">
-                                      Bekijken
-                                      <ExternalLink className="ml-2 h-3 w-3" />
-                                    </Button>
-                                  </Link>
-                                ) : doc.external ? (
-                                  <a href={doc.url} target="_blank" rel="noopener noreferrer">
-                                    <Button variant="outline" size="sm">
-                                      <Download className="mr-2 h-3 w-3" />
-                                      {doc.type}
-                                    </Button>
-                                  </a>
-                                ) : (
-                                  <a href={doc.url} download>
-                                    <Button variant="outline" size="sm">
-                                      <Download className="mr-2 h-3 w-3" />
-                                      {doc.type}
-                                    </Button>
-                                  </a>
-                                )}
-                              </div>
-                            </div>
-                          </div>
+          {/* Downloads Grid */}
+          <section className="mb-16">
+            <div className="grid gap-6">
+              {downloads.map((download, index) => (
+                <Card key={index} className={`border-2 ${download.available ? 'hover:border-primary' : 'opacity-75'} transition-colors`}>
+                  <CardContent className="py-6">
+                    <div className="flex flex-col md:flex-row gap-6">
+                      <div className="flex-shrink-0">
+                        <div className={`h-16 w-16 rounded-full flex items-center justify-center ${download.available ? 'bg-primary/10' : 'bg-gray-100'}`}>
+                          <download.icon className={`h-8 w-8 ${download.available ? 'text-primary' : 'text-gray-400'}`} />
                         </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </section>
-            ))}
+                      </div>
+                      <div className="flex-grow">
+                        <h3 className="text-xl font-semibold mb-2">{download.title}</h3>
+                        <p className="text-muted-foreground mb-3">{download.description}</p>
+                        <div className="bg-blue-50 rounded-lg p-3 mb-4">
+                          <p className="text-sm text-blue-800">
+                            <strong>Wanneer gebruiken:</strong> {download.usage}
+                          </p>
+                        </div>
+                        {download.available ? (
+                          <Link href={`/assets/downloads/${download.filename}`} target="_blank">
+                            <Button className="gap-2">
+                              <Download className="h-4 w-4" />
+                              Download PDF
+                            </Button>
+                          </Link>
+                        ) : (
+                          <Button disabled variant="outline" className="gap-2">
+                            <AlertCircle className="h-4 w-4" />
+                            Binnenkort beschikbaar
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section className="mb-12">
+            <Card className="bg-gradient-to-br from-orange-50 to-white border-2 border-orange-200">
+              <CardContent className="py-10 text-center">
+                <FileCheck className="h-12 w-12 text-orange-500 mx-auto mb-4" />
+                <h2 className="text-2xl font-bold mb-4">Hulp Nodig bij Uw Schadeclaim?</h2>
+                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                  Hoewel deze documenten u waardevolle ondersteuning bieden, blijft deskundige hulp cruciaal bij complexe schadedossiers. 
+                  <strong> Gratisschadeverhalen.nl biedt 100% kosteloze bijstand</strong> bij het verhalen van uw materiële autoschade.
+                </p>
+                <Link href="/claim-indienen">
+                  <Button size="lg" className="gap-2 bg-orange-500 hover:bg-orange-600">
+                    <ArrowRight className="h-5 w-5" />
+                    Laat Uw Schade Kosteloos Verhalen
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </section>
+
+          {/* Back Link */}
+          <div className="text-center">
+            <Link href="/" className="text-primary hover:underline inline-flex items-center gap-2">
+              ← Terug naar Home
+            </Link>
           </div>
-
-          {/* CTA */}
-          <Card className="mt-12 bg-gradient-to-br from-primary to-blue-600 text-white border-0">
-            <CardContent className="text-center py-8">
-              <h2 className="text-2xl font-bold mb-3">Klaar om uw schade te verhalen?</h2>
-              <p className="text-blue-50 mb-6">
-                Upload uw schadeformulier en wij regelen de rest – 100% gratis
-              </p>
-              <Link href="/claim-indienen">
-                <Button size="lg" variant="secondary">
-                  Direct Schade Melden
-                </Button>
-              </Link>
-            </CardContent>
-          </Card>
-
         </div>
       </main>
     </div>

@@ -84,8 +84,18 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link href="/downloads" className="text-muted-foreground hover:text-primary transition-colors">
+                  Downloads
+                </Link>
+              </li>
+              <li>
                 <Link href="/over-ons" className="text-muted-foreground hover:text-primary transition-colors">
                   Over Ons
+                </Link>
+              </li>
+              <li>
+                <Link href="/intermediairs" className="text-muted-foreground hover:text-primary transition-colors">
+                  Partners
                 </Link>
               </li>
               <li>
