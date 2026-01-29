@@ -167,10 +167,10 @@ export default function IntermediairsPage() {
                   Neem vandaag nog contact met ons op en ontdek hoe wij samen uw cliënten kunnen helpen.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="mailto:info@gratisschadeverhalen.nl">
+                  <Link href="mailto:info@autoschadebureau.nl">
                     <Button size="lg" variant="secondary" className="gap-2">
                       <Mail className="h-5 w-5" />
-                      info@gratisschadeverhalen.nl
+                      info@autoschadebureau.nl
                     </Button>
                   </Link>
                   <Link href="/contact">
