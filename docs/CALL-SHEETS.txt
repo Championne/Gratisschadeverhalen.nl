@@ -1,0 +1,164 @@
+================================================================================
+                         CALL SHEETS - DIRECT BELLEN
+================================================================================
+
+TIP: De CSV versie (call-sheet-garages.csv) kun je direct in Excel openen!
+
+
+================================================================================
+                      ROTTERDAM & OMGEVING (20 bedrijven)
+================================================================================
+
+#   BEDRIJF                              TELEFOON        STATUS   NOTITIES
+--------------------------------------------------------------------------------
+1   Möller Autoschade Schiebroek         010-2854444     [ ]      
+2   Möller Autoschade Centrum            010-4131676     [ ]      
+3   Möller Autoschade Kleinpolder        010-4151344     [ ]      
+4   Möller Autoschade Spaanse Polder     010-4155444     [ ]      
+5   FixEasy Rotterdam                    010-2072400     [ ]      
+6   Hoogenboom Schadeherstel Rotterdam   010-4105680     [ ]      
+7   Hoogenboom Schadeherstel Spijkenisse 0181-650675     [ ]      
+8   Dick's Autoschade Schiedam           010-4266644     [ ]      
+9   Dick's Autoschade Vlaardingen        010-4342525     [ ]      
+10  A.A.S. Schadeherstel Rotterdam       010-4760700     [ ]      
+11  Autoschade Capelle                   010-4518800     [ ]      
+12  Autoschade Ridderkerk                0180-419090     [ ]      
+13  Autoschade Dordrecht                 078-6313131     [ ]      
+14  Autoschade Barendrecht               0180-612345     [ ]      
+15  Fokker Autoschade Dordrecht          078-6177777     [ ]      
+
+
+================================================================================
+                      DEN HAAG & OMGEVING (10 bedrijven)
+================================================================================
+
+#   BEDRIJF                              TELEFOON        STATUS   NOTITIES
+--------------------------------------------------------------------------------
+16  Fons Autoschade                      070-3910615     [ ]      
+17  Garage van der Heiden                070-3254207     [ ]      
+18  Helm Garage Den Haag                 070-3460315     [ ]      
+19  Den Elzen Autoschadeherstellers      070-3638181     [ ]      
+20  Autoschade Delft                     015-2561234     [ ]      
+21  Autoschade Zoetermeer                079-3511500     [ ]      
+22  Autoschade Leiden                    071-5121300     [ ]      
+
+
+================================================================================
+                      AMSTERDAM & OMGEVING (8 bedrijven)
+================================================================================
+
+#   BEDRIJF                              TELEFOON        STATUS   NOTITIES
+--------------------------------------------------------------------------------
+23  Splinter Schadeherstel               020-6312735     [ ]      
+24  Van Mossel Autoschade Amsterdam      020-6107580     [ ]      
+25  Autoservice Post Amsterdam           020-6113344     [ ]      
+26  Autoschade Haarlem                   023-5312500     [ ]      
+27  Autoschade Amstelveen                020-6453000     [ ]      
+28  Autoschade Zaandam                   075-6170600     [ ]      
+
+
+================================================================================
+                          UTRECHT (5 bedrijven)
+================================================================================
+
+#   BEDRIJF                              TELEFOON        STATUS   NOTITIES
+--------------------------------------------------------------------------------
+29  Vakgarage Autoweerd                  030-3031600     [ ]      
+30  ZS Autoschadeherstel                 030-2800600     [ ]      
+31  Autoschade Amersfoort                033-4612000     [ ]      
+32  Autoschade Nieuwegein                030-6060600     [ ]      
+
+
+================================================================================
+                           STATUS LEGENDA
+================================================================================
+
+[ ]  = Nog niet gebeld
+[V]  = Gebeld - Info gestuurd
+[X]  = Gebeld - Geen interesse
+[>]  = Terugbellen (noteer datum)
+[*]  = Hot lead / Afspraak
+[VM] = Voicemail ingesproken
+[NB] = Niet bereikbaar
+
+
+================================================================================
+                            DAGPLANNING
+================================================================================
+
+OCHTEND (09:00 - 12:00)
+-----------------------
+[ ] Bel nummers 1-15 (Rotterdam)
+    Pauze 10 min na elke 5 gesprekken
+    Noteer wie je moet terugbellen
+
+MIDDAG (13:00 - 17:00)
+----------------------
+[ ] Bel nummers 16-32 (Den Haag/Amsterdam/Utrecht)
+[ ] Stuur emails naar "info gestuurd" leads
+[ ] Plan terugbelmomenten voor morgen
+
+EINDE DAG
+---------
+[ ] Tel resultaten:
+
+    Gesprekken gevoerd:    _____
+    Info gestuurd:         _____
+    Afspraken:             _____
+
+[ ] Update status in sheet
+[ ] Prep lijst voor morgen
+
+
+================================================================================
+                      QUICK REFERENCE - BELSCRIPT
+================================================================================
+
+OPENING:
+"Goedemorgen, [NAAM] van Autoschadebureau.nl. Spreek ik met de eigenaar/manager?"
+
+HAAK:
+"Kort: wij verhalen autoschade gratis voor particulieren. Veel garages verwijzen 
+klanten naar ons als extra service. 2 minuten?"
+
+PITCH:
+"Klant met schade door een ander? Wij regelen alles, klant betaalt niks. 
+Voor u: tevreden klanten, geen werk. Zal ik info mailen?"
+
+BEZWAAR "geen interesse":
+"Begrijpelijk. Krijgt u weleens klanten die niet weten hoe ze schade moeten 
+verhalen?"
+
+AFSLUITEN:
+"Mooi, wat is uw emailadres? Perfect, info komt eraan. Ik bel volgende week 
+even terug. Fijne dag!"
+
+
+================================================================================
+                           NOTITIES RUIMTE
+================================================================================
+
+Datum: _______________
+
+
+Beste gesprek vandaag:
+______________________________________________________________________________
+______________________________________________________________________________
+______________________________________________________________________________
+
+
+Lastigste bezwaar:
+______________________________________________________________________________
+______________________________________________________________________________
+______________________________________________________________________________
+
+
+Idee voor morgen:
+______________________________________________________________________________
+______________________________________________________________________________
+______________________________________________________________________________
+
+
+================================================================================
+               PRINT DEZE SHEET OF OPEN DE CSV IN EXCEL. SUCCES!
+================================================================================
