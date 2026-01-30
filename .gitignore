@@ -54,3 +54,21 @@ service-account-key.json
 # OS
 Thumbs.db
 cursor-chat-history/
+
+# ========================================
+# PREVENT CROSS-PROJECT CONTAMINATION
+# LocalContent.ai files should NOT be in this repo
+# ========================================
+lcai_backend/
+localcontent_infra/
+localcontent_backend/
+localcontent_recovered/
+localcontent_strategic_plans/
+strategic_plans/
+implementation_plans/
+research/markets/
+web/pages/api/
+**/localcontent/**
+**/template.d.ts
+temp_memory_update.txt
+LocalContentAI_BusinessPlans/
