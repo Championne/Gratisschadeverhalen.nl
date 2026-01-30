@@ -69,6 +69,49 @@ const steps = [
   },
 ]
 
+const faqs = [
+  {
+    question: "Hoe werkt het verwijzen van cliënten?",
+    answer: "U verwijst uw cliënt eenvoudig naar ons door hen onze website te geven of door hun gegevens (met toestemming) aan ons door te geven. Wij nemen dan contact op en handelen de volledige schadeclaim af. U hoeft zelf niets te doen aan de schadeafhandeling."
+  },
+  {
+    question: "Wat kost het om partner te worden?",
+    answer: "Niets! Ons partnerprogramma is volledig gratis. Er zijn geen aanmeldkosten, abonnementen of verborgen kosten. Wij verhalen onze kosten op de WA-verzekeraar van de aansprakelijke partij."
+  },
+  {
+    question: "Wat levert het mijn cliënt op?",
+    answer: "Uw cliënt krijgt professionele hulp bij het verhalen van autoschade, volledig gratis. Geen eigen risico, geen kosten vooraf, en gemiddeld binnen 6 weken uitbetaling. Bovendien voorkomt uw cliënt premieverhoging bij de eigen verzekering."
+  },
+  {
+    question: "Hoe snel wordt mijn cliënt geholpen?",
+    answer: "Binnen 24 uur na aanmelding nemen wij contact op met uw cliënt. Binnen 48 uur hebben we de eerste beoordeling klaar en versturen we de aansprakelijkheidsbrief naar de verzekeraar van de tegenpartij."
+  },
+  {
+    question: "Krijg ik updates over de voortgang van mijn cliënten?",
+    answer: "Als u dat wenst, kunnen we u op de hoogte houden van de belangrijkste mijlpalen in het proces. Uiteraard alleen met toestemming van uw cliënt en binnen de privacyregels."
+  },
+  {
+    question: "Welke schades komen in aanmerking?",
+    answer: "Alle materiële voertuigschade waarbij een andere partij aansprakelijk is: auto's, motoren, scooters, bestelbussen. De tegenpartij moet verzekerd zijn (WA-verzekering) en de schade moet door de tegenpartij veroorzaakt zijn."
+  },
+  {
+    question: "Wat als mijn cliënt ook letselschade heeft?",
+    answer: "Bij letselschade verwijzen wij automatisch door naar onze partner Unitas Letselschade. Zij zijn gespecialiseerd in letselschadeclaims en nemen dit over. U hoeft hiervoor geen aparte actie te ondernemen."
+  },
+  {
+    question: "Kunnen mijn cliënten de voortgang zelf volgen?",
+    answer: "Ja! Elke cliënt krijgt toegang tot een persoonlijk online dashboard waar zij 24/7 de status van hun claim kunnen volgen, documenten kunnen uploaden, en berichten kunnen lezen."
+  },
+  {
+    question: "Is er een minimum aantal verwijzingen?",
+    answer: "Nee, er is geen minimum. Of u nu 1 cliënt per jaar of 50 cliënten per maand verwijst, wij helpen iedereen met dezelfde professionaliteit en toewijding."
+  },
+  {
+    question: "Hoe kan ik mijn cliënten het beste informeren?",
+    answer: "U kunt uw cliënten eenvoudig wijzen op onze website of hen een folder geven (op aanvraag beschikbaar). U kunt ook onze naam noemen bij uw schadegesprekken: 'Autoschadebureau.nl kan dit gratis voor u regelen.'"
+  },
+]
+
 export default function IntermediairsPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -156,6 +199,91 @@ export default function IntermediairsPage() {
                 </div>
               </CardContent>
             </Card>
+          </section>
+
+          {/* FAQ Section */}
+          <section className="mb-16">
+            <h2 className="text-3xl font-bold text-center mb-4">Veelgestelde Vragen</h2>
+            <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Antwoorden op de meest gestelde vragen over ons partnerprogramma
+            </p>
+            
+            <div className="space-y-3">
+              {faqs.map((faq, index) => (
+                <details key={index} className="group bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+                  <summary className="flex items-center justify-between p-4 cursor-pointer list-none hover:bg-gray-50 transition-colors">
+                    <span className="font-semibold text-base pr-4">{faq.question}</span>
+                    <svg className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </summary>
+                  <div className="px-4 pb-4">
+                    <p className="text-muted-foreground text-sm">{faq.answer}</p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </section>
+
+          {/* Praktijkvoorbeelden Section */}
+          <section className="mb-16">
+            <h2 className="text-3xl font-bold text-center mb-4">Uit de Praktijk</h2>
+            <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Hoe andere partners samenwerken met Autoschadebureau.nl
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              <Card className="border-2">
+                <CardHeader>
+                  <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-2">
+                    <Car className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <CardTitle className="text-lg">Autobedrijf Van Dijk</CardTitle>
+                  <CardDescription>Schadeherstelbedrijf, Rotterdam</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    "Klanten komen bij ons met schade en vragen vaak: 'Wie betaalt dit?' Nu kunnen we direct zeggen: 
+                    'Wij repareren, Autoschadebureau.nl regelt de vergoeding.' Dat werkt perfect."
+                  </p>
+                  <p className="text-xs text-primary font-medium">~15 verwijzingen per maand</p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2">
+                <CardHeader>
+                  <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mb-2">
+                    <Briefcase className="h-6 w-6 text-green-600" />
+                  </div>
+                  <CardTitle className="text-lg">Jansen Assurantiën</CardTitle>
+                  <CardDescription>Verzekeringsadviseur, Amsterdam</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    "Veel van onze klanten hebben alleen WA-verzekering. Voorheen kon ik niet helpen bij verhaal. 
+                    Nu verwijs ik ze door en ze krijgen professionele hulp - gratis. Win-win."
+                  </p>
+                  <p className="text-xs text-primary font-medium">~8 verwijzingen per maand</p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-2">
+                <CardHeader>
+                  <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center mb-2">
+                    <Building2 className="h-6 w-6 text-purple-600" />
+                  </div>
+                  <CardTitle className="text-lg">FleetCare BV</CardTitle>
+                  <CardDescription>Wagenparkbeheerder, Utrecht</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    "Met 200+ voertuigen hebben we regelmatig schade. Autoschadebureau.nl verhaalt dit systematisch 
+                    en houdt ons netjes op de hoogte. Scheelt ons enorm veel administratie."
+                  </p>
+                  <p className="text-xs text-primary font-medium">~25 verwijzingen per maand</p>
+                </CardContent>
+              </Card>
+            </div>
           </section>
 
           {/* CTA Section */}

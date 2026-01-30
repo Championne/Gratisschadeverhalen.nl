@@ -384,6 +384,14 @@ export default function HomePage() {
                   <span>100% gratis</span>
                 </span>
               </div>
+
+              {/* SchadeScan CTA */}
+              <div className="mt-6 text-center">
+                <Link href="/schadescan" className="inline-flex items-center gap-2 text-primary hover:underline font-medium">
+                  <CheckCircle className="h-4 w-4" />
+                  Twijfelt u? Doe eerst de gratis SchadeScan →
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -541,7 +549,95 @@ export default function HomePage() {
         </div>
 
 
-        {/* Waarom zelf verhalen via ons - NIEUWE SECTIE */}
+        {/* NIEUWE SECTIE: Wanneer heeft u ons nodig? */}
+        <section className="py-6 md:py-12 bg-gradient-to-b from-white to-amber-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-4 md:mb-8">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  Wanneer heeft u onze service nodig?
+                </h2>
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                  Veel mensen weten niet dat hun eigen verzekering <strong>niet altijd helpt</strong> bij het verhalen van schade
+                </p>
+              </div>
+
+              {/* Uitleg blok */}
+              <Card className="border-2 border-amber-200 bg-gradient-to-br from-amber-50 to-white mb-8">
+                <CardContent className="p-6 md:p-8">
+                  <div className="space-y-6">
+                    {/* Situatie 1: Alleen WA */}
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                        <Car className="h-6 w-6 text-amber-700" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg mb-2">Heeft u alleen een WA-verzekering?</h3>
+                        <p className="text-muted-foreground">
+                          Dan is materiële schade aan uw eigen voertuig <strong>niet gedekt</strong>. Uw eigen verzekeringsmaatschappij 
+                          zal de schade niet vergoeden en ook niet voor u verhalen. U moet zelf actie ondernemen.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Situatie 2: Geen rechtsbijstand */}
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                        <Shield className="h-6 w-6 text-amber-700" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg mb-2">Geen verhaalrechtsbijstand of rechtsbijstandverzekering?</h3>
+                        <p className="text-muted-foreground">
+                          Om schade te verhalen op de tegenpartij heeft u normaal gesproken een <strong>verhaalrechtsbijstand</strong> of 
+                          <strong> rechtsbijstandverzekering</strong> nodig. Zonder deze verzekering moet u zelf de schade bij de tegenpartij verhalen.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Situatie 3: Zelf verhalen is lastig */}
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                        <FileText className="h-6 w-6 text-amber-700" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg mb-2">Zelf schade verhalen is lastig</h3>
+                        <p className="text-muted-foreground">
+                          Zelf schade verhalen bij de tegenpartij is voor de meeste mensen een <strong>lastige opgave</strong>. 
+                          Vakkennis ontbreekt vaak en men weet niet welke stappen te nemen of welke brieven te schrijven.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Oplossing */}
+                  <div className="mt-8 p-6 bg-green-50 border-2 border-green-200 rounded-lg">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                        <CheckCircle className="h-6 w-6 text-green-700" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg mb-2 text-green-900">Wij nemen het volledig uit handen - gratis!</h3>
+                        <p className="text-green-800 mb-4">
+                          Autoschadebureau.nl neemt u dit werk volledig uit handen. Wij sturen een professionele 
+                          aansprakelijkheidsbrief, onderhandelen met de verzekeraar, en zorgen dat u uw geld krijgt. 
+                          <strong> U betaalt niets</strong> - alle kosten worden verhaald op de tegenpartij.
+                        </p>
+                        <Link href="/claim-indienen">
+                          <Button className="bg-green-600 hover:bg-green-700">
+                            <Upload className="mr-2 h-4 w-4" />
+                            Direct Gratis Schade Melden
+                          </Button>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Waarom zelf verhalen via ons - BESTAANDE SECTIE */}
         <section className="py-6 md:py-12 bg-gradient-to-b from-white to-blue-50">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
