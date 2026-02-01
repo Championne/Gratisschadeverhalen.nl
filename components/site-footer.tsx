@@ -108,6 +108,11 @@ export function SiteFooter() {
                   Mijn Dossier
                 </Link>
               </li>
+              <li>
+                <Link href="/sitemap.xml" className="text-muted-foreground hover:text-primary transition-colors" target="_blank">
+                  Sitemap
+                </Link>
+              </li>
             </ul>
           </div>
 
