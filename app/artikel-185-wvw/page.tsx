@@ -174,7 +174,7 @@ export default function Artikel185WvwPage() {
             
             <Card className="mb-4">
               <CardHeader>
-                <CardTitle className="text-xl">4. Wat als de bestuurder van het motorvoertuig zegt dat het mijn eigen schuld was?</CardTTitle>
+                <CardTitle className="text-xl">4. Wat als de bestuurder van het motorvoertuig zegt dat het mijn eigen schuld was?</CardTitle>
               </CardHeader>
               <CardContent>
                 <p>Zelfs bij eigen schuld van de zwakke verkeersdeelnemer gelden de beschermende regels van Artikel 185 WVW, zoals de 50%-regel. Het is belangrijk dat u dit niet zomaar accepteert en juridische hulp inschakelt. GratisSchadeverhalen.nl helpt u hier gratis bij voor uw materiële schade.</p>
@@ -183,7 +183,7 @@ export default function Artikel185WvwPage() {
 
             <Card className="mb-4">
               <CardHeader>
-                <CardTitle className="text-xl">5. Zijn de diensten van GratisSchadeverhalen.nl ook écht gratis?</CardTTitle>
+                <CardTitle className="text-xl">5. Zijn de diensten van GratisSchadeverhalen.nl ook écht gratis?</CardTitle>
               </CardHeader>
               <CardContent>
                 <p>Ja, absoluut. Onze service voor het verhalen van uw materiële autoschade is 100% kosteloos voor u als benadeelde partij. Dit komt omdat wij onze kosten direct verhalen op de aansprakelijke tegenpartij, zoals de Nederlandse wet voorschrijft.</p>
