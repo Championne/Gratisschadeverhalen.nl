@@ -186,7 +186,7 @@ export default function MaterieleSchadePage() {
             optimale afhandeling en eerlijke vergoeding, zonder kosten. Start direct!
           </p>
           <Link href="/claim-indienen">
-            <Button size="xl" className="bg-primary hover:bg-primary/90 text-lg px-10 py-4 shadow-xl">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-10 py-4 shadow-xl">
               <Upload className="mr-2 h-6 w-6" />
               Meld uw Materiële Schade Nu Aan!
             </Button>
