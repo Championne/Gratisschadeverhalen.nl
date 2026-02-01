@@ -91,13 +91,13 @@ const jsonLd = {
           "@type": "HowToStep",
           "position": 3,
           "name": "Wij nemen het over",
-          "text": "Binnen 24 uur beoordelen wij uw autoschade claim, stellen een professionele aansprakelijkheidsbrief op, en sturen deze naar de WA-verzekeraar van de tegenpartij."
+          "text": "Binnen 24 uur* beoordelen wij uw autoschade claim, stellen een professionele aansprakelijkheidsbrief op, en sturen deze naar de WA-verzekeraar van de tegenpartij. *Op werkdagen."
         },
         {
           "@type": "HowToStep",
           "position": 4,
           "name": "Ontvang uw schadevergoeding",
-          "text": "Wij onderhandelen voor u met de verzekeraar tot volledige vergoeding. Gemiddeld binnen 6 weken ontvangt u de uitbetaling. Volledig gratis - u betaalt alleen bij succes."
+          "text": "Wij onderhandelen voor u met de verzekeraar tot volledige vergoeding. Gemiddeld binnen 6 weken* ontvangt u de uitbetaling. *Afhankelijk van de complexiteit en medewerking van de verzekeraar."
         }
       ],
       "totalTime": "PT6W"
@@ -444,8 +444,11 @@ export default function HomePage() {
                   </div>
                   <h3 className="text-xl font-bold mb-3">Snelle expertise</h3>
                   <p className="text-muted-foreground">
-                    Professionele beoordeling binnen 24 uur. Gemiddeld binnen 
-                    6 weken volledig afgehandeld door ervaren specialisten.
+                    Professionele beoordeling binnen 24 uur*. Gemiddeld binnen 
+                    6 weken* volledig afgehandeld door ervaren specialisten.
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-2 italic">
+                    *Op werkdagen. Doorlooptijd afhankelijk van complexiteit.
                   </p>
                 </div>
 
@@ -528,8 +531,8 @@ export default function HomePage() {
                     <div className="bg-white rounded-lg p-4 md:p-6 shadow-md border-2 border-primary/20 min-h-[140px] md:min-h-[180px]">
                       <h3 className="font-bold text-base md:text-lg mb-1 md:mb-2">Wij Regelen Alles</h3>
                       <p className="text-xs md:text-sm text-muted-foreground">
-                        Binnen 24 uur beoordelen we uw claim. Wij sturen 
-                        aansprakelijkheidsbrief en onderhandelen.
+                        Binnen 24 uur* beoordelen we uw claim. Wij sturen 
+                        aansprakelijkheidsbrief en onderhandelen. *Op werkdagen.
                       </p>
                     </div>
                   </div>
@@ -544,8 +547,8 @@ export default function HomePage() {
                     <div className="bg-white rounded-lg p-4 md:p-6 shadow-md border-2 border-primary/20 min-h-[140px] md:min-h-[180px]">
                       <h3 className="font-bold text-base md:text-lg mb-1 md:mb-2">Uitbetaling</h3>
                       <p className="text-xs md:text-sm text-muted-foreground">
-                        Gemiddeld binnen 6 weken ontvangt u de volledige 
-                        schadevergoeding. Wij houden u op de hoogte.
+                        Gemiddeld binnen 6 weken* ontvangt u de volledige 
+                        schadevergoeding. Wij houden u op de hoogte. *Afhankelijk van complexiteit.
                       </p>
                     </div>
                   </div>
@@ -904,8 +907,8 @@ export default function HomePage() {
                 </summary>
                 <div className="px-3 pb-3 md:px-5 md:pb-5">
                   <p className="text-muted-foreground text-sm md:text-base">
-                    Gemiddeld 4-8 weken. Binnen 24 uur beoordelen we uw claim en starten we contact met de verzekeraar. 
-                    De meeste claims zijn binnen 6 weken afgerond.
+                    Gemiddeld 4-8 weken. Binnen 24 uur* beoordelen we uw claim en starten we contact met de verzekeraar. 
+                    De meeste claims zijn binnen 6 weken afgerond. *Op werkdagen. Doorlooptijd afhankelijk van complexiteit en medewerking verzekeraar.
                   </p>
                 </div>
               </details>
