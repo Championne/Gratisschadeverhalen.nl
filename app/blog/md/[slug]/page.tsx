@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${post.title} | 112autoschade.nl`,
     description: post.description,
-    keywords: post.keywords.split(',').map(k => k.trim()),
+    keywords: post.keywords,
     openGraph: {
       title: post.title,
       description: post.description,

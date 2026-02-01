@@ -9,7 +9,7 @@ export interface BlogPost {
   slug: string
   title: string
   description: string
-  keywords: string
+  keywords: string[]
   image: string
   date: string
   author: string
@@ -28,6 +28,17 @@ export function getAllBlogSlugs(): string[] {
   }
 }
 
+// Helper function to normalize keywords to array
+function normalizeKeywords(keywords: unknown): string[] {
+  if (Array.isArray(keywords)) {
+    return keywords.map(k => String(k))
+  }
+  if (typeof keywords === 'string') {
+    return keywords.split(',').map(k => k.trim()).filter(k => k.length > 0)
+  }
+  return []
+}
+
 export function getBlogPost(slug: string): BlogPost | null {
   try {
     const fullPath = path.join(contentDirectory, `${slug}.md`)
@@ -40,7 +51,7 @@ export function getBlogPost(slug: string): BlogPost | null {
       slug,
       title: data.title || slug,
       description: data.description || '',
-      keywords: data.keywords || '',
+      keywords: normalizeKeywords(data.keywords),
       image: data.image || '/images/blog-default.jpg',
       date: data.date || new Date().toISOString().split('T')[0],
       author: data.author || 'Gratisschadeverhalen.nl',
