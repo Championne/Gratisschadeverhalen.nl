@@ -54,6 +54,9 @@ export function SiteHeader() {
             <Link href="/over-ons" className="text-sm font-medium transition-colors hover:text-primary">
               Over Ons
             </Link>
+            <Link href="/intermediairs" className="text-sm font-medium transition-colors hover:text-primary">
+              Intermediair
+            </Link>
             <Link href="/contact" className="text-sm font-medium transition-colors hover:text-primary">
               Contact
             </Link>
@@ -163,6 +166,13 @@ export function SiteHeader() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Over Ons
+            </Link>
+            <Link 
+              href="/intermediairs" 
+              className="text-sm font-medium px-4 py-2 hover:bg-accent rounded-md transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Intermediair
             </Link>
             <Link 
               href="/contact" 
