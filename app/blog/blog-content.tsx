@@ -240,20 +240,11 @@ const blogPosts = [
   {
     slug: "rechtsbijstandverzekering-nodig",
     title: "Rechtsbijstandverzekering: is dat nodig voor schade verhalen?",
-    excerpt: "Moet u een rechtsbijstandverzekering hebben om schade te verhalen? Ontdek wanneer dit wel en niet nodig is, en hoe wij gratis helpen.",
+    excerpt: "Moet u een rechtsbijstandverzekering hebben om schade te verhalen? Ontdek wanneer dit wel en niet nodig is.",
     category: "Verzekeringen",
     readTime: "5 min",
-    date: "29 januari 2026",
-    featured: true,
-  },
-  {
-    slug: "verhaalrechtsbijstand-uitgelegd",
-    title: "Verhaalrechtsbijstand: Wat Is Het en Wanneer Heeft U Het Nodig?",
-    excerpt: "Wat is verhaalrechtsbijstand? Leer wanneer u het nodig heeft om autoschade te verhalen en hoe wij gratis helpen zonder verzekering.",
-    category: "Verzekeringen",
-    readTime: "6 min",
-    date: "29 januari 2026",
-    featured: true,
+    date: "22 november 2025",
+    featured: false,
   },
   // NIEUWE ARTIKELEN - HANDLEIDING
   {
