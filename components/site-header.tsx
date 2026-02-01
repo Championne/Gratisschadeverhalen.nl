@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -23,15 +22,12 @@ export function SiteHeader() {
         {/* Desktop Header */}
         <div className="container mx-auto hidden lg:flex h-20 items-center justify-between px-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image 
-              src="/logo.png" 
-              alt="112autoschade.nl Logo" 
-              width={280}
-              height={80}
-              priority
-              className="h-16 w-auto"
-            />
+          <Link href="/" className="flex items-center group">
+            <span className="text-3xl font-bold">
+              <span className="text-primary">112</span>
+              <span className="text-foreground">autoschade</span>
+              <span className="text-primary">.nl</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -99,14 +95,11 @@ export function SiteHeader() {
 
           {/* Logo - Center */}
           <Link href="/" className="flex items-center absolute left-1/2 transform -translate-x-1/2">
-            <Image 
-              src="/logo.png" 
-              alt="112autoschade.nl Logo" 
-              width={200}
-              height={56}
-              priority
-              className="h-12 w-auto"
-            />
+            <span className="text-2xl font-bold">
+              <span className="text-primary">112</span>
+              <span className="text-foreground">autoschade</span>
+              <span className="text-primary">.nl</span>
+            </span>
           </Link>
 
           {/* Mobile Menu Button - Right */}
