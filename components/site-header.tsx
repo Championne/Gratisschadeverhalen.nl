@@ -42,6 +42,9 @@ export function SiteHeader() {
             <Link href="/diensten" className="text-sm font-medium transition-colors hover:text-primary">
               Diensten
             </Link>
+            <Link href="/schadescan" className="text-sm font-medium transition-colors hover:text-primary">
+              SchadeScan
+            </Link>
             <Link href="/claim-indienen" className="text-sm font-medium transition-colors hover:text-primary">
               Claim Indienen
             </Link>
@@ -138,6 +141,13 @@ export function SiteHeader() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Diensten
+            </Link>
+            <Link 
+              href="/schadescan" 
+              className="text-sm font-medium px-4 py-2 hover:bg-accent rounded-md transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              SchadeScan
             </Link>
             <Link 
               href="/claim-indienen" 
