@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Autoschade Verhalen | Zonder Eigen Risico, Zonder Premieverhoging - Gratis",
     description: "Verhaal uw autoschade direct bij de tegenpartij - zonder eigen risico, zonder premieverhoging. Ook met eigen verzekering voordelig! Upload schadeformulier en wij regelen alles gratis.",
-    url: "https://www.autoschadebureau.nl",
+    url: "https://www.112autoschade.nl",
     type: "website",
     locale: "nl_NL",
   },
@@ -40,10 +40,10 @@ const jsonLd = {
     // Organization
     {
       "@type": "Organization",
-      "@id": "https://autoschadebureau.nl/#organization",
-      "name": "Autoschadebureau.nl",
-      "url": "https://autoschadebureau.nl",
-      "logo": "https://autoschadebureau.nl/logo.png",
+      "@id": "https://112autoschade.nl/#organization",
+      "name": "112autoschade.nl",
+      "url": "https://112autoschade.nl",
+      "logo": "https://112autoschade.nl/logo.png",
       "description": "Gratis autoschade en voertuigschade verhalen op de tegenpartij - U betaalt niets, tegenpartij betaalt alles",
       "address": {
         "@type": "PostalAddress",
@@ -52,19 +52,19 @@ const jsonLd = {
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer service",
-        "email": "info@autoschadebureau.nl",
+        "email": "info@112autoschade.nl",
         "availableLanguage": "Dutch"
       }
     },
     // Service
     {
       "@type": "Service",
-      "@id": "https://www.autoschadebureau.nl/#service",
+      "@id": "https://www.112autoschade.nl/#service",
       "serviceType": "Autoschade Verhalen",
       "name": "Gratis Autoschade en Voertuigschade Verhalen",
       "description": "Professionele afhandeling van autoschade en voertuigschade claims tegen de tegenpartij. Upload uw Europees Schadeformulier en wij regelen alles gratis.",
       "provider": {
-        "@id": "https://autoschadebureau.nl/#organization"
+        "@id": "https://112autoschade.nl/#organization"
       },
       "areaServed": "NL",
       "priceRange": "Gratis - Tegenpartij betaalt alles"
@@ -105,8 +105,8 @@ const jsonLd = {
     // Aggregate Rating Schema (voor testimonials/reviews)
     {
       "@type": "LocalBusiness",
-      "@id": "https://www.autoschadebureau.nl/#rating",
-      "name": "Autoschadebureau.nl",
+      "@id": "https://www.112autoschade.nl/#rating",
+      "name": "112autoschade.nl",
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.8",
@@ -179,21 +179,21 @@ const jsonLd = {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://www.autoschadebureau.nl"
+          "item": "https://www.112autoschade.nl"
         }
       ]
     },
     // WebSite with SearchAction
     {
       "@type": "WebSite",
-      "@id": "https://www.autoschadebureau.nl/#website",
-      "url": "https://www.autoschadebureau.nl",
-      "name": "Autoschadebureau.nl",
+      "@id": "https://www.112autoschade.nl/#website",
+      "url": "https://www.112autoschade.nl",
+      "name": "112autoschade.nl",
       "potentialAction": {
         "@type": "SearchAction",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://www.autoschadebureau.nl/blog?q={search_term_string}"
+          "urlTemplate": "https://www.112autoschade.nl/blog?q={search_term_string}"
         },
         "query-input": "required name=search_term_string"
       }
@@ -201,7 +201,7 @@ const jsonLd = {
     // FAQ Schema
     {
       "@type": "FAQPage",
-      "@id": "https://www.autoschadebureau.nl/#faq",
+      "@id": "https://www.112autoschade.nl/#faq",
       "mainEntity": [
         {
           "@type": "Question",
@@ -315,7 +315,7 @@ export default function HomePage() {
               
               {/* Subtitel */}
               <p className="text-lg md:text-2xl text-muted-foreground mb-3 md:mb-6 max-w-4xl mx-auto">
-                <strong className="text-foreground">Autoschadebureau.nl</strong> is een laagdrempelige juridische dienstverlener. Wij verhalen de{" "}
+                <strong className="text-foreground">112autoschade.nl</strong> is een laagdrempelige juridische dienstverlener. Wij verhalen de{" "}
                 <strong className="text-foreground">voertuigschade</strong> en{" "}
                 <a href="https://unitasletselschade.nl" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">
                   letselschade
@@ -639,7 +639,7 @@ export default function HomePage() {
                       <div>
                         <h3 className="font-bold text-lg mb-2 text-green-900">Wij nemen het volledig uit handen - gratis!</h3>
                         <p className="text-green-800 mb-4">
-                          Autoschadebureau.nl neemt u dit werk volledig uit handen. Wij sturen een professionele 
+                          112autoschade.nl neemt u dit werk volledig uit handen. Wij sturen een professionele 
                           aansprakelijkheidsbrief, onderhandelen met de verzekeraar, en zorgen dat u uw geld krijgt. 
                           <strong> U betaalt niets</strong> - alle kosten worden verhaald op de tegenpartij.
                         </p>

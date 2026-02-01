@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs"
 import { ArrowLeft, Scale, Upload, AlertTriangle, CheckCircle, Users } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Aansprakelijkheid bij Verkeersongevallen: Wie Betaalt de Schade? | Autoschadebureau.nl",
+  title: "Aansprakelijkheid bij Verkeersongevallen: Wie Betaalt de Schade? | 112autoschade.nl",
   description: "Juridische achtergrond van aansprakelijkheid, cascoregel en omkering bewijslast. Begrijp wanneer de tegenpartij WA-verzekering moet betalen.",
   keywords: ["aansprakelijkheid verkeersongeval", "wie betaalt schade", "WA verzekering aansprakelijk", "schuld verkeersongeval"],
 }

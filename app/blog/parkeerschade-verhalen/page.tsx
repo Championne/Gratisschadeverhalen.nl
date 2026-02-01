@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs"
 import { ArrowLeft, ParkingCircle, Upload, Camera, Eye, AlertTriangle, CheckCircle } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Parkeerschade Verhalen Zonder Getuigen: Kan Dat? | Autoschadebureau.nl",
+  title: "Parkeerschade Verhalen Zonder Getuigen: Kan Dat? | 112autoschade.nl",
   description: "Auto beschadigd tijdens parkeren en dader gevlucht? Lees hoe u alsnog uw schade vergoed krijgt en wat u wel en niet moet doen.",
   keywords: ["parkeerschade verhalen", "auto beschadigd parkeren", "dader gevlucht", "parkeerplaats schade"],
 }

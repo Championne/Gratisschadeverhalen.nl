@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-tilburg",
-  "name": "Autoschadebureau.nl - Tilburg",
+  "@id": "https://www.112autoschade.nl/autoschade-verhalen-tilburg",
+  "name": "112autoschade.nl - Tilburg",
   "description": "Gratis autoschade verhalen in Tilburg. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
-  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-tilburg",
+  "url": "https://www.112autoschade.nl/autoschade-verhalen-tilburg",
   "telephone": "+31850605357",
-  "email": "info@autoschadebureau.nl",
+  "email": "info@112autoschade.nl",
   "areaServed": {
     "@type": "City",
     "name": "Tilburg",
@@ -193,7 +193,7 @@ export default function TilburgPage() {
                   <div>
                     <p className="text-lg text-gray-700 mb-4 italic">
                       "Mijn auto werd aangereden op de parkeerplaats van de Heuvelstraat terwijl ik aan het 
-                      winkelen was. Dankzij Autoschadebureau.nl hoefde ik nergens naar om te kijken. 
+                      winkelen was. Dankzij 112autoschade.nl hoefde ik nergens naar om te kijken. 
                       Binnen 5 weken €1.650 ontvangen. Aanrader!"
                     </p>
                     <div className="flex items-center gap-2">

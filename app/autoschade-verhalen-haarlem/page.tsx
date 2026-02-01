@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-haarlem",
-  "name": "Autoschadebureau.nl - Haarlem",
+  "@id": "https://www.112autoschade.nl/autoschade-verhalen-haarlem",
+  "name": "112autoschade.nl - Haarlem",
   "description": "Gratis autoschade verhalen in Haarlem. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
-  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-haarlem",
+  "url": "https://www.112autoschade.nl/autoschade-verhalen-haarlem",
   "telephone": "+31850605357",
-  "email": "info@autoschadebureau.nl",
+  "email": "info@112autoschade.nl",
   "areaServed": {
     "@type": "City",
     "name": "Haarlem",
@@ -194,7 +194,7 @@ export default function HaarlemPage() {
                   <div>
                     <p className="text-lg text-gray-700 mb-4 italic">
                       "Op de terugweg van het strand in Zandvoort werd ik aangereden door een toerist. 
-                      Autoschadebureau.nl regelde alles met de buitenlandse verzekering. €1.700 ontvangen 
+                      112autoschade.nl regelde alles met de buitenlandse verzekering. €1.700 ontvangen 
                       binnen 6 weken. Geweldige service!"
                     </p>
                     <div className="flex items-center gap-2">

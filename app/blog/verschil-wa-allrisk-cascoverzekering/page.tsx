@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs"
 import { ArrowLeft, Shield, Upload, CheckCircle, XCircle, AlertTriangle } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "WA, Beperkt Casco of Allrisk: Welke Verzekering voor Schade Verhalen? | Autoschadebureau.nl",
+  title: "WA, Beperkt Casco of Allrisk: Welke Verzekering voor Schade Verhalen? | 112autoschade.nl",
   description: "Verwar de verzekeringen niet! Ontdek het verschil tussen WA, casco en allrisk en wanneer u zelf schade moet verhalen bij de tegenpartij.",
   keywords: ["WA verzekering", "allrisk", "beperkt casco", "autoverzekering verschil", "schade verhalen verzekering"],
 }

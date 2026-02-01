@@ -42,7 +42,7 @@ export default function WitnessStatementPage() {
               <div className="text-right print:hidden">
                 <Image 
                   src="/logo.png" 
-                  alt="Autoschadebureau.nl" 
+                  alt="112autoschade.nl" 
                   width={150} 
                   height={40}
                   className="h-10 w-auto"
@@ -55,7 +55,7 @@ export default function WitnessStatementPage() {
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 print:bg-gray-100 print:border-gray-300 print:p-3 print:mb-4">
             <p className="text-sm">
               <strong>Instructions:</strong> Please complete this form in full. The witness must sign the statement. 
-              Send the completed form to <strong>info@autoschadebureau.nl</strong> or upload it via your dashboard.
+              Send the completed form to <strong>info@112autoschade.nl</strong> or upload it via your dashboard.
             </p>
           </div>
 
@@ -201,10 +201,10 @@ export default function WitnessStatementPage() {
           {/* Footer */}
           <div className="text-center text-sm text-muted-foreground border-t pt-4 print:pt-2 print:text-xs">
             <p>
-              <strong>Autoschadebureau.nl</strong> | +31 85 060 5357 | info@autoschadebureau.nl | www.autoschadebureau.nl
+              <strong>112autoschade.nl</strong> | +31 85 060 5357 | info@112autoschade.nl | www.112autoschade.nl
             </p>
             <p className="mt-1">
-              Send this form to info@autoschadebureau.nl or upload it via your personal dashboard.
+              Send this form to info@112autoschade.nl or upload it via your personal dashboard.
             </p>
           </div>
 

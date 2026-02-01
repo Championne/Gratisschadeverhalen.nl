@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-almere",
-  "name": "Autoschadebureau.nl - Almere",
+  "@id": "https://www.112autoschade.nl/autoschade-verhalen-almere",
+  "name": "112autoschade.nl - Almere",
   "description": "Gratis autoschade verhalen in Almere. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
-  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-almere",
+  "url": "https://www.112autoschade.nl/autoschade-verhalen-almere",
   "telephone": "+31850605357",
-  "email": "info@autoschadebureau.nl",
+  "email": "info@112autoschade.nl",
   "areaServed": {
     "@type": "City",
     "name": "Almere",
@@ -194,7 +194,7 @@ export default function AlmerePage() {
                   <div>
                     <p className="text-lg text-gray-700 mb-4 italic">
                       "Elke dag sta ik in de file op de A6 naar Amsterdam. Toen ik van achteren werd aangereden 
-                      bij de afrit Almere Stad dacht ik: dit wordt een gedoe. Maar Autoschadebureau.nl nam alles 
+                      bij de afrit Almere Stad dacht ik: dit wordt een gedoe. Maar 112autoschade.nl nam alles 
                       over. €2.400 vergoed, zonder zorgen!"
                     </p>
                     <div className="flex items-center gap-2">

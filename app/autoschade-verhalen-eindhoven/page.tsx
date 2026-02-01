@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-eindhoven",
-  "name": "Autoschadebureau.nl - Eindhoven",
+  "@id": "https://www.112autoschade.nl/autoschade-verhalen-eindhoven",
+  "name": "112autoschade.nl - Eindhoven",
   "description": "Gratis autoschade verhalen in Eindhoven. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
-  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-eindhoven",
+  "url": "https://www.112autoschade.nl/autoschade-verhalen-eindhoven",
   "telephone": "+31850605357",
-  "email": "info@autoschadebureau.nl",
+  "email": "info@112autoschade.nl",
   "areaServed": {
     "@type": "City",
     "name": "Eindhoven",
@@ -197,7 +197,7 @@ export default function EindhovenPage() {
                   <div>
                     <p className="text-lg text-gray-700 mb-4 italic">
                       "Mijn auto stond geparkeerd bij de High Tech Campus toen een collega tegen mijn bumper reed. 
-                      Autoschadebureau.nl heeft de volledige schade van €2.100 verhaald zonder dat ik er iets 
+                      112autoschade.nl heeft de volledige schade van €2.100 verhaald zonder dat ik er iets 
                       voor hoefde te betalen. Ideaal voor drukke mensen!"
                     </p>
                     <div className="flex items-center gap-2">

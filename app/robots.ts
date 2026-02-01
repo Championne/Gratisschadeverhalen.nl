@@ -13,6 +13,6 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: 'https://www.autoschadebureau.nl/sitemap.xml',
+    sitemap: 'https://www.112autoschade.nl/sitemap.xml',
   }
 }

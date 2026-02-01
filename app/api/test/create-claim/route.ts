@@ -40,7 +40,7 @@ export async function GET(request: Request) {
     const testClaim = {
       user_id: user.id,
       naam: `Test User ${randomNum}`,
-      email: `test${randomNum}@autoschadebureau.nl`,
+      email: `test${randomNum}@112autoschade.nl`,
       telefoon: '0612345678',
       kenteken_tegenpartij: `AA-${randomNum.toString().padStart(3, '0')}-BB`,
       datum_ongeval: new Date().toISOString().split('T')[0],
@@ -89,7 +89,7 @@ export async function GET(request: Request) {
 
     // Trigger AI agent
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL 
-      || (process.env.NODE_ENV === 'production' ? 'https://www.autoschadebureau.nl' : null)
+      || (process.env.NODE_ENV === 'production' ? 'https://www.112autoschade.nl' : null)
       || 'http://localhost:3000'
     
     console.log('🤖 Triggering AI agent for claim:', claim.id)

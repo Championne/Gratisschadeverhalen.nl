@@ -154,7 +154,7 @@ export default function AansprakelijkstellingPage() {
           {/* Footer */}
           <div className="mt-12 pt-4 border-t text-center text-sm text-muted-foreground print:mt-8 print:pt-2 print:text-xs">
             <p>
-              <strong>Autoschadebureau.nl</strong> | 085 060 5357 | info@autoschadebureau.nl
+              <strong>112autoschade.nl</strong> | 085 060 5357 | info@112autoschade.nl
             </p>
             <p className="mt-1">
               Laat ons de aansprakelijkstelling voor u regelen – geheel gratis!

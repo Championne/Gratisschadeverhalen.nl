@@ -29,14 +29,14 @@ const articleSchema = {
   "description": "Uitgebreide handleiding voor het correct invullen van het Europese aanrijdingsformulier na een auto-ongeval",
   "author": {
     "@type": "Organization",
-    "name": "Autoschadebureau.nl"
+    "name": "112autoschade.nl"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Autoschadebureau.nl",
+    "name": "112autoschade.nl",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://autoschadebureau.nl/logo.png"
+      "url": "https://112autoschade.nl/logo.png"
     }
   },
   "datePublished": "2025-01-24",
@@ -484,7 +484,7 @@ export default function EuropeesSchadeformulierPage() {
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold flex-shrink-0">4</div>
                 <div>
-                  <h4 className="font-semibold mb-1">Upload naar Autoschadebureau.nl</h4>
+                  <h4 className="font-semibold mb-1">Upload naar 112autoschade.nl</h4>
                   <p className="text-sm text-muted-foreground">
                     Upload het formulier bij ons. Wij lezen het automatisch in via OCR en starten direct met uw claim!
                   </p>

@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export const metadata: Metadata = {
-  title: "Onze Diensten - Autoschade Verhalen | Autoschadebureau.nl",
+  title: "Onze Diensten - Autoschade Verhalen | 112autoschade.nl",
   description: "Wij verhalen uw autoschade gratis op de tegenpartij. Volledige ontzorging: van schademelding tot uitbetaling. U betaalt niets, wij regelen alles.",
   keywords: [
     "autoschade verhalen diensten",

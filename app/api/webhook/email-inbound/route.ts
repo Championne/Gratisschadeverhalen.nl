@@ -411,7 +411,7 @@ async function processEmailAsync(emailId: string, emailData: any) {
 
             // Check of het een complexe betwisting is
             if (isComplexDispute(analysis)) {
-              const adminEmail = process.env.ADMIN_EMAIL || 'admin@autoschadebureau.nl'
+              const adminEmail = process.env.ADMIN_EMAIL || 'admin@112autoschade.nl'
               
               const escalationEmail = adminComplexDisputeEmail({
                 claimId,
@@ -547,7 +547,7 @@ async function processEmailAsync(emailId: string, emailData: any) {
 
     // Notify admin if requires review
     if (matchResult.requires_manual_review || analysis.requires_admin_action) {
-      const adminEmail = process.env.ADMIN_EMAIL || 'admin@autoschadebureau.nl'
+      const adminEmail = process.env.ADMIN_EMAIL || 'admin@112autoschade.nl'
       
       const adminNotification = adminEmailReviewNeeded({
         emailId: emailId,
@@ -607,7 +607,7 @@ async function processEmailAsync(emailId: string, emailData: any) {
       .eq('id', emailId)
 
     // Notify admin about processing error
-    const adminEmail = process.env.ADMIN_EMAIL || 'admin@autoschadebureau.nl'
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@112autoschade.nl'
     await sendEmail({
       to: adminEmail,
       subject: `⚠️ Email Processing Error - ${emailId}`,

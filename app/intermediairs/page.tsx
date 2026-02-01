@@ -108,7 +108,7 @@ const faqs = [
   },
   {
     question: "Hoe kan ik mijn cliënten het beste informeren?",
-    answer: "U kunt uw cliënten eenvoudig wijzen op onze website of hen een folder geven (op aanvraag beschikbaar). U kunt ook onze naam noemen bij uw schadegesprekken: 'Autoschadebureau.nl kan dit gratis voor u regelen.'"
+    answer: "U kunt uw cliënten eenvoudig wijzen op onze website of hen een folder geven (op aanvraag beschikbaar). U kunt ook onze naam noemen bij uw schadegesprekken: '112autoschade.nl kan dit gratis voor u regelen.'"
   },
 ]
 
@@ -229,7 +229,7 @@ export default function IntermediairsPage() {
           <section className="mb-16">
             <h2 className="text-3xl font-bold text-center mb-4">Uit de Praktijk</h2>
             <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Hoe andere partners samenwerken met Autoschadebureau.nl
+              Hoe andere partners samenwerken met 112autoschade.nl
             </p>
             
             <div className="grid md:grid-cols-3 gap-6">
@@ -244,7 +244,7 @@ export default function IntermediairsPage() {
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">
                     "Klanten komen bij ons met schade en vragen vaak: 'Wie betaalt dit?' Nu kunnen we direct zeggen: 
-                    'Wij repareren, Autoschadebureau.nl regelt de vergoeding.' Dat werkt perfect."
+                    'Wij repareren, 112autoschade.nl regelt de vergoeding.' Dat werkt perfect."
                   </p>
                   <p className="text-xs text-primary font-medium">~15 verwijzingen per maand</p>
                 </CardContent>
@@ -277,7 +277,7 @@ export default function IntermediairsPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">
-                    "Met 200+ voertuigen hebben we regelmatig schade. Autoschadebureau.nl verhaalt dit systematisch 
+                    "Met 200+ voertuigen hebben we regelmatig schade. 112autoschade.nl verhaalt dit systematisch 
                     en houdt ons netjes op de hoogte. Scheelt ons enorm veel administratie."
                   </p>
                   <p className="text-xs text-primary font-medium">~25 verwijzingen per maand</p>
@@ -295,10 +295,10 @@ export default function IntermediairsPage() {
                   Neem vandaag nog contact met ons op en ontdek hoe wij samen uw cliënten kunnen helpen.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="mailto:info@autoschadebureau.nl">
+                  <Link href="mailto:info@112autoschade.nl">
                     <Button size="lg" variant="secondary" className="gap-2">
                       <Mail className="h-5 w-5" />
-                      info@autoschadebureau.nl
+                      info@112autoschade.nl
                     </Button>
                   </Link>
                   <Link href="/contact">

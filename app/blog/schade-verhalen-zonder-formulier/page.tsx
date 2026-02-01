@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
 
 export const metadata: Metadata = {
-  title: "Schade Verhalen Zonder Schadeformulier | Autoschadebureau.nl",
+  title: "Schade Verhalen Zonder Schadeformulier | 112autoschade.nl",
   description: "Geen Europees Schadeformulier ingevuld na een ongeval? U kunt nog steeds uw autoschade verhalen. Ontdek hoe u zonder formulier toch uw schade vergoed krijgt.",
   keywords: [
     "schade verhalen zonder formulier",
@@ -135,7 +135,7 @@ export default function BlogPost() {
           <section className="mb-12">
             <h2 className="text-3xl font-bold mb-6">Hoe wij het voor u regelen</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Bij Autoschadebureau.nl hebben we ruime ervaring met claims zonder schadeformulier. 
+              Bij 112autoschade.nl hebben we ruime ervaring met claims zonder schadeformulier. 
               Ons proces:
             </p>
             

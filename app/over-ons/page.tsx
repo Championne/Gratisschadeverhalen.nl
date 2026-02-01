@@ -9,7 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 export const metadata: Metadata = {
   title: "Over Ons",
-  description: "Over Autoschadebureau.nl - Snelle expertise bij autoschade verhalen. Gratis, u betaalt niets.",
+  description: "Over 112autoschade.nl - Snelle expertise bij autoschade verhalen. Gratis, u betaalt niets.",
 }
 
 export default function OverOnsPage() {
@@ -19,7 +19,7 @@ export default function OverOnsPage() {
         <div className="max-w-5xl mx-auto">
         {/* Hero Section */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Over Autoschadebureau.nl</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Over 112autoschade.nl</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Wij maken het verhalen van autoschade <strong>eenvoudig, snel en volledig gratis</strong>.
           </p>

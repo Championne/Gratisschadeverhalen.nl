@@ -21,7 +21,7 @@ export async function GET(request: Request) {
 
     // Determine base URL
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
-      || (process.env.NODE_ENV === 'production' ? 'https://www.autoschadebureau.nl' : null)
+      || (process.env.NODE_ENV === 'production' ? 'https://www.112autoschade.nl' : null)
       || 'http://localhost:3000'
 
     console.log('🔍 DEBUG: Base URL:', baseUrl)

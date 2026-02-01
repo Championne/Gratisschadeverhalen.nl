@@ -7,7 +7,7 @@ export function HowToSchema() {
     '@type': 'HowTo',
     name: 'Hoe verhaal ik mijn autoschade?',
     description: 'Stap voor stap uitleg voor het verhalen van autoschade op de tegenpartij',
-    image: 'https://www.autoschadebureau.nl/og-image.jpg',
+    image: 'https://www.112autoschade.nl/og-image.jpg',
     totalTime: 'PT10M',
     estimatedCost: {
       '@type': 'MonetaryAmount',
@@ -35,29 +35,29 @@ export function HowToSchema() {
         '@type': 'HowToStep',
         name: 'Upload uw Europees Schadeformulier',
         text: 'Upload een foto of scan van uw ingevulde Europees Schadeformulier. Ons systeem leest automatisch alle gegevens in.',
-        image: 'https://www.autoschadebureau.nl/step-1.jpg',
-        url: 'https://www.autoschadebureau.nl#upload',
+        image: 'https://www.112autoschade.nl/step-1.jpg',
+        url: 'https://www.112autoschade.nl#upload',
       },
       {
         '@type': 'HowToStep',
         name: 'Wij beoordelen uw claim',
         text: 'Ons team beoordeelt uw claim en controleert de aansprakelijkheid van de tegenpartij.',
-        image: 'https://www.autoschadebureau.nl/step-2.jpg',
-        url: 'https://www.autoschadebureau.nl/diensten#beoordeling',
+        image: 'https://www.112autoschade.nl/step-2.jpg',
+        url: 'https://www.112autoschade.nl/diensten#beoordeling',
       },
       {
         '@type': 'HowToStep',
         name: 'Wij regelen de expertise',
         text: 'Wij schakelen een onafhankelijke expert in die de schade vastlegt in een officieel expertiserapport.',
-        image: 'https://www.autoschadebureau.nl/step-3.jpg',
-        url: 'https://www.autoschadebureau.nl/diensten#expertise',
+        image: 'https://www.112autoschade.nl/step-3.jpg',
+        url: 'https://www.112autoschade.nl/diensten#expertise',
       },
       {
         '@type': 'HowToStep',
         name: 'U ontvangt uw vergoeding',
         text: 'Na akkoord van de verzekeraar wordt het schadebedrag direct naar u overgemaakt. U betaalt niets.',
-        image: 'https://www.autoschadebureau.nl/step-4.jpg',
-        url: 'https://www.autoschadebureau.nl/diensten#uitbetaling',
+        image: 'https://www.112autoschade.nl/step-4.jpg',
+        url: 'https://www.112autoschade.nl/diensten#uitbetaling',
       },
     ],
   }
@@ -81,7 +81,7 @@ export function ReviewSchema() {
         name: 'Autoschade Verhaal Service',
         provider: {
           '@type': 'Organization',
-          name: 'Autoschadebureau.nl',
+          name: '112autoschade.nl',
         },
       },
       reviewRating: {
@@ -104,7 +104,7 @@ export function ReviewSchema() {
         name: 'Autoschade Verhaal Service',
         provider: {
           '@type': 'Organization',
-          name: 'Autoschadebureau.nl',
+          name: '112autoschade.nl',
         },
       },
       reviewRating: {
@@ -127,7 +127,7 @@ export function ReviewSchema() {
         name: 'Autoschade Verhaal Service',
         provider: {
           '@type': 'Organization',
-          name: 'Autoschadebureau.nl',
+          name: '112autoschade.nl',
         },
       },
       reviewRating: {

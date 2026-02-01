@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
   title: "Privacybeleid",
-  description: "Privacybeleid en AVG informatie van Autoschadebureau.nl",
+  description: "Privacybeleid en AVG informatie van 112autoschade.nl",
 }
 
 export default function PrivacyPage() {
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-2xl font-bold mb-4">1. Introductie</h2>
             <p className="text-muted-foreground">
-              Autoschadebureau.nl respecteert de privacy van alle gebruikers van haar website en draagt er zorg voor dat de persoonlijke informatie die u ons verschaft vertrouwelijk wordt behandeld.
+              112autoschade.nl respecteert de privacy van alle gebruikers van haar website en draagt er zorg voor dat de persoonlijke informatie die u ons verschaft vertrouwelijk wordt behandeld.
             </p>
           </section>
 
@@ -104,7 +104,7 @@ export default function PrivacyPage() {
             <div className="mt-4 space-y-2 text-muted-foreground">
               <p><strong>Email:</strong> <span className="bg-yellow-100 px-2 py-1 rounded font-semibold">[INVULLEN: privacy@gratisschadeverhalen.nl]</span></p>
               <p><strong>Telefoon:</strong> <span className="bg-yellow-100 px-2 py-1 rounded font-semibold">[INVULLEN: 088-1234567]</span></p>
-              <p><strong>Post:</strong> Autoschadebureau.nl, <span className="bg-yellow-100 px-2 py-1 rounded font-semibold">[INVULLEN: Straat 123, 1234 AB Plaats]</span>, Nederland</p>
+              <p><strong>Post:</strong> 112autoschade.nl, <span className="bg-yellow-100 px-2 py-1 rounded font-semibold">[INVULLEN: Straat 123, 1234 AB Plaats]</span>, Nederland</p>
               <p className="text-xs italic mt-4">
                 💡 <strong>KvK:</strong> <span className="bg-yellow-100 px-2 py-1 rounded">[INVULLEN]</span> • 
                 <strong>BTW:</strong> <span className="bg-yellow-100 px-2 py-1 rounded">[INVULLEN]</span>

@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-rotterdam",
-  "name": "Autoschadebureau.nl - Rotterdam",
+  "@id": "https://www.112autoschade.nl/autoschade-verhalen-rotterdam",
+  "name": "112autoschade.nl - Rotterdam",
   "description": "Gratis autoschade verhalen in Rotterdam. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
-  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-rotterdam",
+  "url": "https://www.112autoschade.nl/autoschade-verhalen-rotterdam",
   "telephone": "+31850605357",
-  "email": "info@autoschadebureau.nl",
+  "email": "info@112autoschade.nl",
   "areaServed": {
     "@type": "City",
     "name": "Rotterdam",
@@ -197,7 +197,7 @@ export default function RotterdamPage() {
                   <div>
                     <p className="text-lg text-gray-700 mb-4 italic">
                       "Werd aangereden op de A15 door een vrachtwagen. Dacht dat het een hoop gedoe zou worden, 
-                      maar Autoschadebureau.nl regelde alles. Mijn schade van €4.200 was binnen 6 weken vergoed. 
+                      maar 112autoschade.nl regelde alles. Mijn schade van €4.200 was binnen 6 weken vergoed. 
                       Top service voor Rotterdammers!"
                     </p>
                     <div className="flex items-center gap-2">

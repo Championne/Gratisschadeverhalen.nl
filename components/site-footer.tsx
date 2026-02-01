@@ -33,7 +33,7 @@ export function SiteFooter() {
           <div className="space-y-4 lg:w-56 lg:flex-shrink-0">
             <Link href="/" className="inline-block">
               <span className="text-xl font-bold text-primary hover:text-primary/80 transition-colors">
-                Autoschadebureau.nl
+                112autoschade.nl
               </span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -119,8 +119,8 @@ export function SiteFooter() {
               <ul className="space-y-2.5 text-sm">
                 <li className="flex items-center gap-2.5 text-muted-foreground">
                   <Mail className="h-4 w-4 flex-shrink-0 text-primary/70" />
-                  <a href="mailto:info@autoschadebureau.nl" className="hover:text-primary transition-colors">
-                    info@autoschadebureau.nl
+                  <a href="mailto:info@112autoschade.nl" className="hover:text-primary transition-colors">
+                    info@112autoschade.nl
                   </a>
                 </li>
                 <li className="flex items-center gap-2.5 text-muted-foreground">
@@ -185,7 +185,7 @@ export function SiteFooter() {
         <div className="mt-8 pt-6 border-t border-gray-200">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              &copy; {currentYear} Autoschadebureau.nl. Alle rechten voorbehouden.
+              &copy; {currentYear} 112autoschade.nl. Alle rechten voorbehouden.
             </p>
             <p className="text-xs text-muted-foreground">
               <span className="font-medium">Populaire zoektermen:</span>{" "}

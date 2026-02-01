@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-groningen",
-  "name": "Autoschadebureau.nl - Groningen",
+  "@id": "https://www.112autoschade.nl/autoschade-verhalen-groningen",
+  "name": "112autoschade.nl - Groningen",
   "description": "Gratis autoschade verhalen in Groningen. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
-  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-groningen",
+  "url": "https://www.112autoschade.nl/autoschade-verhalen-groningen",
   "telephone": "+31850605357",
-  "email": "info@autoschadebureau.nl",
+  "email": "info@112autoschade.nl",
   "areaServed": {
     "@type": "City",
     "name": "Groningen",
@@ -194,7 +194,7 @@ export default function GroningenPage() {
                   <div>
                     <p className="text-lg text-gray-700 mb-4 italic">
                       "Als student in Groningen werd ik aangereden door een fietser die geen voorrang verleende. 
-                      Schade aan mijn auto van €800. Autoschadebureau.nl heeft alles geregeld terwijl ik 
+                      Schade aan mijn auto van €800. 112autoschade.nl heeft alles geregeld terwijl ik 
                       druk was met tentamens. Super service!"
                     </p>
                     <div className="flex items-center gap-2">

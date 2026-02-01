@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-apeldoorn",
-  "name": "Autoschadebureau.nl - Apeldoorn",
+  "@id": "https://www.112autoschade.nl/autoschade-verhalen-apeldoorn",
+  "name": "112autoschade.nl - Apeldoorn",
   "description": "Gratis autoschade verhalen in Apeldoorn. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
-  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-apeldoorn",
+  "url": "https://www.112autoschade.nl/autoschade-verhalen-apeldoorn",
   "telephone": "+31850605357",
-  "email": "info@autoschadebureau.nl",
+  "email": "info@112autoschade.nl",
   "areaServed": {
     "@type": "City",
     "name": "Apeldoorn",
@@ -194,7 +194,7 @@ export default function ApeldoornPage() {
                   <div>
                     <p className="text-lg text-gray-700 mb-4 italic">
                       "Een hert sprong voor mijn auto op de Veluwe. De schade was fors maar de tegenpartij 
-                      was lastig te achterhalen. Autoschadebureau.nl vond uit dat een ander voertuig het 
+                      was lastig te achterhalen. 112autoschade.nl vond uit dat een ander voertuig het 
                       hert had opgejaagd. Uiteindelijk €3.800 vergoed!"
                     </p>
                     <div className="flex items-center gap-2">

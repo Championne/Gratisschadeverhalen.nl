@@ -38,12 +38,12 @@ export default function GetuigenverklaringPage() {
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-2xl font-bold text-primary print:text-xl">GETUIGENVERKLARING</h1>
-                <p className="text-sm text-muted-foreground">Autoschadebureau.nl</p>
+                <p className="text-sm text-muted-foreground">112autoschade.nl</p>
               </div>
               <div className="text-right print:hidden">
                 <Image 
                   src="/logo.png" 
-                  alt="Autoschadebureau.nl" 
+                  alt="112autoschade.nl" 
                   width={150} 
                   height={40}
                   className="h-10 w-auto"
@@ -56,7 +56,7 @@ export default function GetuigenverklaringPage() {
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 print:bg-gray-100 print:border-gray-300 print:p-3 print:mb-4">
             <p className="text-sm">
               <strong>Instructie:</strong> Vul dit formulier volledig in. De getuige dient het formulier te ondertekenen. 
-              Stuur het ingevulde formulier naar <strong>info@autoschadebureau.nl</strong> of upload het via uw dashboard.
+              Stuur het ingevulde formulier naar <strong>info@112autoschade.nl</strong> of upload het via uw dashboard.
             </p>
           </div>
 
@@ -203,10 +203,10 @@ export default function GetuigenverklaringPage() {
           {/* Footer */}
           <div className="text-center text-sm text-muted-foreground border-t pt-4 print:pt-2 print:text-xs">
             <p>
-              <strong>Autoschadebureau.nl</strong> | 085 060 5357 | info@autoschadebureau.nl | www.autoschadebureau.nl
+              <strong>112autoschade.nl</strong> | 085 060 5357 | info@112autoschade.nl | www.112autoschade.nl
             </p>
             <p className="mt-1">
-              Stuur dit formulier naar info@autoschadebureau.nl of upload het via uw persoonlijke dashboard.
+              Stuur dit formulier naar info@112autoschade.nl of upload het via uw persoonlijke dashboard.
             </p>
           </div>
 

@@ -230,7 +230,7 @@ ing</a>
             </p>
 
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
-              <h3 className="font-bold mb-4">✨ Innovatie: Automatisch Inlezen bij Autoschadebureau.nl</h3>
+              <h3 className="font-bold mb-4">✨ Innovatie: Automatisch Inlezen bij 112autoschade.nl</h3>
               <p className="text-muted-foreground mb-4">
                 Bij ons kunt u simpelweg een <strong>foto of scan van uw schadeformulier 
                 uploaden</strong>. Ons geavanceerde OCR-systeem leest automatisch alle 
@@ -295,7 +295,7 @@ ing</a>
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
               <h3 className="font-bold mb-3">💡 Wij regelen dit volledig voor u</h3>
               <p className="text-muted-foreground mb-4">
-                Bij Autoschadebureau.nl hoeft u dit niet zelf te doen. Wij:
+                Bij 112autoschade.nl hoeft u dit niet zelf te doen. Wij:
               </p>
               <ul className="space-y-2 text-sm text-muted-foreground mb-4">
                 <li>✅ Stellen professionele aansprakelijkheidsbrief op</li>
@@ -474,7 +474,7 @@ ing</a>
             <Card className="bg-gradient-to-br from-blue-50 to-white border-2 border-primary">
               <CardContent className="pt-8 space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold mb-3">✨ Waarom Autoschadebureau.nl?</h3>
+                  <h3 className="text-xl font-bold mb-3">✨ Waarom 112autoschade.nl?</h3>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3">
                       <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 mt-1 flex-shrink-0" />

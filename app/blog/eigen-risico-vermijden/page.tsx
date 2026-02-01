@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs"
 import { ArrowLeft, Euro, Upload, Calculator, TrendingDown, CheckCircle } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Eigen Risico Vermijden: Waarom Direct Verhalen Slimmer Is | Autoschadebureau.nl",
+  title: "Eigen Risico Vermijden: Waarom Direct Verhalen Slimmer Is | 112autoschade.nl",
   description: "Betaal GEEN €500+ eigen risico! Ontdek waarom verhalen bij de tegenpartij financieel voordeliger is dan via uw eigen verzekering claimen.",
   keywords: ["eigen risico vermijden", "eigen risico autoschade", "schade verhalen eigen risico", "geen eigen risico betalen"],
 }

@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-breda",
-  "name": "Autoschadebureau.nl - Breda",
+  "@id": "https://www.112autoschade.nl/autoschade-verhalen-breda",
+  "name": "112autoschade.nl - Breda",
   "description": "Gratis autoschade verhalen in Breda. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
-  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-breda",
+  "url": "https://www.112autoschade.nl/autoschade-verhalen-breda",
   "telephone": "+31850605357",
-  "email": "info@autoschadebureau.nl",
+  "email": "info@112autoschade.nl",
   "areaServed": {
     "@type": "City",
     "name": "Breda",
@@ -193,7 +193,7 @@ export default function BredaPage() {
                   <div>
                     <p className="text-lg text-gray-700 mb-4 italic">
                       "Op weg naar NAC werd ik aangereden door iemand die zijn telefoon gebruikte. 
-                      Schade €1.800. Ik had geen zin in gedoe maar Autoschadebureau.nl regelde alles. 
+                      Schade €1.800. Ik had geen zin in gedoe maar 112autoschade.nl regelde alles. 
                       Zeer tevreden met de snelle afhandeling!"
                     </p>
                     <div className="flex items-center gap-2">

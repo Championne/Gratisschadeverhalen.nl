@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-den-haag",
-  "name": "Autoschadebureau.nl - Den Haag",
+  "@id": "https://www.112autoschade.nl/autoschade-verhalen-den-haag",
+  "name": "112autoschade.nl - Den Haag",
   "description": "Gratis autoschade verhalen in Den Haag. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
-  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-den-haag",
+  "url": "https://www.112autoschade.nl/autoschade-verhalen-den-haag",
   "telephone": "+31850605357",
-  "email": "info@autoschadebureau.nl",
+  "email": "info@112autoschade.nl",
   "areaServed": {
     "@type": "City",
     "name": "Den Haag",
@@ -197,7 +197,7 @@ export default function DenHaagPage() {
                   <div>
                     <p className="text-lg text-gray-700 mb-4 italic">
                       "Mijn auto was beschadigd door een toerist in Scheveningen die wegreed zonder briefje. 
-                      Gelukkig had ik getuigen. Autoschadebureau.nl heeft de zaak volledig overgenomen en 
+                      Gelukkig had ik getuigen. 112autoschade.nl heeft de zaak volledig overgenomen en 
                       €1.950 voor mij verhaald. Fantastische service!"
                     </p>
                     <div className="flex items-center gap-2">

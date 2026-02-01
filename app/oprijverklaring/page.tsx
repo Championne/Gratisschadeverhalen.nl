@@ -42,7 +42,7 @@ export default function OprijverklaringPage() {
               <div className="text-right print:hidden">
                 <Image 
                   src="/logo.png" 
-                  alt="Autoschadebureau.nl" 
+                  alt="112autoschade.nl" 
                   width={150} 
                   height={40}
                   className="h-10 w-auto"
@@ -211,7 +211,7 @@ export default function OprijverklaringPage() {
           {/* Footer */}
           <div className="text-center text-sm text-muted-foreground border-t pt-4 print:pt-2 print:text-xs">
             <p>
-              <strong>Autoschadebureau.nl</strong> | 085 060 5357 | info@autoschadebureau.nl | www.autoschadebureau.nl
+              <strong>112autoschade.nl</strong> | 085 060 5357 | info@112autoschade.nl | www.112autoschade.nl
             </p>
           </div>
 

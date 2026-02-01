@@ -25,7 +25,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: {
     default: "Autoschade Verhalen | Gratis Voertuigschade Claimen - U Betaalt Niets",
-    template: "%s | Autoschadebureau.nl"
+    template: "%s | 112autoschade.nl"
   },
   description: "Upload uw Europees Schadeformulier en verhaal uw autoschade gratis op de tegenpartij. Automatische formulierverwerking, u betaalt niets. Wij regelen uw voertuigschade van A tot Z. Gemiddeld binnen 6 weken uitbetaald.",
   keywords: [
@@ -42,14 +42,14 @@ export const metadata: Metadata = {
     "aansprakelijkheidsbrief",
     "schade verhaal indienen"
   ],
-  authors: [{ name: "Autoschadebureau.nl" }],
-  creator: "Autoschadebureau.nl",
-  publisher: "Autoschadebureau.nl",
+  authors: [{ name: "112autoschade.nl" }],
+  creator: "112autoschade.nl",
+  publisher: "112autoschade.nl",
   openGraph: {
     type: "website",
     locale: "nl_NL",
-    url: "https://www.autoschadebureau.nl",
-    siteName: "Autoschadebureau.nl - Autoschade Verhalen Zonder Eigen Risico",
+    url: "https://www.112autoschade.nl",
+    siteName: "112autoschade.nl - Autoschade Verhalen Zonder Eigen Risico",
     title: "Autoschade Verhalen | Zonder Eigen Risico, Zonder Premieverhoging",
     description: "Verhaal uw autoschade direct bij de tegenpartij - zonder eigen risico, zonder premieverhoging. Ook met eigen verzekering voordelig! Upload schadeformulier en wij regelen alles gratis.",
     images: [
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Autoschadebureau.nl - Gratis autoschade en voertuigschade verhalen",
+        alt: "112autoschade.nl - Gratis autoschade en voertuigschade verhalen",
       },
     ],
   },
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     google: "4711ef4432d27e30",
   },
   alternates: {
-    canonical: "https://www.autoschadebureau.nl"
+    canonical: "https://www.112autoschade.nl"
   }
 }
 

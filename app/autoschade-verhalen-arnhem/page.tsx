@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-arnhem",
-  "name": "Autoschadebureau.nl - Arnhem",
+  "@id": "https://www.112autoschade.nl/autoschade-verhalen-arnhem",
+  "name": "112autoschade.nl - Arnhem",
   "description": "Gratis autoschade verhalen in Arnhem. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
-  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-arnhem",
+  "url": "https://www.112autoschade.nl/autoschade-verhalen-arnhem",
   "telephone": "+31850605357",
-  "email": "info@autoschadebureau.nl",
+  "email": "info@112autoschade.nl",
   "areaServed": {
     "@type": "City",
     "name": "Arnhem",
@@ -193,7 +193,7 @@ export default function ArnhemPage() {
                   <div>
                     <p className="text-lg text-gray-700 mb-4 italic">
                       "Aanrijding op de A12 bij Arnhem door een Duits voertuig. Ik dacht: dit wordt 
-                      ingewikkeld. Maar Autoschadebureau.nl handelde ook de buitenlandse verzekeraar af. 
+                      ingewikkeld. Maar 112autoschade.nl handelde ook de buitenlandse verzekeraar af. 
                       Na 7 weken €3.100 ontvangen. Zeer professioneel!"
                     </p>
                     <div className="flex items-center gap-2">

@@ -381,7 +381,7 @@ export default function WAVerzekeringClaimenPage() {
             <div className="space-y-4 text-sm">
               <div className="flex items-start gap-3">
                 <div className="bg-blue-600 text-white rounded px-2 py-1 text-xs font-bold flex-shrink-0">Dag 1</div>
-                <p>U dient claim in via Autoschadebureau.nl</p>
+                <p>U dient claim in via 112autoschade.nl</p>
               </div>
 
               <div className="flex items-start gap-3">

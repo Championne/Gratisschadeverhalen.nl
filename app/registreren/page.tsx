@@ -16,7 +16,7 @@ export default function RegistrerenPage() {
           <Link href="/" className="inline-block mb-6">
             <Image 
               src="/logo.png" 
-              alt="Autoschadebureau.nl Logo" 
+              alt="112autoschade.nl Logo" 
               width={200}
               height={56}
               priority

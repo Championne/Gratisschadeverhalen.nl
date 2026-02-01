@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.autoschadebureau.nl'
+  const baseUrl = 'https://www.112autoschade.nl'
   
   // Static pages
   const staticPages = [

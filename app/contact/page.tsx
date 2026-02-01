@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Neem contact op met Autoschadebureau.nl voor snelle expertise bij uw autoschade claim. Gratis advies!",
+  description: "Neem contact op met 112autoschade.nl voor snelle expertise bij uw autoschade claim. Gratis advies!",
 }
 
 export default function ContactPage() {
@@ -105,10 +105,10 @@ export default function ContactPage() {
                   <div>
                     <p className="font-semibold">Email</p>
                     <a 
-                      href="mailto:info@autoschadebureau.nl" 
+                      href="mailto:info@112autoschade.nl" 
                       className="text-primary hover:underline"
                     >
-                      info@autoschadebureau.nl
+                      info@112autoschade.nl
                     </a>
                   </div>
                 </div>
@@ -156,7 +156,7 @@ export default function ContactPage() {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Kantoorlocatie Autoschadebureau.nl - Einsteinlaan 28, Rijswijk"
+                    title="Kantoorlocatie 112autoschade.nl - Einsteinlaan 28, Rijswijk"
                   />
                 </div>
               </CardContent>

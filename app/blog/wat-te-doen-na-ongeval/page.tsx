@@ -62,7 +62,7 @@ const howtoSchema = {
     {
       "@type": "HowToStep",
       "position": 6,
-      "name": "Start claim via Autoschadebureau.nl",
+      "name": "Start claim via 112autoschade.nl",
       "text": "Upload schadeformulier en foto's. Wij regelen het verhaal op de tegenpartij gratis voor u."
     }
   ]
@@ -430,7 +430,7 @@ export default function WatTeDoennaNaOngevalblogPost() {
             <div className="bg-gray-50 p-6 rounded-lg my-6">
               <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
                 <span className="bg-gray-700 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">9</span>
-                Start Uw Claim Bij Autoschadebureau.nl
+                Start Uw Claim Bij 112autoschade.nl
               </h3>
               <p className="text-sm mb-4">
                 <strong>Waarom zo snel?</strong> Hoe sneller u start, hoe beter. Bewijs kan vervagen en verzekeraar moet binnen redelijke termijn geïnformeerd worden.
@@ -543,7 +543,7 @@ export default function WatTeDoennaNaOngevalblogPost() {
 
               <Card className="bg-blue-50">
                 <CardContent className="p-4">
-                  <p className="font-bold text-lg mb-1">📞 Autoschadebureau.nl</p>
+                  <p className="font-bold text-lg mb-1">📞 112autoschade.nl</p>
                   <p className="text-sm text-muted-foreground">085 060 5357 (Gratis schade verhalen)</p>
                 </CardContent>
               </Card>
@@ -589,7 +589,7 @@ export default function WatTeDoennaNaOngevalblogPost() {
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">7</div>
-                    <p><strong>Start claim</strong> binnen 24 uur via Autoschadebureau.nl</p>
+                    <p><strong>Start claim</strong> binnen 24 uur via 112autoschade.nl</p>
                   </div>
                 </div>
               </CardContent>
@@ -631,7 +631,7 @@ export default function WatTeDoennaNaOngevalblogPost() {
                   "8. Bel politie bij vluchtmisdrijf of alcoholvermoeden",
                   "9. Noteer exacte tijd, datum en locatie ongeval",
                   "10. Maak aantekeningen over ongevalsverloop",
-                  "11. Upload alles binnen 24 uur naar Autoschadebureau.nl",
+                  "11. Upload alles binnen 24 uur naar 112autoschade.nl",
                   "12. Bewaar alle documenten en bonnetjes (sleepkosten, etc.)"
                 ]}
               />

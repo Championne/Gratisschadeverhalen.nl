@@ -22,7 +22,7 @@ function generateReviewRequestEmail(data: {
   const firstName = data.naam.split(' ')[0]
   
   return {
-    subject: `${firstName}, hoe was uw ervaring met Autoschadebureau.nl?`,
+    subject: `${firstName}, hoe was uw ervaring met 112autoschade.nl?`,
     html: `
 <!DOCTYPE html>
 <html>
@@ -33,7 +33,7 @@ function generateReviewRequestEmail(data: {
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
   
   <div style="text-align: center; margin-bottom: 30px;">
-    <h1 style="color: #16a34a; margin: 0;">Autoschadebureau.nl</h1>
+    <h1 style="color: #16a34a; margin: 0;">112autoschade.nl</h1>
   </div>
 
   <p>Beste ${firstName},</p>
@@ -53,14 +53,14 @@ function generateReviewRequestEmail(data: {
   <p>Alvast hartelijk dank!</p>
 
   <p>Met vriendelijke groet,<br>
-  <strong>Team Autoschadebureau.nl</strong></p>
+  <strong>Team 112autoschade.nl</strong></p>
 
   <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
   
   <p style="color: #999; font-size: 12px;">
     U ontvangt deze email omdat uw schadeclaim bij ons is afgehandeld.
     <br>
-    <a href="mailto:info@autoschadebureau.nl" style="color: #999;">Uitschrijven</a>
+    <a href="mailto:info@112autoschade.nl" style="color: #999;">Uitschrijven</a>
   </p>
 
 </body>

@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: post.seo?.title || `${post.title} | Autoschadebureau.nl`,
+    title: post.seo?.title || `${post.title} | 112autoschade.nl`,
     description: post.seo?.description || post.excerpt,
     openGraph: {
       title: post.seo?.title || post.title,

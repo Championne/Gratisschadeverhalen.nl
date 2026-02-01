@@ -10,8 +10,8 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 
 export const metadata: Metadata = {
-  title: "Voor Intermediairs | Autoschadebureau.nl",
-  description: "Partner worden van Autoschadebureau.nl? Meld schades voor uw klanten en ontvang een aantrekkelijke vergoeding. Voor schadeherstelbedrijven, autobedrijven en assurantiekantoren.",
+  title: "Voor Intermediairs | 112autoschade.nl",
+  description: "Partner worden van 112autoschade.nl? Meld schades voor uw klanten en ontvang een aantrekkelijke vergoeding. Voor schadeherstelbedrijven, autobedrijven en assurantiekantoren.",
 }
 
 export default function IntermediairPage() {
@@ -234,8 +234,8 @@ export default function IntermediairPage() {
                       <Mail className="h-5 w-5 text-primary" />
                       <div>
                         <p className="font-semibold">Email</p>
-                        <a href="mailto:partners@autoschadebureau.nl" className="text-primary hover:underline">
-                          partners@autoschadebureau.nl
+                        <a href="mailto:partners@112autoschade.nl" className="text-primary hover:underline">
+                          partners@112autoschade.nl
                         </a>
                       </div>
                     </div>

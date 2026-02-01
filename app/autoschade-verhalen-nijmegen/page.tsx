@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-nijmegen",
-  "name": "Autoschadebureau.nl - Nijmegen",
+  "@id": "https://www.112autoschade.nl/autoschade-verhalen-nijmegen",
+  "name": "112autoschade.nl - Nijmegen",
   "description": "Gratis autoschade verhalen in Nijmegen. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
-  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-nijmegen",
+  "url": "https://www.112autoschade.nl/autoschade-verhalen-nijmegen",
   "telephone": "+31850605357",
-  "email": "info@autoschadebureau.nl",
+  "email": "info@112autoschade.nl",
   "areaServed": {
     "@type": "City",
     "name": "Nijmegen",
@@ -193,7 +193,7 @@ export default function NijmegenPage() {
                   <div>
                     <p className="text-lg text-gray-700 mb-4 italic">
                       "Mijn geparkeerde auto werd geraakt in Lent door een bouwvoertuig. Via getuigen 
-                      kon de tegenpartij worden achterhaald. Autoschadebureau.nl heeft de €2.200 schade 
+                      kon de tegenpartij worden achterhaald. 112autoschade.nl heeft de €2.200 schade 
                       volledig verhaald. Uitstekende communicatie!"
                     </p>
                     <div className="flex items-center gap-2">

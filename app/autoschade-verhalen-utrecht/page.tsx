@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-utrecht",
-  "name": "Autoschadebureau.nl - Utrecht",
+  "@id": "https://www.112autoschade.nl/autoschade-verhalen-utrecht",
+  "name": "112autoschade.nl - Utrecht",
   "description": "Gratis autoschade verhalen in Utrecht. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
-  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-utrecht",
+  "url": "https://www.112autoschade.nl/autoschade-verhalen-utrecht",
   "telephone": "+31850605357",
-  "email": "info@autoschadebureau.nl",
+  "email": "info@112autoschade.nl",
   "areaServed": {
     "@type": "City",
     "name": "Utrecht",
@@ -197,7 +197,7 @@ export default function UtrechtPage() {
                   <div>
                     <p className="text-lg text-gray-700 mb-4 italic">
                       "Kop-staartbotsing op de A2 bij Nieuwegein. De tegenpartij was duidelijk aansprakelijk. 
-                      Autoschadebureau.nl nam alles uit handen - van de expert tot de onderhandelingen. 
+                      112autoschade.nl nam alles uit handen - van de expert tot de onderhandelingen. 
                       Na 4 weken had ik €3.400 op mijn rekening. Echt top!"
                     </p>
                     <div className="flex items-center gap-2">

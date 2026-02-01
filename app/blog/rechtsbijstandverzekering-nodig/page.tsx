@@ -126,7 +126,7 @@ export default function RechtsbijstandverzekeringNodigPage() {
                   <div>
                     <h4 className="font-semibold mb-1">✅ U gebruikt een professionele verhaalservice</h4>
                     <p className="text-sm text-muted-foreground">
-                      Services zoals Autoschadebureau.nl nemen alle juridische zaken over. 
+                      Services zoals 112autoschade.nl nemen alle juridische zaken over. 
                       Wij schrijven aansprakelijkheidsbrieven, onderhandelen, en escaleren indien nodig - gratis.
                     </p>
                   </div>
@@ -211,7 +211,7 @@ export default function RechtsbijstandverzekeringNodigPage() {
                 <tr className="bg-gray-100">
                   <th className="p-3 text-left border">Aspect</th>
                   <th className="p-3 text-left border">Rechtsbijstandverzekering</th>
-                  <th className="p-3 text-left border bg-green-50">Autoschadebureau.nl</th>
+                  <th className="p-3 text-left border bg-green-50">112autoschade.nl</th>
                 </tr>
               </thead>
               <tbody>

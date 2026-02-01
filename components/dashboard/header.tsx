@@ -37,7 +37,7 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
         <Link href="/" className="flex items-center">
           <Image 
             src="/logo.png" 
-            alt="Autoschadebureau.nl Logo" 
+            alt="112autoschade.nl Logo" 
             width={160}
             height={45}
             priority

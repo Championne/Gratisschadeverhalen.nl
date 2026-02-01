@@ -107,7 +107,7 @@ const combinedSchema = {
           "@type": "HowToStep",
           "position": 10,
           "name": "Upload naar uw schadeclaim",
-          "text": "Upload alle foto's bij uw schadeclaim via autoschadebureau.nl voor de snelste afhandeling."
+          "text": "Upload alle foto's bij uw schadeclaim via 112autoschade.nl voor de snelste afhandeling."
         }
       ]
     },

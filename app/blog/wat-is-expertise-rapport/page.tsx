@@ -30,14 +30,14 @@ const articleSchema = {
   "description": "Complete uitleg over het expertise rapport bij autoschade: wat het is, wat erin staat, wie het opstelt en hoe het uw schadevergoeding bepaalt.",
   "author": {
     "@type": "Organization",
-    "name": "Autoschadebureau.nl"
+    "name": "112autoschade.nl"
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Autoschadebureau.nl",
+    "name": "112autoschade.nl",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://autoschadebureau.nl/logo.png"
+      "url": "https://112autoschade.nl/logo.png"
     }
   },
   "datePublished": "2026-01-27",
@@ -311,7 +311,7 @@ export default function WatIsExpertiseRapportPage() {
               </div>
 
               <p className="text-muted-foreground">
-                Bij Autoschadebureau.nl zorgen wij voor <strong>snelle expertise</strong> door onafhankelijke experts. 
+                Bij 112autoschade.nl zorgen wij voor <strong>snelle expertise</strong> door onafhankelijke experts. 
                 Zo weet u zeker dat uw belangen worden behartigd en u een eerlijke schadevergoeding krijgt.
               </p>
             </section>
@@ -441,7 +441,7 @@ export default function WatIsExpertiseRapportPage() {
 
               <p className="text-muted-foreground">
                 Let op: vraagt u zelf een contra-expertise aan terwijl de verzekeraar dit niet vergoedt? 
-                Dan kunnen de kosten voor uw rekening komen. Bij Autoschadebureau.nl adviseren wij u hierover 
+                Dan kunnen de kosten voor uw rekening komen. Bij 112autoschade.nl adviseren wij u hierover 
                 en zorgen we dat onnodige kosten worden vermeden.
               </p>
             </section>

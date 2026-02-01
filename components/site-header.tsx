@@ -26,7 +26,7 @@ export function SiteHeader() {
           <Link href="/" className="flex items-center">
             <Image 
               src="/logo.png" 
-              alt="Autoschadebureau.nl Logo" 
+              alt="112autoschade.nl Logo" 
               width={280}
               height={80}
               priority
@@ -101,7 +101,7 @@ export function SiteHeader() {
           <Link href="/" className="flex items-center absolute left-1/2 transform -translate-x-1/2">
             <Image 
               src="/logo.png" 
-              alt="Autoschadebureau.nl Logo" 
+              alt="112autoschade.nl Logo" 
               width={200}
               height={56}
               priority

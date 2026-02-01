@@ -126,8 +126,8 @@ export function ChecklistDownload({ title, description, checklistItems }: Checkl
           </div>
 
           <div class="footer">
-            <p><strong>Autoschadebureau.nl</strong> | Gratis Autoschade Verhalen</p>
-            <p>info@autoschadebureau.nl | 085 060 5357</p>
+            <p><strong>112autoschade.nl</strong> | Gratis Autoschade Verhalen</p>
+            <p>info@112autoschade.nl | 085 060 5357</p>
             <p style="margin-top: 10px; font-size: 12px;">
               Deze checklist is gratis te gebruiken. Voor vragen of hulp bij uw autoschade claim, neem contact met ons op.
             </p>

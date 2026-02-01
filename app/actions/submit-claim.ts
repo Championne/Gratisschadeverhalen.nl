@@ -119,7 +119,7 @@ async function triggerAgentProcessing(claimId: string) {
   try {
     // Determine base URL (production vs local)
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL 
-      || (process.env.NODE_ENV === 'production' ? 'https://www.autoschadebureau.nl' : null)
+      || (process.env.NODE_ENV === 'production' ? 'https://www.112autoschade.nl' : null)
       || 'http://localhost:3000'
     
     console.log('🤖 Triggering AI agent for claim:', claimId, 'URL:', baseUrl)

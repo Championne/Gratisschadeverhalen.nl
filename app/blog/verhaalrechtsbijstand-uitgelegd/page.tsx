@@ -244,7 +244,7 @@ export default function VerhaalrechtsbijstandPage() {
 
             <Card className="border-2 border-green-500 bg-green-50">
               <CardContent className="p-6">
-                <h4 className="font-bold mb-3 text-green-900">Optie 2: Via Autoschadebureau.nl (Gratis!)</h4>
+                <h4 className="font-bold mb-3 text-green-900">Optie 2: Via 112autoschade.nl (Gratis!)</h4>
                 <div className="space-y-2 text-sm text-green-800">
                   <p className="flex items-center gap-2">
                     <FontAwesomeIcon icon={faCircleCheck} className="h-4 w-4 text-green-600" /> Professionele aanpak

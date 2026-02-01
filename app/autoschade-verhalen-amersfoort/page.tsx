@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-amersfoort",
-  "name": "Autoschadebureau.nl - Amersfoort",
+  "@id": "https://www.112autoschade.nl/autoschade-verhalen-amersfoort",
+  "name": "112autoschade.nl - Amersfoort",
   "description": "Gratis autoschade verhalen in Amersfoort. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
-  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-amersfoort",
+  "url": "https://www.112autoschade.nl/autoschade-verhalen-amersfoort",
   "telephone": "+31850605357",
-  "email": "info@autoschadebureau.nl",
+  "email": "info@112autoschade.nl",
   "areaServed": {
     "@type": "City",
     "name": "Amersfoort",
@@ -194,7 +194,7 @@ export default function AmersfoortPage() {
                   <div>
                     <p className="text-lg text-gray-700 mb-4 italic">
                       "File-schade bij knooppunt Hoevelaken, de tegenpartij reed tegen mijn achterbumper. 
-                      Autoschadebureau.nl nam direct contact op en regelde alles. Binnen 4 weken €1.950 
+                      112autoschade.nl nam direct contact op en regelde alles. Binnen 4 weken €1.950 
                       op mijn rekening. Zeer aan te bevelen!"
                     </p>
                     <div className="flex items-center gap-2">

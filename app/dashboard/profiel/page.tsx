@@ -4,7 +4,7 @@ import { DashboardHeader } from "@/components/dashboard/header"
 import { ProfileSettings } from "@/components/dashboard/profile-settings"
 
 export const metadata = {
-  title: "Profiel - Autoschadebureau.nl",
+  title: "Profiel - 112autoschade.nl",
   description: "Beheer je profiel en account instellingen",
 }
 

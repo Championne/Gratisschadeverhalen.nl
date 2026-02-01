@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-zaanstad",
-  "name": "Autoschadebureau.nl - Zaanstad",
+  "@id": "https://www.112autoschade.nl/autoschade-verhalen-zaanstad",
+  "name": "112autoschade.nl - Zaanstad",
   "description": "Gratis autoschade verhalen in Zaanstad. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
-  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-zaanstad",
+  "url": "https://www.112autoschade.nl/autoschade-verhalen-zaanstad",
   "telephone": "+31850605357",
-  "email": "info@autoschadebureau.nl",
+  "email": "info@112autoschade.nl",
   "areaServed": {
     "@type": "City",
     "name": "Zaanstad",
@@ -194,7 +194,7 @@ export default function ZaanstadPage() {
                   <div>
                     <p className="text-lg text-gray-700 mb-4 italic">
                       "Kop-staartbotsing voor de Coentunnel richting Amsterdam. De file stond weer 
-                      eens vast. Autoschadebureau.nl heeft mijn schade van €2.600 volledig verhaald 
+                      eens vast. 112autoschade.nl heeft mijn schade van €2.600 volledig verhaald 
                       zonder dat ik er iets voor hoefde te doen. Top!"
                     </p>
                     <div className="flex items-center gap-2">

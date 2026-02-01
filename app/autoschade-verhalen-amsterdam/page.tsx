@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://www.autoschadebureau.nl/autoschade-verhalen-amsterdam",
-  "name": "Autoschadebureau.nl - Amsterdam",
+  "@id": "https://www.112autoschade.nl/autoschade-verhalen-amsterdam",
+  "name": "112autoschade.nl - Amsterdam",
   "description": "Gratis autoschade verhalen in Amsterdam. Wij claimen uw schade bij de tegenpartij - u betaalt niets.",
-  "url": "https://www.autoschadebureau.nl/autoschade-verhalen-amsterdam",
+  "url": "https://www.112autoschade.nl/autoschade-verhalen-amsterdam",
   "telephone": "+31850605357",
-  "email": "info@autoschadebureau.nl",
+  "email": "info@112autoschade.nl",
   "areaServed": {
     "@type": "City",
     "name": "Amsterdam",
@@ -197,7 +197,7 @@ export default function AmsterdamPage() {
                   <div>
                     <p className="text-lg text-gray-700 mb-4 italic">
                       "Na een aanrijding op de Stadhouderskade dacht ik dat ik alles zelf moest regelen. 
-                      Autoschadebureau.nl nam alles uit handen. Binnen 5 weken had ik €2.800 op mijn rekening. 
+                      112autoschade.nl nam alles uit handen. Binnen 5 weken had ik €2.800 op mijn rekening. 
                       Echt een aanrader voor iedereen in Amsterdam!"
                     </p>
                     <div className="flex items-center gap-2">
