@@ -233,54 +233,30 @@ export default function IntermediairsPage() {
             </p>
             
             <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-2">
-                <CardHeader>
-                  <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center mb-2">
-                    <Car className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <CardTitle className="text-lg">Autobedrijf Van Dijk</CardTitle>
-                  <CardDescription>Schadeherstelbedrijf, Rotterdam</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    "Klanten komen bij ons met schade en vragen vaak: 'Wie betaalt dit?' Nu kunnen we direct zeggen: 
-                    'Wij repareren, 112autoschade.nl regelt de vergoeding.' Dat werkt perfect."
+              <Card className="border-2 border-dashed">
+                <CardContent className="py-16 text-center">
+                  <Handshake className="h-12 w-12 text-muted-foreground mx-auto mb-4 opacity-30" />
+                  <p className="text-muted-foreground text-sm">
+                    Binnenkort beschikbaar
                   </p>
-                  <p className="text-xs text-primary font-medium">~15 verwijzingen per maand</p>
                 </CardContent>
               </Card>
 
-              <Card className="border-2">
-                <CardHeader>
-                  <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center mb-2">
-                    <Briefcase className="h-6 w-6 text-green-600" />
-                  </div>
-                  <CardTitle className="text-lg">Jansen Assurantiën</CardTitle>
-                  <CardDescription>Verzekeringsadviseur, Amsterdam</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    "Veel van onze klanten hebben alleen WA-verzekering. Voorheen kon ik niet helpen bij verhaal. 
-                    Nu verwijs ik ze door en ze krijgen professionele hulp - gratis. Win-win."
+              <Card className="border-2 border-dashed">
+                <CardContent className="py-16 text-center">
+                  <Handshake className="h-12 w-12 text-muted-foreground mx-auto mb-4 opacity-30" />
+                  <p className="text-muted-foreground text-sm">
+                    Binnenkort beschikbaar
                   </p>
-                  <p className="text-xs text-primary font-medium">~8 verwijzingen per maand</p>
                 </CardContent>
               </Card>
 
-              <Card className="border-2">
-                <CardHeader>
-                  <div className="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center mb-2">
-                    <Building2 className="h-6 w-6 text-purple-600" />
-                  </div>
-                  <CardTitle className="text-lg">FleetCare BV</CardTitle>
-                  <CardDescription>Wagenparkbeheerder, Utrecht</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    "Met 200+ voertuigen hebben we regelmatig schade. 112autoschade.nl verhaalt dit systematisch 
-                    en houdt ons netjes op de hoogte. Scheelt ons enorm veel administratie."
+              <Card className="border-2 border-dashed">
+                <CardContent className="py-16 text-center">
+                  <Handshake className="h-12 w-12 text-muted-foreground mx-auto mb-4 opacity-30" />
+                  <p className="text-muted-foreground text-sm">
+                    Binnenkort beschikbaar
                   </p>
-                  <p className="text-xs text-primary font-medium">~25 verwijzingen per maand</p>
                 </CardContent>
               </Card>
             </div>
