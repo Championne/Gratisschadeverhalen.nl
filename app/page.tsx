@@ -330,6 +330,27 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Video Explainer Section */}
+        <section className="py-8 md:py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <div className="rounded-lg overflow-hidden shadow-xl">
+                <video 
+                  className="w-full h-auto"
+                  controls
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                >
+                  <source src="/videos/homepage-explainer.mp4" type="video/mp4" />
+                  Je browser ondersteunt video niet.
+                </video>
+              </div>
+            </div>
+          </div>
+        </section>
+
       {/* Upload CTA Section */}
         <section className="bg-gray-50 py-6 md:py-16">
           <div className="container mx-auto px-4">
