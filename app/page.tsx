@@ -764,7 +764,7 @@ export default function HomePage() {
                 Wat onze klanten zeggen
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                837 tevreden klanten gingen u voor – bekijk hun succesverhalen
+                Honderden tevreden klanten gingen u voor – bekijk hun ervaringen
               </p>
             </div>
 
@@ -783,15 +783,10 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">
-                    <strong>Situatie:</strong> Mevrouw Dekker werd aangereden op een supermarktparkeerplaats. De tegenpartij gaf haar kenteken, 
-                    maar wilde daarna niet meer reageren.
-                  </p>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    <strong>Onze aanpak:</strong> Wij hebben direct contact gezocht met de WA-verzekeraar van de tegenpartij, 
-                    een expertiserapport aangevraagd, en aansprakelijkheid vastgesteld.
+                    Ik stond op de parkeerplaats bij de Albert Heijn toen iemand mijn auto raakte. Hij gaf z'n kenteken maar reageerde daarna nergens meer op. Jullie hebben alles voor me geregeld.
                   </p>
                   <p className="text-sm font-semibold text-green-700">
-                    Resultaat: Volledige vergoeding van € 2.850 binnen 5 weken. Mevrouw Dekker betaalde helemaal niets.
+                    € 2.850 vergoed binnen 5 weken – geen eigen risico, geen gedoe.
                   </p>
                 </CardContent>
               </Card>
@@ -810,15 +805,10 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">
-                    <strong>Situatie:</strong> Meneer Visser werd van achteren aangereden in een file op de A2. 
-                    Bumper en achterlichten zwaar beschadigd. De tegenpartij ontkende aanvankelijk schuld.
-                  </p>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    <strong>Onze aanpak:</strong> Met foto's en het Europees Schadeformulier hebben wij duidelijk aansprakelijkheid aangetoond. 
-                    De verzekeraar accepteerde volledige aansprakelijkheid.
+                    Achterop gereden in de file bij knooppunt Holendrecht. Andere bestuurder zei eerst dat het mijn schuld was, maar foto's spraken voor zich. Bumper eraf, lampen kapot.
                   </p>
                   <p className="text-sm font-semibold text-green-700">
-                    Resultaat: € 4.200 schadevergoeding binnen 7 weken. Volledige reparatie vergoed, inclusief vervangend vervoer.
+                    € 4.200 + vervangend vervoer binnen 7 weken. Volledig reparatie.
                   </p>
                 </CardContent>
               </Card>
@@ -837,15 +827,10 @@ export default function HomePage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">
-                    <strong>Situatie:</strong> Meneer Scholten kreeg spiegelschade toen een auto hem inhaalde en te dicht langs kwam. 
-                    Geen Europees Schadeformulier ingevuld, alleen kenteken genoteerd.
-                  </p>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    <strong>Onze aanpak:</strong> Via het kenteken hebben wij de verzekeraar achterhaald. 
-                    Met foto's en getuigenverklaring aansprakelijkheid hard gemaakt.
+                    Een bestelbus haalde me in op de N201 en kwam te dicht langs - spiegel eraf. Had alleen z'n kenteken opgeschreven, geen schadeformulier. Dacht dat het zonder formulier niet zou lukken maar het ging gewoon.
                   </p>
                   <p className="text-sm font-semibold text-green-700">
-                    Resultaat: € 850 uitbetaald binnen 4 weken. Ondanks ontbrekend schadeformulier toch volledige vergoeding.
+                    € 850 binnen 4 weken. Zelfs zonder schadeformulier gelukt!
                   </p>
                 </CardContent>
               </Card>
@@ -855,21 +840,21 @@ export default function HomePage() {
             <div className="hidden md:grid max-w-4xl mx-auto mt-8 md:grid-cols-3 gap-4">
               <div className="bg-white rounded-lg p-4 border text-center">
                 <p className="text-sm text-muted-foreground italic mb-3">
-                  "Super snel en makkelijk! Binnen 5 weken €2.350 op mijn rekening."
+                  "Super snel! Binnen 5 weken €2.350 binnen. Heb helemaal niets hoeven doen."
                 </p>
-                <p className="text-sm font-semibold">Sophie M. – Amsterdam</p>
+                <p className="text-sm font-semibold">Lisa - Amsterdam</p>
               </div>
               <div className="bg-white rounded-lg p-4 border text-center">
                 <p className="text-sm text-muted-foreground italic mb-3">
-                  "Eindelijk een partij die het regelt zonder gedoe. Professionele aanpak!"
+                  "Ik had alleen WA verzekering dus eigen schade niet gedekt. Dit was m'n enige optie en werkte perfect."
                 </p>
-                <p className="text-sm font-semibold">Thijs R. – Rotterdam</p>
+                <p className="text-sm font-semibold">Mark - Rotterdam</p>
               </div>
               <div className="bg-white rounded-lg p-4 border text-center">
                 <p className="text-sm text-muted-foreground italic mb-3">
-                  "Via eigen verzekering €500 eigen risico. Nu €1.850 zonder te betalen!"
+                  "Had via eigen verzekering €500 eigen risico moeten betalen. Nu €1.850 vergoed zonder kosten!"
                 </p>
-                <p className="text-sm font-semibold">Noor B. – Utrecht</p>
+                <p className="text-sm font-semibold">Emma - Utrecht</p>
               </div>
             </div>
 
