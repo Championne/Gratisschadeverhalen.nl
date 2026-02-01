@@ -379,8 +379,8 @@ export default function HomePage() {
                   <CardContent className="space-y-4">
                     <Button size="lg" className="w-full text-base sm:text-lg h-14 text-white shadow-lg group-hover:shadow-xl transition-all pointer-events-none">
                       <Upload className="mr-2 h-5 w-5 flex-shrink-0" />
-                      <span className="hidden sm:inline">Start Nu – Gratis Autoschade Verhalen</span>
-                      <span className="sm:hidden">Start Nu – Gratis</span>
+                      <span className="hidden sm:inline">Upload Schadeformulier – Binnen 2 Minuten Klaar</span>
+                      <span className="sm:hidden">Upload Formulier</span>
                       <ChevronRight className="ml-2 h-5 w-5 flex-shrink-0" />
                     </Button>
 
@@ -402,7 +402,7 @@ export default function HomePage() {
                 </span>
                 <span className="flex items-center gap-2">
                   <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 text-green-600 flex-shrink-0" />
-                  <span>100% gratis</span>
+                  <span>U betaalt niets</span>
                 </span>
               </div>
 
@@ -556,7 +556,7 @@ export default function HomePage() {
                 <Link href="/claim-indienen" className="inline-block w-full sm:w-auto">
                   <Button size="lg" className="text-base sm:text-lg px-6 sm:px-10 py-6 shadow-xl hover:shadow-2xl transition-all w-full sm:w-auto">
                     <Upload className="mr-2 h-5 w-5 flex-shrink-0" />
-                    Direct Schade Melden
+                    Meld Uw Schade
                   </Button>
                 </Link>
               </div>
@@ -646,7 +646,7 @@ export default function HomePage() {
                         <Link href="/claim-indienen">
                           <Button className="bg-green-600 hover:bg-green-700">
                             <Upload className="mr-2 h-4 w-4" />
-                            Direct Gratis Schade Melden
+                            Begin Met Verhalen
                           </Button>
                         </Link>
                       </div>
@@ -713,7 +713,7 @@ export default function HomePage() {
                     <div className="flex items-start gap-3 bg-white rounded-lg p-3 md:p-4 border">
                       <FontAwesomeIcon icon={faCircleCheck} className="h-5 w-5 md:h-6 md:w-6 text-green-600 flex-shrink-0 mt-0.5" />
                       <div>
-                        <p className="font-semibold text-sm md:text-base">Volledig gratis</p>
+                        <p className="font-semibold text-sm md:text-base">Zonder kosten</p>
                         <p className="hidden md:block text-sm text-muted-foreground">
                           U betaalt niets, alle kosten door tegenpartij.
                         </p>
@@ -745,8 +745,8 @@ export default function HomePage() {
                     <Link href="/claim-indienen" className="block">
                       <Button size="lg" className="text-base md:text-lg px-6 md:px-8 w-full md:w-auto">
                         <Upload className="mr-2 h-5 w-5 flex-shrink-0" />
-                        <span className="hidden sm:inline">Start Nu – Verhaal Uw Autoschade Gratis</span>
-                        <span className="sm:hidden">Start Nu – Claim Gratis</span>
+                        <span className="hidden sm:inline">Claim Indienen – 100% Gratis</span>
+                        <span className="sm:hidden">Claim Indienen</span>
                       </Button>
                     </Link>
                   </div>
@@ -862,8 +862,8 @@ export default function HomePage() {
               <Link href="/claim-indienen" className="inline-block w-full sm:w-auto">
                 <Button size="lg" className="text-base sm:text-lg px-6 sm:px-8 w-full sm:w-auto">
                   <Upload className="mr-2 h-5 w-5 flex-shrink-0" />
-                  <span className="hidden sm:inline">Start uw autoschade claim nu</span>
-                  <span className="sm:hidden">Start uw claim nu</span>
+                  <span className="hidden sm:inline">Ook Uw Schade Laten Verhalen?</span>
+                  <span className="sm:hidden">Uw Schade Verhalen</span>
                 </Button>
               </Link>
             </div>
@@ -972,7 +972,7 @@ export default function HomePage() {
         <section className="py-6 md:py-12 bg-gradient-to-r from-primary to-blue-700 text-white">
           <div className="container mx-auto px-6 sm:px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Klaar om uw autoschade gratis te verhalen?
+              Klaar om uw autoschade te verhalen?
             </h2>
             <p className="text-xl mb-4 opacity-95 max-w-2xl mx-auto">
               Upload nu uw Europees Schadeformulier en start direct met het verhalen van uw voertuigschade op de tegenpartij
@@ -982,7 +982,7 @@ export default function HomePage() {
             </p>
             <Link href="/claim-indienen" className="inline-block w-full sm:w-auto px-4 sm:px-0">
               <Button size="lg" variant="secondary" className="text-base sm:text-lg px-6 sm:px-10 h-14 shadow-xl hover:shadow-2xl transition-all w-full sm:w-auto">
-                Schade melden
+                Direct Beginnen
                 <ChevronRight className="ml-2 h-5 w-5 flex-shrink-0" />
               </Button>
             </Link>
