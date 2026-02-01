@@ -165,7 +165,7 @@ export default function Artikel185WvwPage() {
 
             <Card className="mb-4">
               <CardHeader>
-                <CardTitle className="text-xl">3. Ik ben als fietser aangereden door een fiets, is Artikel 185 WVW dan van toepassing?</CardTTitle>
+                <CardTitle className="text-xl">3. Ik ben als fietser aangereden door een fiets, is Artikel 185 WVW dan van toepassing?</CardTitle>
               </CardHeader>
               <CardContent>
                 <p>Nee, Artikel 185 WVW is alleen van toepassing als een motorrijtuig betrokken is. Bij een aanrijding tussen twee fietsers geldt het Burgerlijk Wetboek en moet de schuld (en dus de aansprakelijkheid) worden aangetoond op basis van verkeersfouten.</p>

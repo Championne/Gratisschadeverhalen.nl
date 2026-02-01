@@ -271,7 +271,7 @@ export default function LetselschadePage() {
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl font-semibold">Wat moet ik doen als ik naast letsel ook materiële schade heb?</Card口感
+                  <CardTitle className="text-xl font-semibold">Wat moet ik doen als ik naast letsel ook materiële schade heb?</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p>
